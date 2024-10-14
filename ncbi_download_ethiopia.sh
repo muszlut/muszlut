@@ -19,7 +19,7 @@ if [ ! -d $OUTDIR ]
         mkdir -p $OUTDIR
 fi
 
- #Load modules
+ #Load modulesss
 module load NCBI-Databasets-CLI/16.4.4
 
 #move to working directory
