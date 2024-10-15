@@ -12,12 +12,11 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/bactopia_tutorial"
+OUTDIR="/scratch/ma95362"
 module load Bactopia/3.0.1
 cd $OUTDIR
 bactopia \
     --accessions $OUTDIR/bactopia-accessions.txt \
     --coverage 100 \
     --outdir $OUTDIR/ena-multiple-samples \
-    --max_cpus
-    
+    --max_cpus 8
