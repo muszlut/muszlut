@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Ensemble download ethiopia        # Job name
+#SBATCH --job-name=Ensemble)_download_ethiopia        # Job name
 #SBATCH --partition=batch             # Partition (queue) name
 #SBATCH --ntasks=1                    # Run on a single CPU
 #SBATCH --mem=1gb                     # Job memory request
