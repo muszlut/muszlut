@@ -5,7 +5,7 @@
 #SBATCH --mem=1gb                     # Job memory request
 #SBATCH --time=02:00:00               # Time limit hrs:min:sec
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
-#SBATCH --error=cdlog.%j.err             # Standard error log
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err             # Standard error log
 
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
