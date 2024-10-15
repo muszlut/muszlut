@@ -22,4 +22,6 @@ if [ ! -d $OUTDIR ]
 fi
 
 ###Grab annotated genome file from the URL variable the unzip it and put it in a file called ecoli_MG1655.gff
-curl -s $URL | gunzip -c > $OUTDIR/ecoli_MG1655.gff
+#curl -s $URL | gunzip -c > $OUTDIR/ecoli_MG1655.gff
+grep -c "CDS" $OUTDIR/ecoli_MG1655.gff > $OUTDIR/results.txt
+
