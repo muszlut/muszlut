@@ -27,4 +27,4 @@ cd $OUTDIR
 
 #download datasets and unzip
 datasets download genome accesssion GCF_000195955.2 --include cds,genome
-unzip ncbi_download.zip
+unzip ncbi_dataset.zip
