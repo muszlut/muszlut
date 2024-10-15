@@ -20,7 +20,7 @@ if [ ! -d $OUTDIR ]
 fi
 
  #Load modulesss
-module load NCBI-Databasets-CLI/16.4.4
+module load NCBI-Datasets-CLI/16.4.4
 
 #move to working directory
 cd $OUTDIR
