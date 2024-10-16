@@ -25,7 +25,7 @@ cd $OUTDIR
 bactopia search \
     --query PRJNA1056148
 bactopia \
-    --accessions $OUTDIR/bactopia-accesssions.txt \
+    --accessions $OUTDIR/bactopia-accessions.txt \
     --coverage 100 \
     --outdir $OUTDIR/ena-multiple-samples \
     --max_cpus 8
