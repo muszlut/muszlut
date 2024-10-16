@@ -25,7 +25,7 @@ cd $OUTDIR
 bactopia prepare \
     --path $OUTDIR \
     --species "Staphylococcus aureus" \
-    --genome-size 2800000
+    --genome-size 2800000 \
     > $OUTDIR/tutorial_samples.txt
 bactopia \
     --samples $OUTDIR/tutorial_samples.txt \
