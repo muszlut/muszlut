@@ -24,7 +24,7 @@ module load Bactopia/3.0.1
 cd $OUTDIR
 bactopia search \
     --query PRJNA1056148
-bactopia \ 
+bactopia \
     --accessions $OUTDIR/bactopia-accesssions.txt \
     --coverage 100 \
     --outdir $OUTDIR/ena-multiple-samples \
