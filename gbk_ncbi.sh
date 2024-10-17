@@ -23,13 +23,6 @@ fi
 module load Bactopia/3.1.0
 cd $OUTDIR
 #ask merlin to run Staphy_ program 
-bactopia \
-    --wf snippy \
-    --reference $OUTDIR/GCF_000195955.gbk \
-    --exclude $OUTDIR/bactopia-exlude.tsv \
-    --bactopia $OUTDIR/paired_dataset
-
-
 #download datasets and unzip
 datasets download genome accession GCF_000195955.2 --include gbff
 unzip ncbi_dataset.zip
