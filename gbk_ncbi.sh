@@ -20,7 +20,7 @@ if [ ! -d $OUTDIR ]
         mkdir -p $OUTDIR
 fi
 
-module load Bactopia/3.1.0
+module load NCBI-Datasets-CLI/16.4.4
 cd $OUTDIR
 #ask merlin to run Staphy_ program 
 #download datasets and unzip
