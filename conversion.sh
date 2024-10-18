@@ -10,4 +10,4 @@ module load Biopython/1.84-foss-2023b
 #move to working diectory
 cd $OUTDIR
 
-Python $SCRIPT/convert_gbff_to_gbk.py $OUTDIR/genomic.gbff $OUTDIR/genomic.gbk
+python $SCRIPT/convert_gbff_to_gbk.py $OUTDIR/genomic.gbff $OUTDIR/genomic.gbk
