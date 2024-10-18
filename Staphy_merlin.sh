@@ -24,4 +24,5 @@ module load Bactopia/3.1.0
 cd $OUTDIR
 #ask merlin to run Staphy_ program 
 bactopia \
-    --wf 
+    --wf merlin \
+    --bactopia $OUTDIR

@@ -22,10 +22,11 @@ fi
 
 module load Bactopia/3.0.1
 cd $OUTDIR
-bactopia search \
-    --query PRJNA1056148
-bactopia \
-    --accessions $OUTDIR/bactopia-accessions.txt \
-    --coverage 100 \
-    --outdir $OUTDIR/ena-multiple-samples \
-    --max_cpus 8
+bactopia summary --bactopia-path $OUTDIR/ena-multiple-samples/
+#bactopia search \
+#    --query PRJNA1056148
+#bactopia \
+#    --accessions $OUTDIR/bactopia-accessions.txt \
+#    --coverage 100 \
+#    --outdir $OUTDIR/ena-multiple-samples \
+#    --max_cpus 8
