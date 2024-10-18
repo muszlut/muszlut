@@ -11,7 +11,7 @@
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 #Set output directory variable
-OUTDIR="/scratch/ma95362/gbk"
+OUTDIR="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2"
 SCRIPT="/home/ma95362/muszlut"
 
 

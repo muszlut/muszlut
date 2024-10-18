@@ -1,4 +1,4 @@
-import sys
+import sys 
 from Bio import SeqIO
 
 # Get the input and output file paths from command-line arguments
