@@ -30,4 +30,4 @@ curl -s $URL | gunzip -c > $OUTDIR/genomic.gbff
 #download datasets and unzip
 #datasets download genome accession GCF_000195955.2 --include gbff
 #unzip ncbi_dataset.zip
-#addeddddd
+#addedddddd
