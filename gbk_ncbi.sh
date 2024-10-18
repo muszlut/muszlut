@@ -13,6 +13,8 @@
 
 #Set output directory variable
 OUTDIR="/scratch/ma95362/gbk"
+#Set variable URL for genome website
+URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.gbff.gz"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -20,10 +22,12 @@ if [ ! -d $OUTDIR ]
         mkdir -p $OUTDIR
 fi
 
-module load NCBI-Datasets-CLI/16.4.4
-cd $OUTDIR
+###Grab annotated mtb H37Rv genome file from the NCBI URL variable then unzip it
+curl -s $URL | gunzip -c > $OUTDIR/genomic.gbff
+#module load NCBI-Datasets-CLI/16.4.4
+#cd $OUTDIR
 #ask merlin to run Staphy_ program 
 #download datasets and unzip
-datasets download genome accession GCF_000195955.2 --include gbff
-unzip ncbi_dataset.zip
+#datasets download genome accession GCF_000195955.2 --include gbff
+#unzip ncbi_dataset.zip
 #addeddddd
