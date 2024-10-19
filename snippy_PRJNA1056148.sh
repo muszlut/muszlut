@@ -22,9 +22,9 @@ fi
 
 module load Bactopia/3.1.0
 
-
 bactopia \
     --wf snippy \
-    --reference $REF
+    --reference $REF \
     --exlude $OUTDIR/bactopia-exclude.tsv \
     --bactopia $OUTDIR/ena-multiple-samples
+#exlude command changesbb  
