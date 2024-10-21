@@ -26,5 +26,5 @@ module load Bactopia/3.1.0
 bactopia \
     -profile singularity \
     --wf tbprofiler \
-    --exlude $OUTDIR/bactopia-exclude.tsv \
+    --exclude $OUTDIR/bactopia-exclude.tsv \
     --bactopia $OUTDIR/ena-multiple-samples
