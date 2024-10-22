@@ -12,19 +12,5 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 #Set output directory variable
 OUTDIR="/scratch/ma95362/PRJNA1056148_bactopia"
-REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
+FOFN='/scratch/ma95362/
 
-#Tell the program to make  the outdir folder
-if [ ! -d $OUTDIR ] 
-    then 
-        mkdir -p $OUTDIR
-fi
-
-module load Bactopia/3.1.0
-
-bactopia \
-    --wf snippy \
-    --reference $REF \
-    --exlude $OUTDIR/bactopia-exclude.tsv \
-    --bactopia $OUTDIR/ena-multiple-samples
-#exlude command changesbb  
