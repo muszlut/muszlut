@@ -11,7 +11,7 @@
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 #Set output directory variable
-OUTDIR="/scratch/ma95362/PRJNA1056148_bactopia"
+OUTDIR="/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples"
 FOFN='/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples/bactopia-runs/snippy-20241021-142944'
 
 
