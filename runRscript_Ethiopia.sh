@@ -14,7 +14,7 @@
 #Set output directory variable
 OUTDIR="/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples/bactopia-runs/snippy-20241021-142944/gubbins"
 #Location of R script
-TIDY= "/home/ma95362/muszlut/coun_snps.R"
+TIDY="/home/ma95362/muszlut/coun_snps.R"
 
 
 #Tell the program to make  the outdir folder
@@ -38,4 +38,4 @@ awk 'BEGIN {OFS=","} {$1=$1} 1' $OUTDIR/1core-snp.summary_of_snp_distribution.vc
 source activate r-tidyverse
 
 #Run R script:here
-R --no-save <$TIDY
+R --no-save < $TIDY
