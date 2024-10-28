@@ -26,7 +26,7 @@ fi
 cd $OUTDIR
 
 #gunzip summary of snp distribution file
-gunzip -c +4 $OUTDIR/core-snp.summary_of_snp_distribution.vcf.gz > $OUTDIR/core-snp.summary_of_snp_distribution.vcf
+gunzip -c $OUTDIR/core-snp.summary_of_snp_distribution.vcf.gz > $OUTDIR/core-snp.summary_of_snp_distribution.vcf
 
 #Remove header:
 tail -n +4 $OUTDIR/core-snp.summary_of_snp_distribution.vcf > $OUTDIR/1core-snp.summary_of_snp_distribution.vcf
