@@ -7,7 +7,7 @@ library(tidyverse)
 set.seed(1989)
 
 
-meta<- read_csv(file="core_snp.summary.csv")
+meta<- read_csv(file="Ethiopia_core-snp.summary_of_snp_distribution.csv")
 
 
 meta.sub <- meta %>%
