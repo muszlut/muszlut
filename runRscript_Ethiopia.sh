@@ -37,5 +37,5 @@ awk 'BEGIN {OFS=","} {$1=$1} 1' $OUTDIR/1core-snp.summary_of_snp_distribution.vc
 #Activate Renvironmemt previously created
 source activate r-tidyverse
 
-#Run R script:
+#Run R script:here
 R --no-save <$TIDY
