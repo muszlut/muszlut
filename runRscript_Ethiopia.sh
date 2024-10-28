@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362//scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples/bactopia-runs/snippy-20241021-142944/gubbins"
+OUTDIR="/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples/bactopia-runs/snippy-20241021-142944/gubbins"
 #Location of R script
 TIDY= "/home/ma95362/muszlut/coun_snps.R"
 
