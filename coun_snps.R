@@ -7,7 +7,7 @@ library(tidyverse)
 set.seed(1989)
 
 
-meta<- read_csv(file="Ethiopia_core-snp.summary_of_snp_distribution.csv")
+meta<- read_csv(file="core_snp.summary.csv")
 
 
 meta.sub <- meta %>%
@@ -28,10 +28,10 @@ SNP_position <- meta_logical %>%
 
 
 #####Read in genomic.gff fromNCBI####
-mtb_loci_listed <- read_tsv(file="genomic.gff")
+#mtb_loci_listed <- read_tsv(file="genomic.gff")
 
 ####convert to .csv to manipulate the dtaa in excel ###
-write_csv(mtb_loci_listed, "mtb_loci_listed.csv")
+#write_csv(mtb_loci_listed,"mtb_loci_listed.csv")
 
 comptest_loci <- SNP_position %>% mutate(loci = case_when(
   POS	%in%	1	:	1524	~	"Rv0001"	,
@@ -4045,7 +4045,7 @@ comptest_loci <- SNP_position %>% mutate(loci = case_when(
   .default = "other"))
   
 
-comptest_loci_gene <- comptest__loci %>% mutate(gene = case_when(
+comptest_loci_gene <- comptest_loci %>% mutate(gene = case_when(
   POS	%in%	1	:	1524	~	"dnaA"	,
   POS	%in%	2052	:	3260	~	"dnaN"	,
   POS	%in%	3280	:	4437	~	"recF"	,
@@ -8063,7 +8063,7 @@ write.csv(comptest_loci_gene,"comptest_loci_gene.csv")
 SNP_position_annotated_all_loci_gene <- comptest_loci_gene %>%
   select(POS, REF, samples, value, gene, loci)
 ####You can look for all the SNP's in areas that were annotated as "other"####
-Other_genes <- SNP_position_annotated_all_loci_gene %.%
+Other_genes <- SNP_position_annotated_all_loci_gene %>%
   filter(SNP_position_annotated_all_loci_gene$gene =="other")
 #####Sorting and Counting#####
 ###This will tell you the total number of SNPs per gene per per sample####
