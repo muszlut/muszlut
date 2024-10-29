@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1                    # Run on a single CPU
 #SBATCH --cpus-per-task=8               # Number of cores per task
 #SBATCH --mem=40gb                     # Job memory request
-#SBATCH --time=02-00:00:00               # Time limit hrs:min:sec
+#SBATCH --time=05-00:00:00               # Time limit hrs:min:sec
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err             # Standard error log
 
@@ -28,5 +28,6 @@ module load Bactopia
 bactopia --fastqs $FASTQ_DIR --datasets datasets/ --workdir $OUT_DIR \
   --tools pangenome \
   --cpus 16
+
 
 echo "Pangenome analysis started"
