@@ -12,22 +12,20 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 
 # Set directories
-FASTQ_DIR="/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples/"
-OUT_DIR="/scratch/ma95362/Pangenome_ETH/"
+OUTDIR="/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples"
+EXCLUDE="/scratch/ma95362/PRJNA1056148_bactopia"
 
 #Tell the program to make  the outdir folder
-if [ ! -d $OUT_DIR ] 
+if [ ! -d $OUTDIR ] 
     then 
-        mkdir -p $OUT_DIR
+        mkdir -p $OUTDIR
 fi
 
-# Load Bactopia and necessary tools
-module load Bactopia
+# Load Bactopia and 
+module load Bactopia/3.1.0
 
-# Run Bactopia for pangenome analysis
-bactopia --fastqs $FASTQ_DIR --datasets datasets/ --workdir $OUT_DIR \
-  --tools pangenome \
-  --cpus 16
-
-
-echo "Pangenome analysis started"
+# necessary tools-  Bactopia for pangenome analysis
+bactopia \
+    --wf pangenome \
+    --bactopia $OUTDIR \
+    --exclude $EXCLUDE/bactopia-exclude.tsv
