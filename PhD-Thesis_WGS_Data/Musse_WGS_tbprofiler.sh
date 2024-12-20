@@ -26,4 +26,4 @@ bactopia \
     --wf tbprofiler \
     --spoligotype \
     --exclude $OUTDIR/bactopia-exclude.tsv \
-    --bactopia $OUTDIR/ena-multiple-samples
+    --bactopia $OUTDIR/MGA_paired_end_samples
