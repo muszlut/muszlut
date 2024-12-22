@@ -24,6 +24,7 @@ module load Bactopia/3.1.0
 
 # Run the Bactopia spoligotyping workflow
 bactopia \
+    -profile singularity \
     --wf spoligotype \
     --exclude $OUTDIR/bactopia-exclude.tsv \
     --bactopia $FASTQ_DIR \
