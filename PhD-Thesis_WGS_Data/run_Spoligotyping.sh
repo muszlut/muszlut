@@ -28,7 +28,7 @@ source activate spotyping-env
 
 # Run the Bactopia spoligotyping workflow
 bactopia \
-    --wf spoligotype \
+    --wf spotyping \
     --exclude $OUTDIR/bactopia-exclude.tsv \
     --bactopia $FASTQ_DIR \
     --outdir $OUTDIR
