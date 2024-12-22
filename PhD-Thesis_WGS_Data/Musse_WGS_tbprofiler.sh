@@ -27,3 +27,4 @@ bactopia \
     --spoligotype \
     --exclude $OUTDIR/bactopia-exclude.tsv \
     --bactopia $OUTDIR/MGA_paired_end_samples
+
