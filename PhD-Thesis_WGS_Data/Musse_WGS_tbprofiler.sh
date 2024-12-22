@@ -24,7 +24,6 @@ module load Bactopia/3.1.0
 bactopia \
     -profile singularity \
     --wf tbprofiler \
-    --spoligotype \
     --exclude $OUTDIR/bactopia-exclude.tsv \
     --bactopia $OUTDIR/MGA_paired_end_samples
 
