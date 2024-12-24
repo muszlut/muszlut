@@ -13,7 +13,7 @@
 # Set output directory variable
 OUTDIR="/scratch/ma95362/musse_MGA/spotyping_results"
 FOFN='/scratch/ma95362/musse_MGA/fastqs/MGA_samples.txt'
-EXCLUDE_FILE='/scratch/ma95362/fastq_samples/bactopia-exclude.tsv'
+EXCLUDE_FILE='/scratch/ma95362/musse_MGA/fastqs/bactopia-exclude.tsv'
 
 # Tell the program to make the outdir folder if it doesn't exist
 if [ ! -d $OUTDIR ]; then 
