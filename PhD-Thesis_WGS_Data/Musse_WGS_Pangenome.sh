@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 
 # Set directories
-OUTDIR="/scratch/ma95362/musse_MGA/fastqs"
+OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"
 EXCLUDE="/scratch/ma95362/musse_MGA/fastqs"
 
 #Tell the program to make  the outdir folder
