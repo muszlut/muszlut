@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Bactopia_Pangenome        # Job name
+#SBATCH --job-name=Musse_WGS_Pangenome        # Job name
 #SBATCH --partition=batch             # Partition (queue) name
 #SBATCH --ntasks=1                    # Run on a single CPU
 #SBATCH --cpus-per-task=8               # Number of cores per task
