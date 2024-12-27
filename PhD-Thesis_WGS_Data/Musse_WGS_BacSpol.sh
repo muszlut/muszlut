@@ -26,7 +26,7 @@ if [ ! -d $OUTDIR ]; then
 fi
 
 # Load necessary modules (if needed on Sapelo2)
-module load bactopia
+module load Bactopia/3.1.0
 
 # Activate conda environment for Bactopia
 #source activate bactopia
