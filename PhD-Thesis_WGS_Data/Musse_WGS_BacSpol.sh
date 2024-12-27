@@ -29,7 +29,7 @@ fi
 module load bactopia
 
 # Activate conda environment for Bactopia
-# source activate bactopia
+#source activate bactopia
 
 
 # Run Bactopia pipeline with spoligotyping enabled
