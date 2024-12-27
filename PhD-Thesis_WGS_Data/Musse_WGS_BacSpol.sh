@@ -15,7 +15,7 @@
 #WORKDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"   # Directory where Bactopia is run
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"    # Directory for Bactopia results
 READSDIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"      # Directory containing FASTQ files
-DBDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"   # Path to the Bactopia database
+DBDIR="/scratch/ma95362/musse_MGA/fastqs"   # Path to the Bactopia database
 
 # Set output directory variable
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"
@@ -29,7 +29,7 @@ fi
 module load Bactopia/3.1.0
 
 # Activate conda environment for Bactopia
-#source activate bactopia
+source activate bactopia
 
 
 # Run Bactopia pipeline with spoligotyping enabled
