@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail 
 
 # Define directories
-# WORKDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"   # Directory where Bactopia is run
+#WORKDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"   # Directory where Bactopia is run
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"    # Directory for Bactopia results
 READSDIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"      # Directory containing FASTQ files
 DBDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"   # Path to the Bactopia database
