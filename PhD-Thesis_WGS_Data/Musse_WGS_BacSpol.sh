@@ -29,13 +29,12 @@ fi
 module load Bactopia/3.1.0
 
 # Activate conda environment for Bactopia
-source activate bactopia
+# source activate bactopia
 
 
 # Run Bactopia pipeline with spoligotyping enabled
 bactopia \
-    --R1 "$READSDIR/sample_1.fastq.gz" \
-    --R2 "$READSDIR/sample_2.fastq.gz" \
+    --path /work/fdqlab/Ethiopia_wgs_mtb_2024/first_run \
     --datasets "$DBDIR" \
     --outdir "$OUTDIR" \
     --tools tb-profiler \
