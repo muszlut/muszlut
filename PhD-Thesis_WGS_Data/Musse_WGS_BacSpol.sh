@@ -16,24 +16,22 @@ READSDIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"        # Directory conta
 DBDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/bactopia-runs/bactopia-20241218-162857/merged-results"   # Path to the Bactopia database
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/spoligotyping_results"      # Output directory for Bactopia results
 
-# Ensure output directory exists
-mkdir -p "$OUTDIR"
+# Ensure the output directory exists
+if [ ! -d "$OUTDIR" ]; then
+    mkdir -p "$OUTDIR"
+fi
 
-# Load necessary modules
-module load Bactopia/3.1.0                                    # Ensure correct module is loaded
+# Load Singularity module (if required by the HPC system)
+module load Bactopia/3.1.0
 
-# Activate conda environment for Bactopia (if needed)
-# module load Miniconda3
-# conda activate bactopia-env
-
-# Run Bactopia pipeline with spoligotyping and TB-Profiler enabled
+# Run Bactopia pipeline with TB-Profiler and spoligotyping enabled
 bactopia \
-    --path "$READSDIR" \
+    --path "$WORKDIR" \
     --datasets "$DBDIR" \
     --outdir "$OUTDIR" \
+    --singularity \
     --tools tb-profiler \
-    --skip_qc \
-    --conda-env "$(conda info --base)/envs/bactopia-env"
+    --arguments "--spoligotype"
 
-# Completion message
-echo "Bactopia spoligotyping analysis completed successfully."
+# Confirm completion
+echo "Spoligotyping analysis with Bactopia completed."
