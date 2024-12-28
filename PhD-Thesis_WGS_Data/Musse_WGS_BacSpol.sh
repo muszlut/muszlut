@@ -13,8 +13,8 @@
 
 # Define directories
 READSDIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"        # Directory containing FASTQ files
-DBDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/bactopia-runs/bactopia-20241218-162857/merged-results"                     # Path to the Bactopia database
-OUTDIR="/scratch/ma95362/musse_MGA/spoligotyping_results"      # Output directory for Bactopia results
+DBDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/bactopia-runs/bactopia-20241218-162857/merged-results"   # Path to the Bactopia database
+OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/spoligotyping_results"      # Output directory for Bactopia results
 
 # Ensure output directory exists
 mkdir -p "$OUTDIR"
