@@ -11,24 +11,20 @@
 #SBATCH --mail-user=ma95362@uga.edu                        # Where to send mail 
 
 # Variables
-OUTDIR="/scratch/ma95362/musse_MGA/fastqs"
-FASTQ_DIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"               # Directory containing FASTQ files
+# Define the path to your sample sequence reads
+SAMPLE_DIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"  # Replace with the actual path to your sample reads
+
+# Define the path to the output directory for storing results
+OUTPUT_DIR="/scratch/ma95362/musse_MGA/fastqs"   # Replace with the actual path for output results
+
+# Define the path to the directory where Bactopia is installed
+BACTOPIA_DIR="/apps/mf/eb/all/Bactopia/3.1.0.lua"  # Replace with the actual path to Bactopia installation
 
 # Create output directory if it doesn't exist
-if [ ! -d $OUTDIR ]; then
-    mkdir -p $OUTDIR
-fi
+mkdir -p $OUTPUT_DIR
 
-# Load the Bactopia module
-module load Bactopia/3.1.0
+# Run Bactopia spoligotyping analysis
+bactopia spoligotyping --input $SAMPLE_DIR --output $OUTPUT_DIR --bactopia $BACTOPIA_DIR
 
-#activate conda envirnoment (should be version 6.3.0)
-
-source activate spotyping-env
-
-# Run the Bactopia spoligotyping workflow
-bactopia \
-    --wf spotyping \
-    --exclude $OUTDIR/bactopia-exclude.tsv \
-    --bactopia $FASTQ_DIR \
-    --outdir $OUTDIR
+# Print a message indicating completion
+echo "Spoligotyping analysis complete. Results are in $OUTPUT_DIR"
