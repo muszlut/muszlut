@@ -10,15 +10,13 @@
 #SBATCH --mail-type=END,FAIL                               # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu                        # Where to send mail 
 
+# Load Bactopia module
+module load Bactopia/3.1.0
+
 # Variables
-# Define the path to your sample sequence reads
-SAMPLE_DIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"  # Replace with the actual path to your sample reads
-
-# Define the path to the output directory for storing results
-OUTPUT_DIR="/scratch/ma95362/musse_MGA/fastqs"   # Replace with the actual path for output results
-
-# Define the path to the directory where Bactopia is installed
-BACTOPIA_DIR="/apps/mf/eb/all/Bactopia/3.1.0.lua"  # Replace with the actual path to Bactopia installation
+SAMPLE_DIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"  # Path to your sample reads
+OUTPUT_DIR="/scratch/ma95362/musse_MGA/fastqs"   # Path for output results
+BACTOPIA_DIR="/apps/mf/eb/all/Bactopia/3.1.0.lua"  # Path to Bactopia installation
 
 # Create output directory if it doesn't exist
 mkdir -p $OUTPUT_DIR
