@@ -16,7 +16,7 @@ module load Bactopia/3.1.0
 # Variables
 SAMPLE_DIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"  # Path to your sample reads
 OUTPUT_DIR="/scratch/ma95362/musse_MGA/fastqs"   # Path for output results
-BACTOPIA_DIR="/apps/mf/eb/all/Bactopia/3.1.0.lua"  # Path to Bactopia installation
+BACTOPIA_DIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"  # Path to Bactopia installation
 
 # Create output directory if it doesn't exist
 mkdir -p $OUTPUT_DIR
