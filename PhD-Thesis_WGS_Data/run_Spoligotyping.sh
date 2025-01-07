@@ -16,13 +16,12 @@ module load Bactopia/3.1.0
 # Variables
 SAMPLE_DIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"  # Path to your sample reads
 OUTPUT_DIR="/scratch/ma95362/musse_MGA/fastqs"   # Path for output results
-BACTOPIA_DIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"  # Path to Bactopia installation
 
 # Create output directory if it doesn't exist
 mkdir -p $OUTPUT_DIR
 
 # Run Bactopia spoligotyping analysis
-bactopia spoligotyping --input $SAMPLE_DIR --output $OUTPUT_DIR --bactopia $BACTOPIA_DIR
+bactopia spoligotyping --input $SAMPLE_DIR --output $OUTPUT_DIR
 
 # Print a message indicating completion
 echo "Spoligotyping analysis complete. Results are in $OUTPUT_DIR"
