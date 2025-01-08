@@ -12,9 +12,8 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 #Set output directory variable
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"
-FOFN='/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/bactopia-runs/snippy-20241220-182821'
-
-
+#FOFN='/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/bactopia-runs/snippy-20241220-182821'
+FASTQ_DIR= "/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
     then 
@@ -32,4 +31,5 @@ source activate tb-profiler-env
 cd $OUTDIR
 
 #samples just needs to be a list of sample names. No path is required.
-tb-profiler collate --samples $FOFN/genomic.samples.txt --dir $OUTDIR/*/tools/tbprofiler --json
+#tb-profiler collate --samples $FOFN/genomic.samples.txt --dir $OUTDIR/*/tools/tbprofiler --json
+tb-profiler spoligotype --input <input_file> --output <output_directory>
