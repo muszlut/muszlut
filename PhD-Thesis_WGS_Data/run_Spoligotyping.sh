@@ -13,7 +13,8 @@
 # Set output directory variable
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"
 # Define path to the sequence reads
-FASTQ_DIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"
+READ1="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/sample_read1.fastq"
+READ2="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/sample_read2.fastq"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
@@ -29,8 +30,9 @@ source activate tb-profiler-env
 # Move to working directory
 cd "$OUTDIR"
 
-# Run tb-profiler spoligotype analysis
-tb-profiler spoligotype --input "$FASTQ_DIR" --output "$OUTDIR"
+# Run tb-profiler spoligotype analysis with paired-end reads
+tb-profiler spoligotype --read1 "$READ1" --read2 "$READ2" --output "$OUTDIR"
 
 # Print a message indicating completion
 echo "Spoligotyping analysis complete. Results are in $OUTDIR"
+
