@@ -13,8 +13,8 @@
 # Set output directory variable
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"
 # Define path to the sequence reads
-READ1="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/sample_R1.fastq"
-READ2="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/sample_R2.fastq"
+READ1="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/E02._R1.fastq.gz"
+READ2="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/E02._R2.fastq.gz"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
