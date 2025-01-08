@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Musse_WGS_collate           # Job name
+#SBATCH --job-name=Musse_WGS_SPOLIGOTYPING          # Job name
 #SBATCH --partition=batch                      # Partition (queue) name
 #SBATCH --ntasks=1                             # Run on a single CPU
 #SBATCH --cpus-per-task=2                      # Number of cores per task
@@ -13,8 +13,7 @@
 # Set output directory variable
 OUTDIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples"
 # Define path to the sequence reads
-READ1="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/E02._R1.fastq.gz"
-READ2="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run/E02._R2.fastq.gz"
+FASTQ_DIR="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
@@ -30,8 +29,17 @@ source activate tb-profiler-env
 # Move to working directory
 cd "$OUTDIR"
 
-# Run tb-profiler spoligotype analysis with paired-end reads
-tb-profiler spoligotype --read1 "$READ1" --read2 "$READ2"
+# Loop through all pairs of read files and run tb-profiler spoligotype analysis
+for READ1 in "$FASTQ_DIR"/*_R1.fastq.gz; do
+    # Generate the corresponding READ2 file name
+    READ2="${READ1/_R1.fastq.gz/_R2.fastq.gz}"
+    
+    # Extract sample name from file name
+    SAMPLE_NAME=$(basename "$READ1" _R1.fastq.gz)
+    
+    # Run tb-profiler spoligotype analysis with paired-end reads
+    tb-profiler spoligotype --read1 "$READ1" --read2 "$READ2" --prefix "$SAMPLE_NAME"
+done
 
 # Print a message indicating completion
 echo "Spoligotyping analysis complete. Results are in $OUTDIR"
