@@ -31,8 +31,7 @@ source activate tb-profiler-env
 cd "$OUTDIR"
 
 # Run tb-profiler spoligotype analysis with paired-end reads
-tb-profiler spoligotype --read1 "$READ1" --read2 "$READ2" --output "$OUTDIR"
+tb-profiler spoligotype --read1 "$READ1" --read2 "$READ2"
 
 # Print a message indicating completion
 echo "Spoligotyping analysis complete. Results are in $OUTDIR"
-
