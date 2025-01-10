@@ -33,7 +33,7 @@ for json_file in "$JSON_DIR"/*.spoligotype.json; do
     $json.spacers[] |
     {
         sample: $sample,
-        binary: ($json.binary | gsub(",";"")),
+        binary: ("\"\u2018" + $json.binary + "\u2019\""),
         octal: $json.octal,
         family: $json.family,
         SIT: $json.SIT,
