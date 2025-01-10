@@ -29,9 +29,15 @@ for json_file in "$JSON_DIR"/*.spoligotype.json; do
     
     # Use jq to parse the JSON and format as CSV
     jq -r --arg sample "$SAMPLE_NAME" '
-    .sample = $sample | 
-    [.sample, .binary, .octal, .family, .SIT, .countries, (.spacers | map(.count) | join("|"))] | 
-    @csv' "$json_file" >> "$OUTPUT_CSV"
+    {
+        sample: $sample,
+        binary: .binary,
+        octal: .octal,
+        family: .family,
+        SIT: .SIT,
+        countries: .countries,
+        spacers: (.spacers | map(.count) | join("|"))
+    } | [.sample, .binary, .octal, .family, .SIT, .countries, .spacers] | @csv' "$json_file" >> "$OUTPUT_CSV"
 done
 
 # Print a message indicating completion
