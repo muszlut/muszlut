@@ -20,7 +20,7 @@ JSON_DIR="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/results"
 OUTPUT_CSV="/scratch/ma95362/musse_MGA/fastqs/MGA_paired_end_samples/results/collated_spoligotype.csv"
 
 # Add headers to the CSV file
-echo "SampleName,Binary,Octal,Family,SIT,Countries,Spacers" > "$OUTPUT_CSV"
+echo "SampleName,Binary,Octal,Family,SIT,Countries,SpacerName,SpacerSeq,SpacerCount" > "$OUTPUT_CSV"
 
 # Loop through each JSON file in the directory
 for json_file in "$JSON_DIR"/*.spoligotype.json; do
@@ -29,15 +29,19 @@ for json_file in "$JSON_DIR"/*.spoligotype.json; do
     
     # Use jq to parse the JSON and format as CSV
     jq -r --arg sample "$SAMPLE_NAME" '
+    . as $json |
+    $json.spacers[] |
     {
         sample: $sample,
-        binary: .binary,
-        octal: .octal,
-        family: .family,
-        SIT: .SIT,
-        countries: .countries,
-        spacers: (.spacers | map(.count) | join("|"))
-    } | [.sample, .binary, .octal, .family, .SIT, .countries, .spacers] | @csv' "$json_file" >> "$OUTPUT_CSV"
+        binary: $json.binary,
+        octal: $json.octal,
+        family: $json.family,
+        SIT: $json.SIT,
+        countries: $json.countries,
+        spacer_name: .name,
+        spacer_seq: .seq,
+        spacer_count: .count
+    } | [.sample, .binary, .octal, .family, .SIT, .countries, .spacer_name, .spacer_seq, .spacer_count] | @csv' "$json_file" >> "$OUTPUT_CSV"
 done
 
 # Print a message indicating completion
