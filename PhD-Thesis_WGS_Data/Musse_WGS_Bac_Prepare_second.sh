@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/musse_MGA/fastqs/Second run"
+OUTDIR="/scratch/ma95362/musse_MGA/fastqs/Second_run"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -26,11 +26,11 @@ bactopia prepare \
     --path /work/fdqlab/Ethiopia_wgs_mtb_2024/second_run \
     --species "Mycobacterium tuberculosis" \
     --genome-size 4410000 \
-    > $OUTDIR/MGA_samples.txt
+    > $OUTDIR/second_run_samples.txt
 bactopia \
-    --samples $OUTDIR/MGA_samples.txt \
+    --samples $OUTDIR/second_run_samples.txt\
     --coverage 100 \
-    --outdir $OUTDIR/MGA_paired_end_samples \
+    --outdir $OUTDIR/local_multiple_samples \
     --max_cpus 4
 #bactopia summary \
 ##   --bactopia-path $OUTDIR/MGA_paired_end_samples
