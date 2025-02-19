@@ -32,8 +32,8 @@ bactopia \
     --coverage 100 \
     --outdir $OUTDIR/MGA_paired_end_samples \
     --max_cpus 4
-bactopia summary \
-    --bactopia-path $OUTDIR/MGA_paired_end_samples
+#bactopia summary \
+##   --bactopia-path $OUTDIR/MGA_paired_end_samples
 
 #bactopia search \
 #    --query PRJNA1155881
