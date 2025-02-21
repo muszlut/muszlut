@@ -32,14 +32,13 @@ bactopia prepare \
     --fastq-ext .fq.gz \
     --pe1-pattern .1 \
     --pe2-pattern .2 \
-    --outdir "$OUTDIR" \
-    > "$OUTDIR/second_run_samples.txt"
+    >$OUTDIR/second_run_samples.txt"
 
 # Run Bactopia with the prepared samples list
 bactopia \
-    --samples "$OUTDIR/second_run_samples.txt" \
+    --samples $OUTDIR/second_run_samples.txt" \
     --coverage 100 \
-    --outdir "$OUTDIR/local_multiple_samples" \
+    --outdir $OUTDIR/local_multiple_samples" \
     --max_cpus 4
 
 #bactopia summary \
