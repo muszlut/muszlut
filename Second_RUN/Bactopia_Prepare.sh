@@ -7,7 +7,6 @@
 #SBATCH --time=05-00:00:00                            # Time limit hrs:min:sec
 #SBATCH --output=/scratch/ma95362/scratch/log_second_run.%j.out  # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log_second_run.%j.err   # Standard error log
-
 #SBATCH --mail-type=END,FAIL                         # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu                  # Where to send mail
 
@@ -25,11 +24,13 @@ module load Bactopia/3.1.0
 # Change to the output directory
 cd "$OUTDIR"
 
-# Prepare sample list from the second run files
+# Prepare sample list from the second run files, adjusting file extension and separator
 bactopia prepare \
     --path /work/fdqlab/Ethiopia_wgs_mtb_2024/second_run \
     --species "Mycobacterium tuberculosis" \
     --genome-size 4410000 \
+    --fastq-ext .fq.gz \
+    --fastq-separator . \
     > "$OUTDIR/MGA_samples_second_run.txt"
 
 # Run Bactopia analysis on the prepared sample list
