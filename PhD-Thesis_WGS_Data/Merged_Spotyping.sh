@@ -1,67 +1,81 @@
 #!/bin/bash
-#SBATCH --job-name=Musse_Merged_SpoTyping                      # Job name
-#SBATCH --partition=batch                                      # Partition (queue) name
-#SBATCH --ntasks=1                                             # Run on a single CPU
-#SBATCH --cpus-per-task=8                                      # Number of cores per task
-#SBATCH --mem=40gb                                             # Job memory request
-#SBATCH --time=05-00:00:00                                     # Time limit hrs:min:sec
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
+#SBATCH --job-name=Musse_Merged_SpoTyping
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=40gb
+#SBATCH --time=05-00:00:00
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
 
-#SBATCH --mail-type=END,FAIL                                   # Mail events (NONE, BEGIN, END, FAIL, ALL)
-#SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
-
-#Set output directory variable
+# Set absolute paths (Slurm jobs often run in a temporary working directory)
 OUTDIR="/scratch/ma95362/musse_MGA/merged/SpoTyping_results"
+mkdir -p "${OUTDIR}"
 
-#Tell the program to make  the outdir folder
-if [ ! -d $OUTDIR ] 
-    then 
-        mkdir -p $OUTDIR
-fi
-
-# Load required modules on Sapelo2
+# Load modules
+module purge  # Start with a clean environment
 module load Bactopia/3.1.0
 module load Singularity/3.11.4-GCCcore-11.3.0
 module load conda
 
-# Step 1: Run Bactopia to generate assemblies
+# --- Step 1: Run Bactopia ---
+# Use absolute paths for inputs/outputs
 bactopia \
   --samples samplesheet.csv \
   --path /work/fdqlab/merged_reads/Ethiopia_wgs_mtb_2024/first_run \
-  --outdir ./bactopia_results \
-  --wf myco \                           # Use "myco" workflow for Mycobacterium
-  --genome_size 4.4M \                  # M. tuberculosis genome size
+  --outdir "${OUTDIR}/bactopia_results" \  # Changed to absolute path
+  --wf myco \
+  --genome_size 4.4M \
   --species "Mycobacterium tuberculosis" \
-  -profile singularity \                # Use Singularity for containers
- 
-# Step 2: Set up SpoTyping in a Conda environment
-conda create -n spotyping -y python=3.8 blast=2.13.0
-source activate spotyping
+  -profile singularity
 
-# Clone SpoTyping repository
+# Check if Bactopia succeeded
+if [ ! -d "${OUTDIR}/bactopia_results/assemblies" ]; then
+  echo "ERROR: Bactopia assemblies not found!"
+  exit 1
+fi
+
+# --- Step 2: SpoTyping Setup ---
+# Initialize conda and use absolute paths
+source $(conda info --base)/etc/profile.d/conda.sh
+conda create -n spotyping -y python=3.8 blast=2.13.0
+conda activate spotyping
+
+cd "${OUTDIR}"  # Work within the output directory
 git clone https://github.com/xiaeryu/SpoTyping.git
 
+# --- Step 3: Run SpoTyping ---
+mkdir -p "${OUTDIR}/spotyping_results"
 
-for ASSEMBLY in bactopia_results/assemblies/*.fna.gz; do
-  # Decompress assembly (required by SpoTyping)
-  BASENAME=$(basename ${ASSEMBLY} .fna.gz)
-  gunzip -c ${ASSEMBLY} > ${BASENAME}.fna
-
-  # Run SpoTyping
-  python SpoTyping/SpoTyping.py \
-    -s ${BASENAME}.fna \
-    -o spotyping_results/${BASENAME}
-
-  # Clean up decompressed files
-  rm ${BASENAME}.fna
+for ASSEMBLY in "${OUTDIR}/bactopia_results/assemblies/"*.fna.gz; do
+  # Handle spaces in filenames (good practice)
+  BASENAME=$(basename "${ASSEMBLY}" .fna.gz)
+  
+  # Decompress to a temporary directory
+  mkdir -p "${OUTDIR}/temp"
+  gunzip -c "${ASSEMBLY}" > "${OUTDIR}/temp/${BASENAME}.fna"
+  
+  # Run SpoTyping with full path
+  python "${OUTDIR}/SpoTyping/SpoTyping.py" \
+    -s "${OUTDIR}/temp/${BASENAME}.fna" \
+    -o "${OUTDIR}/spotyping_results/${BASENAME}"
+  
+  # Cleanup
+  rm -rf "${OUTDIR}/temp"
 done
 
-# Step 4: Aggregate results (optional)
-echo "Sample,Spoligotype,SIT" > spotyping_results/spotyping_summary.csv
-for RESULT in spotyping_results/*/spotyping.txt; do
-  SAMPLE=$(basename $(dirname ${RESULT}))
-  SPOLIGOTYPE=$(awk '/Binary/ {print $3}' ${RESULT})
-  SIT=$(awk '/SIT/ {print $3}' ${RESULT})
-  echo "${SAMPLE},${SPOLIGOTYPE},${SIT}" >> spotyping_results/spotyping_summary.csv
-done
+# --- Step 4: Aggregate Results ---
+if [ -n "$(ls "${OUTDIR}/spotyping_results/"*"/spotyping.txt" 2>/dev/null)" ]; then
+  echo "Sample,Spoligotype,SIT" > "${OUTDIR}/spotyping_results/spotyping_summary.csv"
+  for RESULT in "${OUTDIR}/spotyping_results/"*"/spotyping.txt"; do
+    SAMPLE=$(basename "$(dirname "${RESULT}")")
+    SPOLIGOTYPE=$(awk '/Binary/ {print $3}' "${RESULT}")
+    SIT=$(awk '/SIT/ {print $3}' "${RESULT}")
+    echo "${SAMPLE},${SPOLIGOTYPE},${SIT}" >> "${OUTDIR}/spotyping_results/spotyping_summary.csv"
+  done
+else
+  echo "ERROR: No spoligotype results found!"
+  exit 1
+fi
