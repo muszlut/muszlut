@@ -13,7 +13,6 @@
 
 #Set output directory variable
 OUTDIR="/scratch/ma95362/musse_MGA/merged"
-
 # Tell the program to make the outdir folder
 if [ ! -d $OUTDIR ]; then 
     mkdir -p $OUTDIR
