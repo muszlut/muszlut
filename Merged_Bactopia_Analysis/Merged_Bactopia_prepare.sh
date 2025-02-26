@@ -23,7 +23,7 @@ fi
 module load Bactopia/3.1.0
 cd $OUTDIR
 bactopia prepare \
-    --path /work/fdqlab/merged_reads/Ethiopia_wgs_mtb_2024/first_run \
+    --path /scratch/ma95362/musse_MGA/merged/first_run \
     --species "Mycobacterium tuberculosis" \
     --genome-size 4410000 \
     > $OUTDIR/MGA_samples.txt
