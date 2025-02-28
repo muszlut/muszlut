@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/musse_MGA/merged"
+OUTDIR="/scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples/bactopia-runs"
 FOFN='/scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples/bactopia-runs/snippy-20250227-171756'
 
 
