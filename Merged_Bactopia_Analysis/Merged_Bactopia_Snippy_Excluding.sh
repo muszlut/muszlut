@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Musse_Merged_snippy                          # Job name
+#SBATCH --job-name=Musse_Merged_snippy_Excluded                # Job name
 #SBATCH --partition=batch                                      # Partition (queue) name
 #SBATCH --ntasks=1                                             # Run on a single CPU
 #SBATCH --cpus-per-task=8                                      # Number of cores per task
@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/musse_MGA/merged/Excluded"
+OUTDIR="/scratch/ma95362/musse_MGA/merged"
 REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 
 #Tell the program to make  the outdir folder
