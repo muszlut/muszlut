@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Musse_Merged_Pangenome                      # Job name
+#SBATCH --job-name=Musse_Merged_Pangenome_Excluded             # Job name
 #SBATCH --partition=batch                                      # Partition (queue) name
 #SBATCH --ntasks=1                                             # Run on a single CPU
 #SBATCH --cpus-per-task=8                                      # Number of cores per task
@@ -29,4 +29,4 @@ module load Bactopia/3.1.0
 bactopia \
     --wf pangenome \
     --bactopia $OUTDIR \
-    --exclude $EXCLUDE/bactopia-exclude.tsv
+    --exclude $EXCLUDE/bactopia-exclude-plus.tsv
