@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Musse_Merged_Tbprofiler                     # Job name
+#SBATCH --job-name=Musse_Merged_Tbprofiler_collate             # Job name
 #SBATCH --partition=batch                                      # Partition (queue) name
 #SBATCH --ntasks=1                                             # Run on a single CPU
 #SBATCH --cpus-per-task=8                                      # Number of cores per task
@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples/bactopia-runs"
+OUTDIR="/scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples"
 FOFN='/scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples/bactopia-runs/snippy-20250227-171756'
 
 
