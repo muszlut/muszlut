@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=M.Canettii_H37RV_snippy                     # Job name
+#SBATCH --job-name=M.Canettii_Canettii_snippy                     # Job name
 #SBATCH --partition=batch                                      # Partition (queue) name
 #SBATCH --ntasks=1                                             # Run on a single CPU
 #SBATCH --cpus-per-task=8                                      # Number of cores per task
