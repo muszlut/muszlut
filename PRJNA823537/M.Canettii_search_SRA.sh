@@ -24,9 +24,25 @@ module load Bactopia/3.1.0
 cd $OUTDIR
 bactopia \
     --accession SRR21690902 \
+    --coverage 100 \
+    --genome_size 4400000 \
+    --outdir ena-multiple-samples
+bactopia \
     --accession SRR24210694 \
+    --coverage 100 \
+    --genome_size 4400000 \
+    --outdir ena-multiple-samples
+bactopia \
     --accession SRR12650627 \
+    --coverage 100 \
+    --genome_size 4400000 \
+    --outdir ena-multiple-samples
+bactopia \
     --accession SRR12470241 \
+    --coverage 100 \
+    --genome_size 4400000 \
+    --outdir ena-multiple-samples
+bactopia \
     --accession SRR10522783 \
     --coverage 100 \
     --genome_size 4400000 \
