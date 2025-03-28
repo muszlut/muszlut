@@ -23,7 +23,11 @@ fi
 module load Bactopia/3.1.0
 cd $OUTDIR
 bactopia \
-    --accession SRR21690902 SRR24210694 SRR12650627 SRR12470241 SRR10522783 \
+    --accession SRR21690902 \
+    --accession SRR24210694 \
+    --accession SRR12650627 \
+    --accession SRR12470241 \
+    --accession SRR10522783 \
     --coverage 100 \
     --genome_size 4400000 \
     --outdir ena-multiple-samples
