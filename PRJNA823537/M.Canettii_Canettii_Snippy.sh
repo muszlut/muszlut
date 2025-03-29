@@ -12,8 +12,8 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/ena-multiple-samples"
-REF="/scratch/ma95362/M.canetti1_gbk/genomic.gbk"
+OUTDIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
+REF="/scratch/ma95362/ref/Canetti/ncbi_dataset/data/GCF_000253375.1/genomic.gbk"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
