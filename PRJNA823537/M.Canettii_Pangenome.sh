@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples"
+OUTDIR=""/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/ena-multiple-samples""
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -26,4 +26,4 @@ module load Bactopia/3.1.0
 # necessary tools-  Bactopia for pangenome analysis
 bactopia \
     --wf pangenome \
-    --bactopia $OUTDIR \
+    --bactopia $OUTDIR /ena-multiple-samples
