@@ -23,11 +23,7 @@ fi
 module load Bactopia/3.1.0
 cd $OUTDIR
 bactopia \
-    --accession SRX1154627 \
-    --accession SRX2000723 \
-    --accession SRX9131782 \
-    --accession SRX8964326 \
-    --accession SRX7207533 \
+    --accessions SRX1154627,SRX2000723,SRX9131782,SRX8964326,SRX7207533 \
     --coverage 100 \
     --genome_size 4400000 \
     --outdir ena-multiple-samples
