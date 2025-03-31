@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Musse_Merged_snippy_Excluded                # Job name
+#SBATCH --job-name=Musse_Merged_snippy_Excluded_canetti        # Job name
 #SBATCH --partition=batch                                      # Partition (queue) name
 #SBATCH --ntasks=1                                             # Run on a single CPU
 #SBATCH --cpus-per-task=8                                      # Number of cores per task
