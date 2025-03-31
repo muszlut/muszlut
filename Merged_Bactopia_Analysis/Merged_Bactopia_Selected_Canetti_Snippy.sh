@@ -22,7 +22,7 @@ if [ ! -d $OUTDIR ]
 fi
 
 module load Bactopia/3.1.0
-
+cd $OUTDIR
 bactopia \
     --wf snippy \
     --reference $REF \
