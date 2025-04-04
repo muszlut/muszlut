@@ -26,7 +26,10 @@ fi
 #Load modules
 module load Miniconda3/23.5.2-0
 
-#activate conda envirnoment (should be version 1.0)
+# Initialize Conda
+source ~/miniconda3/etc/profile.d/conda.sh
+
+# Activate conda environment (should be version 1.0)
 conda activate mtbvartools
 
 #move to working directory:
