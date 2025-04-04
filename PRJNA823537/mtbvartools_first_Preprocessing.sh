@@ -27,7 +27,7 @@ fi
 module load Miniconda3/23.5.2-0
 
 #activate conda envirnoment (should be version 1.0)
-source activate mtbvartools
+conda activate mtbvartools
 
 #move to working directory:
 cd $OUTDIR
@@ -43,7 +43,8 @@ INPUT_FILE_R1="${INPUT_DIR}/${ISOLATE}_R1.fastq.gz"
 INPUT_FILE_R2="${INPUT_DIR}/${ISOLATE}_R2.fastq.gz"
 
 # Output directory for this isolate
-OUTPUT_DIR_SAMPLE="${OUTPUT_DIR}/${ISOLATE}"
+OUTPUT_DIR_SAMPLE="${OUTDIR}/${ISOLATE}"
+
 
 mkdir -p "$OUTPUT_DIR_SAMPLE"
 
