@@ -9,7 +9,7 @@
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
 
 # Set input directory where fastq files are located
-INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/Tbprofiler"
+INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
 # Set output directory for TBProfiler results
 OUTDIR="/scratch/ma95362/PRJNA823537_ET125/Tbprofiler_module"
 
@@ -40,8 +40,8 @@ for R1 in ${INPUT_DIR}/*_R1.fastq.gz; do
         --read2 "$R2" \
         --prefix "$base" \
         --spoligotype \
-        --threads 4
-        --db_dir $DB_DIR
+        --threads 4 \
+        --db_dir $DB_DIR  # Ensure this is on the same line
 
     echo "Finished: $base"
     echo "-------------------------------"
