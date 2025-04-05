@@ -9,7 +9,7 @@
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err          # Standard error log
 
 #SBATCH --mail-type=END,FAIL                                 # Mail events (NONE, BEGIN, END, FAIL, ALL)
-#SBATCH --mail-user=ma95362@uga.edu                          # Where to send mail	
+#SBATCH --mail-user=ma95362@uga.edu                          # Where to send mail
 
 # Set working variables
 OUTDIR="/scratch/ma95362/PRJNA823537_ET125/Tbprofiler_module/results"
