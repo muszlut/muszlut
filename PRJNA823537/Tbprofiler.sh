@@ -22,6 +22,12 @@ module load TBProfiler/6.6.2
 # Move to output directory
 cd $OUTDIR
 
+# Set custom directory for TBProfiler to use for databases
+DB_DIR="/scratch/ma95362/PRJNA823537_ET125/TBProfiler_db"
+
+# Create the directory if it doesn't exist
+mkdir -p $DB_DIR
+
 # Loop through your 17 isolates
 for R1 in ${INPUT_DIR}/*_R1.fastq.gz; do
     base=$(basename "$R1" _R1.fastq.gz)
@@ -35,6 +41,7 @@ for R1 in ${INPUT_DIR}/*_R1.fastq.gz; do
         --prefix "$base" \
         --spoligotype \
         --threads 4
+        --db_dir $DB_DIR
 
     echo "Finished: $base"
     echo "-------------------------------"
