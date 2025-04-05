@@ -8,6 +8,9 @@
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
 
+#SBATCH --mail-type=END,FAIL                                   # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
+
 # Set input directory where fastq files are located
 INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
 # Set output directory for TBProfiler results
@@ -41,7 +44,7 @@ for R1 in ${INPUT_DIR}/*_R1.fastq.gz; do
         --prefix "$base" \
         --spoligotype \
         --threads 4 \
-        --db_dir $DB_DIR  # Ensure this is on the same line
+        --db_dir /scratch/ma95362/TBProfiler_db # Ensure this is on the same line
 
     echo "Finished: $base"
     echo "-------------------------------"
