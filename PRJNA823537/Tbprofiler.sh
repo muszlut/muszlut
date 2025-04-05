@@ -18,17 +18,16 @@ if [ ! -d $OUTDIR ]
     then 
         mkdir -p $OUTDIR
 fi
-
 # Load TBProfiler module
-module load tbprofiler
+module load TBProfiler/6.6.2
 
-#move to working directory:
+# Move to output directory
 cd $OUTDIR
 
 # Loop through your 17 isolates
-for R1 in *_R1.fastq.gz; do
+for R1 in ${INPUT_DIR}/*_R1.fastq.gz; do
     base=$(basename "$R1" _R1.fastq.gz)
-    R2="${base}_R2.fastq.gz"
+    R2="${INPUT_DIR}/${base}_R2.fastq.gz"
 
     echo "Running TBProfiler for: $base"
 
