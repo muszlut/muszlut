@@ -18,6 +18,9 @@ SCRIPT="/home/ma95362/muszlut/PRJNA823537/Tbprofiler_collate_from_new_module.py"
 # Load modules
 module load Biopython/1.84-foss-2023b
 
+# Optional: ensure tqdm is available
+pip install --user tqdm
+
 # Move to output directory
 cd $OUTDIR
 
