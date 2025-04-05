@@ -8,16 +8,14 @@
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
 
-#Set output directory variable
-OUTDIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
-#INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
-###REF="/scratch/ma95362/ET_1291/ref/gbk/genomic.gbk"
+# Set input directory where fastq files are located
+INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/Tbprofiler"
+# Set output directory for TBProfiler results
+OUTDIR="/scratch/ma95362/PRJNA823537_ET125/Tbprofiler_module"
 
-#Tell the program to make  the outdir folder
-if [ ! -d $OUTDIR ] 
-    then 
-        mkdir -p $OUTDIR
-fi
+# Create output directory if it doesn't exist
+mkdir -p $OUTDIR
+
 # Load TBProfiler module
 module load TBProfiler/6.6.2
 
@@ -35,7 +33,6 @@ for R1 in ${INPUT_DIR}/*_R1.fastq.gz; do
         --read1 "$R1" \
         --read2 "$R2" \
         --prefix "$base" \
-        --barcode_snps "${base}_barcode_snps.txt" \
         --spoligotype \
         --threads 4
 
