@@ -24,8 +24,8 @@ module load NCBI-Datasets-CLI/16.4.4
 # Move to working directory
 cd "$OUTDIR"
 
-# Download genome dataset with only FASTA file
-datasets download genome accession GCF_000195955.2 --include genome.fna
+# Download genome dataset with FASTA (genomic) only
+datasets download genome accession GCF_000195955.2 --include genome
 
 # Unzip the downloaded dataset
 unzip ncbi_dataset.zip
