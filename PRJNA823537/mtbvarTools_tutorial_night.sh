@@ -1,20 +1,26 @@
 #!/bin/bash
-#SBATCH --job-name=mtbvarTools_first_tutorial_job              # Job name
-#SBATCH --partition=batch                                      # Partition (queue) name
-#SBATCH --ntasks=1                                             # Run on a single CPU
-#SBATCH --cpus-per-task=8                                      # Number of cores per task
-#SBATCH --mem=40gb                                             # Job memory request
-#SBATCH --time=07-00:00:00                                     # Time limit hrs:min:sec
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
+#SBATCH --job-name=mtbvarTools_batch_job              # Job name
+#SBATCH --partition=batch                             # Partition (queue) name
+#SBATCH --ntasks=1                                    # Run on a single CPU
+#SBATCH --cpus-per-task=8                             # Number of cores per task
+#SBATCH --mem=40gb                                    # Job memory request
+#SBATCH --time=07-00:00:00                            # Time limit hrs:min:sec
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out  # Standard output log
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err   # Standard error log
 
-#SBATCH --mail-type=END,FAIL                                   # Mail events (NONE, BEGIN, END, FAIL, ALL)
-#SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail
+#SBATCH --mail-type=END,FAIL                          # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=ma95362@uga.edu                   # Where to send mail
 
-# Set output directory variable
+# Reference genome path
+REFERENCE="/scratch/ma95362/ET_1291/ref/gbk/genomic.gbk"
+
+# Input directory containing FASTQ files
+INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
+
+# Output directory for results
 OUTDIR="/scratch/ma95362/PRJNA823537_ET125/mtbVARTolls_trial"
 
-# Create the output directory if it doesn't exist
+# Create output directory if it doesn't exist
 if [ ! -d $OUTDIR ]; then
     mkdir -p $OUTDIR
 fi
@@ -26,27 +32,35 @@ module load SAMtools/1.18-GCC-12.3.0
 module load BCFtools/1.18-GCC-12.3.0
 source ~/mtbvartools_env/bin/activate  # Activate virtual environment
 
-# Change to the output directory
+# Change to output directory
 cd $OUTDIR
 
-# Step 1: Preprocessing FASTQ files
-fastp -i /scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs/reads_R1.fastq \
-      -I /scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs/reads_R2.fastq \
-      -o $OUTDIR/trimmed_R1.fastq \
-      -O $OUTDIR/trimmed_R2.fastq \
-      -q 20 -l 50
+# Loop over all FASTQ pairs
+for SAMPLE in $(ls $INPUT_DIR/*_R1.fastq.gz | sed 's/_R1.fastq.gz//g'); do
+    SAMPLE_NAME=$(basename $SAMPLE)
+    echo "Processing sample: $SAMPLE_NAME"
 
-# Step 2: Mapping reads to reference genome
-bwa index reference.fasta
-bwa mem reference.fasta $OUTDIR/trimmed_R1.fastq $OUTDIR/trimmed_R2.fastq \
-                        > $OUTDIR/aligned_reads.sam
-samtools view -Sb $OUTDIR/aligned_reads.sam | \
-samtools sort -o $OUTDIR/aligned_reads.bam
-samtools index $OUTDIR/aligned_reads.bam
+    # Step 1: Preprocessing FASTQ files
+    fastp -i ${SAMPLE}_R1.fastq.gz \
+          -I ${SAMPLE}_R2.fastq.gz \
+          -o $OUTDIR/${SAMPLE_NAME}_trimmed_R1.fastq.gz \
+          -O $OUTDIR/${SAMPLE_NAME}_trimmed_R2.fastq.gz \
+          -q 20 -l 50
 
-# Step 3: Variant calling
-bcftools mpileup -Ou -f reference.fasta $OUTDIR/aligned_reads.bam | \
-bcftools call -mv -Oz -o $OUTDIR/variants.vcf.gz
-bcftools index $OUTDIR/variants.vcf.gz
+    # Step 2: Mapping reads to reference genome
+    bwa index $REFERENCE
+    bwa mem $REFERENCE $OUTDIR/${SAMPLE_NAME}_trimmed_R1.fastq.gz $OUTDIR/${SAMPLE_NAME}_trimmed_R2.fastq.gz \
+                        > $OUTDIR/${SAMPLE_NAME}_aligned_reads.sam
+    samtools view -Sb $OUTDIR/${SAMPLE_NAME}_aligned_reads.sam | \
+    samtools sort -o $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam
+    samtools index $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam
 
-echo "Pipeline completed successfully!"
+    # Step 3: Variant calling
+    bcftools mpileup -Ou -f $REFERENCE $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam | \
+    bcftools call -mv -Oz -o $OUTDIR/${SAMPLE_NAME}_variants.vcf.gz
+    bcftools index $OUTDIR/${SAMPLE_NAME}_variants.vcf.gz
+
+    echo "Finished processing sample: $SAMPLE_NAME"
+done
+
+echo "Batch processing completed for all samples!"
