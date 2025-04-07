@@ -32,6 +32,12 @@ module load SAMtools/1.18-GCC-12.3.0
 module load BCFtools/1.18-GCC-12.3.0
 source ~/mtbvartools_env/bin/activate  # Activate virtual environment
 
+# Build BWA index (if not already built)
+if [ ! -f ${REFERENCE}.bwt ]; then
+    echo "Building BWA index for reference genome..."
+    bwa index $REFERENCE
+fi
+
 # Change to output directory
 cd $OUTDIR
 
@@ -46,19 +52,45 @@ for SAMPLE in $(ls $INPUT_DIR/*_R1.fastq.gz | sed 's/_R1.fastq.gz//g'); do
           -o $OUTDIR/${SAMPLE_NAME}_trimmed_R1.fastq.gz \
           -O $OUTDIR/${SAMPLE_NAME}_trimmed_R2.fastq.gz \
           -q 20 -l 50
+    if [ $? -ne 0 ]; then
+        echo "Error in fastp for $SAMPLE_NAME. Skipping..."
+        continue
+    fi
 
     # Step 2: Mapping reads to reference genome
-    bwa index $REFERENCE
     bwa mem $REFERENCE $OUTDIR/${SAMPLE_NAME}_trimmed_R1.fastq.gz $OUTDIR/${SAMPLE_NAME}_trimmed_R2.fastq.gz \
                         > $OUTDIR/${SAMPLE_NAME}_aligned_reads.sam
+    if [ $? -ne 0 ]; then
+        echo "Error in BWA MEM for $SAMPLE_NAME. Skipping..."
+        continue
+    fi
+
     samtools view -Sb $OUTDIR/${SAMPLE_NAME}_aligned_reads.sam | \
     samtools sort -o $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam
+    if [ $? -ne 0 ]; then
+        echo "Error in SAMtools for $SAMPLE_NAME. Skipping..."
+        continue
+    fi
+
     samtools index $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam
+    if [ $? -ne 0 ]; then
+        echo "Error in SAMtools indexing for $SAMPLE_NAME. Skipping..."
+        continue
+    fi
 
     # Step 3: Variant calling
     bcftools mpileup -Ou -f $REFERENCE $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam | \
     bcftools call -mv -Oz -o $OUTDIR/${SAMPLE_NAME}_variants.vcf.gz
+    if [ $? -ne 0 ]; then
+        echo "Error in BCFtools variant calling for $SAMPLE_NAME. Skipping..."
+        continue
+    fi
+
     bcftools index $OUTDIR/${SAMPLE_NAME}_variants.vcf.gz
+    if [ $? -ne 0 ]; then
+        echo "Error in BCFtools indexing for $SAMPLE_NAME. Skipping..."
+        continue
+    fi
 
     echo "Finished processing sample: $SAMPLE_NAME"
 done
