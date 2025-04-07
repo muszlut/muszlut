@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                   # Where to send mail
 
 # Reference genome path
-REFERENCE="/scratch/ma95362/reference/genomic.fna"
+REFERENCE="/scratch/ma95362/reference/ncbi_dataset/data/GCF_000195955.2/genomic.fna"
 
 # Input directory containing FASTQ files
 INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
