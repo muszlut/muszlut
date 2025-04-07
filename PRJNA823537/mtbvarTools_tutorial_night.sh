@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                   # Where to send mail
 
 # Reference genome path
-REFERENCE="/scratch/ma95362/reference/ncbi_dataset/data/GCF_000195955.2/genomic.fna"
+REFERENCE="/scratch/ma95362/reference/ncbi_dataset/data/GCF_000195955.2/GCF_000195955.2_ASM19595v2_genomic.fna"
 
 # Input directory containing FASTQ files
 INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
@@ -21,8 +21,8 @@ INPUT_DIR="/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs"
 OUTDIR="/scratch/ma95362/PRJNA823537_ET125/mtbVARTolls_trial"
 
 # Create output directory if it doesn't exist
-if [ ! -d $OUTDIR ]; then
-    mkdir -p $OUTDIR
+if [ ! -d "$OUTDIR" ]; then
+    mkdir -p "$OUTDIR"
 fi
 
 # Load required modules
@@ -32,63 +32,70 @@ module load SAMtools/1.18-GCC-12.3.0
 module load BCFtools/1.18-GCC-12.3.0
 source ~/mtbvartools_env/bin/activate  # Activate virtual environment
 
-# Build BWA index (if not already built)
-if [ ! -f ${REFERENCE}.bwt ]; then
+# Build BWA index if not already built
+if [ ! -f "${REFERENCE}.bwt" ]; then
     echo "Building BWA index for reference genome..."
-    bwa index $REFERENCE
+    bwa index "$REFERENCE"
+    if [ $? -ne 0 ]; then
+        echo "Error building BWA index. Exiting..."
+        exit 1
+    fi
 fi
 
 # Change to output directory
-cd $OUTDIR
+cd "$OUTDIR"
 
 # Loop over all FASTQ pairs
-for SAMPLE in $(ls $INPUT_DIR/*_R1.fastq.gz | sed 's/_R1.fastq.gz//g'); do
-    SAMPLE_NAME=$(basename $SAMPLE)
+for SAMPLE in $(ls "$INPUT_DIR"/*_R1.fastq.gz | sed 's/_R1.fastq.gz//g'); do
+    SAMPLE_NAME=$(basename "$SAMPLE")
     echo "Processing sample: $SAMPLE_NAME"
 
-    # Step 1: Preprocessing FASTQ files
-    fastp -i ${SAMPLE}_R1.fastq.gz \
-          -I ${SAMPLE}_R2.fastq.gz \
-          -o $OUTDIR/${SAMPLE_NAME}_trimmed_R1.fastq.gz \
-          -O $OUTDIR/${SAMPLE_NAME}_trimmed_R2.fastq.gz \
+    # Step 1: Preprocessing with fastp
+    fastp -i "${SAMPLE}_R1.fastq.gz" \
+          -I "${SAMPLE}_R2.fastq.gz" \
+          -o "${OUTDIR}/${SAMPLE_NAME}_trimmed_R1.fastq.gz" \
+          -O "${OUTDIR}/${SAMPLE_NAME}_trimmed_R2.fastq.gz" \
           -q 20 -l 50
     if [ $? -ne 0 ]; then
         echo "Error in fastp for $SAMPLE_NAME. Skipping..."
         continue
     fi
 
-    # Step 2: Mapping reads to reference genome
-    bwa mem $REFERENCE $OUTDIR/${SAMPLE_NAME}_trimmed_R1.fastq.gz $OUTDIR/${SAMPLE_NAME}_trimmed_R2.fastq.gz \
-                        > $OUTDIR/${SAMPLE_NAME}_aligned_reads.sam
+    # Step 2: Mapping reads to reference genome using BWA
+    bwa mem "$REFERENCE" "${OUTDIR}/${SAMPLE_NAME}_trimmed_R1.fastq.gz" "${OUTDIR}/${SAMPLE_NAME}_trimmed_R2.fastq.gz" \
+        > "${OUTDIR}/${SAMPLE_NAME}_aligned_reads.sam"
     if [ $? -ne 0 ]; then
         echo "Error in BWA MEM for $SAMPLE_NAME. Skipping..."
         continue
     fi
 
-    samtools view -Sb $OUTDIR/${SAMPLE_NAME}_aligned_reads.sam | \
-    samtools sort -o $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam
+    # Step 3: Converting and sorting BAM
+    samtools view -Sb "${OUTDIR}/${SAMPLE_NAME}_aligned_reads.sam" | \
+    samtools sort -o "${OUTDIR}/${SAMPLE_NAME}_aligned_reads.bam"
     if [ $? -ne 0 ]; then
         echo "Error in SAMtools for $SAMPLE_NAME. Skipping..."
         continue
     fi
 
-    samtools index $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam
+    # Indexing BAM file
+    samtools index "${OUTDIR}/${SAMPLE_NAME}_aligned_reads.bam"
     if [ $? -ne 0 ]; then
-        echo "Error in SAMtools indexing for $SAMPLE_NAME. Skipping..."
+        echo "Error indexing BAM for $SAMPLE_NAME. Skipping..."
         continue
     fi
 
-    # Step 3: Variant calling
-    bcftools mpileup -Ou -f $REFERENCE $OUTDIR/${SAMPLE_NAME}_aligned_reads.bam | \
-    bcftools call -mv -Oz -o $OUTDIR/${SAMPLE_NAME}_variants.vcf.gz
+    # Step 4: Variant calling using BCFtools
+    bcftools mpileup -Ou -f "$REFERENCE" "${OUTDIR}/${SAMPLE_NAME}_aligned_reads.bam" | \
+    bcftools call -mv -Oz -o "${OUTDIR}/${SAMPLE_NAME}_variants.vcf.gz"
     if [ $? -ne 0 ]; then
         echo "Error in BCFtools variant calling for $SAMPLE_NAME. Skipping..."
         continue
     fi
 
-    bcftools index $OUTDIR/${SAMPLE_NAME}_variants.vcf.gz
+    # Indexing VCF
+    bcftools index "${OUTDIR}/${SAMPLE_NAME}_variants.vcf.gz"
     if [ $? -ne 0 ]; then
-        echo "Error in BCFtools indexing for $SAMPLE_NAME. Skipping..."
+        echo "Error indexing VCF for $SAMPLE_NAME. Skipping..."
         continue
     fi
 
