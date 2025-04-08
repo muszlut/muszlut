@@ -16,8 +16,8 @@ module load Python/3.9.6-GCCcore-11.2.0               # Adjust Python version ba
 source ~/mtbvartools_env/bin/activate                 # Activate MTBvarTools environment
 
 # Define input/output directories
-BAM_DIR="/scratch/ma95362/bam_files"                  # Directory containing BAM files
-OUT_DIR="/scratch/ma95362/mtbvartools_results"        # Directory for results
+BAM_DIR="/scratch/ma95362/PRJNA823537_ET125/mtbVARTolls_trial"                  # Directory containing BAM files
+OUT_DIR="/scratch/ma95362/PRJNA823537_ET125/mtbVARTolls_trial/tbprofiler"        # Directory for results
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUT_DIR" ]; then
