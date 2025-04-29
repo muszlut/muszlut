@@ -9,7 +9,7 @@
 #SBATCH --error=/scratch/ma95362/scratch/logs/sra_download_%A_%a.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
-#SBATCH --array=1-5
+#SBATCH --array=1-6
 
 # Load environment
 source ~/.bashrc
