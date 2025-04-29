@@ -11,23 +11,21 @@
 #SBATCH --mail-user=ma95362@uga.edu
 #SBATCH --array=1-5
 
-module purge
-module load python/3.10
-
-# Activate your environment
-source activate mtbvartools
+# Load environment
+source ~/.bashrc
+conda activate mtbvartools
 
 # Paths
 OUTPUT_DIR="/scratch/ma95362/Sequence"
+SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_download_script.py"  # ← Update this path
+
 mkdir -p "$OUTPUT_DIR"
 cd "$OUTPUT_DIR"
 
-# Read current SRA ID
 SRA=$(sed -n "${SLURM_ARRAY_TASK_ID}p" sra_list.txt)
 OUTPUT="sample_${SRA}"
 
-# Run script
-python sra_download_script.py \
+python "$SCRIPT_PATH" \
     -i $SRA \
     -o $OUTPUT \
     -d ./downloads \
