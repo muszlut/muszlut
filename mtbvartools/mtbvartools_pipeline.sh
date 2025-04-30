@@ -11,9 +11,7 @@
 #SBATCH --mail-type=END,FAIL                          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu                   # Where to send mail
 
-
-
-# Load required modules (adjust to your environment)
+# Load required modules
 module purge
 module load Python/3.10.4-GCCcore-11.3.0
 module load BWA
@@ -23,31 +21,30 @@ module load TBProfiler
 module load FastQC
 module load R
 
-# Activate virtual environment if you have one
+# Activate virtual environment
+source ~/.bashrc
 conda activate mtbvartools
 
-# Define your input/output
-# Paths
+# Define paths and inputs
 OUTPUT_DIR="/scratch/ma95362/Sequence/mtbvartools_output"
-SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_variant_pipeline.py"  # ← Update this path
+SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_variant_pipeline.py"
 
 mkdir -p "$OUTPUT_DIR"
 cd "$OUTPUT_DIR"
 
-FASTA_REF=/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299.contigs.fasta
-GENBANK_REF=/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2.gbk
-FASTQ_PATH=/scratch/ma95362/Sequence.fastq
-OUTPUT_NAME=sample001
+FASTA_REF="/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299/contigs.fasta"
+GENBANK_REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2.gbk"
+FASTQ_PATH="/scratch/ma95362/Sequence"
+OUTPUT_NAME="sample001"
 
-
-# Run the script
-python3 sra_variant_pipeline.py \
+# Run the MTBVarTools pipeline
+python3 "$SCRIPT_PATH" \
   --fastq-path "$FASTQ_PATH" \
   --fasta "$FASTA_REF" \
   --genbank "$GENBANK_REF" \
   --output "$OUTPUT_NAME" \
   --dir "$OUTPUT_DIR" \
-  --threads 8 \
+  --threads 16 \
   --memory 64000m \
   --target-depth 100 \
   --tbprofiler-fastq \
