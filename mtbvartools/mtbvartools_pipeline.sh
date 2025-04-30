@@ -25,26 +25,30 @@ module load R
 source ~/.bashrc
 conda activate mtbvartools
 
-# Define paths and inputs
+# Add path to custom scripts so subprocesses can find downsample_fastq.py
+export PATH="/scratch/ma95362/mtbvartools/scripts:$PATH"
+
+# Define your input/output
+# Paths
 OUTPUT_DIR="/scratch/ma95362/Sequence/mtbvartools_output"
 SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_variant_pipeline.py"
 
 mkdir -p "$OUTPUT_DIR"
 cd "$OUTPUT_DIR"
 
-FASTA_REF="/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299/contigs.fasta"
-GENBANK_REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2.gbk"
-FASTQ_PATH="/scratch/ma95362/Sequence"
-OUTPUT_NAME="sample001"
+FASTA_REF=/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299.contigs.fasta
+GENBANK_REF=/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2.gbk
+FASTQ_PATH=/scratch/ma95362/Sequence
+OUTPUT_NAME=sample001
 
-# Run the MTBVarTools pipeline
+# Run the pipeline
 python3 "$SCRIPT_PATH" \
   --fastq-path "$FASTQ_PATH" \
   --fasta "$FASTA_REF" \
   --genbank "$GENBANK_REF" \
   --output "$OUTPUT_NAME" \
   --dir "$OUTPUT_DIR" \
-  --threads 16 \
+  --threads 8 \
   --memory 64000m \
   --target-depth 100 \
   --tbprofiler-fastq \
