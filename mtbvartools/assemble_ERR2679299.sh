@@ -10,35 +10,22 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-# Stop the script on error
-set -e
+# Load correct SPAdes module
+module load SPAdes/3.15.5-GCC-11.3.0
 
-# Load SPAdes module
-module load spades/3.15.5
+# Set working directory
+cd /scratch/ma95362/Sequence/Ref_H37Rv/sra_download
 
-# Set working directory to where the FASTQ files are located
-WORKDIR="/scratch/ma95362/Sequence/Ref_H37Rv/sra_download"
-cd "$WORKDIR"
+# Compress if needed (safe to re-run)
+gzip -f sample_ERR2679299_1.fastq
+gzip -f sample_ERR2679299_2.fastq
 
-# Optional: compress FASTQ files only if they are not already gzipped
-if [ -f sample_ERR2679299_1.fastq ] && [ ! -f sample_ERR2679299_1.fastq.gz ]; then
-    gzip -f sample_ERR2679299_1.fastq
-fi
-
-if [ -f sample_ERR2679299_2.fastq ] && [ ! -f sample_ERR2679299_2.fastq.gz ]; then
-    gzip -f sample_ERR2679299_2.fastq
-fi
-
-# Create output directory for SPAdes assembly
-OUTDIR="spades_output_ERR2679299"
-mkdir -p "$OUTDIR"
-
-# Run SPAdes with paired-end reads
+# Run SPAdes
 spades.py \
   -1 sample_ERR2679299_1.fastq.gz \
   -2 sample_ERR2679299_2.fastq.gz \
-  -o "$OUTDIR" \
+  -o spades_output_ERR2679299 \
   --threads 16 \
   --memory 64
 
-echo "Assembly completed. Resulting contigs are in: $WORKDIR/$OUTDIR/contigs.fasta"
+echo "Assembly complete. Output located in spades_output_ERR2679299/contigs.fasta"
