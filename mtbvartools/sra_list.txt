@@ -4,3 +4,6 @@ SRR1265062
 SRR12470241
 SRR10522783
 ERR2679299
+
+Reference strain path= /scratch/ma95362/Sequence/Ref_H37Rv/sra_download
+sequence strain path= /scratch/ma95362/Sequence
