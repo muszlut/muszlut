@@ -23,7 +23,7 @@ module load R
 
 # Activate virtual environment
 source ~/.bashrc
-conda activate mtbvartools
+source activate mtbvartools
 
 # Add path to custom scripts so subprocesses can find downsample_fastq.py
 export PATH="/scratch/ma95362/mtbvartools/scripts:$PATH"
