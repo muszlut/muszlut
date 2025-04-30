@@ -36,7 +36,7 @@ SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_variant_pipeline.py"
 mkdir -p "$OUTPUT_DIR"
 cd "$OUTPUT_DIR"
 
-FASTA_REF=/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299.contigs.fasta
+FASTA_REF=/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299/contigs.fasta
 GENBANK_REF=/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2.gbk
 FASTQ_PATH=/scratch/ma95362/Sequence
 OUTPUT_NAME=sample001
