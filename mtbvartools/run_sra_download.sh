@@ -17,7 +17,7 @@ conda activate mtbvartools
 
 # Paths
 OUTPUT_DIR="/scratch/ma95362/Sequence"
-SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_download.py"  # ← Update this path
+SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_download.py"  # this is the script path to download SRA sequences from mtbvartools/scripts
 
 mkdir -p "$OUTPUT_DIR"
 cd "$OUTPUT_DIR"
