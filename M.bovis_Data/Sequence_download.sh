@@ -20,3 +20,5 @@ if [ ! -d $OUTDIR ]
     then 
         mkdir -p $OUTDIR
 fi
+
+cd $OUTDIR
