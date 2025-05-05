@@ -63,7 +63,7 @@ while read SAMPLE; do
   fi
 
   echo "✅ Running pipeline for $SAMPLE..."
-  python "$SCRIPT_PATH" \
+  "$SCRIPT_PATH" \
     --fastq-path "${FASTQ_PATH}/${FQ1},${FASTQ_PATH}/${FQ2}" \
     --reference "$FASTA_REF" \
     --output-dir "${OUTPUT_DIR}/${SAMPLE}" \
