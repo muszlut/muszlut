@@ -1,19 +1,21 @@
-#!/bin/bash
+#!/bin/bash 
 #SBATCH --job-name=mtbvartools_pipeline               # Job name
 #SBATCH --partition=batch                             # Partition (queue) name
 #SBATCH --ntasks=1                                    # Run on a single CPU
 #SBATCH --cpus-per-task=16                            # Number of cores per task
 #SBATCH --mem=64gb                                    # Job memory request
-#SBATCH --time=07-00:00:00                            # Time limit hrs:min:sec
+#SBATCH --time=07-00:00:00                            # Time limit (7 days)
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out  # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err   # Standard error log
 
-#SBATCH --mail-type=END,FAIL                          # Mail events (NONE, BEGIN, END, FAIL, ALL)
-#SBATCH --mail-user=ma95362@uga.edu                   # Where to send mail
+#SBATCH --mail-type=END,FAIL                          # Mail events
+#SBATCH --mail-user=ma95362@uga.edu                   # Email address for notifications
 
-# Load required modules
+# Clean environment and load required modules
 module purge
-module load Python/3.10.4-GCCcore-11.3.0
+export LMOD_IGNORE_CACHE=yes
+module load GCCcore/13.3.0
+module load Python/3.11.3-GCCcore-13.3.0
 module load BWA
 module load SAMtools
 module load GATK
@@ -21,14 +23,14 @@ module load TBProfiler
 module load FastQC
 module load R
 
-# Activate virtual environment
+# Activate conda environment
 source ~/.bashrc
 source activate mtbvartools
 
-# Add path to custom scripts
+# Add custom script path
 export PATH="/scratch/ma95362/mtbvartools/scripts:$PATH"
 
-# Define paths
+# Define variables
 OUTPUT_DIR="/scratch/ma95362/Sequence/mtbvartools_output"
 SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_variant_pipeline.py"
 FASTA_REF="/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299/contigs.fasta"
@@ -36,6 +38,7 @@ FASTQ_PATH="/scratch/ma95362/Sequence"
 SAMPLE_LIST="/scratch/ma95362/Sequence/samples.txt"
 LOG_DIR="/scratch/ma95362/Sequence/logs"
 
+# Create directories
 mkdir -p "$OUTPUT_DIR"
 mkdir -p "$LOG_DIR"
 cd "$OUTPUT_DIR"
@@ -46,7 +49,7 @@ if [[ ! -f "$SAMPLE_LIST" ]]; then
   exit 1
 fi
 
-# Run the pipeline per sample
+# Run pipeline for each sample
 while read SAMPLE; do
   if [[ -f ${FASTQ_PATH}/${SAMPLE}_R1.fastq && -f ${FASTQ_PATH}/${SAMPLE}_R2.fastq ]]; then
     FQ1="${SAMPLE}_R1.fastq"
