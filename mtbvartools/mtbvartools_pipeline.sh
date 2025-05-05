@@ -25,31 +25,50 @@ module load R
 source ~/.bashrc
 source activate mtbvartools
 
-# Add path to custom scripts so subprocesses can find downsample_fastq.py
+# Add path to custom scripts
 export PATH="/scratch/ma95362/mtbvartools/scripts:$PATH"
 
-# Define your input/output
-# Paths
+# Define paths
 OUTPUT_DIR="/scratch/ma95362/Sequence/mtbvartools_output"
 SCRIPT_PATH="/scratch/ma95362/mtbvartools/scripts/sra_variant_pipeline.py"
+FASTA_REF="/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299/contigs.fasta"
+FASTQ_PATH="/scratch/ma95362/Sequence"
+SAMPLE_LIST="/scratch/ma95362/Sequence/samples.txt"
+LOG_DIR="/scratch/ma95362/Sequence/logs"
 
 mkdir -p "$OUTPUT_DIR"
+mkdir -p "$LOG_DIR"
 cd "$OUTPUT_DIR"
 
-FASTA_REF=/scratch/ma95362/Sequence/Ref_H37Rv/sra_download/spades_output_ERR2679299/contigs.fasta
-GENBANK_REF=/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2.gbk
-FASTQ_PATH=/scratch/ma95362/Sequence
-OUTPUT_NAME=sample001
+# Check if sample list exists
+if [[ ! -f "$SAMPLE_LIST" ]]; then
+  echo "❌ Sample list not found: $SAMPLE_LIST"
+  exit 1
+fi
 
-# Run the pipeline
-python3 "$SCRIPT_PATH" \
-  --fastq-path "$FASTQ_PATH" \
-  --fasta "$FASTA_REF" \
-  --genbank "$GENBANK_REF" \
-  --output "$OUTPUT_NAME" \
-  --dir "$OUTPUT_DIR" \
-  --threads 8 \
-  --memory 64000m \
-  --target-depth 100 \
-  --tbprofiler-fastq \
-  --overwrite
+# Run the pipeline per sample
+while read SAMPLE; do
+  if [[ -f ${FASTQ_PATH}/${SAMPLE}_R1.fastq && -f ${FASTQ_PATH}/${SAMPLE}_R2.fastq ]]; then
+    FQ1="${SAMPLE}_R1.fastq"
+    FQ2="${SAMPLE}_R2.fastq"
+  elif [[ -f ${FASTQ_PATH}/${SAMPLE}_1.fastq && -f ${FASTQ_PATH}/${SAMPLE}_2.fastq ]]; then
+    FQ1="${SAMPLE}_1.fastq"
+    FQ2="${SAMPLE}_2.fastq"
+  else
+    echo "❌ Skipping ${SAMPLE}: FASTQ pair not found"
+    continue
+  fi
+
+  echo "✅ Running pipeline for $SAMPLE..."
+  python "$SCRIPT_PATH" \
+    --fastq-path "${FASTQ_PATH}/${FQ1},${FASTQ_PATH}/${FQ2}" \
+    --reference "$FASTA_REF" \
+    --output-dir "${OUTPUT_DIR}/${SAMPLE}" \
+    --threads 8 \
+    --memory 64000m \
+    --target-depth 100 \
+    --tbprofiler-fastq \
+    --overwrite \
+    > "${LOG_DIR}/${SAMPLE}.out" 2> "${LOG_DIR}/${SAMPLE}.err"
+
+done < "$SAMPLE_LIST"
