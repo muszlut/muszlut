@@ -10,7 +10,7 @@
 #SBATCH --mail-type=END,FAIL                                 # Mail notifications
 #SBATCH --mail-user=ma95362@uga.edu                          # Your email address
 
-OUTDIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/mbovpan_result"
+OUTDIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_samples/mbovpan_result"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
@@ -24,7 +24,7 @@ cd /scratch/ma95362/mbovpan
 
 # Run the pipeline in full mode (spoligotyping + SNP + pangenome + virulence gene profiling)
 nextflow run main.nf \
-  --input /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/ \
+  --input /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw \
   --output "$OUTDIR" \
   --run all \
   --threads 32 \
