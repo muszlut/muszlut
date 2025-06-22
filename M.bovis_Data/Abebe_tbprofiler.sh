@@ -12,7 +12,7 @@
 
 
 # Input and output directories
-SNIPPY_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/snippy_excluding_results"
+SNIPPY_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/snippy_results"
 OUTDIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_results"
 
 mkdir -p "$OUTDIR"
