@@ -23,7 +23,7 @@ conda activate mbovpan-env
 cd /scratch/ma95362/mbovpan
 
 # Run the pipeline in full mode (spoligotyping + SNP + pangenome + virulence gene profiling)
-nextflow run mbovpan.nf \
+nextflow run main.nf \
   --input /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/ \
   --output "$OUTDIR" \
   --run all \
