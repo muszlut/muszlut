@@ -10,24 +10,32 @@
 #SBATCH --mail-type=END,FAIL                                 # Mail notifications
 #SBATCH --mail-user=ma95362@uga.edu                          # Your email address
 
-
-# Define input and output directories
-BASE_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/snippy_results"
-OUT_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_results"
-mkdir -p "$OUT_DIR"
-
 # Load TBProfiler
 module load TBProfiler/6.6.2
 
 #move to working directory
 cd $OUTDIR
 
-# Loop through each sample
+# Define input and output directories
+BASE_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/snippy_results"
+OUT_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_results"
+DB_DIR="/scratch/ma95362/ETH_bovis_Sequence/tbprofiler_db"  # 🛠️ Local db path (writable)
+
+# Create necessary dirs
+mkdir -p "$OUT_DIR"
+mkdir -p "$DB_DIR"
+
+# Initialize DB (only once)
+if [ ! -f "$DB_DIR/tbdb.js" ]; then
+    echo "[INFO] Creating local TBProfiler DB at $DB_DIR"
+    tb-profiler update_tbdb --db-dir "$DB_DIR"
+fi
+
+# Run TBProfiler for each BAM
 for SAMPLE_DIR in "$BASE_DIR"/*; do
     SAMPLE=$(basename "$SAMPLE_DIR")
 
-    # Skip non-directories (e.g., bactopia-runs)
-    if [ ! -d "$SAMPLE_DIR" ] || [ "$SAMPLE" == "bactopia-runs" ]; then
+    if [ "$SAMPLE" == "bactopia-runs" ] || [ ! -d "$SAMPLE_DIR" ]; then
         continue
     fi
 
@@ -37,13 +45,8 @@ for SAMPLE_DIR in "$BASE_DIR"/*; do
         tb-profiler profile \
             --bam "$BAM" \
             --prefix "$OUT_DIR/${SAMPLE}" \
-            --force
+            --db-dir "$DB_DIR"
     else
         echo "⚠️ BAM file not found for $SAMPLE — skipping"
     fi
 done
-
-# Optional: Collate all sample results into a summary
-tb-profiler collate \
-    --dir "$OUTDIR" \
-    --prefix "$OUTDIR/tbprofiler_summary"
