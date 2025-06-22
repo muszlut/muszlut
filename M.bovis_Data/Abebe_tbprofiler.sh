@@ -11,11 +11,10 @@
 #SBATCH --mail-user=ma95362@uga.edu                          # Your email address
 
 
-# Input and output directories
-SNIPPY_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/snippy_results"
-OUTDIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_results"
-
-mkdir -p "$OUTDIR"
+# Define input and output directories
+BASE_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/snippy_results"
+OUT_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_results"
+mkdir -p "$OUT_DIR"
 
 # Load TBProfiler
 module load TBProfiler/6.6.2
@@ -23,22 +22,24 @@ module load TBProfiler/6.6.2
 #move to working directory
 cd $OUTDIR
 
-# Loop through each Snippy result directory
-for SAMPLE in "$SNIPPY_DIR"/*; do
-    if [ -d "$SAMPLE" ]; then
-        SAMPLE_ID=$(basename "$SAMPLE")
-        BAM="$SAMPLE/snps.bam"
+# Loop through each sample
+for SAMPLE_DIR in "$BASE_DIR"/*; do
+    SAMPLE=$(basename "$SAMPLE_DIR")
 
-        if [ -f "$BAM" ]; then
-            echo "Processing $SAMPLE_ID..."
-            tb-profiler profile \
-                --bam "$BAM" \
-                --prefix "$OUTDIR/$SAMPLE_ID" \
-                --threads 8 \
-                --force
-        else
-            echo "⚠️ BAM not found for $SAMPLE_ID — skipping"
-        fi
+    # Skip non-directories (e.g., bactopia-runs)
+    if [ ! -d "$SAMPLE_DIR" ] || [ "$SAMPLE" == "bactopia-runs" ]; then
+        continue
+    fi
+
+    BAM="$SAMPLE_DIR/tools/snippy/genomic/${SAMPLE}.bam"
+    if [ -f "$BAM" ]; then
+        echo "Running TBProfiler for $SAMPLE"
+        tb-profiler profile \
+            --bam "$BAM" \
+            --prefix "$OUT_DIR/${SAMPLE}" \
+            --force
+    else
+        echo "⚠️ BAM file not found for $SAMPLE — skipping"
     fi
 done
 
