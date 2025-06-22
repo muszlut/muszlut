@@ -25,7 +25,7 @@ BAM_FILE=${BAM_FILES[$SLURM_ARRAY_TASK_ID]}
 SAMPLE=$(basename "$BAM_FILE" .bam)
 
 #move to working directory
-cd $OUTDIR
+cd $OUT_DIR
 
 # Run TBProfiler
 tb-profiler profile --bam "$BAM_FILE" --prefix "$OUT_DIR/$SAMPLE"
