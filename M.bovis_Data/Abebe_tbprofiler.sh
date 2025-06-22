@@ -7,46 +7,25 @@
 #SBATCH --time=05-00:00:00                                   # Time limit d-hh:mm:ss
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out         # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err          # Standard error log
+#SBATCH --array=0-39                                         # Update this based on the number of BAMs - 1
 #SBATCH --mail-type=END,FAIL                                 # Mail notifications
 #SBATCH --mail-user=ma95362@uga.edu                          # Your email address
 
-# Load TBProfiler
-module load TBProfiler/6.6.2
+# Load conda environment
+source ~/.bashrc
+conda activate tb-profiler-env
+
+# Set directories
+BAM_DIR=/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/all_bams
+OUT_DIR=/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_output
+
+# Get list of BAM files
+BAM_FILES=($BAM_DIR/*.bam)
+BAM_FILE=${BAM_FILES[$SLURM_ARRAY_TASK_ID]}
+SAMPLE=$(basename "$BAM_FILE" .bam)
 
 #move to working directory
 cd $OUTDIR
 
-# Define input and output directories
-BASE_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/snippy_results"
-OUT_DIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_results"
-DB_DIR="/scratch/ma95362/ETH_bovis_Sequence/tbprofiler_db"  # 🛠️ Local db path (writable)
-
-# Create necessary dirs
-mkdir -p "$OUT_DIR"
-mkdir -p "$DB_DIR"
-
-# Initialize DB (only once)
-if [ ! -f "$DB_DIR/tbdb.js" ]; then
-    echo "[INFO] Creating local TBProfiler DB at $DB_DIR"
-    tb-profiler update_tbdb --db-dir "$DB_DIR"
-fi
-
-# Run TBProfiler for each BAM
-for SAMPLE_DIR in "$BASE_DIR"/*; do
-    SAMPLE=$(basename "$SAMPLE_DIR")
-
-    if [ "$SAMPLE" == "bactopia-runs" ] || [ ! -d "$SAMPLE_DIR" ]; then
-        continue
-    fi
-
-    BAM="$SAMPLE_DIR/tools/snippy/genomic/${SAMPLE}.bam"
-    if [ -f "$BAM" ]; then
-        echo "Running TBProfiler for $SAMPLE"
-        tb-profiler profile \
-            --bam "$BAM" \
-            --prefix "$OUT_DIR/${SAMPLE}" \
-            --db-dir "$DB_DIR"
-    else
-        echo "⚠️ BAM file not found for $SAMPLE — skipping"
-    fi
-done
+# Run TBProfiler
+tb-profiler profile --bam "$BAM_FILE" --prefix "$OUT_DIR/$SAMPLE"
