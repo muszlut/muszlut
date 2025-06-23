@@ -22,13 +22,13 @@ conda activate mbovpan-env
 # Navigate to mbovpan working directory
 cd /scratch/ma95362/mbovpan
 
-# Run the pipeline in full mode (spoligotyping + SNP + pangenome + virulence gene profiling)
-# Nextflow will now use the process-specific resource settings from nextflow.config
+# Run the pipeline in full mode (spoligotyping + SNP + pangenome + virulence gene profiling and all)
+# Nextflow will now use the process-specific resource settings from nextflow.configgg
 nextflow run main.nf \
-  --input /scratch/ma95362/ETH_bovis_Sequence/mbovpanfastq_reads \
-  --output "$OUTDIR" \
-  --run all \
-  --threads 32 \
-  --qual 20 \
-  --depth 25 \
-  --mapq 40
+  --input /scratch/ma95362/ETH_bovis_Sequence/mbovpanfastq_reads \
+  --output "$OUTDIR" \
+  --run all \
+  --threads 32 \
+  --qual 20 \
+  --depth 25 \
+  --mapq 40
