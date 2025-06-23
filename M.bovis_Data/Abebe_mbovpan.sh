@@ -10,6 +10,9 @@
 #SBATCH --mail-type=END,FAIL                                 # Mail notifications
 #SBATCH --mail-user=ma95362@uga.edu                          # Your email address
 
+# IMPORTANT: Ensure there are NO leading spaces or invisible characters
+# before any #SBATCH directives on these lines.
+
 OUTDIR="/scratch/ma95362/ETH_bovis_Sequence/Abebe_samples/mbovpan_result"
 
 # Create output directory if it doesn't exist
@@ -22,8 +25,8 @@ conda activate mbovpan-env
 # Navigate to mbovpan working directory
 cd /scratch/ma95362/mbovpan
 
-# Run the pipeline in full mode (spoligotyping + SNP + pangenome + virulence gene profiling and all)
-# Nextflow will now use the process-specific resource settings from nextflow.configgg
+# Run the pipeline in full mode (spoligotyping + SNP + pangenome + virulence gene profiling)
+# Nextflow will now use the process-specific resource settings from nextflow.config
 nextflow run main.nf \
   --input /scratch/ma95362/ETH_bovis_Sequence/mbovpanfastq_reads \
   --output "$OUTDIR" \
