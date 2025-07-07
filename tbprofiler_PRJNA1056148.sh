@@ -10,7 +10,7 @@
 
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
-#Set output directory variable
+#Set output directory variableklkjl
 OUTDIR="/scratch/ma95362/PRJNA1056148_bactopia"
 
 
