@@ -1,0 +1,665 @@
+Mar-02 02:53:20.185 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /apps/eb/Bactopia/3.1.0//share/bactopia-3.1.0/main.nf -w /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/ --wf pangenome --bactopia /scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples --exclude /scratch/ma95362/musse_MGA/merged/bactopia-exclude-plus.tsv
+Mar-02 02:53:20.446 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Mar-02 02:53:20.514 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/ma95362/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Mar-02 02:53:20.526 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Mar-02 02:53:20.527 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Mar-02 02:53:20.531 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Mar-02 02:53:20.544 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Mar-02 02:53:20.567 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config
+Mar-02 02:53:20.570 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config
+Mar-02 02:53:20.599 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/ma95362/.nextflow/secrets/store.json
+Mar-02 02:53:20.603 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@6bff19ff] - activable => nextflow.secret.LocalSecretsProvider@6bff19ff
+Mar-02 02:53:20.639 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-02 02:53:23.407 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Mar-02 02:53:23.541 [main] DEBUG nextflow.cli.CmdRun - Launching `/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/main.nf` [peaceful_lovelace] DSL2 - revision: 0cd9f79ba7
+Mar-02 02:53:23.960 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Mar-02 02:53:23.961 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Mar-02 02:53:24.190 [main] DEBUG nextflow.Session - Session UUID: a52b8918-5702-4eea-93f0-075702af29f4
+Mar-02 02:53:24.191 [main] DEBUG nextflow.Session - Run name: peaceful_lovelace
+Mar-02 02:53:24.191 [main] DEBUG nextflow.Session - Executor pool size: 8
+Mar-02 02:53:24.253 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Mar-02 02:53:24.307 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (03:05 EDT)
+  System: Linux 4.18.0-477.15.1.el8_8.x86_64
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 21-internal-adhoc.conda.src
+  Encoding: UTF-8 (UTF-8)
+  Process: 1867689@c4-8 [10.2.1.79]
+  CPUs: 8 - Mem: 40 GB (39.6 GB) - Swap: 0 (0) - Virtual threads ON
+Mar-02 02:53:24.425 [main] DEBUG nextflow.Session - Work-dir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work [nfs]
+Mar-02 02:53:24.492 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Mar-02 02:53:24.554 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Mar-02 02:53:24.638 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Mar-02 02:53:24.649 [main] DEBUG nextflow.util.CustomPoolFactory - Creating virtual thread pool
+Mar-02 02:53:25.012 [main] DEBUG nextflow.Session - Session start
+Mar-02 02:53:25.018 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples/bactopia-runs/pangenome-20250302-025322/nf-reports/pangenome-trace.txt
+Mar-02 02:53:25.058 [main] DEBUG nextflow.Session - Using default localLib path: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib
+Mar-02 02:53:25.063 [main] DEBUG nextflow.Session - Adding to the classpath library: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib
+Mar-02 02:53:25.064 [main] DEBUG nextflow.Session - Adding to the classpath library: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib/nfcore_external_java_deps.jar
+Mar-02 02:53:25.289 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-02 02:53:27.515 [main] INFO  nextflow.script.BaseScript - MODULES: [ncbigenomedownload, pirate, roary, panaroo, prokka, iqtree, clonalframeml, snpdists, scoary]
+Mar-02 02:53:28.118 [main] INFO  nextflow.Nextflow - 
+
+-[2m------------------------------------------------------------------[0m-
+[0;34m   _                _              _         _              _              [0m
+[0;34m  | |__   __ _  ___| |_ ___  _ __ (_) __ _  | |_ ___   ___ | |___          [0m
+[0;34m  | '_ \ / _` |/ __| __/ _ \| '_ \| |/ _` | | __/ _ \ / _ \| / __|    [0m
+[0;34m  | |_) | (_| | (__| || (_) | |_) | | (_| | | || (_) | (_) | \__ \        [0m
+[0;34m  |_.__/ \__,_|\___|\__\___/| .__/|_|\__,_|  \__\___/ \___/|_|___/ [0m
+[0;34m                            |_|                                            [0m
+[0;36m  bactopia tools pangenome v3.1.0[0m
+[0;36m  Pangenome analysis with optional core-genome phylogeny [0m
+-[2m------------------------------------------------------------------[0m-
+[1mCore Nextflow options[0m
+  [0;34mrunName              : [0;32mpeaceful_lovelace[0m
+  [0;34mcontainer            : [0;32mquay.io/bactopia/bactopia:3.1.0[0m
+  [0;34mlaunchDir            : [0;32m/home/ma95362/muszlut/Merged_Bactopia_Analysis[0m
+  [0;34mworkDir              : [0;32m/home/ma95362/muszlut/Merged_Bactopia_Analysis/work[0m
+  [0;34mprojectDir           : [0;32m/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0[0m
+  [0;34muserName             : [0;32mma95362[0m
+  [0;34mprofile              : [0;32mstandard[0m
+  [0;34mconfigFiles          : [0;32m/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config[0m
+
+[1mRequired Parameters[0m
+  [0;34mbactopia             : [0;32m/scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples[0m
+
+[1mFiltering Parameters[0m
+  [0;34mexclude              : [0;32m/scratch/ma95362/musse_MGA/merged/bactopia-exclude-plus.tsv[0m
+
+[1mProkka Parameters[0m
+  [0;34mproteins             : [0;32m/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/data/proteins.faa[0m
+
+[1mOptional Parameters[0m
+  [0;34moutdir               : [0;32m/scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples[0m
+
+[1mMax Job Request Parameters[0m
+  [0;34mmax_memory           : [0;32m39 GB[0m (Original request ([0;32m128 GB[0m) adjusted to fit your system)
+  [0;34mmax_time             : [0;32m10d[0m
+
+[1mNextflow Profile Parameters[0m
+  [0;34mcondadir             : [0;32m/home/ma95362/.bactopia/conda[0m
+  [0;34mdatasets_cache       : [0;32m/home/ma95362/.bactopia/datasets[0m
+  [0;34msingularity_cache_dir: [0;32m/home/ma95362/.bactopia/singularity[0m
+
+[1mHelpful Parameters[0m
+  [0;34mwf                   : [0;32mpangenome[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m------------------------------------------------------------------[0m-
+If you use bactopia for your analysis please cite:
+
+* Bactopia
+  https://doi.org/10.1128/mSystems.00190-20
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+  https://bactopia.github.io/acknowledgements/
+-[2m------------------------------------------------------------------[0m-
+Mar-02 02:53:28.121 [main] WARN  nextflow.Nextflow - 
+Mar-02 02:53:28.122 [main] WARN  nextflow.Nextflow - Conda Disclaimer
+Mar-02 02:53:28.122 [main] WARN  nextflow.Nextflow - 
+Mar-02 02:53:28.122 [main] WARN  nextflow.Nextflow - If you have access to Docker or Singularity, please consider
+Mar-02 02:53:28.122 [main] WARN  nextflow.Nextflow - running Bactopia using containers. The containers are less
+Mar-02 02:53:28.122 [main] WARN  nextflow.Nextflow - susceptible to Conda environment related issues (e.g. version
+Mar-02 02:53:28.123 [main] WARN  nextflow.Nextflow - conflicts) and errors caused by creation of conda environments
+Mar-02 02:53:28.123 [main] WARN  nextflow.Nextflow - in parallel (use '--max_cpus 1' to over come this error).
+Mar-02 02:53:28.123 [main] WARN  nextflow.Nextflow - 
+Mar-02 02:53:28.123 [main] WARN  nextflow.Nextflow - To use containers, you can use the profile parameter
+Mar-02 02:53:28.123 [main] WARN  nextflow.Nextflow -     Docker: -profile docker
+Mar-02 02:53:28.124 [main] WARN  nextflow.Nextflow -     Singularity: -profile singularity
+Mar-02 02:53:28.124 [main] WARN  nextflow.Nextflow - 
+Mar-02 02:53:28.125 [main] INFO  nextflow.Nextflow - -[2m------------------------------------------------------------------[0m-
+Mar-02 02:53:30.973 [main] INFO  nextflow.Nextflow - Excluding 19 samples from the analysis
+Mar-02 02:53:31.650 [main] INFO  nextflow.Nextflow - Found 250 samples to process
+Mar-02 02:53:31.651 [main] INFO  nextflow.Nextflow - 
+If this looks wrong, now's your chance to back out (CTRL+C 3 times).
+Mar-02 02:53:31.651 [main] INFO  nextflow.Nextflow - Sleeping for 5 seconds...
+Mar-02 02:53:31.652 [main] INFO  nextflow.Nextflow - --------------------------------------------------------------------
+Mar-02 02:53:36.759 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:PROKKA:PROKKA_MODULE
+Mar-02 02:53:36.773 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-02 02:53:36.774 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-02 02:53:36.781 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Mar-02 02:53:36.788 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=40 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Mar-02 02:53:36.792 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Mar-02 02:53:36.945 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high,process_long` for process with name BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN
+Mar-02 02:53:36.946 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_long` matches labels `process_high,process_long` for process with name BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN
+Mar-02 02:53:36.948 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-02 02:53:36.948 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-02 02:53:36.966 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:PANGENOME:SNPDISTS
+Mar-02 02:53:36.967 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-02 02:53:36.968 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-02 02:53:36.981 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE
+Mar-02 02:53:36.981 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_long` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE
+Mar-02 02:53:36.983 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-02 02:53:36.984 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-02 02:53:36.998 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME
+Mar-02 02:53:37.001 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-02 02:53:37.001 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-02 02:53:37.017 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE
+Mar-02 02:53:37.017 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_long` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE
+Mar-02 02:53:37.019 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-02 02:53:37.020 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-02 02:53:37.024 [main] WARN  nextflow.extension.OperatorImpl - The operator `first` is useless when applied to a value channel which returns a single value by definition
+Mar-02 02:53:37.062 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS
+Mar-02 02:53:37.064 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-02 02:53:37.065 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-02 02:53:37.069 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: PROKKA_MODULE, BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE, BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE, BACTOPIATOOLS:PANGENOME:SNPDISTS, IQTREE, BACTOPIATOOLS:PROKKA:PROKKA_MODULE, NCBIGENOMEDOWNLOAD_MODULE, PANAROO_RUN, BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS, IQTREE_MODULE, CLONALFRAME, SNPDISTS, CLONALFRAMEML, SCOARY_MODULE, PROKKA, CUSTOM_DUMPSOFTWAREVERSIONS, BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN, SCOARY, NCBIGENOMEDOWNLOAD, BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME
+Mar-02 02:53:37.072 [main] DEBUG nextflow.Session - Igniting dataflow network (19)
+Mar-02 02:53:37.076 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:PROKKA:PROKKA_MODULE
+Mar-02 02:53:37.081 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN
+Mar-02 02:53:37.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:PANGENOME:SNPDISTS
+Mar-02 02:53:37.100 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE
+Mar-02 02:53:37.100 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME
+Mar-02 02:53:37.101 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE
+Mar-02 02:53:37.101 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS
+Mar-02 02:53:37.103 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_ddb22d6f54b55b3b: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../clonalframeml/../../../modules/nf-core/clonalframeml/main.nf
+  Script_39d49fa94b059bea: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../scoary/../../../modules/nf-core/scoary/main.nf
+  Script_71a5607f13a1696a: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../modules/nf-core/custom/dumpsoftwareversions/main.nf
+  Script_63d132b976012e46: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/ncbigenomedownload/../../../modules/nf-core/ncbigenomedownload/main.nf
+  Script_6133f0f5a02dc14e: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/main.nf
+  Script_a22a3f2cbd620671: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../panaroo/../../../lib/nf/functions.nf
+  Script_0f4fef92bb1fdac5: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/prokka/../../../modules/nf-core/prokka/main.nf
+  Script_2346ef0005d92358: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../iqtree/../../../modules/nf-core/iqtree/main.nf
+  Script_de862988fe3f2091: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/bactopia-tools.nf
+  Script_fd93f89b2d1b45db: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/ncbigenomedownload/main.nf
+  Script_0001eb6675eb017b: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../iqtree/main.nf
+  Script_28b956a88b5bebd6: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/main.nf
+  Script_3d5a5f3b71725b2b: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../panaroo/../../../modules/nf-core/panaroo/run/main.nf
+  Script_5259f0b1133544cc: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../lib/nf/bactopia_tools.nf
+  Script_dcb3991260cdbbf2: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../panaroo/main.nf
+  Script_b92ccf3967287e21: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/prokka/main.nf
+  Script_420e37718b7a1b75: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../scoary/main.nf
+  Script_f3fdf3ab95c48621: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../../../modules/nf-core/snpdists/main.nf
+  Script_2eac66bafaeae2db: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/pangenome/../clonalframeml/main.nf
+Mar-02 02:53:37.104 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Mar-02 02:53:37.104 [main] DEBUG nextflow.Session - Session await
+Mar-02 02:53:37.147 [Actor Thread 69] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `use_panaroo` -- Initialise it to a default value eg. `params.use_panaroo = some_value`
+Mar-02 02:53:37.423 [Actor Thread 74] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--panaroo-1.5.0; path=/home/ma95362/.bactopia/conda/bioconda--panaroo-1.5.0
+Mar-02 02:53:37.525 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-02 02:53:37.526 [Task submitter] INFO  nextflow.Session - [cc/b45435] Submitted process > BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate)
+Mar-02 02:58:36.957 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:03:37.041 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:08:37.085 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:13:37.147 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:18:37.182 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:23:37.234 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:28:37.281 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:33:37.324 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:38:37.377 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:43:37.406 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:48:37.439 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:53:37.477 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 03:58:37.524 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:03:37.565 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:08:37.589 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:13:37.618 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:18:37.635 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:23:37.658 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:28:37.679 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:33:37.697 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:38:37.709 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:43:37.808 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:48:37.810 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:53:37.870 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 04:58:37.870 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:03:37.876 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:08:37.880 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:13:37.881 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:18:37.981 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:23:37.991 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:28:37.992 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:33:37.999 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:38:38.002 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:43:38.099 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:48:38.105 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:53:38.106 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 05:58:38.118 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:03:38.217 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:08:38.227 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:13:38.235 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:18:38.245 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:23:38.251 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:28:38.259 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:33:38.277 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:38:38.289 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:43:38.295 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 06:48:38.305 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:12:54.980 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:17:55.020 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:22:55.046 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:27:55.082 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:32:55.118 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:37:55.150 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:42:55.173 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:47:55.195 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:52:55.220 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 14:57:55.240 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:02:55.275 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:07:55.320 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:12:55.366 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:17:55.393 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:22:55.420 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:27:55.438 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:32:55.469 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:37:55.484 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:42:55.501 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:47:55.527 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:52:55.560 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 15:57:55.590 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:02:55.615 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:07:55.638 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:12:55.661 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:17:55.684 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:22:55.703 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:27:55.727 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:32:55.747 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:37:55.778 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:42:55.801 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:47:55.823 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:52:55.850 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 16:57:55.876 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:02:55.901 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:07:55.920 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:12:55.938 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:17:55.962 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:22:55.989 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:27:56.015 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:32:56.044 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:37:56.050 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:42:56.143 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:47:56.240 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:49:07.907 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN (pirate); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/cc/b4543529d465b068889d75c309f3d2]
+Mar-02 17:49:08.737 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:PANGENOME:PG_TOOL:PANAROO_RUN > Skipping output binding because one or more optional files are missing: fileoutparam<4>
+Mar-02 17:49:08.783 [Actor Thread 92] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--snp-dists-0.8.2; path=/home/ma95362/.bactopia/conda/bioconda--snp-dists-0.8.2
+Mar-02 17:49:08.784 [Actor Thread 93] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--iqtree-2.2.2.7; path=/home/ma95362/.bactopia/conda/bioconda--iqtree-2.2.2.7
+Mar-02 17:49:08.815 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-02 17:49:08.816 [Task submitter] INFO  nextflow.Session - [ad/8b6e29] Submitted process > BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE (start-tree)
+Mar-02 17:49:08.835 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-02 17:49:08.836 [Task submitter] INFO  nextflow.Session - [8a/7ee6f8] Submitted process > BACTOPIATOOLS:PANGENOME:SNPDISTS (pirate)
+Mar-02 17:52:56.255 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 2; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE (start-tree); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/ad/8b6e290dc263dec6eb8de254d94f57]
+~> TaskHandler[id: 3; name: BACTOPIATOOLS:PANGENOME:SNPDISTS (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/8a/7ee6f8eff55130fc417aa590634821]
+Mar-02 17:55:15.249 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: BACTOPIATOOLS:PANGENOME:SNPDISTS (pirate); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/8a/7ee6f8eff55130fc417aa590634821]
+Mar-02 17:55:15.257 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:PANGENOME:SNPDISTS > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+Mar-02 17:57:56.334 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 2; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE (start-tree); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/ad/8b6e290dc263dec6eb8de254d94f57]
+Mar-02 18:02:56.353 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 2; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE (start-tree); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/ad/8b6e290dc263dec6eb8de254d94f57]
+Mar-02 18:07:56.403 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 2; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE (start-tree); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/ad/8b6e290dc263dec6eb8de254d94f57]
+Mar-02 18:10:39.705 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:IQTREE (start-tree); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/ad/8b6e290dc263dec6eb8de254d94f57]
+Mar-02 18:10:39.738 [Actor Thread 115] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--clonalframeml-1.12-bioconda--maskrc-svg-0.5; path=/home/ma95362/.bactopia/conda/bioconda--clonalframeml-1.12-bioconda--maskrc-svg-0.5
+Mar-02 18:10:39.754 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-02 18:10:39.755 [Task submitter] INFO  nextflow.Session - [90/f75d2a] Submitted process > BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate)
+Mar-02 18:12:56.460 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:17:56.475 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:22:56.481 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:27:56.485 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:32:56.490 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:37:56.499 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:42:56.534 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:47:56.634 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:52:56.732 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 18:57:56.828 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:02:56.926 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:07:56.937 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:12:56.948 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:17:56.961 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:22:56.965 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:27:57.065 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:32:57.165 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:37:57.264 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:42:57.358 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:47:57.456 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:52:57.556 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 19:57:57.655 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:02:57.749 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:07:57.848 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:12:57.943 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:17:58.043 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:22:58.139 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:27:58.141 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:32:58.144 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:37:58.146 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:42:58.245 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:47:58.345 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:52:58.439 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 20:57:58.538 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:02:58.638 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:07:58.640 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:12:58.739 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:17:58.835 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:22:58.838 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:27:58.937 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:32:59.037 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:37:59.044 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:42:59.050 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:47:59.057 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:52:59.156 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 21:57:59.160 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 22:02:59.258 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 22:07:59.357 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 22:10:39.825 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: COMPLETED; exit: -; error: nextflow.exception.ProcessException: Process exceeded running time limit (4h); workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451]
+Mar-02 22:10:39.831 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); work-dir=/home/ma95362/muszlut/Merged_Bactopia_Analysis/work/90/f75d2a484f964530e5a5c9d7b7c451
+  error [nextflow.exception.ProcessFailedException]: Process `BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate)` failed
+Mar-02 22:10:39.871 [TaskFinalizer-4] INFO  nextflow.processor.TaskProcessor - [90/f75d2a] NOTE: Process `BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate)` failed -- Execution is retried (1)
+Mar-02 22:10:39.893 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-02 22:10:39.893 [Task submitter] INFO  nextflow.Session - [23/59d34a] Re-submitted process > BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate)
+Mar-02 22:12:59.409 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:17:59.506 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:22:59.508 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:27:59.600 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:32:59.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:37:59.705 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:42:59.715 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:47:59.732 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:52:59.734 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 22:57:59.829 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:02:59.927 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:07:59.930 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:13:00.029 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:18:00.124 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:23:00.219 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:28:00.319 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:33:00.325 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:38:00.332 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:43:00.430 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:48:00.529 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:53:00.534 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-02 23:58:00.629 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:03:00.717 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:08:00.805 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:13:00.900 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:18:00.990 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:23:01.081 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:28:01.172 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:33:01.261 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:38:01.353 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:43:01.442 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:48:01.533 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:53:01.620 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 00:58:01.710 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:03:01.807 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:08:01.892 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:13:01.898 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:18:01.903 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:23:01.998 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:28:02.086 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:33:02.174 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:38:02.272 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:43:02.362 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:48:02.370 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:53:02.467 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 01:58:02.474 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:03:02.479 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:08:02.493 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:13:02.591 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:18:02.685 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:23:02.781 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:28:02.783 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:33:02.877 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:38:02.968 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:43:03.062 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:48:03.156 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:53:03.246 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 02:58:03.340 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:03:03.344 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:08:03.430 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:13:03.508 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:18:03.584 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:23:03.668 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:28:03.747 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:33:03.825 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:38:03.916 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:40:40.011 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME (pirate); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/23/59d34a245913237ba4c4718ce24a42]
+Mar-03 03:40:40.042 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:PANGENOME:CLONALFRAMEML:CLONALFRAME > Skipping output binding because one or more optional files are missing: fileoutparam<7>
+Mar-03 03:40:40.082 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-03 03:40:40.083 [Task submitter] INFO  nextflow.Session - [66/13f631] Submitted process > BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE (core-genome)
+Mar-03 03:43:03.951 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 6; name: BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE (core-genome); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/66/13f631c81d4ab12f68e886478c6c12]
+Mar-03 03:48:03.971 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 6; name: BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE (core-genome); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/66/13f631c81d4ab12f68e886478c6c12]
+Mar-03 03:52:19.120 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: BACTOPIATOOLS:PANGENOME:FINAL_TREE:IQTREE_MODULE (core-genome); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/66/13f631c81d4ab12f68e886478c6c12]
+Mar-03 03:52:19.166 [Actor Thread 145] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 5; slices: 1; internal sort time: 0.02 s; external sort time: 0.002 s; total time: 0.022 s
+Mar-03 03:52:19.176 [Actor Thread 145] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/collect-file/daf8694c6ee44d1530fe354340d62c4c
+Mar-03 03:52:19.200 [Actor Thread 145] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-3376459045273080778
+Mar-03 03:52:19.216 [Actor Thread 152] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--multiqc-1.24.1; path=/home/ma95362/.bactopia/conda/bioconda--multiqc-1.24.1
+Mar-03 03:52:19.230 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-03 03:52:19.231 [Task submitter] INFO  nextflow.Session - [d9/0f680d] Submitted process > BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS (1)
+Mar-03 03:52:21.860 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS (1); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/d9/0f680d46554a796df8974a73f5ba61]
+Mar-03 03:52:21.868 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS > Skipping output binding because one or more optional files are missing: fileoutparam<2>
+Mar-03 03:52:21.882 [main] DEBUG nextflow.Session - Session await > all processes finished
+Mar-03 03:52:21.962 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Mar-03 03:52:21.962 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-03 03:52:21.964 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Mar-03 03:52:22.951 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Mar-03 03:52:22.956 [main] INFO  nextflow.script.BaseScript - 
+    Bactopia Tools: `pangenome Execution Summary
+    ---------------------------
+    Bactopia Version : 3.1.0
+    Nextflow Version : 24.04.4
+    Command Line     : nextflow run /apps/eb/Bactopia/3.1.0//share/bactopia-3.1.0/main.nf -w /home/ma95362/muszlut/Merged_Bactopia_Analysis/work/ --wf pangenome --bactopia /scratch/ma95362/musse_MGA/merged/MGA_paired_end_samples --exclude /scratch/ma95362/musse_MGA/merged/bactopia-exclude-plus.tsv
+    Resumed          : false
+    Completed At     : 2025-03-03T03:52:22.951922192-05:00
+    Duration         : 1d 58m 58s
+    Success          : true
+    Exit Code        : 0
+    Error Report     : -
+    Launch Dir       : /home/ma95362/muszlut/Merged_Bactopia_Analysis
+    
+Mar-03 03:52:22.963 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=6; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=1; abortedCount=0; succeedDuration=3d 12h 18m 16s; failedDuration=16h; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=8; peakMemory=40 GB; ]
+Mar-03 03:52:22.963 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Mar-03 03:52:22.965 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Mar-03 03:52:23.825 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Mar-03 03:52:24.143 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Mar-03 03:52:24.163 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Mar-03 03:52:24.164 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

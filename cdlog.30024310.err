@@ -1,0 +1,10 @@
+Error: unknown flag: --include
+
+  datasets download genome [command]
+
+Available Commands
+  accession   Download a genome data package by Assembly or BioProject accession
+  taxon       Download a genome data package by taxon (NCBI Taxonomy ID, scientific or common name at any tax rank)
+Use datasets download genome <command> --help for detailed help about a command.
+
+unzip:  cannot find or open ncbi_dataset.zip, ncbi_dataset.zip.zip or ncbi_dataset.zip.ZIP.

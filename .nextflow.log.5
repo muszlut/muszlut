@@ -1,0 +1,865 @@
+Oct-19 12:46:43.140 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /apps/eb/Bactopia/3.1.0//share/bactopia-3.1.0/main.nf -w /home/ma95362/muszlut/work/ --wf snippy --reference /scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk --exlude /scratch/ma95362/PRJNA1056148_bactopia/bactopia-exclude.tsv --bactopia /scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples
+Oct-19 12:46:43.239 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Oct-19 12:46:43.265 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/ma95362/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Oct-19 12:46:43.278 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Oct-19 12:46:43.279 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Oct-19 12:46:43.283 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Oct-19 12:46:43.298 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Oct-19 12:46:43.322 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config
+Oct-19 12:46:43.325 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config
+Oct-19 12:46:43.356 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/ma95362/.nextflow/secrets/store.json
+Oct-19 12:46:43.360 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@73d69c0f] - activable => nextflow.secret.LocalSecretsProvider@73d69c0f
+Oct-19 12:46:43.385 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Oct-19 12:46:45.807 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Oct-19 12:46:45.825 [main] DEBUG nextflow.cli.CmdRun - Launching `/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/main.nf` [distracted_lichterman] DSL2 - revision: 0cd9f79ba7
+Oct-19 12:46:45.827 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Oct-19 12:46:45.827 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Oct-19 12:46:45.891 [main] DEBUG nextflow.Session - Session UUID: d33ad65c-1f40-4361-a28a-354566c03154
+Oct-19 12:46:45.891 [main] DEBUG nextflow.Session - Run name: distracted_lichterman
+Oct-19 12:46:45.892 [main] DEBUG nextflow.Session - Executor pool size: 8
+Oct-19 12:46:45.901 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Oct-19 12:46:45.916 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (03:05 EDT)
+  System: Linux 4.18.0-477.15.1.el8_8.x86_64
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 21-internal-adhoc.conda.src
+  Encoding: UTF-8 (UTF-8)
+  Process: 3550484@c4-4 [10.2.1.75]
+  CPUs: 8 - Mem: 40 GB (39.7 GB) - Swap: 0 (0) - Virtual threads ON
+Oct-19 12:46:45.942 [main] DEBUG nextflow.Session - Work-dir: /home/ma95362/muszlut/work [nfs]
+Oct-19 12:46:46.012 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Oct-19 12:46:46.029 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Oct-19 12:46:46.110 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Oct-19 12:46:46.120 [main] DEBUG nextflow.util.CustomPoolFactory - Creating virtual thread pool
+Oct-19 12:46:46.239 [main] DEBUG nextflow.Session - Session start
+Oct-19 12:46:46.243 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples/bactopia-runs/snippy-20241019-124645/nf-reports/snippy-trace.txt
+Oct-19 12:46:46.254 [main] DEBUG nextflow.Session - Using default localLib path: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib
+Oct-19 12:46:46.259 [main] DEBUG nextflow.Session - Adding to the classpath library: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib
+Oct-19 12:46:46.260 [main] DEBUG nextflow.Session - Adding to the classpath library: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib/nfcore_external_java_deps.jar
+Oct-19 12:46:46.392 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Oct-19 12:46:48.145 [main] INFO  nextflow.script.BaseScript - MODULES: [ncbigenomedownload, snippy_run, snippy_core, gubbins, iqtree, snpdists]
+Oct-19 12:46:48.329 [main] WARN  nextflow.Nextflow - Found unexpected parameters:
+* --exlude: /scratch/ma95362/PRJNA1056148_bactopia/bactopia-exclude.tsv
+Oct-19 12:46:48.329 [main] INFO  nextflow.Nextflow - - [2mIgnore this warning: params.schema_ignore_params = "exlude" [0m
+Oct-19 12:46:48.353 [main] INFO  nextflow.Nextflow - 
+
+-[2m------------------------------------------------------------------[0m-
+[0;34m   _                _              _         _              _              [0m
+[0;34m  | |__   __ _  ___| |_ ___  _ __ (_) __ _  | |_ ___   ___ | |___          [0m
+[0;34m  | '_ \ / _` |/ __| __/ _ \| '_ \| |/ _` | | __/ _ \ / _ \| / __|    [0m
+[0;34m  | |_) | (_| | (__| || (_) | |_) | | (_| | | || (_) | (_) | \__ \        [0m
+[0;34m  |_.__/ \__,_|\___|\__\___/| .__/|_|\__,_|  \__\___/ \___/|_|___/ [0m
+[0;34m                            |_|                                            [0m
+[0;36m  bactopia tools snippy v3.1.0[0m
+[0;36m  Rapid variant calling from Illumina sequence reads with optional core-SNP phylogeny [0m
+-[2m------------------------------------------------------------------[0m-
+[1mCore Nextflow options[0m
+  [0;34mrunName              : [0;32mdistracted_lichterman[0m
+  [0;34mcontainer            : [0;32mquay.io/bactopia/bactopia:3.1.0[0m
+  [0;34mlaunchDir            : [0;32m/home/ma95362/muszlut[0m
+  [0;34mworkDir              : [0;32m/home/ma95362/muszlut/work[0m
+  [0;34mprojectDir           : [0;32m/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0[0m
+  [0;34muserName             : [0;32mma95362[0m
+  [0;34mprofile              : [0;32mstandard[0m
+  [0;34mconfigFiles          : [0;32m/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config[0m
+
+[1mRequired Parameters[0m
+  [0;34mbactopia             : [0;32m/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples[0m
+
+[1mNCBI Genome Download Parameters[0m
+  [0;34mformat               : [0;32mgenbank[0m
+
+[1mSnippy Parameters[0m
+  [0;34mreference            : [0;32m/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk[0m
+
+[1mOptional Parameters[0m
+  [0;34moutdir               : [0;32m/scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples[0m
+
+[1mMax Job Request Parameters[0m
+  [0;34mmax_memory           : [0;32m39 GB[0m (Original request ([0;32m128 GB[0m) adjusted to fit your system)
+  [0;34mmax_time             : [0;32m10d[0m
+
+[1mNextflow Profile Parameters[0m
+  [0;34mcondadir             : [0;32m/home/ma95362/.bactopia/conda[0m
+  [0;34mdatasets_cache       : [0;32m/home/ma95362/.bactopia/datasets[0m
+  [0;34msingularity_cache_dir: [0;32m/home/ma95362/.bactopia/singularity[0m
+
+[1mHelpful Parameters[0m
+  [0;34mwf                   : [0;32msnippy[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m------------------------------------------------------------------[0m-
+If you use bactopia for your analysis please cite:
+
+* Bactopia
+  https://doi.org/10.1128/mSystems.00190-20
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+  https://bactopia.github.io/acknowledgements/
+-[2m------------------------------------------------------------------[0m-
+Oct-19 12:46:48.355 [main] WARN  nextflow.Nextflow - 
+Oct-19 12:46:48.355 [main] WARN  nextflow.Nextflow - Conda Disclaimer
+Oct-19 12:46:48.355 [main] WARN  nextflow.Nextflow - 
+Oct-19 12:46:48.355 [main] WARN  nextflow.Nextflow - If you have access to Docker or Singularity, please consider
+Oct-19 12:46:48.356 [main] WARN  nextflow.Nextflow - running Bactopia using containers. The containers are less
+Oct-19 12:46:48.356 [main] WARN  nextflow.Nextflow - susceptible to Conda environment related issues (e.g. version
+Oct-19 12:46:48.356 [main] WARN  nextflow.Nextflow - conflicts) and errors caused by creation of conda environments
+Oct-19 12:46:48.356 [main] WARN  nextflow.Nextflow - in parallel (use '--max_cpus 1' to over come this error).
+Oct-19 12:46:48.357 [main] WARN  nextflow.Nextflow - 
+Oct-19 12:46:48.357 [main] WARN  nextflow.Nextflow - To use containers, you can use the profile parameter
+Oct-19 12:46:48.357 [main] WARN  nextflow.Nextflow -     Docker: -profile docker
+Oct-19 12:46:48.357 [main] WARN  nextflow.Nextflow -     Singularity: -profile singularity
+Oct-19 12:46:48.357 [main] WARN  nextflow.Nextflow - 
+Oct-19 12:46:48.358 [main] INFO  nextflow.Nextflow - -[2m------------------------------------------------------------------[0m-
+Oct-19 12:46:50.055 [main] INFO  nextflow.Nextflow - Found 89 samples to process
+Oct-19 12:46:50.056 [main] INFO  nextflow.Nextflow - 
+If this looks wrong, now's your chance to back out (CTRL+C 3 times).
+Oct-19 12:46:50.056 [main] INFO  nextflow.Nextflow - Sleeping for 5 seconds...
+Oct-19 12:46:50.056 [main] INFO  nextflow.Nextflow - --------------------------------------------------------------------
+Oct-19 12:46:55.203 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE
+Oct-19 12:46:55.217 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-19 12:46:55.217 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-19 12:46:55.224 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Oct-19 12:46:55.231 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=40 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Oct-19 12:46:55.233 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Oct-19 12:46:55.323 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE
+Oct-19 12:46:55.326 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-19 12:46:55.326 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-19 12:46:55.347 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:SNIPPY:SNPDISTS
+Oct-19 12:46:55.349 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-19 12:46:55.349 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-19 12:46:55.367 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE
+Oct-19 12:46:55.371 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-19 12:46:55.371 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-19 12:46:55.393 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE
+Oct-19 12:46:55.394 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_long` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE
+Oct-19 12:46:55.396 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-19 12:46:55.396 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-19 12:46:55.435 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS
+Oct-19 12:46:55.436 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Oct-19 12:46:55.437 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Oct-19 12:46:55.442 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE, GUBBINS, SNIPPY_CORE, BACTOPIATOOLS:SNIPPY:SNPDISTS, IQTREE, GUBBINS_MODULE, NCBIGENOMEDOWNLOAD_MODULE, BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE, BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS, IQTREE_MODULE, BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE, SNPDISTS, BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE, SNIPPY_RUN_MODULE, SNIPPY_CORE_MODULE, CUSTOM_DUMPSOFTWAREVERSIONS, NCBIGENOMEDOWNLOAD, SNIPPY_RUN
+Oct-19 12:46:55.444 [main] DEBUG nextflow.Session - Igniting dataflow network (15)
+Oct-19 12:46:55.449 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE
+Oct-19 12:46:55.449 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE
+Oct-19 12:46:55.449 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:SNPDISTS
+Oct-19 12:46:55.450 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE
+Oct-19 12:46:55.452 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE
+Oct-19 12:46:55.452 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS
+Oct-19 12:46:55.453 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_fd93f89b2d1b45db: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/ncbigenomedownload/main.nf
+  Script_8cb6d7412c42ffa8: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../../../modules/nf-core/snippy/core/main.nf
+  Script_0001eb6675eb017b: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../iqtree/main.nf
+  Script_71a5607f13a1696a: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../modules/nf-core/custom/dumpsoftwareversions/main.nf
+  Script_28b956a88b5bebd6: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/main.nf
+  Script_5259f0b1133544cc: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../lib/nf/bactopia_tools.nf
+  Script_63d132b976012e46: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/ncbigenomedownload/../../../modules/nf-core/ncbigenomedownload/main.nf
+  Script_a22a3f2cbd620671: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../iqtree/../../../lib/nf/functions.nf
+  Script_2346ef0005d92358: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../iqtree/../../../modules/nf-core/iqtree/main.nf
+  Script_94f0ca4410a2fb20: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../gubbins/main.nf
+  Script_f3fdf3ab95c48621: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../../../modules/nf-core/snpdists/main.nf
+  Script_0eac67fd2c7fb19f: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/main.nf
+  Script_ac38e6da40e1c181: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../gubbins/../../../modules/nf-core/gubbins/main.nf
+  Script_72358a91f794e9dc: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../../../modules/nf-core/snippy/run/main.nf
+  Script_de862988fe3f2091: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/bactopia-tools.nf
+Oct-19 12:46:55.453 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Oct-19 12:46:55.453 [main] DEBUG nextflow.Session - Session await
+Oct-19 12:46:55.592 [Actor Thread 70] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--bactopia-variants-1.0.2; path=/home/ma95362/.bactopia/conda/bioconda--bactopia-variants-1.0.2
+Oct-19 12:46:55.733 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:46:55.734 [Task submitter] INFO  nextflow.Session - [54/b60bbc] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009159 - genomic)
+Oct-19 12:46:55.754 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:46:55.755 [Task submitter] INFO  nextflow.Session - [e0/e9714d] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009196 - genomic)
+Oct-19 12:50:22.101 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009159 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/54/b60bbca075c3e6a166425c0727e716]
+Oct-19 12:50:22.111 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:50:22.112 [Task submitter] INFO  nextflow.Session - [0e/4e42c2] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009215 - genomic)
+Oct-19 12:50:23.789 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009196 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/e0/e9714d04eb18a1ba7b80c561faf762]
+Oct-19 12:50:23.798 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:50:23.798 [Task submitter] INFO  nextflow.Session - [b3/48562a] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009140 - genomic)
+Oct-19 12:51:55.403 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 6; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009215 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0e/4e42c2b9c94825473e13dd789dad78]
+~> TaskHandler[id: 7; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009140 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b3/48562af0b1fc7f44a388a8ce6b05ae]
+Oct-19 12:51:55.842 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 85 -- tasks to be submitted are shown below
+~> TaskHandler[id: 1; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009153 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/af/04d82a95c5f2845b29664cfb3cdae0]
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009161 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/05/133aca262348aebe29acd3802a9f53]
+~> TaskHandler[id: 3; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009227 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c3/7d5f20b3fe4baaf129be663f6099b0]
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009185 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/23/6c999608768af379a838968f502bca]
+~> TaskHandler[id: 9; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009178 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a9/c009f68a4c2ca55706e740a03b8479]
+~> TaskHandler[id: 10; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009172 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1a/95642fa6114a8a710e7aa2de4de663]
+~> TaskHandler[id: 11; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009206 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/7e/a5739aa274287a7ae8cd73bf75cd59]
+~> TaskHandler[id: 12; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009201 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8e/38d72a2dfc1bc2aacbc9e4f02d6f9f]
+~> TaskHandler[id: 14; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009175 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ab/85f6f67e49c978358b41d54799c3f3]
+~> TaskHandler[id: 15; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009147 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/27/8bf0754f9ed16ee377f7ee993682f5]
+.. remaining tasks omitted.
+Oct-19 12:52:57.017 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009215 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/0e/4e42c2b9c94825473e13dd789dad78]
+Oct-19 12:52:57.027 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:52:57.028 [Task submitter] INFO  nextflow.Session - [af/04d82a] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009153 - genomic)
+Oct-19 12:53:44.123 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009140 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/b3/48562af0b1fc7f44a388a8ce6b05ae]
+Oct-19 12:53:44.155 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:53:44.157 [Task submitter] INFO  nextflow.Session - [05/133aca] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009161 - genomic)
+Oct-19 12:56:10.632 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009153 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/af/04d82a95c5f2845b29664cfb3cdae0]
+Oct-19 12:56:10.642 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:56:10.642 [Task submitter] INFO  nextflow.Session - [c3/7d5f20] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009227 - genomic)
+Oct-19 12:56:55.491 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 4; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009161 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/05/133aca262348aebe29acd3802a9f53]
+~> TaskHandler[id: 3; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009227 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c3/7d5f20b3fe4baaf129be663f6099b0]
+Oct-19 12:56:56.679 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 82 -- tasks to be submitted are shown below
+~> TaskHandler[id: 5; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009185 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/23/6c999608768af379a838968f502bca]
+~> TaskHandler[id: 9; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009178 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a9/c009f68a4c2ca55706e740a03b8479]
+~> TaskHandler[id: 10; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009172 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1a/95642fa6114a8a710e7aa2de4de663]
+~> TaskHandler[id: 11; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009206 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/7e/a5739aa274287a7ae8cd73bf75cd59]
+~> TaskHandler[id: 12; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009201 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8e/38d72a2dfc1bc2aacbc9e4f02d6f9f]
+~> TaskHandler[id: 14; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009175 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ab/85f6f67e49c978358b41d54799c3f3]
+~> TaskHandler[id: 15; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009147 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/27/8bf0754f9ed16ee377f7ee993682f5]
+~> TaskHandler[id: 17; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009212 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4f/6270b4b868ee657f6534d3ef390da7]
+~> TaskHandler[id: 16; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009218 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/58/b2afed8f2391c129da11b1c09d019a]
+~> TaskHandler[id: 19; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009166 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/e2/52c86bd056a89ca6460424818e94d2]
+.. remaining tasks omitted.
+Oct-19 12:57:00.767 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009161 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/05/133aca262348aebe29acd3802a9f53]
+Oct-19 12:57:00.788 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:57:00.790 [Task submitter] INFO  nextflow.Session - [23/6c9996] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009185 - genomic)
+Oct-19 12:59:06.995 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009227 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/c3/7d5f20b3fe4baaf129be663f6099b0]
+Oct-19 12:59:07.002 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 12:59:07.002 [Task submitter] INFO  nextflow.Session - [a9/c009f6] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009178 - genomic)
+Oct-19 13:00:14.448 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009185 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/23/6c999608768af379a838968f502bca]
+Oct-19 13:00:14.455 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:00:14.455 [Task submitter] INFO  nextflow.Session - [1a/95642f] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009172 - genomic)
+Oct-19 13:01:15.343 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009178 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/a9/c009f68a4c2ca55706e740a03b8479]
+Oct-19 13:01:15.353 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:01:15.353 [Task submitter] INFO  nextflow.Session - [7e/a5739a] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009206 - genomic)
+Oct-19 13:01:55.498 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 10; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009172 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1a/95642fa6114a8a710e7aa2de4de663]
+~> TaskHandler[id: 11; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009206 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/7e/a5739aa274287a7ae8cd73bf75cd59]
+Oct-19 13:01:57.366 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 78 -- tasks to be submitted are shown below
+~> TaskHandler[id: 12; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009201 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8e/38d72a2dfc1bc2aacbc9e4f02d6f9f]
+~> TaskHandler[id: 14; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009175 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ab/85f6f67e49c978358b41d54799c3f3]
+~> TaskHandler[id: 15; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009147 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/27/8bf0754f9ed16ee377f7ee993682f5]
+~> TaskHandler[id: 17; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009212 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4f/6270b4b868ee657f6534d3ef390da7]
+~> TaskHandler[id: 16; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009218 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/58/b2afed8f2391c129da11b1c09d019a]
+~> TaskHandler[id: 19; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009166 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/e2/52c86bd056a89ca6460424818e94d2]
+~> TaskHandler[id: 13; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009191 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f2/d59435060eaa66d5d18b498d2d8a2d]
+~> TaskHandler[id: 18; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009188 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8a/b108dcf114922c62721871e8b40e94]
+~> TaskHandler[id: 20; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009182 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/96/33214a9810b29049b7eff824a72bd0]
+~> TaskHandler[id: 22; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009154 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/6ed266ac07b4799e5463154e9f8477]
+.. remaining tasks omitted.
+Oct-19 13:03:10.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009172 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/1a/95642fa6114a8a710e7aa2de4de663]
+Oct-19 13:03:10.705 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:03:10.705 [Task submitter] INFO  nextflow.Session - [8e/38d72a] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009201 - genomic)
+Oct-19 13:03:54.043 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009206 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/7e/a5739aa274287a7ae8cd73bf75cd59]
+Oct-19 13:03:54.053 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:03:54.053 [Task submitter] INFO  nextflow.Session - [ab/85f6f6] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009175 - genomic)
+Oct-19 13:05:00.333 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009201 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/8e/38d72a2dfc1bc2aacbc9e4f02d6f9f]
+Oct-19 13:05:00.345 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:05:00.346 [Task submitter] INFO  nextflow.Session - [27/8bf075] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009147 - genomic)
+Oct-19 13:06:55.581 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 14; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009175 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ab/85f6f67e49c978358b41d54799c3f3]
+~> TaskHandler[id: 15; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009147 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/27/8bf0754f9ed16ee377f7ee993682f5]
+Oct-19 13:06:57.384 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 75 -- tasks to be submitted are shown below
+~> TaskHandler[id: 17; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009212 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4f/6270b4b868ee657f6534d3ef390da7]
+~> TaskHandler[id: 16; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009218 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/58/b2afed8f2391c129da11b1c09d019a]
+~> TaskHandler[id: 19; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009166 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/e2/52c86bd056a89ca6460424818e94d2]
+~> TaskHandler[id: 13; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009191 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f2/d59435060eaa66d5d18b498d2d8a2d]
+~> TaskHandler[id: 18; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009188 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8a/b108dcf114922c62721871e8b40e94]
+~> TaskHandler[id: 20; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009182 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/96/33214a9810b29049b7eff824a72bd0]
+~> TaskHandler[id: 22; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009154 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/6ed266ac07b4799e5463154e9f8477]
+~> TaskHandler[id: 21; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009220 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/97/4f5fe513821247aeb0d2ca1e54c586]
+~> TaskHandler[id: 25; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009216 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1d/6cbbd99aed5e6c0bafd39a5bf3a9e5]
+~> TaskHandler[id: 24; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009150 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f8/e1adf118214f187583c3c90e69042a]
+.. remaining tasks omitted.
+Oct-19 13:07:06.641 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009175 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/ab/85f6f67e49c978358b41d54799c3f3]
+Oct-19 13:07:06.649 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:07:06.649 [Task submitter] INFO  nextflow.Session - [4f/6270b4] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009212 - genomic)
+Oct-19 13:08:17.131 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009147 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/27/8bf0754f9ed16ee377f7ee993682f5]
+Oct-19 13:08:17.137 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:08:17.138 [Task submitter] INFO  nextflow.Session - [58/b2afed] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009218 - genomic)
+Oct-19 13:10:11.303 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009218 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/58/b2afed8f2391c129da11b1c09d019a]
+Oct-19 13:10:11.310 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:10:11.311 [Task submitter] INFO  nextflow.Session - [e2/52c86b] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009166 - genomic)
+Oct-19 13:10:19.026 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 17; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009212 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/4f/6270b4b868ee657f6534d3ef390da7]
+Oct-19 13:10:19.033 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:10:19.033 [Task submitter] INFO  nextflow.Session - [f2/d59435] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009191 - genomic)
+Oct-19 13:11:55.661 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 19; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009166 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/e2/52c86bd056a89ca6460424818e94d2]
+~> TaskHandler[id: 13; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009191 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f2/d59435060eaa66d5d18b498d2d8a2d]
+Oct-19 13:11:58.062 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 71 -- tasks to be submitted are shown below
+~> TaskHandler[id: 18; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009188 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8a/b108dcf114922c62721871e8b40e94]
+~> TaskHandler[id: 20; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009182 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/96/33214a9810b29049b7eff824a72bd0]
+~> TaskHandler[id: 22; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009154 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/6ed266ac07b4799e5463154e9f8477]
+~> TaskHandler[id: 21; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009220 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/97/4f5fe513821247aeb0d2ca1e54c586]
+~> TaskHandler[id: 25; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009216 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1d/6cbbd99aed5e6c0bafd39a5bf3a9e5]
+~> TaskHandler[id: 24; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009150 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f8/e1adf118214f187583c3c90e69042a]
+~> TaskHandler[id: 26; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009168 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/2f/283d2f413725714baf03910e0dfd9e]
+~> TaskHandler[id: 27; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009186 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/36/d8f12eb3c2b24f6c7872cbf8ad4eb4]
+~> TaskHandler[id: 23; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009224 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b3/9f3d4daa5667cca21c957410a34379]
+~> TaskHandler[id: 29; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009143 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f7/2f14b57d38181ab9a5d68eb8666eaf]
+.. remaining tasks omitted.
+Oct-19 13:13:07.028 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009191 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/f2/d59435060eaa66d5d18b498d2d8a2d]
+Oct-19 13:13:07.035 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:13:07.035 [Task submitter] INFO  nextflow.Session - [8a/b108dc] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009188 - genomic)
+Oct-19 13:13:25.149 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 19; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009166 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/e2/52c86bd056a89ca6460424818e94d2]
+Oct-19 13:13:25.156 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:13:25.156 [Task submitter] INFO  nextflow.Session - [96/33214a] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009182 - genomic)
+Oct-19 13:16:25.271 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 18; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009188 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/8a/b108dcf114922c62721871e8b40e94]
+Oct-19 13:16:25.277 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:16:25.278 [Task submitter] INFO  nextflow.Session - [bb/6ed266] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009154 - genomic)
+Oct-19 13:16:43.776 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 20; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009182 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/96/33214a9810b29049b7eff824a72bd0]
+Oct-19 13:16:43.782 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:16:43.782 [Task submitter] INFO  nextflow.Session - [97/4f5fe5] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009220 - genomic)
+Oct-19 13:16:55.688 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 22; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009154 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/6ed266ac07b4799e5463154e9f8477]
+~> TaskHandler[id: 21; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009220 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/97/4f5fe513821247aeb0d2ca1e54c586]
+Oct-19 13:16:58.787 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 67 -- tasks to be submitted are shown below
+~> TaskHandler[id: 25; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009216 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1d/6cbbd99aed5e6c0bafd39a5bf3a9e5]
+~> TaskHandler[id: 24; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009150 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f8/e1adf118214f187583c3c90e69042a]
+~> TaskHandler[id: 26; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009168 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/2f/283d2f413725714baf03910e0dfd9e]
+~> TaskHandler[id: 27; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009186 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/36/d8f12eb3c2b24f6c7872cbf8ad4eb4]
+~> TaskHandler[id: 23; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009224 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b3/9f3d4daa5667cca21c957410a34379]
+~> TaskHandler[id: 29; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009143 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f7/2f14b57d38181ab9a5d68eb8666eaf]
+~> TaskHandler[id: 30; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009149 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1e/18a37d56dee0fa277dc3f2077492e0]
+~> TaskHandler[id: 31; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009205 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1c/b92ad0c3944e9967247df5a3c8d702]
+~> TaskHandler[id: 28; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009162 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/dd/e46946a6495c8dec55569f5756fc65]
+~> TaskHandler[id: 32; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009171 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/96/85ee89abbf59d6f080b206c34878af]
+.. remaining tasks omitted.
+Oct-19 13:19:41.329 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 22; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009154 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/bb/6ed266ac07b4799e5463154e9f8477]
+Oct-19 13:19:41.335 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:19:41.336 [Task submitter] INFO  nextflow.Session - [1d/6cbbd9] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009216 - genomic)
+Oct-19 13:19:43.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 21; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009220 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/97/4f5fe513821247aeb0d2ca1e54c586]
+Oct-19 13:19:43.704 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:19:43.705 [Task submitter] INFO  nextflow.Session - [f8/e1adf1] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009150 - genomic)
+Oct-19 13:21:55.756 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 25; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009216 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1d/6cbbd99aed5e6c0bafd39a5bf3a9e5]
+~> TaskHandler[id: 24; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009150 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f8/e1adf118214f187583c3c90e69042a]
+Oct-19 13:21:59.739 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 65 -- tasks to be submitted are shown below
+~> TaskHandler[id: 26; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009168 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/2f/283d2f413725714baf03910e0dfd9e]
+~> TaskHandler[id: 27; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009186 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/36/d8f12eb3c2b24f6c7872cbf8ad4eb4]
+~> TaskHandler[id: 23; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009224 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b3/9f3d4daa5667cca21c957410a34379]
+~> TaskHandler[id: 29; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009143 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f7/2f14b57d38181ab9a5d68eb8666eaf]
+~> TaskHandler[id: 30; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009149 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1e/18a37d56dee0fa277dc3f2077492e0]
+~> TaskHandler[id: 31; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009205 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1c/b92ad0c3944e9967247df5a3c8d702]
+~> TaskHandler[id: 28; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009162 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/dd/e46946a6495c8dec55569f5756fc65]
+~> TaskHandler[id: 32; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009171 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/96/85ee89abbf59d6f080b206c34878af]
+~> TaskHandler[id: 33; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009195 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/21/d867ed9508fbb25623ea165cbfa556]
+~> TaskHandler[id: 34; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009176 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/d2/65d0e0d3c280b4dcb0d7af03915481]
+.. remaining tasks omitted.
+Oct-19 13:22:25.476 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 25; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009216 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/1d/6cbbd99aed5e6c0bafd39a5bf3a9e5]
+Oct-19 13:22:25.483 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:22:25.483 [Task submitter] INFO  nextflow.Session - [2f/283d2f] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009168 - genomic)
+Oct-19 13:23:04.476 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 24; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009150 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/f8/e1adf118214f187583c3c90e69042a]
+Oct-19 13:23:04.483 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:23:04.484 [Task submitter] INFO  nextflow.Session - [36/d8f12e] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009186 - genomic)
+Oct-19 13:25:40.248 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 26; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009168 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/2f/283d2f413725714baf03910e0dfd9e]
+Oct-19 13:25:40.254 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:25:40.254 [Task submitter] INFO  nextflow.Session - [b3/9f3d4d] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009224 - genomic)
+Oct-19 13:26:20.836 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 27; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009186 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/36/d8f12eb3c2b24f6c7872cbf8ad4eb4]
+Oct-19 13:26:20.850 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:26:20.850 [Task submitter] INFO  nextflow.Session - [f7/2f14b5] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009143 - genomic)
+Oct-19 13:26:55.787 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 23; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009224 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b3/9f3d4daa5667cca21c957410a34379]
+~> TaskHandler[id: 29; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009143 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/f7/2f14b57d38181ab9a5d68eb8666eaf]
+Oct-19 13:26:59.861 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 61 -- tasks to be submitted are shown below
+~> TaskHandler[id: 30; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009149 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1e/18a37d56dee0fa277dc3f2077492e0]
+~> TaskHandler[id: 31; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009205 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1c/b92ad0c3944e9967247df5a3c8d702]
+~> TaskHandler[id: 28; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009162 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/dd/e46946a6495c8dec55569f5756fc65]
+~> TaskHandler[id: 32; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009171 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/96/85ee89abbf59d6f080b206c34878af]
+~> TaskHandler[id: 33; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009195 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/21/d867ed9508fbb25623ea165cbfa556]
+~> TaskHandler[id: 34; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009176 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/d2/65d0e0d3c280b4dcb0d7af03915481]
+~> TaskHandler[id: 35; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009198 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5b/4ef8e2bf2a78cf3f3b53b2b8feb8a5]
+~> TaskHandler[id: 37; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009208 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9b/d1b908ee557ac1f4661fb6bbe4c5ec]
+~> TaskHandler[id: 39; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009144 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9a/a4dfb1966a6913999daf571005ec4e]
+~> TaskHandler[id: 42; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009211 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/44/e94428aa526ef3536c8740667f9ac9]
+.. remaining tasks omitted.
+Oct-19 13:28:28.351 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 23; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009224 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/b3/9f3d4daa5667cca21c957410a34379]
+Oct-19 13:28:28.359 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:28:28.359 [Task submitter] INFO  nextflow.Session - [1e/18a37d] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009149 - genomic)
+Oct-19 13:29:31.447 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 29; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009143 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/f7/2f14b57d38181ab9a5d68eb8666eaf]
+Oct-19 13:29:31.456 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:29:31.457 [Task submitter] INFO  nextflow.Session - [1c/b92ad0] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009205 - genomic)
+Oct-19 13:31:41.121 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 30; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009149 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/1e/18a37d56dee0fa277dc3f2077492e0]
+Oct-19 13:31:41.128 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:31:41.129 [Task submitter] INFO  nextflow.Session - [dd/e46946] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009162 - genomic)
+Oct-19 13:31:55.836 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 31; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009205 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/1c/b92ad0c3944e9967247df5a3c8d702]
+~> TaskHandler[id: 28; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009162 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/dd/e46946a6495c8dec55569f5756fc65]
+Oct-19 13:32:00.135 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 58 -- tasks to be submitted are shown below
+~> TaskHandler[id: 32; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009171 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/96/85ee89abbf59d6f080b206c34878af]
+~> TaskHandler[id: 33; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009195 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/21/d867ed9508fbb25623ea165cbfa556]
+~> TaskHandler[id: 34; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009176 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/d2/65d0e0d3c280b4dcb0d7af03915481]
+~> TaskHandler[id: 35; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009198 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5b/4ef8e2bf2a78cf3f3b53b2b8feb8a5]
+~> TaskHandler[id: 37; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009208 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9b/d1b908ee557ac1f4661fb6bbe4c5ec]
+~> TaskHandler[id: 39; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009144 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9a/a4dfb1966a6913999daf571005ec4e]
+~> TaskHandler[id: 42; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009211 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/44/e94428aa526ef3536c8740667f9ac9]
+~> TaskHandler[id: 38; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009202 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4a/5e9d8451985d35c160da1743fbcd4a]
+~> TaskHandler[id: 41; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009165 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c5/d66851f97fb7fc895730c026cbdcec]
+~> TaskHandler[id: 43; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009157 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/db/4b0bbff6e193558b24a1484d3592af]
+.. remaining tasks omitted.
+Oct-19 13:32:16.223 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 31; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009205 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/1c/b92ad0c3944e9967247df5a3c8d702]
+Oct-19 13:32:16.229 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:32:16.230 [Task submitter] INFO  nextflow.Session - [96/85ee89] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009171 - genomic)
+Oct-19 13:34:59.824 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 28; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009162 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/dd/e46946a6495c8dec55569f5756fc65]
+Oct-19 13:34:59.836 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:34:59.836 [Task submitter] INFO  nextflow.Session - [21/d867ed] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009195 - genomic)
+Oct-19 13:35:30.833 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 32; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009171 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/96/85ee89abbf59d6f080b206c34878af]
+Oct-19 13:35:30.840 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:35:30.840 [Task submitter] INFO  nextflow.Session - [d2/65d0e0] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009176 - genomic)
+Oct-19 13:36:55.840 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 33; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009195 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/21/d867ed9508fbb25623ea165cbfa556]
+~> TaskHandler[id: 34; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009176 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/d2/65d0e0d3c280b4dcb0d7af03915481]
+Oct-19 13:37:00.863 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 55 -- tasks to be submitted are shown below
+~> TaskHandler[id: 35; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009198 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5b/4ef8e2bf2a78cf3f3b53b2b8feb8a5]
+~> TaskHandler[id: 37; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009208 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9b/d1b908ee557ac1f4661fb6bbe4c5ec]
+~> TaskHandler[id: 39; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009144 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9a/a4dfb1966a6913999daf571005ec4e]
+~> TaskHandler[id: 42; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009211 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/44/e94428aa526ef3536c8740667f9ac9]
+~> TaskHandler[id: 38; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009202 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4a/5e9d8451985d35c160da1743fbcd4a]
+~> TaskHandler[id: 41; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009165 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c5/d66851f97fb7fc895730c026cbdcec]
+~> TaskHandler[id: 43; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009157 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/db/4b0bbff6e193558b24a1484d3592af]
+~> TaskHandler[id: 40; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009181 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/68/1bb1d014ecce2fcee91f1ec240b336]
+~> TaskHandler[id: 44; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009223 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/09c91e401fdb7bb91bdb744b1bf039]
+~> TaskHandler[id: 47; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009183 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ac/61cfdcca0a0616f63ac5d1c8569aad]
+.. remaining tasks omitted.
+Oct-19 13:38:13.953 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 33; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009195 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/21/d867ed9508fbb25623ea165cbfa556]
+Oct-19 13:38:13.960 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:38:13.960 [Task submitter] INFO  nextflow.Session - [5b/4ef8e2] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009198 - genomic)
+Oct-19 13:38:17.398 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 34; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009176 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/d2/65d0e0d3c280b4dcb0d7af03915481]
+Oct-19 13:38:17.405 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:38:17.405 [Task submitter] INFO  nextflow.Session - [9b/d1b908] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009208 - genomic)
+Oct-19 13:41:28.716 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 35; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009198 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/5b/4ef8e2bf2a78cf3f3b53b2b8feb8a5]
+Oct-19 13:41:28.722 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:41:28.722 [Task submitter] INFO  nextflow.Session - [9a/a4dfb1] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009144 - genomic)
+Oct-19 13:41:37.882 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 37; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009208 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/9b/d1b908ee557ac1f4661fb6bbe4c5ec]
+Oct-19 13:41:37.889 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:41:37.889 [Task submitter] INFO  nextflow.Session - [44/e94428] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009211 - genomic)
+Oct-19 13:41:55.903 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 39; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009144 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9a/a4dfb1966a6913999daf571005ec4e]
+~> TaskHandler[id: 42; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009211 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/44/e94428aa526ef3536c8740667f9ac9]
+Oct-19 13:42:00.896 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 51 -- tasks to be submitted are shown below
+~> TaskHandler[id: 38; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009202 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4a/5e9d8451985d35c160da1743fbcd4a]
+~> TaskHandler[id: 41; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009165 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c5/d66851f97fb7fc895730c026cbdcec]
+~> TaskHandler[id: 43; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009157 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/db/4b0bbff6e193558b24a1484d3592af]
+~> TaskHandler[id: 40; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009181 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/68/1bb1d014ecce2fcee91f1ec240b336]
+~> TaskHandler[id: 44; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009223 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/09c91e401fdb7bb91bdb744b1bf039]
+~> TaskHandler[id: 47; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009183 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ac/61cfdcca0a0616f63ac5d1c8569aad]
+~> TaskHandler[id: 45; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009213 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/fd/dad9c3bc444157f739b7d3391e21a2]
+~> TaskHandler[id: 46; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009219 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/cb/a4fbf9830eb3ec7f998897ef60b4f8]
+~> TaskHandler[id: 36; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009192 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/11/40d53b54bb623217f4e93ea4953fe8]
+~> TaskHandler[id: 48; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009189 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/24/9c33d82b028d32103d402b400330d4]
+.. remaining tasks omitted.
+Oct-19 13:44:18.935 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 42; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009211 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/44/e94428aa526ef3536c8740667f9ac9]
+Oct-19 13:44:18.946 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:44:18.946 [Task submitter] INFO  nextflow.Session - [4a/5e9d84] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009202 - genomic)
+Oct-19 13:44:42.374 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 39; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009144 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/9a/a4dfb1966a6913999daf571005ec4e]
+Oct-19 13:44:42.380 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:44:42.380 [Task submitter] INFO  nextflow.Session - [c5/d66851] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009165 - genomic)
+Oct-19 13:46:40.216 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 38; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009202 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/4a/5e9d8451985d35c160da1743fbcd4a]
+Oct-19 13:46:40.223 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:46:40.223 [Task submitter] INFO  nextflow.Session - [db/4b0bbf] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009157 - genomic)
+Oct-19 13:46:55.933 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 41; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009165 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c5/d66851f97fb7fc895730c026cbdcec]
+~> TaskHandler[id: 43; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009157 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/db/4b0bbff6e193558b24a1484d3592af]
+Oct-19 13:47:01.229 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 48 -- tasks to be submitted are shown below
+~> TaskHandler[id: 40; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009181 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/68/1bb1d014ecce2fcee91f1ec240b336]
+~> TaskHandler[id: 44; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009223 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/09c91e401fdb7bb91bdb744b1bf039]
+~> TaskHandler[id: 47; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009183 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ac/61cfdcca0a0616f63ac5d1c8569aad]
+~> TaskHandler[id: 45; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009213 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/fd/dad9c3bc444157f739b7d3391e21a2]
+~> TaskHandler[id: 46; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009219 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/cb/a4fbf9830eb3ec7f998897ef60b4f8]
+~> TaskHandler[id: 36; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009192 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/11/40d53b54bb623217f4e93ea4953fe8]
+~> TaskHandler[id: 48; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009189 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/24/9c33d82b028d32103d402b400330d4]
+~> TaskHandler[id: 49; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009167 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c5/43b5d9d4e721a9436d04c3489c90c5]
+~> TaskHandler[id: 50; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009221 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/fd268a1a46bb6edb74a1d23c6ab29f]
+~> TaskHandler[id: 56; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009141 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/03/8180bc68af4c04238bfa80706ee58e]
+.. remaining tasks omitted.
+Oct-19 13:47:56.184 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 41; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009165 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/c5/d66851f97fb7fc895730c026cbdcec]
+Oct-19 13:47:56.192 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:47:56.192 [Task submitter] INFO  nextflow.Session - [68/1bb1d0] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009181 - genomic)
+Oct-19 13:49:52.647 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 43; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009157 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/db/4b0bbff6e193558b24a1484d3592af]
+Oct-19 13:49:52.658 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:49:52.659 [Task submitter] INFO  nextflow.Session - [a7/09c91e] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009223 - genomic)
+Oct-19 13:51:13.384 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 40; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009181 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/68/1bb1d014ecce2fcee91f1ec240b336]
+Oct-19 13:51:13.390 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:51:13.390 [Task submitter] INFO  nextflow.Session - [ac/61cfdc] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009183 - genomic)
+Oct-19 13:51:55.934 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 44; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009223 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/09c91e401fdb7bb91bdb744b1bf039]
+~> TaskHandler[id: 47; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009183 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ac/61cfdcca0a0616f63ac5d1c8569aad]
+Oct-19 13:52:01.402 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 45 -- tasks to be submitted are shown below
+~> TaskHandler[id: 45; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009213 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/fd/dad9c3bc444157f739b7d3391e21a2]
+~> TaskHandler[id: 46; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009219 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/cb/a4fbf9830eb3ec7f998897ef60b4f8]
+~> TaskHandler[id: 36; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009192 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/11/40d53b54bb623217f4e93ea4953fe8]
+~> TaskHandler[id: 48; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009189 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/24/9c33d82b028d32103d402b400330d4]
+~> TaskHandler[id: 49; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009167 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c5/43b5d9d4e721a9436d04c3489c90c5]
+~> TaskHandler[id: 50; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009221 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/fd268a1a46bb6edb74a1d23c6ab29f]
+~> TaskHandler[id: 56; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009141 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/03/8180bc68af4c04238bfa80706ee58e]
+~> TaskHandler[id: 51; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009155 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b0/a6beddeb6b55a6250fd2f70a44ecaa]
+~> TaskHandler[id: 54; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009190 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c6/9ad2fd6a277d817d687a84bd6b20f4]
+~> TaskHandler[id: 53; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009174 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/aa/f4c9c803c5cd59c9f0975d7b8be7c7]
+.. remaining tasks omitted.
+Oct-19 13:52:02.145 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 44; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009223 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/a7/09c91e401fdb7bb91bdb744b1bf039]
+Oct-19 13:52:02.151 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:52:02.152 [Task submitter] INFO  nextflow.Session - [fd/dad9c3] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009213 - genomic)
+Oct-19 13:53:21.602 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 47; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009183 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/ac/61cfdcca0a0616f63ac5d1c8569aad]
+Oct-19 13:53:21.609 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:53:21.610 [Task submitter] INFO  nextflow.Session - [cb/a4fbf9] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009219 - genomic)
+Oct-19 13:53:54.733 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 45; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009213 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/fd/dad9c3bc444157f739b7d3391e21a2]
+Oct-19 13:53:54.739 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:53:54.740 [Task submitter] INFO  nextflow.Session - [11/40d53b] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009192 - genomic)
+Oct-19 13:56:35.517 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 46; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009219 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/cb/a4fbf9830eb3ec7f998897ef60b4f8]
+Oct-19 13:56:35.522 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:56:35.523 [Task submitter] INFO  nextflow.Session - [24/9c33d8] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009189 - genomic)
+Oct-19 13:56:55.939 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 36; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009192 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/11/40d53b54bb623217f4e93ea4953fe8]
+~> TaskHandler[id: 48; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009189 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/24/9c33d82b028d32103d402b400330d4]
+Oct-19 13:57:01.530 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 41 -- tasks to be submitted are shown below
+~> TaskHandler[id: 49; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009167 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c5/43b5d9d4e721a9436d04c3489c90c5]
+~> TaskHandler[id: 50; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009221 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/fd268a1a46bb6edb74a1d23c6ab29f]
+~> TaskHandler[id: 56; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009141 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/03/8180bc68af4c04238bfa80706ee58e]
+~> TaskHandler[id: 51; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009155 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b0/a6beddeb6b55a6250fd2f70a44ecaa]
+~> TaskHandler[id: 54; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009190 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c6/9ad2fd6a277d817d687a84bd6b20f4]
+~> TaskHandler[id: 53; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009174 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/aa/f4c9c803c5cd59c9f0975d7b8be7c7]
+~> TaskHandler[id: 55; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009146 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/dae658303c8d85c1dd31f28e0e5d14]
+~> TaskHandler[id: 58; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009197 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/23/c920e074213607175f401c80ae4cce]
+~> TaskHandler[id: 52; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009200 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/7c68a308490ed3d11bfe9798a74891]
+~> TaskHandler[id: 60; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009207 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/13/ddbcf8eb4c26056552a9107b5f3e94]
+.. remaining tasks omitted.
+Oct-19 13:57:03.782 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 36; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009192 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/11/40d53b54bb623217f4e93ea4953fe8]
+Oct-19 13:57:03.788 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:57:03.788 [Task submitter] INFO  nextflow.Session - [c5/43b5d9] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009167 - genomic)
+Oct-19 13:59:50.537 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 48; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009189 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/24/9c33d82b028d32103d402b400330d4]
+Oct-19 13:59:50.543 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 13:59:50.543 [Task submitter] INFO  nextflow.Session - [bb/fd268a] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009221 - genomic)
+Oct-19 14:00:17.409 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 49; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009167 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/c5/43b5d9d4e721a9436d04c3489c90c5]
+Oct-19 14:00:17.416 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:00:17.416 [Task submitter] INFO  nextflow.Session - [03/8180bc] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009141 - genomic)
+Oct-19 14:01:55.943 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 50; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009221 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/fd268a1a46bb6edb74a1d23c6ab29f]
+~> TaskHandler[id: 56; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009141 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/03/8180bc68af4c04238bfa80706ee58e]
+Oct-19 14:02:02.440 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 38 -- tasks to be submitted are shown below
+~> TaskHandler[id: 51; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009155 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b0/a6beddeb6b55a6250fd2f70a44ecaa]
+~> TaskHandler[id: 54; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009190 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/c6/9ad2fd6a277d817d687a84bd6b20f4]
+~> TaskHandler[id: 53; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009174 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/aa/f4c9c803c5cd59c9f0975d7b8be7c7]
+~> TaskHandler[id: 55; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009146 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/dae658303c8d85c1dd31f28e0e5d14]
+~> TaskHandler[id: 58; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009197 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/23/c920e074213607175f401c80ae4cce]
+~> TaskHandler[id: 52; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009200 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/7c68a308490ed3d11bfe9798a74891]
+~> TaskHandler[id: 60; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009207 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/13/ddbcf8eb4c26056552a9107b5f3e94]
+~> TaskHandler[id: 61; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009158 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9a/31d64269bd6cfe2644290452b54f5c]
+~> TaskHandler[id: 57; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009173 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8f/dff95ef549ac8dd2097cdd173059c3]
+~> TaskHandler[id: 62; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009152 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/72/a03c5eba2f4fb4a6144a1b40dcdf82]
+.. remaining tasks omitted.
+Oct-19 14:02:40.220 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 50; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009221 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/bb/fd268a1a46bb6edb74a1d23c6ab29f]
+Oct-19 14:02:40.226 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:02:40.226 [Task submitter] INFO  nextflow.Session - [b0/a6bedd] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009155 - genomic)
+Oct-19 14:03:36.372 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 56; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009141 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/03/8180bc68af4c04238bfa80706ee58e]
+Oct-19 14:03:36.379 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:03:36.379 [Task submitter] INFO  nextflow.Session - [c6/9ad2fd] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009190 - genomic)
+Oct-19 14:05:53.986 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 51; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009155 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/b0/a6beddeb6b55a6250fd2f70a44ecaa]
+Oct-19 14:05:53.991 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:05:53.992 [Task submitter] INFO  nextflow.Session - [aa/f4c9c8] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009174 - genomic)
+Oct-19 14:06:01.723 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 54; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009190 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/c6/9ad2fd6a277d817d687a84bd6b20f4]
+Oct-19 14:06:01.728 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:06:01.729 [Task submitter] INFO  nextflow.Session - [5e/dae658] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009146 - genomic)
+Oct-19 14:06:55.988 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 53; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009174 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/aa/f4c9c803c5cd59c9f0975d7b8be7c7]
+~> TaskHandler[id: 55; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009146 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/dae658303c8d85c1dd31f28e0e5d14]
+Oct-19 14:07:02.742 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 34 -- tasks to be submitted are shown below
+~> TaskHandler[id: 58; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009197 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/23/c920e074213607175f401c80ae4cce]
+~> TaskHandler[id: 52; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009200 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/7c68a308490ed3d11bfe9798a74891]
+~> TaskHandler[id: 60; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009207 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/13/ddbcf8eb4c26056552a9107b5f3e94]
+~> TaskHandler[id: 61; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009158 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9a/31d64269bd6cfe2644290452b54f5c]
+~> TaskHandler[id: 57; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009173 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8f/dff95ef549ac8dd2097cdd173059c3]
+~> TaskHandler[id: 62; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009152 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/72/a03c5eba2f4fb4a6144a1b40dcdf82]
+~> TaskHandler[id: 65; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009160 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/41/28952648612342336e1913592f43cd]
+~> TaskHandler[id: 63; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009226 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/40/90b8df3a953eceb75361a25b9920f0]
+~> TaskHandler[id: 66; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009214 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a5/c6216225900187407e32b070f41e5f]
+~> TaskHandler[id: 64; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009184 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/50/e6e6815792134dbc7446b1bde192f9]
+.. remaining tasks omitted.
+Oct-19 14:08:25.309 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 53; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009174 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/aa/f4c9c803c5cd59c9f0975d7b8be7c7]
+Oct-19 14:08:25.316 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:08:25.316 [Task submitter] INFO  nextflow.Session - [23/c920e0] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009197 - genomic)
+Oct-19 14:09:18.566 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 55; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009146 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/5e/dae658303c8d85c1dd31f28e0e5d14]
+Oct-19 14:09:18.572 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:09:18.572 [Task submitter] INFO  nextflow.Session - [a7/7c68a3] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009200 - genomic)
+Oct-19 14:11:33.398 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 58; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009197 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/23/c920e074213607175f401c80ae4cce]
+Oct-19 14:11:33.406 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:11:33.406 [Task submitter] INFO  nextflow.Session - [13/ddbcf8] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009207 - genomic)
+Oct-19 14:11:56.021 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 52; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009200 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a7/7c68a308490ed3d11bfe9798a74891]
+~> TaskHandler[id: 60; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009207 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/13/ddbcf8eb4c26056552a9107b5f3e94]
+Oct-19 14:12:03.413 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 31 -- tasks to be submitted are shown below
+~> TaskHandler[id: 61; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009158 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/9a/31d64269bd6cfe2644290452b54f5c]
+~> TaskHandler[id: 57; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009173 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8f/dff95ef549ac8dd2097cdd173059c3]
+~> TaskHandler[id: 62; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009152 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/72/a03c5eba2f4fb4a6144a1b40dcdf82]
+~> TaskHandler[id: 65; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009160 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/41/28952648612342336e1913592f43cd]
+~> TaskHandler[id: 63; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009226 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/40/90b8df3a953eceb75361a25b9920f0]
+~> TaskHandler[id: 66; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009214 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a5/c6216225900187407e32b070f41e5f]
+~> TaskHandler[id: 64; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009184 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/50/e6e6815792134dbc7446b1bde192f9]
+~> TaskHandler[id: 59; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009179 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/94/216da38dcc6d4ffd0e1b71526b0cf3]
+~> TaskHandler[id: 67; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009164 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/1c2b616057375731a071f69750f737]
+~> TaskHandler[id: 69; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009210 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/46/2822f5dff35dfb123560b9034584bd]
+.. remaining tasks omitted.
+Oct-19 14:12:31.794 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 52; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009200 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/a7/7c68a308490ed3d11bfe9798a74891]
+Oct-19 14:12:31.800 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:12:31.800 [Task submitter] INFO  nextflow.Session - [9a/31d642] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009158 - genomic)
+Oct-19 14:13:28.256 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 60; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009207 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/13/ddbcf8eb4c26056552a9107b5f3e94]
+Oct-19 14:13:28.264 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:13:28.264 [Task submitter] INFO  nextflow.Session - [8f/dff95e] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009173 - genomic)
+Oct-19 14:15:13.363 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 57; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009173 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/8f/dff95ef549ac8dd2097cdd173059c3]
+Oct-19 14:15:13.369 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:15:13.369 [Task submitter] INFO  nextflow.Session - [72/a03c5e] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009152 - genomic)
+Oct-19 14:15:43.497 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 61; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009158 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/9a/31d64269bd6cfe2644290452b54f5c]
+Oct-19 14:15:43.507 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:15:43.507 [Task submitter] INFO  nextflow.Session - [41/289526] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009160 - genomic)
+Oct-19 14:16:56.091 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 62; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009152 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/72/a03c5eba2f4fb4a6144a1b40dcdf82]
+~> TaskHandler[id: 65; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009160 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/41/28952648612342336e1913592f43cd]
+Oct-19 14:17:03.524 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 27 -- tasks to be submitted are shown below
+~> TaskHandler[id: 63; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009226 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/40/90b8df3a953eceb75361a25b9920f0]
+~> TaskHandler[id: 66; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009214 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a5/c6216225900187407e32b070f41e5f]
+~> TaskHandler[id: 64; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009184 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/50/e6e6815792134dbc7446b1bde192f9]
+~> TaskHandler[id: 59; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009179 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/94/216da38dcc6d4ffd0e1b71526b0cf3]
+~> TaskHandler[id: 67; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009164 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/1c2b616057375731a071f69750f737]
+~> TaskHandler[id: 69; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009210 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/46/2822f5dff35dfb123560b9034584bd]
+~> TaskHandler[id: 74; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009177 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/41/d4e04da3401d728612bc9b60fa0756]
+~> TaskHandler[id: 68; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009180 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/62/d3873737f4945008a25660395a401b]
+~> TaskHandler[id: 70; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009156 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8f/51999fe2941bce4f2f0397043c69b0]
+~> TaskHandler[id: 71; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009228 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4e/1d2d0e03b8c51d6b781484324f7b7f]
+.. remaining tasks omitted.
+Oct-19 14:18:31.326 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 62; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009152 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/72/a03c5eba2f4fb4a6144a1b40dcdf82]
+Oct-19 14:18:31.332 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:18:31.332 [Task submitter] INFO  nextflow.Session - [40/90b8df] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009226 - genomic)
+Oct-19 14:18:53.257 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 65; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009160 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/41/28952648612342336e1913592f43cd]
+Oct-19 14:18:53.263 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:18:53.264 [Task submitter] INFO  nextflow.Session - [a5/c62162] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009214 - genomic)
+Oct-19 14:21:00.957 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 66; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009214 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/a5/c6216225900187407e32b070f41e5f]
+Oct-19 14:21:00.965 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:21:00.965 [Task submitter] INFO  nextflow.Session - [50/e6e681] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009184 - genomic)
+Oct-19 14:21:43.840 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 63; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009226 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/40/90b8df3a953eceb75361a25b9920f0]
+Oct-19 14:21:43.846 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:21:43.847 [Task submitter] INFO  nextflow.Session - [94/216da3] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009179 - genomic)
+Oct-19 14:21:56.151 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 64; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009184 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/50/e6e6815792134dbc7446b1bde192f9]
+~> TaskHandler[id: 59; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009179 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/94/216da38dcc6d4ffd0e1b71526b0cf3]
+Oct-19 14:22:03.851 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 23 -- tasks to be submitted are shown below
+~> TaskHandler[id: 67; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009164 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/1c2b616057375731a071f69750f737]
+~> TaskHandler[id: 69; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009210 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/46/2822f5dff35dfb123560b9034584bd]
+~> TaskHandler[id: 74; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009177 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/41/d4e04da3401d728612bc9b60fa0756]
+~> TaskHandler[id: 68; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009180 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/62/d3873737f4945008a25660395a401b]
+~> TaskHandler[id: 70; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009156 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8f/51999fe2941bce4f2f0397043c69b0]
+~> TaskHandler[id: 71; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009228 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4e/1d2d0e03b8c51d6b781484324f7b7f]
+~> TaskHandler[id: 72; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009222 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/53/eeb479837f706b4b680344de6bafd5]
+~> TaskHandler[id: 73; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009193 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/58/54997be0ba1ce7b3ed07bdd94877dd]
+~> TaskHandler[id: 76; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009203 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0a/a15764a31521454f0b981169ddf82e]
+~> TaskHandler[id: 75; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009199 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8e/7f6d9f63932a4c67a0b2935479b233]
+.. remaining tasks omitted.
+Oct-19 14:24:00.107 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 64; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009184 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/50/e6e6815792134dbc7446b1bde192f9]
+Oct-19 14:24:00.113 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:24:00.114 [Task submitter] INFO  nextflow.Session - [5e/1c2b61] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009164 - genomic)
+Oct-19 14:24:25.772 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 59; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009179 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/94/216da38dcc6d4ffd0e1b71526b0cf3]
+Oct-19 14:24:25.778 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:24:25.778 [Task submitter] INFO  nextflow.Session - [46/2822f5] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009210 - genomic)
+Oct-19 14:26:56.195 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 67; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009164 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/1c2b616057375731a071f69750f737]
+~> TaskHandler[id: 69; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009210 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/46/2822f5dff35dfb123560b9034584bd]
+Oct-19 14:27:04.807 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 21 -- tasks to be submitted are shown below
+~> TaskHandler[id: 74; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009177 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/41/d4e04da3401d728612bc9b60fa0756]
+~> TaskHandler[id: 68; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009180 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/62/d3873737f4945008a25660395a401b]
+~> TaskHandler[id: 70; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009156 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8f/51999fe2941bce4f2f0397043c69b0]
+~> TaskHandler[id: 71; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009228 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4e/1d2d0e03b8c51d6b781484324f7b7f]
+~> TaskHandler[id: 72; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009222 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/53/eeb479837f706b4b680344de6bafd5]
+~> TaskHandler[id: 73; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009193 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/58/54997be0ba1ce7b3ed07bdd94877dd]
+~> TaskHandler[id: 76; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009203 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0a/a15764a31521454f0b981169ddf82e]
+~> TaskHandler[id: 75; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009199 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8e/7f6d9f63932a4c67a0b2935479b233]
+~> TaskHandler[id: 77; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009209 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5b/49fc89bf9991a4027a2976501e1fac]
+~> TaskHandler[id: 78; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009145 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0b/038cffda60e33609101bccaff46c76]
+.. remaining tasks omitted.
+Oct-19 14:27:17.383 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 67; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009164 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/5e/1c2b616057375731a071f69750f737]
+Oct-19 14:27:17.389 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:27:17.389 [Task submitter] INFO  nextflow.Session - [41/d4e04d] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009177 - genomic)
+Oct-19 14:27:43.135 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 69; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009210 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/46/2822f5dff35dfb123560b9034584bd]
+Oct-19 14:27:43.140 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:27:43.141 [Task submitter] INFO  nextflow.Session - [62/d38737] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009180 - genomic)
+Oct-19 14:29:27.722 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 74; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009177 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/41/d4e04da3401d728612bc9b60fa0756]
+Oct-19 14:29:27.728 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:29:27.728 [Task submitter] INFO  nextflow.Session - [8f/51999f] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009156 - genomic)
+Oct-19 14:30:52.052 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 68; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009180 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/62/d3873737f4945008a25660395a401b]
+Oct-19 14:30:52.059 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:30:52.059 [Task submitter] INFO  nextflow.Session - [4e/1d2d0e] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009228 - genomic)
+Oct-19 14:31:56.220 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 70; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009156 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8f/51999fe2941bce4f2f0397043c69b0]
+~> TaskHandler[id: 71; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009228 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/4e/1d2d0e03b8c51d6b781484324f7b7f]
+Oct-19 14:32:05.072 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 17 -- tasks to be submitted are shown below
+~> TaskHandler[id: 72; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009222 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/53/eeb479837f706b4b680344de6bafd5]
+~> TaskHandler[id: 73; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009193 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/58/54997be0ba1ce7b3ed07bdd94877dd]
+~> TaskHandler[id: 76; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009203 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0a/a15764a31521454f0b981169ddf82e]
+~> TaskHandler[id: 75; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009199 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8e/7f6d9f63932a4c67a0b2935479b233]
+~> TaskHandler[id: 77; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009209 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5b/49fc89bf9991a4027a2976501e1fac]
+~> TaskHandler[id: 78; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009145 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0b/038cffda60e33609101bccaff46c76]
+~> TaskHandler[id: 80; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009142 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b8/5a086d3963125e829fef87603591db]
+~> TaskHandler[id: 79; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009148 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a5/ca754fe6781d72ff78b7fcf51c1d06]
+~> TaskHandler[id: 81; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009204 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/32/14d59cf6b49cd3023eaaad75ba1ef9]
+~> TaskHandler[id: 83; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009170 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/7c/ec04a9b2466ccb72f13f6c6409c2a3]
+.. remaining tasks omitted.
+Oct-19 14:32:41.483 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 70; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009156 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/8f/51999fe2941bce4f2f0397043c69b0]
+Oct-19 14:32:41.488 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:32:41.489 [Task submitter] INFO  nextflow.Session - [53/eeb479] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009222 - genomic)
+Oct-19 14:32:59.061 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 71; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009228 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/4e/1d2d0e03b8c51d6b781484324f7b7f]
+Oct-19 14:32:59.068 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:32:59.068 [Task submitter] INFO  nextflow.Session - [58/54997b] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009193 - genomic)
+Oct-19 14:35:19.795 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 72; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009222 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/53/eeb479837f706b4b680344de6bafd5]
+Oct-19 14:35:19.801 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:35:19.802 [Task submitter] INFO  nextflow.Session - [0a/a15764] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009203 - genomic)
+Oct-19 14:36:15.265 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 73; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009193 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/58/54997be0ba1ce7b3ed07bdd94877dd]
+Oct-19 14:36:15.271 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:36:15.271 [Task submitter] INFO  nextflow.Session - [8e/7f6d9f] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009199 - genomic)
+Oct-19 14:36:56.314 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 76; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009203 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0a/a15764a31521454f0b981169ddf82e]
+~> TaskHandler[id: 75; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009199 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/8e/7f6d9f63932a4c67a0b2935479b233]
+Oct-19 14:37:05.282 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 13 -- tasks to be submitted are shown below
+~> TaskHandler[id: 77; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009209 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5b/49fc89bf9991a4027a2976501e1fac]
+~> TaskHandler[id: 78; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009145 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0b/038cffda60e33609101bccaff46c76]
+~> TaskHandler[id: 80; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009142 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b8/5a086d3963125e829fef87603591db]
+~> TaskHandler[id: 79; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009148 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a5/ca754fe6781d72ff78b7fcf51c1d06]
+~> TaskHandler[id: 81; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009204 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/32/14d59cf6b49cd3023eaaad75ba1ef9]
+~> TaskHandler[id: 83; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009170 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/7c/ec04a9b2466ccb72f13f6c6409c2a3]
+~> TaskHandler[id: 82; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009194 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ed/12975fd9bdedf1f3ee2732d2e30564]
+~> TaskHandler[id: 84; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009225 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/351d858f9444a255f0621618e0ec64]
+~> TaskHandler[id: 85; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009151 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/84/2f62b0534e8393bfc06350d0fc3d0c]
+~> TaskHandler[id: 87; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009163 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/8322b2ccad79ebde93cb4431d2288c]
+.. remaining tasks omitted.
+Oct-19 14:37:59.235 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 76; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009203 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/0a/a15764a31521454f0b981169ddf82e]
+Oct-19 14:37:59.240 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:37:59.241 [Task submitter] INFO  nextflow.Session - [5b/49fc89] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009209 - genomic)
+Oct-19 14:39:29.668 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 75; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009199 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/8e/7f6d9f63932a4c67a0b2935479b233]
+Oct-19 14:39:29.674 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:39:29.674 [Task submitter] INFO  nextflow.Session - [0b/038cff] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009145 - genomic)
+Oct-19 14:41:17.240 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 77; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009209 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/5b/49fc89bf9991a4027a2976501e1fac]
+Oct-19 14:41:17.246 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:41:17.246 [Task submitter] INFO  nextflow.Session - [b8/5a086d] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009142 - genomic)
+Oct-19 14:41:56.388 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 78; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009145 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/0b/038cffda60e33609101bccaff46c76]
+~> TaskHandler[id: 80; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009142 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/b8/5a086d3963125e829fef87603591db]
+Oct-19 14:42:06.258 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 10 -- tasks to be submitted are shown below
+~> TaskHandler[id: 79; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009148 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/a5/ca754fe6781d72ff78b7fcf51c1d06]
+~> TaskHandler[id: 81; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009204 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/32/14d59cf6b49cd3023eaaad75ba1ef9]
+~> TaskHandler[id: 83; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009170 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/7c/ec04a9b2466ccb72f13f6c6409c2a3]
+~> TaskHandler[id: 82; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009194 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ed/12975fd9bdedf1f3ee2732d2e30564]
+~> TaskHandler[id: 84; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009225 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/351d858f9444a255f0621618e0ec64]
+~> TaskHandler[id: 85; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009151 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/84/2f62b0534e8393bfc06350d0fc3d0c]
+~> TaskHandler[id: 87; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009163 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/8322b2ccad79ebde93cb4431d2288c]
+~> TaskHandler[id: 86; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009217 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ec/f008641ec090d6703d028c8960274c]
+~> TaskHandler[id: 88; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009169 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/56/386dafdcd974fdd430e8e33e49f17d]
+~> TaskHandler[id: 89; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009187 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/40/9ece835085c02674004f331af29c14]
+Oct-19 14:42:42.654 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 78; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009145 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/0b/038cffda60e33609101bccaff46c76]
+Oct-19 14:42:42.660 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:42:42.661 [Task submitter] INFO  nextflow.Session - [a5/ca754f] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009148 - genomic)
+Oct-19 14:44:35.255 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 80; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009142 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/b8/5a086d3963125e829fef87603591db]
+Oct-19 14:44:35.262 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:44:35.262 [Task submitter] INFO  nextflow.Session - [32/14d59c] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009204 - genomic)
+Oct-19 14:46:02.428 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 79; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009148 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/a5/ca754fe6781d72ff78b7fcf51c1d06]
+Oct-19 14:46:02.434 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:46:02.434 [Task submitter] INFO  nextflow.Session - [7c/ec04a9] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009170 - genomic)
+Oct-19 14:46:34.807 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 81; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009204 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/32/14d59cf6b49cd3023eaaad75ba1ef9]
+Oct-19 14:46:34.815 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:46:34.815 [Task submitter] INFO  nextflow.Session - [ed/12975f] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009194 - genomic)
+Oct-19 14:46:56.433 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 83; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009170 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/7c/ec04a9b2466ccb72f13f6c6409c2a3]
+~> TaskHandler[id: 82; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009194 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ed/12975fd9bdedf1f3ee2732d2e30564]
+Oct-19 14:47:06.821 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 6 -- tasks to be submitted are shown below
+~> TaskHandler[id: 84; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009225 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/bb/351d858f9444a255f0621618e0ec64]
+~> TaskHandler[id: 85; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009151 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/84/2f62b0534e8393bfc06350d0fc3d0c]
+~> TaskHandler[id: 87; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009163 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/8322b2ccad79ebde93cb4431d2288c]
+~> TaskHandler[id: 86; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009217 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ec/f008641ec090d6703d028c8960274c]
+~> TaskHandler[id: 88; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009169 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/56/386dafdcd974fdd430e8e33e49f17d]
+~> TaskHandler[id: 89; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009187 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/40/9ece835085c02674004f331af29c14]
+Oct-19 14:49:19.086 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 83; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009170 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/7c/ec04a9b2466ccb72f13f6c6409c2a3]
+Oct-19 14:49:19.092 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:49:19.092 [Task submitter] INFO  nextflow.Session - [bb/351d85] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009225 - genomic)
+Oct-19 14:49:46.580 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 82; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009194 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/ed/12975fd9bdedf1f3ee2732d2e30564]
+Oct-19 14:49:46.586 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:49:46.586 [Task submitter] INFO  nextflow.Session - [84/2f62b0] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009151 - genomic)
+Oct-19 14:51:56.092 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 84; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009225 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/bb/351d858f9444a255f0621618e0ec64]
+Oct-19 14:51:56.098 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:51:56.098 [Task submitter] INFO  nextflow.Session - [5e/8322b2] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009163 - genomic)
+Oct-19 14:51:56.492 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 85; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009151 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/84/2f62b0534e8393bfc06350d0fc3d0c]
+~> TaskHandler[id: 87; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009163 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/8322b2ccad79ebde93cb4431d2288c]
+Oct-19 14:52:07.101 [Task submitter] DEBUG n.processor.TaskPollingMonitor - %% executor local > tasks in the submission queue: 3 -- tasks to be submitted are shown below
+~> TaskHandler[id: 86; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009217 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/ec/f008641ec090d6703d028c8960274c]
+~> TaskHandler[id: 88; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009169 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/56/386dafdcd974fdd430e8e33e49f17d]
+~> TaskHandler[id: 89; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009187 - genomic); status: NEW; exit: -; error: -; workDir: /home/ma95362/muszlut/work/40/9ece835085c02674004f331af29c14]
+Oct-19 14:53:01.727 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 85; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009151 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/84/2f62b0534e8393bfc06350d0fc3d0c]
+Oct-19 14:53:01.733 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:53:01.734 [Task submitter] INFO  nextflow.Session - [ec/f00864] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009217 - genomic)
+Oct-19 14:55:07.912 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 87; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009163 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/5e/8322b2ccad79ebde93cb4431d2288c]
+Oct-19 14:55:07.918 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:55:07.918 [Task submitter] INFO  nextflow.Session - [56/386daf] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009169 - genomic)
+Oct-19 14:55:30.179 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 86; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009217 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/ec/f008641ec090d6703d028c8960274c]
+Oct-19 14:55:30.185 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:55:30.186 [Task submitter] INFO  nextflow.Session - [40/9ece83] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009187 - genomic)
+Oct-19 14:56:56.585 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[id: 88; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009169 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/56/386dafdcd974fdd430e8e33e49f17d]
+~> TaskHandler[id: 89; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009187 - genomic); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/40/9ece835085c02674004f331af29c14]
+Oct-19 14:58:24.602 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 88; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009169 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/56/386dafdcd974fdd430e8e33e49f17d]
+Oct-19 14:58:45.146 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 89; name: BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE (SRX23009187 - genomic); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/40/9ece835085c02674004f331af29c14]
+Oct-19 14:58:45.293 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 14:58:45.293 [Task submitter] INFO  nextflow.Session - [5e/70e7e9] Submitted process > BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE (snippy-core)
+Oct-19 15:01:56.620 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 90; name: BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE (snippy-core); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/5e/70e7e90660b9c4e0110872e461a2d3]
+Oct-19 15:04:21.939 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 90; name: BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE (snippy-core); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/5e/70e7e90660b9c4e0110872e461a2d3]
+Oct-19 15:04:22.067 [TaskFinalizer-90] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE > Skipping output binding because one or more optional files are missing: fileoutparam<8>
+Oct-19 15:04:22.090 [Actor Thread 776] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--snp-dists-0.8.2; path=/home/ma95362/.bactopia/conda/bioconda--snp-dists-0.8.2
+Oct-19 15:04:22.090 [Actor Thread 777] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--gubbins-3.3.5; path=/home/ma95362/.bactopia/conda/bioconda--gubbins-3.3.5
+Oct-19 15:04:22.113 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 15:04:22.113 [Task submitter] INFO  nextflow.Session - [79/ec4cb5] Submitted process > BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE (snippy-core)
+Oct-19 15:04:22.122 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 15:04:22.122 [Task submitter] INFO  nextflow.Session - [fb/c478c6] Submitted process > BACTOPIATOOLS:SNIPPY:SNPDISTS (snippy-core)
+Oct-19 15:05:37.398 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 92; name: BACTOPIATOOLS:SNIPPY:SNPDISTS (snippy-core); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/fb/c478c6f714f769d0d3deef0f9763d7]
+Oct-19 15:05:37.405 [TaskFinalizer-91] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:SNIPPY:SNPDISTS > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+Oct-19 15:06:56.721 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 91; name: BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE (snippy-core); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/79/ec4cb517ca9e572be03f3701bc1d75]
+Oct-19 15:11:56.816 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 91; name: BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE (snippy-core); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/79/ec4cb517ca9e572be03f3701bc1d75]
+Oct-19 15:13:05.413 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 91; name: BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE (snippy-core); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/79/ec4cb517ca9e572be03f3701bc1d75]
+Oct-19 15:13:05.427 [TaskFinalizer-92] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE > Skipping output binding because one or more optional files are missing: fileoutparam<10:1>
+Oct-19 15:13:05.443 [Actor Thread 807] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--iqtree-2.2.2.7; path=/home/ma95362/.bactopia/conda/bioconda--iqtree-2.2.2.7
+Oct-19 15:13:05.457 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 15:13:05.457 [Task submitter] INFO  nextflow.Session - [66/232bae] Submitted process > BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE (core-snp)
+Oct-19 15:16:56.878 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 93; name: BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE (core-snp); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/66/232bae26a848c47a8fcbbd5cb37a06]
+Oct-19 15:21:56.895 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 93; name: BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE (core-snp); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/66/232bae26a848c47a8fcbbd5cb37a06]
+Oct-19 15:26:56.938 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 93; name: BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE (core-snp); status: RUNNING; exit: -; error: -; workDir: /home/ma95362/muszlut/work/66/232bae26a848c47a8fcbbd5cb37a06]
+Oct-19 15:30:12.001 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 93; name: BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE (core-snp); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/66/232bae26a848c47a8fcbbd5cb37a06]
+Oct-19 15:30:12.039 [Actor Thread 821] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 5; slices: 1; internal sort time: 0.02 s; external sort time: 0.004 s; total time: 0.024 s
+Oct-19 15:30:12.051 [Actor Thread 821] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /home/ma95362/muszlut/work/collect-file/a48184a71c99890836005deef4566227
+Oct-19 15:30:12.063 [Actor Thread 821] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-7581378718133427683
+Oct-19 15:30:12.112 [Actor Thread 829] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/ma95362/.bactopia/conda/bioconda--multiqc-1.24.1; path=/home/ma95362/.bactopia/conda/bioconda--multiqc-1.24.1
+Oct-19 15:30:12.124 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Oct-19 15:30:12.125 [Task submitter] INFO  nextflow.Session - [68/489820] Submitted process > BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS (1)
+Oct-19 15:30:31.778 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 94; name: BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS (1); status: COMPLETED; exit: 0; error: -; workDir: /home/ma95362/muszlut/work/68/4898209ceffd3b0f3eb4b6453348e0]
+Oct-19 15:30:31.782 [TaskFinalizer-94] DEBUG nextflow.processor.TaskProcessor - Process BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS > Skipping output binding because one or more optional files are missing: fileoutparam<2>
+Oct-19 15:30:31.836 [main] DEBUG nextflow.Session - Session await > all processes finished
+Oct-19 15:30:31.879 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Oct-19 15:30:31.879 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Oct-19 15:30:31.904 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Oct-19 15:30:31.904 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Oct-19 15:30:31.907 [main] INFO  nextflow.script.BaseScript - 
+    Bactopia Tools: `snippy Execution Summary
+    ---------------------------
+    Bactopia Version : 3.1.0
+    Nextflow Version : 24.04.4
+    Command Line     : nextflow run /apps/eb/Bactopia/3.1.0//share/bactopia-3.1.0/main.nf -w /home/ma95362/muszlut/work/ --wf snippy --reference /scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk --exlude /scratch/ma95362/PRJNA1056148_bactopia/bactopia-exclude.tsv --bactopia /scratch/ma95362/PRJNA1056148_bactopia/ena-multiple-samples
+    Resumed          : false
+    Completed At     : 2024-10-19T15:30:31.904777325-04:00
+    Duration         : 2h 43m 46s
+    Success          : true
+    Exit Code        : 0
+    Error Report     : -
+    Launch Dir       : /home/ma95362/muszlut
+    
+Oct-19 15:30:31.912 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=94; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=17h 45m 40s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=12; peakMemory=64 GB; ]
+Oct-19 15:30:31.912 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Oct-19 15:30:31.913 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Oct-19 15:30:32.957 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Oct-19 15:30:33.296 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Oct-19 15:30:33.310 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Oct-19 15:30:33.311 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

@@ -1,0 +1,191 @@
+Mar-29 17:41:31.060 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /apps/eb/Bactopia/3.1.0//share/bactopia-3.1.0/main.nf -w /home/ma95362/muszlut/PRJNA823537/work/ --wf snippy --reference /scratch/ma95362/ref/Canetti/ncbi_dataset/data/GCF_000253375.1/genomic.gbk --bactopia /scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs/ena-multiple-samples
+Mar-29 17:41:31.161 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Mar-29 17:41:31.198 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/ma95362/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Mar-29 17:41:31.210 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Mar-29 17:41:31.211 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Mar-29 17:41:31.215 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Mar-29 17:41:31.228 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Mar-29 17:41:31.251 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config
+Mar-29 17:41:31.254 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config
+Mar-29 17:41:31.283 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/ma95362/.nextflow/secrets/store.json
+Mar-29 17:41:31.298 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@6719a5b8] - activable => nextflow.secret.LocalSecretsProvider@6719a5b8
+Mar-29 17:41:31.314 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-29 17:41:33.586 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Mar-29 17:41:33.607 [main] DEBUG nextflow.cli.CmdRun - Launching `/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/main.nf` [lethal_carson] DSL2 - revision: 0cd9f79ba7
+Mar-29 17:41:33.609 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Mar-29 17:41:33.609 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Mar-29 17:41:33.669 [main] DEBUG nextflow.Session - Session UUID: 1bb7c8f2-1cb3-4d63-bcee-8272c81fd0be
+Mar-29 17:41:33.669 [main] DEBUG nextflow.Session - Run name: lethal_carson
+Mar-29 17:41:33.670 [main] DEBUG nextflow.Session - Executor pool size: 8
+Mar-29 17:41:33.678 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Mar-29 17:41:33.690 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (03:05 EDT)
+  System: Linux 4.18.0-477.15.1.el8_8.x86_64
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 21-internal-adhoc.conda.src
+  Encoding: UTF-8 (UTF-8)
+  Process: 2753316@c4-21 [10.2.1.92]
+  CPUs: 8 - Mem: 40 GB (39.6 GB) - Swap: 0 (0) - Virtual threads ON
+Mar-29 17:41:33.712 [main] DEBUG nextflow.Session - Work-dir: /home/ma95362/muszlut/PRJNA823537/work [nfs]
+Mar-29 17:41:33.774 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Mar-29 17:41:33.789 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Mar-29 17:41:33.863 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Mar-29 17:41:33.873 [main] DEBUG nextflow.util.CustomPoolFactory - Creating virtual thread pool
+Mar-29 17:41:33.968 [main] DEBUG nextflow.Session - Session start
+Mar-29 17:41:33.972 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs/ena-multiple-samples/bactopia-runs/snippy-20250329-174132/nf-reports/snippy-trace.txt
+Mar-29 17:41:33.994 [main] DEBUG nextflow.Session - Using default localLib path: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib
+Mar-29 17:41:33.998 [main] DEBUG nextflow.Session - Adding to the classpath library: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib
+Mar-29 17:41:33.999 [main] DEBUG nextflow.Session - Adding to the classpath library: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/lib/nfcore_external_java_deps.jar
+Mar-29 17:41:34.126 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-29 17:41:35.806 [main] INFO  nextflow.script.BaseScript - MODULES: [ncbigenomedownload, snippy_run, snippy_core, gubbins, iqtree, snpdists]
+Mar-29 17:41:35.982 [main] INFO  nextflow.Nextflow - 
+
+-[2m------------------------------------------------------------------[0m-
+[0;34m   _                _              _         _              _              [0m
+[0;34m  | |__   __ _  ___| |_ ___  _ __ (_) __ _  | |_ ___   ___ | |___          [0m
+[0;34m  | '_ \ / _` |/ __| __/ _ \| '_ \| |/ _` | | __/ _ \ / _ \| / __|    [0m
+[0;34m  | |_) | (_| | (__| || (_) | |_) | | (_| | | || (_) | (_) | \__ \        [0m
+[0;34m  |_.__/ \__,_|\___|\__\___/| .__/|_|\__,_|  \__\___/ \___/|_|___/ [0m
+[0;34m                            |_|                                            [0m
+[0;36m  bactopia tools snippy v3.1.0[0m
+[0;36m  Rapid variant calling from Illumina sequence reads with optional core-SNP phylogeny [0m
+-[2m------------------------------------------------------------------[0m-
+[1mCore Nextflow options[0m
+  [0;34mrunName              : [0;32mlethal_carson[0m
+  [0;34mcontainer            : [0;32mquay.io/bactopia/bactopia:3.1.0[0m
+  [0;34mlaunchDir            : [0;32m/home/ma95362/muszlut/PRJNA823537[0m
+  [0;34mworkDir              : [0;32m/home/ma95362/muszlut/PRJNA823537/work[0m
+  [0;34mprojectDir           : [0;32m/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0[0m
+  [0;34muserName             : [0;32mma95362[0m
+  [0;34mprofile              : [0;32mstandard[0m
+  [0;34mconfigFiles          : [0;32m/apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/nextflow.config[0m
+
+[1mRequired Parameters[0m
+  [0;34mbactopia             : [0;32m/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs/ena-multiple-samples[0m
+
+[1mNCBI Genome Download Parameters[0m
+  [0;34mformat               : [0;32mgenbank[0m
+
+[1mSnippy Parameters[0m
+  [0;34mreference            : [0;32m/scratch/ma95362/ref/Canetti/ncbi_dataset/data/GCF_000253375.1/genomic.gbk[0m
+
+[1mOptional Parameters[0m
+  [0;34moutdir               : [0;32m/scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs/ena-multiple-samples[0m
+
+[1mMax Job Request Parameters[0m
+  [0;34mmax_memory           : [0;32m39 GB[0m (Original request ([0;32m128 GB[0m) adjusted to fit your system)
+  [0;34mmax_time             : [0;32m10d[0m
+
+[1mNextflow Profile Parameters[0m
+  [0;34mcondadir             : [0;32m/home/ma95362/.bactopia/conda[0m
+  [0;34mdatasets_cache       : [0;32m/home/ma95362/.bactopia/datasets[0m
+  [0;34msingularity_cache_dir: [0;32m/home/ma95362/.bactopia/singularity[0m
+
+[1mHelpful Parameters[0m
+  [0;34mwf                   : [0;32msnippy[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m------------------------------------------------------------------[0m-
+If you use bactopia for your analysis please cite:
+
+* Bactopia
+  https://doi.org/10.1128/mSystems.00190-20
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+  https://bactopia.github.io/acknowledgements/
+-[2m------------------------------------------------------------------[0m-
+Mar-29 17:41:35.984 [main] WARN  nextflow.Nextflow - 
+Mar-29 17:41:35.985 [main] WARN  nextflow.Nextflow - Conda Disclaimer
+Mar-29 17:41:35.985 [main] WARN  nextflow.Nextflow - 
+Mar-29 17:41:35.985 [main] WARN  nextflow.Nextflow - If you have access to Docker or Singularity, please consider
+Mar-29 17:41:35.985 [main] WARN  nextflow.Nextflow - running Bactopia using containers. The containers are less
+Mar-29 17:41:35.986 [main] WARN  nextflow.Nextflow - susceptible to Conda environment related issues (e.g. version
+Mar-29 17:41:35.986 [main] WARN  nextflow.Nextflow - conflicts) and errors caused by creation of conda environments
+Mar-29 17:41:35.986 [main] WARN  nextflow.Nextflow - in parallel (use '--max_cpus 1' to over come this error).
+Mar-29 17:41:35.986 [main] WARN  nextflow.Nextflow - 
+Mar-29 17:41:35.986 [main] WARN  nextflow.Nextflow - To use containers, you can use the profile parameter
+Mar-29 17:41:35.987 [main] WARN  nextflow.Nextflow -     Docker: -profile docker
+Mar-29 17:41:35.987 [main] WARN  nextflow.Nextflow -     Singularity: -profile singularity
+Mar-29 17:41:35.987 [main] WARN  nextflow.Nextflow - 
+Mar-29 17:41:35.987 [main] INFO  nextflow.Nextflow - -[2m------------------------------------------------------------------[0m-
+Mar-29 17:41:37.617 [main] INFO  nextflow.Nextflow - Found 0 samples to process
+Mar-29 17:41:37.618 [main] INFO  nextflow.Nextflow - 
+If this looks wrong, now's your chance to back out (CTRL+C 3 times).
+Mar-29 17:41:37.618 [main] INFO  nextflow.Nextflow - Sleeping for 5 seconds...
+Mar-29 17:41:37.619 [main] INFO  nextflow.Nextflow - --------------------------------------------------------------------
+Mar-29 17:41:42.784 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE
+Mar-29 17:41:42.801 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-29 17:41:42.801 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-29 17:41:42.808 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Mar-29 17:41:42.815 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=40 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Mar-29 17:41:42.818 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Mar-29 17:41:42.912 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE
+Mar-29 17:41:42.915 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-29 17:41:42.915 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-29 17:41:42.930 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:SNIPPY:SNPDISTS
+Mar-29 17:41:42.932 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-29 17:41:42.932 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-29 17:41:42.950 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE
+Mar-29 17:41:42.954 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-29 17:41:42.954 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-29 17:41:42.978 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE
+Mar-29 17:41:42.979 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_long` matches labels `process_medium,process_long` for process with name BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE
+Mar-29 17:41:42.982 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-29 17:41:42.982 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-29 17:41:43.025 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS
+Mar-29 17:41:43.026 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-29 17:41:43.026 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-29 17:41:43.032 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE, GUBBINS, SNIPPY_CORE, BACTOPIATOOLS:SNIPPY:SNPDISTS, IQTREE, GUBBINS_MODULE, NCBIGENOMEDOWNLOAD_MODULE, BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE, BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS, IQTREE_MODULE, BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE, SNPDISTS, BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE, SNIPPY_RUN_MODULE, SNIPPY_CORE_MODULE, CUSTOM_DUMPSOFTWAREVERSIONS, NCBIGENOMEDOWNLOAD, SNIPPY_RUN
+Mar-29 17:41:43.034 [main] DEBUG nextflow.Session - Igniting dataflow network (15)
+Mar-29 17:41:43.039 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:SNIPPY_RUN_MODULE
+Mar-29 17:41:43.039 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:SNIPPY_CORE_MODULE
+Mar-29 17:41:43.040 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:SNPDISTS
+Mar-29 17:41:43.040 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:GUBBINS:GUBBINS_MODULE
+Mar-29 17:41:43.042 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:SNIPPY:IQTREE:IQTREE_MODULE
+Mar-29 17:41:43.043 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BACTOPIATOOLS:CUSTOM_DUMPSOFTWAREVERSIONS
+Mar-29 17:41:43.046 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_fd93f89b2d1b45db: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/ncbigenomedownload/main.nf
+  Script_8cb6d7412c42ffa8: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../../../modules/nf-core/snippy/core/main.nf
+  Script_0001eb6675eb017b: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../iqtree/main.nf
+  Script_71a5607f13a1696a: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../modules/nf-core/custom/dumpsoftwareversions/main.nf
+  Script_28b956a88b5bebd6: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/main.nf
+  Script_5259f0b1133544cc: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../lib/nf/bactopia_tools.nf
+  Script_63d132b976012e46: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/ncbigenomedownload/../../../modules/nf-core/ncbigenomedownload/main.nf
+  Script_a22a3f2cbd620671: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../gubbins/../../../modules/nf-core/gubbins/../../../lib/nf/functions.nf
+  Script_2346ef0005d92358: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../iqtree/../../../modules/nf-core/iqtree/main.nf
+  Script_94f0ca4410a2fb20: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../gubbins/main.nf
+  Script_f3fdf3ab95c48621: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../../../modules/nf-core/snpdists/main.nf
+  Script_ac38e6da40e1c181: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../gubbins/../../../modules/nf-core/gubbins/main.nf
+  Script_0eac67fd2c7fb19f: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/main.nf
+  Script_de862988fe3f2091: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/bactopia-tools.nf
+  Script_72358a91f794e9dc: /apps/eb/Bactopia/3.1.0/share/bactopia-3.1.0/./workflows/../subworkflows/local/snippy/../../../modules/nf-core/snippy/run/main.nf
+Mar-29 17:41:43.046 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Mar-29 17:41:43.046 [main] DEBUG nextflow.Session - Session await
+Mar-29 17:41:43.065 [Actor Thread 85] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Mar-29 17:41:43.066 [main] DEBUG nextflow.Session - Session await > all processes finished
+Mar-29 17:41:43.131 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Mar-29 17:41:43.131 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-29 17:41:43.139 [main] INFO  nextflow.script.BaseScript - 
+    Bactopia Tools: `snippy Execution Summary
+    ---------------------------
+    Bactopia Version : 3.1.0
+    Nextflow Version : 24.04.4
+    Command Line     : nextflow run /apps/eb/Bactopia/3.1.0//share/bactopia-3.1.0/main.nf -w /home/ma95362/muszlut/PRJNA823537/work/ --wf snippy --reference /scratch/ma95362/ref/Canetti/ncbi_dataset/data/GCF_000253375.1/genomic.gbk --bactopia /scratch/ma95362/PRJNA823537_ET125/ena-multiple-samples/fastqs/ena-multiple-samples
+    Resumed          : false
+    Completed At     : 2025-03-29T17:41:43.132572239-04:00
+    Duration         : 9.3s
+    Success          : true
+    Exit Code        : 0
+    Error Report     : -
+    Launch Dir       : /home/ma95362/muszlut/PRJNA823537
+    
+Mar-29 17:41:43.147 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Mar-29 17:41:43.147 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Mar-29 17:41:43.149 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Mar-29 17:41:43.948 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Mar-29 17:41:44.275 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Mar-29 17:41:44.294 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Mar-29 17:41:44.295 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
