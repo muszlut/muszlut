@@ -31,4 +31,3 @@ nextflow run main.nf \
   --qual 20 \
   --depth 25 \
   --mapq 40
-
