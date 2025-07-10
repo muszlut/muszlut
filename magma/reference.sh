@@ -11,7 +11,7 @@
 #SBATCH --mail-type=END,FAIL                                   # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
-OUTDIR="/scratch/ma95362/new_mtbvartools_project/reference"
+OUTDIR="/scratch/ma95362/new_magma_project/reference"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
