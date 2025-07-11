@@ -1,0 +1,187 @@
+
+ N E X T F L O W   ~  version 25.04.4
+
+Launching `https://github.com/TORCH-Consortium/MAGMA` [curious_ampere] DSL2 - revision: d417232998 [v1.1.1]
+
+WARN: Include with `addParams()` is deprecated -- pass params as a workflow or process input instead
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+[-        ] CALL_WF:GATK_MARK_DUPLICATES   -
+[-        ] CALL_WF:SAMTOOLS_INDEX         -
+[-        ] CALL_WF:GATK_HAPLOTYPE_CALLER  -
+[-        ] CALL_WF:LOFREQ_CALL__NTM       -
+[-        ] CALL_WF:LOFREQ_INDELQUAL       -
+[-        ] CALL_WF:SAMTOOLS_INDEX__LOFREQ -
+[-        ] CALL_WF:LOFREQ_CALL            -
+[-        ] CALL_WF:LOFREQ_FILTER          -
+[-        ] CALL_WF:UTILS_REFORMAT_LOFREQ  -
+[-        ] CALL_WF:BGZIP__LOFREQ          -
+[-        ] CAL…INDEX_FEATURE_FILE__LOFREQ -
+[-        ] CALL_WF:SAMTOOLS_STATS         -
+[-        ] CAL…F:GATK_COLLECT_WGS_METRICS -
+[-        ] CALL_WF:GATK_FLAG_STAT         -
+Plus 3 more processes waiting for tasks…
+
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+[-        ] CALL_WF:GATK_MARK_DUPLICATES   -
+[-        ] CALL_WF:SAMTOOLS_INDEX         -
+[-        ] CALL_WF:GATK_HAPLOTYPE_CALLER  -
+[-        ] CALL_WF:LOFREQ_CALL__NTM       -
+[-        ] CALL_WF:LOFREQ_INDELQUAL       -
+[-        ] CALL_WF:SAMTOOLS_INDEX__LOFREQ -
+[-        ] CALL_WF:LOFREQ_CALL            -
+[-        ] CALL_WF:LOFREQ_FILTER          -
+[-        ] CALL_WF:UTILS_REFORMAT_LOFREQ  -
+[-        ] CALL_WF:BGZIP__LOFREQ          -
+[-        ] CAL…INDEX_FEATURE_FILE__LOFREQ -
+[-        ] CALL_WF:SAMTOOLS_STATS         -
+[-        ] CAL…F:GATK_COLLECT_WGS_METRICS -
+[-        ] CALL_WF:GATK_FLAG_STAT         -
+Plus 16 more processes waiting for tasks…
+
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+[-        ] CALL_WF:GATK_MARK_DUPLICATES   -
+[-        ] CALL_WF:SAMTOOLS_INDEX         -
+[-        ] CALL_WF:GATK_HAPLOTYPE_CALLER  -
+[-        ] CALL_WF:LOFREQ_CALL__NTM       -
+[-        ] CALL_WF:LOFREQ_INDELQUAL       -
+[-        ] CALL_WF:SAMTOOLS_INDEX__LOFREQ -
+[-        ] CALL_WF:LOFREQ_CALL            -
+[-        ] CALL_WF:LOFREQ_FILTER          -
+[-        ] CALL_WF:UTILS_REFORMAT_LOFREQ  -
+[-        ] CALL_WF:BGZIP__LOFREQ          -
+[-        ] CAL…INDEX_FEATURE_FILE__LOFREQ -
+[-        ] CALL_WF:SAMTOOLS_STATS         -
+[-        ] CAL…F:GATK_COLLECT_WGS_METRICS -
+[-        ] CALL_WF:GATK_FLAG_STAT         -
+Plus 27 more processes waiting for tasks…
+
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+[-        ] CALL_WF:GATK_MARK_DUPLICATES   -
+[-        ] CALL_WF:SAMTOOLS_INDEX         -
+[-        ] CALL_WF:GATK_HAPLOTYPE_CALLER  -
+[-        ] CALL_WF:LOFREQ_CALL__NTM       -
+[-        ] CALL_WF:LOFREQ_INDELQUAL       -
+[-        ] CALL_WF:SAMTOOLS_INDEX__LOFREQ -
+[-        ] CALL_WF:LOFREQ_CALL            -
+[-        ] CALL_WF:LOFREQ_FILTER          -
+[-        ] CALL_WF:UTILS_REFORMAT_LOFREQ  -
+[-        ] CALL_WF:BGZIP__LOFREQ          -
+[-        ] CAL…INDEX_FEATURE_FILE__LOFREQ -
+[-        ] CALL_WF:SAMTOOLS_STATS         -
+[-        ] CAL…F:GATK_COLLECT_WGS_METRICS -
+[-        ] CALL_WF:GATK_FLAG_STAT         -
+Plus 36 more processes waiting for tasks…
+
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+[-        ] CALL_WF:GATK_MARK_DUPLICATES   -
+[-        ] CALL_WF:SAMTOOLS_INDEX         -
+[-        ] CALL_WF:GATK_HAPLOTYPE_CALLER  -
+[-        ] CALL_WF:LOFREQ_CALL__NTM       -
+[-        ] CALL_WF:LOFREQ_INDELQUAL       -
+[-        ] CALL_WF:SAMTOOLS_INDEX__LOFREQ -
+[-        ] CALL_WF:LOFREQ_CALL            -
+[-        ] CALL_WF:LOFREQ_FILTER          -
+[-        ] CALL_WF:UTILS_REFORMAT_LOFREQ  -
+[-        ] CALL_WF:BGZIP__LOFREQ          -
+[-        ] CAL…INDEX_FEATURE_FILE__LOFREQ -
+[-        ] CALL_WF:SAMTOOLS_STATS         -
+[-        ] CAL…F:GATK_COLLECT_WGS_METRICS -
+[-        ] CALL_WF:GATK_FLAG_STAT         -
+Plus 51 more processes waiting for tasks…
+
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+[-        ] CALL_WF:GATK_MARK_DUPLICATES   -
+[-        ] CALL_WF:SAMTOOLS_INDEX         -
+[-        ] CALL_WF:GATK_HAPLOTYPE_CALLER  -
+[-        ] CALL_WF:LOFREQ_CALL__NTM       -
+[-        ] CALL_WF:LOFREQ_INDELQUAL       -
+[-        ] CALL_WF:SAMTOOLS_INDEX__LOFREQ -
+[-        ] CALL_WF:LOFREQ_CALL            -
+[-        ] CALL_WF:LOFREQ_FILTER          -
+[-        ] CALL_WF:UTILS_REFORMAT_LOFREQ  -
+[-        ] CALL_WF:BGZIP__LOFREQ          -
+[-        ] CAL…INDEX_FEATURE_FILE__LOFREQ -
+[-        ] CALL_WF:SAMTOOLS_STATS         -
+[-        ] CAL…F:GATK_COLLECT_WGS_METRICS -
+[-        ] CALL_WF:GATK_FLAG_STAT         -
+Plus 57 more processes waiting for tasks…
+ERROR ~ Error executing process > 'VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION'
+
+Caused by:
+  Not a valid path value: 'samplesheet.magma.csv'
+
+
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+
+ -- Check '.nextflow.log' file for details
+
+[-        ] VAL…_WF:SAMPLESHEET_VALIDATION -
+[-        ] VAL…_FASTQS_WF:FASTQ_VALIDATOR -
+[-        ] VAL…LS_FASTQ_COHORT_VALIDATION -
+[-        ] QUALITY_CHECK_WF:FASTQC        -
+[-        ] MAP_WF:BWA_MEM                 -
+[-        ] CALL_WF:SAMTOOLS_MERGE         -
+[-        ] CALL_WF:GATK_MARK_DUPLICATES   -
+[-        ] CALL_WF:SAMTOOLS_INDEX         -
+[-        ] CALL_WF:GATK_HAPLOTYPE_CALLER  -
+[-        ] CALL_WF:LOFREQ_CALL__NTM       -
+[-        ] CALL_WF:LOFREQ_INDELQUAL       -
+[-        ] CALL_WF:SAMTOOLS_INDEX__LOFREQ -
+[-        ] CALL_WF:LOFREQ_CALL            -
+[-        ] CALL_WF:LOFREQ_FILTER          -
+[-        ] CALL_WF:UTILS_REFORMAT_LOFREQ  -
+[-        ] CALL_WF:BGZIP__LOFREQ          -
+[-        ] CAL…INDEX_FEATURE_FILE__LOFREQ -
+[-        ] CALL_WF:SAMTOOLS_STATS         -
+[-        ] CAL…F:GATK_COLLECT_WGS_METRICS -
+[-        ] CALL_WF:GATK_FLAG_STAT         -
+Plus 57 more processes waiting for tasks…
+ERROR ~ Error executing process > 'VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION'
+
+Caused by:
+  Not a valid path value: 'samplesheet.magma.csv'
+
+
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+
+ -- Check '.nextflow.log' file for details
+
