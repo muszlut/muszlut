@@ -1,0 +1,27 @@
+study_name: Mbovis_Study
+output_dir: /scratch/ma95362/ETH_bovis_Sequence/magma_output
+samples:
+- sample_id: 004G
+  library: 1
+  attempt: 1
+  r1: /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw/004G_R1.fastq.gz
+  r2: /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw/004G_R2.fastq.gz
+  flowcell: 1
+  lane: 1
+  index_sequence: 1
+- sample_id: '11'
+  library: 1
+  attempt: 1
+  r1: /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw/11_R1.fastq.gz
+  r2: /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw/11_R2.fastq.gz
+  flowcell: 1
+  lane: 1
+  index_sequence: 1
+- sample_id: '57'
+  library: 1
+  attempt: 1
+  r1: /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw/57_R1.fastq.gz
+  r2: /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw/57_R2.fastq.gz
+  flowcell: 1
+  lane: 1
+  index_sequence: 1
