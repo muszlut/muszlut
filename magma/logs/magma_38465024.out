@@ -1,0 +1,8 @@
+
+ N E X T F L O W   ~  version 25.04.4
+
+Pulling TORCH-Consortium/MAGMA ...
+ downloaded from https://github.com/TORCH-Consortium/MAGMA.git
+Launching `https://github.com/TORCH-Consortium/MAGMA` [silly_montalcini] DSL2 - revision: d417232998 [v1.1.1]
+
+WARN: Include with `addParams()` is deprecated -- pass params as a workflow or process input instead

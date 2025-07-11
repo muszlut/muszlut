@@ -1,0 +1,58 @@
+Jul-10 21:25:37.971 [main] DEBUG nextflow.cli.Launcher - $> nextflow run 'https://github.com/TORCH-Consortium/MAGMA' -profile conda_local,server -r v1.1.1 -params-file my_parameters_1.yml
+Jul-10 21:25:38.050 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.4
+Jul-10 21:25:38.091 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.3,nf-wave@1.12.1
+Jul-10 21:25:38.117 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-10 21:25:38.119 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-10 21:25:38.122 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-10 21:25:38.136 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-10 21:25:38.200 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/scm
+Jul-10 21:25:38.252 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Jul-10 21:25:38.267 [main] DEBUG nextflow.scm.RepositoryFactory - Git url=nextflow.scm.GitUrl(https, null, github.com, TORCH-Consortium/MAGMA) -> config=ProviderConfig[name: github, platform: github, server: https://github.com]
+Jul-10 21:25:38.268 [main] DEBUG nextflow.scm.AssetManager - Repository URL: https://github.com/TORCH-Consortium/MAGMA; Project: TORCH-Consortium/MAGMA; Hub provider: github
+Jul-10 21:25:38.293 [main] INFO  nextflow.cli.CmdRun - Pulling TORCH-Consortium/MAGMA ...
+Jul-10 21:25:38.300 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/TORCH-Consortium/MAGMA/contents/nextflow.config?ref=v1.1.1
+Jul-10 21:25:39.486 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/TORCH-Consortium/MAGMA/contents/main.nf?ref=v1.1.1
+Jul-10 21:25:39.591 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/TORCH-Consortium/MAGMA
+Jul-10 21:25:39.703 [main] DEBUG nextflow.scm.AssetManager - Pulling TORCH-Consortium/MAGMA -- Using remote clone url: https://github.com/TORCH-Consortium/MAGMA.git
+Jul-10 21:26:14.152 [main] INFO  nextflow.cli.CmdRun -  downloaded from https://github.com/TORCH-Consortium/MAGMA.git
+Jul-10 21:26:14.184 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/nextflow.config
+Jul-10 21:26:14.187 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/nextflow.config
+Jul-10 21:26:14.198 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/secrets/store.json
+Jul-10 21:26:14.200 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@586495f1] - activable => nextflow.secret.LocalSecretsProvider@586495f1
+Jul-10 21:26:14.267 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `conda_local,server`
+Jul-10 21:26:14.971 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [pbs, server, test, conda_local, docker, podman]
+Jul-10 21:26:15.028 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-10 21:26:15.028 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/TORCH-Consortium/MAGMA` [silly_montalcini] DSL2 - revision: d417232998 [v1.1.1]
+Jul-10 21:26:15.030 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-10 21:26:15.030 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-10 21:26:15.092 [main] DEBUG nextflow.Session - Session UUID: a9e3b1d0-ef68-40fa-8e5f-09416e60e1d8
+Jul-10 21:26:15.092 [main] DEBUG nextflow.Session - Run name: silly_montalcini
+Jul-10 21:26:15.092 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-10 21:26:15.101 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-10 21:26:15.106 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-10 21:26:15.127 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.4 build 5950
+  Created: 16-06-2025 14:23 UTC (10:23 EDT)
+  System: Linux 4.18.0-477.15.1.el8_8.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.6+10
+  Encoding: UTF-8 (UTF-8)
+  Process: 3988937@c4-8 [10.2.1.79]
+  CPUs: 8 - Mem: 48 GB (47.5 GB) - Swap: 0 (0)
+Jul-10 21:26:15.157 [main] DEBUG nextflow.Session - Work-dir: /scratch/ma95362/ETH_bovis_Sequence/magma_output/work [lustre]
+Jul-10 21:26:15.192 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-10 21:26:15.203 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-10 21:26:15.208 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-10 21:26:15.269 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-10 21:26:15.293 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-10 21:26:15.407 [main] DEBUG nextflow.Session - Session start
+Jul-10 21:26:15.650 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-10 21:26:15.905 [main] WARN  nextflow.script.IncludeDef - Include with `addParams()` is deprecated -- pass params as a workflow or process input instead
+Jul-10 21:26:20.670 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SAMPLESHEET_VALIDATION` matches process VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+Jul-10 21:26:20.671 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+Jul-10 21:26:20.676 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION` matches process VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+Jul-10 21:26:20.699 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.699 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.705 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-10 21:26:20.711 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=48 GB; capacity=10; pollInterval=100ms; dumpInterval=5m
+Jul-10 21:26:20.714 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Jul-10 21:26:20.738 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION': maxForks=0; fair=false; array=0
