@@ -1,0 +1,1182 @@
+Jul-10 21:25:37.971 [main] DEBUG nextflow.cli.Launcher - $> nextflow run 'https://github.com/TORCH-Consortium/MAGMA' -profile conda_local,server -r v1.1.1 -params-file my_parameters_1.yml
+Jul-10 21:25:38.050 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.4
+Jul-10 21:25:38.091 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.3,nf-wave@1.12.1
+Jul-10 21:25:38.117 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-10 21:25:38.119 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-10 21:25:38.122 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jul-10 21:25:38.136 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-10 21:25:38.200 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/scm
+Jul-10 21:25:38.252 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Jul-10 21:25:38.267 [main] DEBUG nextflow.scm.RepositoryFactory - Git url=nextflow.scm.GitUrl(https, null, github.com, TORCH-Consortium/MAGMA) -> config=ProviderConfig[name: github, platform: github, server: https://github.com]
+Jul-10 21:25:38.268 [main] DEBUG nextflow.scm.AssetManager - Repository URL: https://github.com/TORCH-Consortium/MAGMA; Project: TORCH-Consortium/MAGMA; Hub provider: github
+Jul-10 21:25:38.293 [main] INFO  nextflow.cli.CmdRun - Pulling TORCH-Consortium/MAGMA ...
+Jul-10 21:25:38.300 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/TORCH-Consortium/MAGMA/contents/nextflow.config?ref=v1.1.1
+Jul-10 21:25:39.486 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/TORCH-Consortium/MAGMA/contents/main.nf?ref=v1.1.1
+Jul-10 21:25:39.591 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/TORCH-Consortium/MAGMA
+Jul-10 21:25:39.703 [main] DEBUG nextflow.scm.AssetManager - Pulling TORCH-Consortium/MAGMA -- Using remote clone url: https://github.com/TORCH-Consortium/MAGMA.git
+Jul-10 21:26:14.152 [main] INFO  nextflow.cli.CmdRun -  downloaded from https://github.com/TORCH-Consortium/MAGMA.git
+Jul-10 21:26:14.184 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/nextflow.config
+Jul-10 21:26:14.187 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/nextflow.config
+Jul-10 21:26:14.198 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/secrets/store.json
+Jul-10 21:26:14.200 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@586495f1] - activable => nextflow.secret.LocalSecretsProvider@586495f1
+Jul-10 21:26:14.267 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `conda_local,server`
+Jul-10 21:26:14.971 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [pbs, server, test, conda_local, docker, podman]
+Jul-10 21:26:15.028 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-10 21:26:15.028 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/TORCH-Consortium/MAGMA` [silly_montalcini] DSL2 - revision: d417232998 [v1.1.1]
+Jul-10 21:26:15.030 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-10 21:26:15.030 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-10 21:26:15.092 [main] DEBUG nextflow.Session - Session UUID: a9e3b1d0-ef68-40fa-8e5f-09416e60e1d8
+Jul-10 21:26:15.092 [main] DEBUG nextflow.Session - Run name: silly_montalcini
+Jul-10 21:26:15.092 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-10 21:26:15.101 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-10 21:26:15.106 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jul-10 21:26:15.127 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.4 build 5950
+  Created: 16-06-2025 14:23 UTC (10:23 EDT)
+  System: Linux 4.18.0-477.15.1.el8_8.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.6+10
+  Encoding: UTF-8 (UTF-8)
+  Process: 3988937@c4-8 [10.2.1.79]
+  CPUs: 8 - Mem: 48 GB (47.5 GB) - Swap: 0 (0)
+Jul-10 21:26:15.157 [main] DEBUG nextflow.Session - Work-dir: /scratch/ma95362/ETH_bovis_Sequence/magma_output/work [lustre]
+Jul-10 21:26:15.192 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-10 21:26:15.203 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-10 21:26:15.208 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jul-10 21:26:15.269 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-10 21:26:15.293 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-10 21:26:15.407 [main] DEBUG nextflow.Session - Session start
+Jul-10 21:26:15.650 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-10 21:26:15.905 [main] WARN  nextflow.script.IncludeDef - Include with `addParams()` is deprecated -- pass params as a workflow or process input instead
+Jul-10 21:26:20.670 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SAMPLESHEET_VALIDATION` matches process VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+Jul-10 21:26:20.671 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+Jul-10 21:26:20.676 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION` matches process VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+Jul-10 21:26:20.699 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.699 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.705 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-10 21:26:20.711 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=48 GB; capacity=10; pollInterval=100ms; dumpInterval=5m
+Jul-10 21:26:20.714 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Jul-10 21:26:20.738 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.860 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process VALIDATE_FASTQS_WF:FASTQ_VALIDATOR
+Jul-10 21:26:20.863 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:VALIDATE_FASTQS_WF:FASTQ_VALIDATOR` matches process VALIDATE_FASTQS_WF:FASTQ_VALIDATOR
+Jul-10 21:26:20.871 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.871 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.872 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VALIDATE_FASTQS_WF:FASTQ_VALIDATOR': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.885 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process VALIDATE_FASTQS_WF:UTILS_FASTQ_COHORT_VALIDATION
+Jul-10 21:26:20.888 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:VALIDATE_FASTQS_WF:UTILS_FASTQ_COHORT_VALIDATION` matches process VALIDATE_FASTQS_WF:UTILS_FASTQ_COHORT_VALIDATION
+Jul-10 21:26:20.890 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.890 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.890 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'VALIDATE_FASTQS_WF:UTILS_FASTQ_COHORT_VALIDATION': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.907 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name QUALITY_CHECK_WF:FASTQC
+Jul-10 21:26:20.908 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process QUALITY_CHECK_WF:FASTQC
+Jul-10 21:26:20.910 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:QUALITY_CHECK_WF:FASTQC` matches process QUALITY_CHECK_WF:FASTQC
+Jul-10 21:26:20.912 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.912 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.913 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'QUALITY_CHECK_WF:FASTQC': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.922 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_8_memory_8` matches labels `cpu_8_memory_8` for process with name MAP_WF:BWA_MEM
+Jul-10 21:26:20.923 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MAP_WF:BWA_MEM
+Jul-10 21:26:20.925 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MAP_WF:BWA_MEM` matches process MAP_WF:BWA_MEM
+Jul-10 21:26:20.928 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.928 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.929 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MAP_WF:BWA_MEM': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.943 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process CALL_WF:SAMTOOLS_MERGE
+Jul-10 21:26:20.945 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:SAMTOOLS_MERGE` matches process CALL_WF:SAMTOOLS_MERGE
+Jul-10 21:26:20.948 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.948 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.949 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:SAMTOOLS_MERGE': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.955 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_4_memory_8` matches labels `cpu_4_memory_8` for process with name CALL_WF:GATK_MARK_DUPLICATES
+Jul-10 21:26:20.956 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:GATK_MARK_DUPLICATES
+Jul-10 21:26:20.957 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:GATK_MARK_DUPLICATES` matches process CALL_WF:GATK_MARK_DUPLICATES
+Jul-10 21:26:20.961 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.961 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.962 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:GATK_MARK_DUPLICATES': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.968 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name CALL_WF:SAMTOOLS_INDEX
+Jul-10 21:26:20.969 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process CALL_WF:SAMTOOLS_INDEX
+Jul-10 21:26:20.971 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:SAMTOOLS_INDEX` matches process CALL_WF:SAMTOOLS_INDEX
+Jul-10 21:26:20.974 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.974 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.975 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:SAMTOOLS_INDEX': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.983 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_8_memory_8` matches labels `cpu_8_memory_8` for process with name CALL_WF:GATK_HAPLOTYPE_CALLER
+Jul-10 21:26:20.984 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:GATK_HAPLOTYPE_CALLER
+Jul-10 21:26:20.985 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:GATK_HAPLOTYPE_CALLER` matches process CALL_WF:GATK_HAPLOTYPE_CALLER
+Jul-10 21:26:20.989 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:20.989 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:20.989 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:GATK_HAPLOTYPE_CALLER': maxForks=0; fair=false; array=0
+Jul-10 21:26:20.997 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:LOFREQ_CALL__NTM
+Jul-10 21:26:20.999 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:LOFREQ_CALL__NTM` matches process CALL_WF:LOFREQ_CALL__NTM
+Jul-10 21:26:21.002 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.002 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.003 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:LOFREQ_CALL__NTM': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.010 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name CALL_WF:LOFREQ_INDELQUAL
+Jul-10 21:26:21.011 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:LOFREQ_INDELQUAL
+Jul-10 21:26:21.013 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:LOFREQ_INDELQUAL` matches process CALL_WF:LOFREQ_INDELQUAL
+Jul-10 21:26:21.016 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.016 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.016 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:LOFREQ_INDELQUAL': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.022 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process CALL_WF:SAMTOOLS_INDEX__LOFREQ
+Jul-10 21:26:21.024 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:SAMTOOLS_INDEX__LOFREQ` matches process CALL_WF:SAMTOOLS_INDEX__LOFREQ
+Jul-10 21:26:21.027 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.027 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.028 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:SAMTOOLS_INDEX__LOFREQ': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.034 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_8_memory_4` matches labels `cpu_8_memory_4` for process with name CALL_WF:LOFREQ_CALL
+Jul-10 21:26:21.035 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:LOFREQ_CALL
+Jul-10 21:26:21.036 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:LOFREQ_CALL` matches process CALL_WF:LOFREQ_CALL
+Jul-10 21:26:21.039 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.039 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.039 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:LOFREQ_CALL': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.046 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:LOFREQ_FILTER
+Jul-10 21:26:21.047 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:LOFREQ_FILTER` matches process CALL_WF:LOFREQ_FILTER
+Jul-10 21:26:21.050 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.050 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.051 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:LOFREQ_FILTER': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.057 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:UTILS_REFORMAT_LOFREQ
+Jul-10 21:26:21.058 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:UTILS_REFORMAT_LOFREQ` matches process CALL_WF:UTILS_REFORMAT_LOFREQ
+Jul-10 21:26:21.061 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.061 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.061 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:UTILS_REFORMAT_LOFREQ': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.068 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name CALL_WF:BGZIP__LOFREQ
+Jul-10 21:26:21.069 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process CALL_WF:BGZIP__LOFREQ
+Jul-10 21:26:21.070 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process CALL_WF:BGZIP__LOFREQ
+Jul-10 21:26:21.071 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:BGZIP__LOFREQ` matches process CALL_WF:BGZIP__LOFREQ
+Jul-10 21:26:21.074 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.074 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.075 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:BGZIP__LOFREQ': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.083 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ
+Jul-10 21:26:21.084 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ
+Jul-10 21:26:21.085 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ` matches process CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ
+Jul-10 21:26:21.088 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.089 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.089 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.096 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name CALL_WF:SAMTOOLS_STATS
+Jul-10 21:26:21.096 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process CALL_WF:SAMTOOLS_STATS
+Jul-10 21:26:21.098 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:SAMTOOLS_STATS` matches process CALL_WF:SAMTOOLS_STATS
+Jul-10 21:26:21.100 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.100 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.101 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:SAMTOOLS_STATS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.107 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name CALL_WF:GATK_COLLECT_WGS_METRICS
+Jul-10 21:26:21.108 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:GATK_COLLECT_WGS_METRICS
+Jul-10 21:26:21.109 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:GATK_COLLECT_WGS_METRICS` matches process CALL_WF:GATK_COLLECT_WGS_METRICS
+Jul-10 21:26:21.111 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.112 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.112 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:GATK_COLLECT_WGS_METRICS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.119 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name CALL_WF:GATK_FLAG_STAT
+Jul-10 21:26:21.120 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:GATK_FLAG_STAT
+Jul-10 21:26:21.121 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:GATK_FLAG_STAT` matches process CALL_WF:GATK_FLAG_STAT
+Jul-10 21:26:21.124 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.124 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.125 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:GATK_FLAG_STAT': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.137 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:UTILS_SAMPLE_STATS
+Jul-10 21:26:21.138 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:UTILS_SAMPLE_STATS` matches process CALL_WF:UTILS_SAMPLE_STATS
+Jul-10 21:26:21.141 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.141 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.142 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:UTILS_SAMPLE_STATS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.147 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process CALL_WF:UTILS_COHORT_STATS
+Jul-10 21:26:21.149 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALL_WF:UTILS_COHORT_STATS` matches process CALL_WF:UTILS_COHORT_STATS
+Jul-10 21:26:21.151 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.151 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.152 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALL_WF:UTILS_COHORT_STATS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.255 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MINOR_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__LOFREQ
+Jul-10 21:26:21.257 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MINOR_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__LOFREQ
+Jul-10 21:26:21.261 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.261 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.262 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MINOR_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__LOFREQ': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.269 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__LOFREQ
+Jul-10 21:26:21.271 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__LOFREQ` matches process MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__LOFREQ
+Jul-10 21:26:21.273 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.273 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.273 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__LOFREQ': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.282 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ
+Jul-10 21:26:21.283 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ
+Jul-10 21:26:21.285 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ` matches process MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ
+Jul-10 21:26:21.287 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.287 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.287 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.295 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MINOR_VARIANTS_ANALYSIS_WF:UTILS_MULTIPLE_INFECTION_FILTER
+Jul-10 21:26:21.297 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MINOR_VARIANTS_ANALYSIS_WF:UTILS_MULTIPLE_INFECTION_FILTER` matches process MINOR_VARIANTS_ANALYSIS_WF:UTILS_MULTIPLE_INFECTION_FILTER
+Jul-10 21:26:21.299 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.299 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.299 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MINOR_VARIANTS_ANALYSIS_WF:UTILS_MULTIPLE_INFECTION_FILTER': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.305 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process UTILS_MERGE_COHORT_STATS
+Jul-10 21:26:21.307 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:UTILS_MERGE_COHORT_STATS` matches process UTILS_MERGE_COHORT_STATS
+Jul-10 21:26:21.308 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.308 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.309 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'UTILS_MERGE_COHORT_STATS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.324 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_8_memory_8` matches labels `cpu_8_memory_8` for process with name STRUCTURAL_VARIANTS_ANALYSIS_WF:BWA_MEM__DELLY
+Jul-10 21:26:21.325 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:BWA_MEM__DELLY
+Jul-10 21:26:21.326 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:BWA_MEM__DELLY
+Jul-10 21:26:21.330 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.330 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.330 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:BWA_MEM__DELLY': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.341 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_MERGE__DELLY
+Jul-10 21:26:21.342 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_MERGE__DELLY
+Jul-10 21:26:21.345 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.346 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.346 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_MERGE__DELLY': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.352 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_4_memory_8` matches labels `cpu_4_memory_8` for process with name STRUCTURAL_VARIANTS_ANALYSIS_WF:GATK_MARK_DUPLICATES__DELLY
+Jul-10 21:26:21.353 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:GATK_MARK_DUPLICATES__DELLY
+Jul-10 21:26:21.354 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:GATK_MARK_DUPLICATES__DELLY
+Jul-10 21:26:21.358 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.358 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.359 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:GATK_MARK_DUPLICATES__DELLY': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.365 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_INDEX__DELLY
+Jul-10 21:26:21.366 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_INDEX__DELLY
+Jul-10 21:26:21.367 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_INDEX__DELLY
+Jul-10 21:26:21.370 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.370 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.371 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_INDEX__DELLY': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.377 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:DELLY_CALL
+Jul-10 21:26:21.381 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.381 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.381 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:DELLY_CALL': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.387 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_VIEW__TBP
+Jul-10 21:26:21.391 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.391 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.391 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_VIEW__TBP': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.416 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__DELLY
+Jul-10 21:26:21.417 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__DELLY
+Jul-10 21:26:21.421 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.421 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.421 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__DELLY': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.428 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__DELLY
+Jul-10 21:26:21.429 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__DELLY
+Jul-10 21:26:21.433 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.433 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.433 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__DELLY': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.440 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__DELLY
+Jul-10 21:26:21.441 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__DELLY
+Jul-10 21:26:21.446 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.446 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.447 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__DELLY': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.500 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PREPARE_COHORT_VCF:GATK_COMBINE_GVCFS
+Jul-10 21:26:21.502 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PREPARE_COHORT_VCF:GATK_COMBINE_GVCFS` matches process MERGE_WF:PREPARE_COHORT_VCF:GATK_COMBINE_GVCFS
+Jul-10 21:26:21.504 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.505 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.505 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PREPARE_COHORT_VCF:GATK_COMBINE_GVCFS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.514 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PREPARE_COHORT_VCF:GATK_GENOTYPE_GVCFS
+Jul-10 21:26:21.516 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PREPARE_COHORT_VCF:GATK_GENOTYPE_GVCFS` matches process MERGE_WF:PREPARE_COHORT_VCF:GATK_GENOTYPE_GVCFS
+Jul-10 21:26:21.518 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.518 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.519 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PREPARE_COHORT_VCF:GATK_GENOTYPE_GVCFS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.526 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PREPARE_COHORT_VCF:SNPEFF
+Jul-10 21:26:21.528 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PREPARE_COHORT_VCF:SNPEFF` matches process MERGE_WF:PREPARE_COHORT_VCF:SNPEFF
+Jul-10 21:26:21.530 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.530 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.531 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PREPARE_COHORT_VCF:SNPEFF': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.537 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_2_memory_2` matches labels `cpu_2_memory_2` for process with name MERGE_WF:PREPARE_COHORT_VCF:BGZIP
+Jul-10 21:26:21.538 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PREPARE_COHORT_VCF:BGZIP
+Jul-10 21:26:21.539 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PREPARE_COHORT_VCF:BGZIP` matches process MERGE_WF:PREPARE_COHORT_VCF:BGZIP
+Jul-10 21:26:21.541 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.541 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.542 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PREPARE_COHORT_VCF:BGZIP': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.549 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT
+Jul-10 21:26:21.550 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT
+Jul-10 21:26:21.552 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT` matches process MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT
+Jul-10 21:26:21.555 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.555 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.555 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.568 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP
+Jul-10 21:26:21.569 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP
+Jul-10 21:26:21.571 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP` matches process MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP
+Jul-10 21:26:21.574 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.574 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.574 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.621 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7
+Jul-10 21:26:21.623 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7
+Jul-10 21:26:21.624 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7
+Jul-10 21:26:21.628 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.628 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.628 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.641 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7
+Jul-10 21:26:21.642 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7
+Jul-10 21:26:21.644 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7
+Jul-10 21:26:21.646 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.646 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.647 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.660 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6
+Jul-10 21:26:21.661 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6
+Jul-10 21:26:21.663 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6
+Jul-10 21:26:21.666 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.666 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.666 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.681 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6
+Jul-10 21:26:21.683 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6
+Jul-10 21:26:21.684 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6
+Jul-10 21:26:21.687 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.687 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.687 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.699 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5
+Jul-10 21:26:21.700 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5
+Jul-10 21:26:21.701 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5
+Jul-10 21:26:21.704 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.704 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.705 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.718 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5
+Jul-10 21:26:21.719 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5
+Jul-10 21:26:21.721 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5
+Jul-10 21:26:21.724 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.724 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.725 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.736 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4
+Jul-10 21:26:21.738 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4
+Jul-10 21:26:21.739 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4
+Jul-10 21:26:21.742 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.742 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.743 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.755 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4
+Jul-10 21:26:21.756 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4
+Jul-10 21:26:21.758 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4
+Jul-10 21:26:21.760 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.760 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.761 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.773 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3
+Jul-10 21:26:21.774 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3
+Jul-10 21:26:21.776 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3
+Jul-10 21:26:21.780 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.780 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.780 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.793 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3
+Jul-10 21:26:21.795 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3
+Jul-10 21:26:21.796 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3
+Jul-10 21:26:21.798 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.799 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.799 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.810 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2
+Jul-10 21:26:21.812 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2
+Jul-10 21:26:21.814 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2
+Jul-10 21:26:21.817 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.817 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.817 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.831 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2
+Jul-10 21:26:21.832 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2
+Jul-10 21:26:21.834 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2
+Jul-10 21:26:21.836 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.836 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.836 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.883 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_SELECT_BEST_ANNOTATIONS
+Jul-10 21:26:21.884 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_SELECT_BEST_ANNOTATIONS` matches process MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_SELECT_BEST_ANNOTATIONS
+Jul-10 21:26:21.887 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.887 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.887 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_SELECT_BEST_ANNOTATIONS': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.904 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP
+Jul-10 21:26:21.906 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP
+Jul-10 21:26:21.908 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP` matches process MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP
+Jul-10 21:26:21.910 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.910 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.911 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.921 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP
+Jul-10 21:26:21.922 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP
+Jul-10 21:26:21.923 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP` matches process MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP
+Jul-10 21:26:21.926 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.926 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.927 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.939 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL
+Jul-10 21:26:21.940 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL
+Jul-10 21:26:21.941 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL` matches process MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL
+Jul-10 21:26:21.945 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.946 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.946 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.959 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:GATK_MERGE_VCFS__INC
+Jul-10 21:26:21.960 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:GATK_MERGE_VCFS__INC
+Jul-10 21:26:21.961 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:GATK_MERGE_VCFS__INC` matches process MERGE_WF:GATK_MERGE_VCFS__INC
+Jul-10 21:26:21.963 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.963 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.964 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:GATK_MERGE_VCFS__INC': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.970 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_VCF_PROFILE__COHORT
+Jul-10 21:26:21.971 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_VCF_PROFILE__COHORT` matches process MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_VCF_PROFILE__COHORT
+Jul-10 21:26:21.973 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.973 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.974 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_VCF_PROFILE__COHORT': maxForks=0; fair=false; array=0
+Jul-10 21:26:21.981 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT
+Jul-10 21:26:21.982 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT
+Jul-10 21:26:21.983 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT` matches process MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT
+Jul-10 21:26:21.985 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:21.985 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:21.986 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.044 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.045 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.045 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.047 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.048 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.048 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.057 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_VARIANTS_TO_TABLE
+Jul-10 21:26:22.058 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_VARIANTS_TO_TABLE` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_VARIANTS_TO_TABLE
+Jul-10 21:26:22.059 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.060 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.060 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_VARIANTS_TO_TABLE': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.066 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPSITES
+Jul-10 21:26:22.067 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPSITES` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPSITES
+Jul-10 21:26:22.068 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.069 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.069 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPSITES': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.076 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPDISTS
+Jul-10 21:26:22.077 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPDISTS` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPDISTS
+Jul-10 21:26:22.078 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.079 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.079 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPDISTS': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.089 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:IQTREE
+Jul-10 21:26:22.090 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:IQTREE` matches process MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:IQTREE
+Jul-10 21:26:22.092 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.092 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.092 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:IQTREE': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.106 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.107 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.107 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP` matches process MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.109 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.109 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.110 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.117 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.117 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.118 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP` matches process MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.120 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.120 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.120 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.143 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.144 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.145 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.147 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.147 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.148 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.156 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_VARIANTS_TO_TABLE
+Jul-10 21:26:22.156 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_VARIANTS_TO_TABLE` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_VARIANTS_TO_TABLE
+Jul-10 21:26:22.158 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.158 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.158 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_VARIANTS_TO_TABLE': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.164 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPSITES
+Jul-10 21:26:22.164 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPSITES` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPSITES
+Jul-10 21:26:22.167 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.167 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.167 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPSITES': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.171 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPDISTS
+Jul-10 21:26:22.172 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPDISTS` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPDISTS
+Jul-10 21:26:22.174 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.174 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.174 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPDISTS': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.178 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:IQTREE
+Jul-10 21:26:22.179 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:IQTREE` matches process MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:IQTREE
+Jul-10 21:26:22.181 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.181 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.182 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:IQTREE': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.191 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.192 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.192 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP` matches process MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.195 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.195 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.195 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.200 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.201 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BWA.*|IQTREE.*|SNPDISTS.*|SNPSITES.*|BCFTOOLS.*|BGZIP.*|SAMTOOLS.*|SNPEFF.*|CLUSTERPICKER.*` matches process MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.201 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP` matches process MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.203 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.203 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.204 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.212 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:cpu_4_memory_16` matches labels `cpu_4_memory_16` for process with name REPORTS_WF:MULTIQC
+Jul-10 21:26:22.212 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process REPORTS_WF:MULTIQC
+Jul-10 21:26:22.213 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REPORTS_WF:MULTIQC` matches process REPORTS_WF:MULTIQC
+Jul-10 21:26:22.215 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.215 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.215 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'REPORTS_WF:MULTIQC': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.220 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GATK.*|LOFREQ.*|DELLY.*|TBPROFILER.*|MULTIQC.*|FASTQC.*|UTILS.*|FASTQ.*|SAMPLESHEET.*` matches process REPORTS_WF:UTILS_SUMMARIZE_RESISTANCE_RESULTS
+Jul-10 21:26:22.221 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REPORTS_WF:UTILS_SUMMARIZE_RESISTANCE_RESULTS` matches process REPORTS_WF:UTILS_SUMMARIZE_RESISTANCE_RESULTS
+Jul-10 21:26:22.222 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-10 21:26:22.222 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-10 21:26:22.223 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'REPORTS_WF:UTILS_SUMMARIZE_RESISTANCE_RESULTS': maxForks=0; fair=false; array=0
+Jul-10 21:26:22.226 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP, MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT, BGZIP__LOFREQ, GATK_APPLY_VQSR__INDEL, CALL_WF:GATK_FLAG_STAT, SAMTOOLS_MERGE, BWA_MEM, GATK_COLLECT_WGS_METRICS, STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__DELLY, CALL_WF:UTILS_SAMPLE_STATS, MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPDISTS, GATK_SELECT_VARIANTS, TBPROFILER_COLLATE, SAMTOOLS_STATS, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2, QUALITY_CHECK_WF:FASTQC, MAP_WF:BWA_MEM, UTILS_REFORMAT_LOFREQ, STRUCTURAL_VARIANTS_ANALYSIS_WF:GATK_MARK_DUPLICATES__DELLY, STRUCTURAL_VARIANTS_ANALYSIS_WF:BWA_MEM__DELLY, MERGE_WF:PREPARE_COHORT_VCF:GATK_COMBINE_GVCFS, MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP, VALIDATE_FASTQS_WF:UTILS_FASTQ_COHORT_VALIDATION, CALL_WF:LOFREQ_CALL, MERGE_WF:PREPARE_COHORT_VCF:GATK_GENOTYPE_GVCFS, GATK_BASE_RECALIBRATOR__DELLY, MINOR_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__LOFREQ, SAMTOOLS_INDEX, LOFREQ_FILTER, FASTQC, CALL_WF:GATK_HAPLOTYPE_CALLER, REPORTS_WF:MULTIQC, SNPEFF, MERGE_WF:PREPARE_COHORT_VCF:SNPEFF, MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY, MULTIQC, STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__DELLY, BWA_MEM__DELLY, LOFREQ_INDELQUAL, FASTQ_VALIDATOR, TBPROFILER_COLLATE__COHORT, MERGE_WF:PREPARE_COHORT_VCF:BGZIP, GATK_SELECT_VARIANTS__EXCLUSION__SNP, GATK_VARIANT_RECALIBRATOR__INDEL, GATK_INDEX_FEATURE_FILE__LOFREQ, SAMTOOLS_MERGE__DELLY, GATK_APPLY_BQSR__DELLY, MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPDISTS, UTILS_FASTQ_COHORT_VALIDATION, GATK_VARIANT_RECALIBRATOR__SNP, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5, MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__LOFREQ, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4, GATK_SELECT_VARIANTS__INDEL, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7, BGZIP, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6, TBPROFILER_COLLATE__LOFREQ, GATK_MARK_DUPLICATES, GATK_MARK_DUPLICATES__DELLY, GATK_APPLY_BQSR, CALL_WF:SAMTOOLS_INDEX, UTILS_SUMMARIZE_RESISTANCE_RESULTS, UTILS_SELECT_BEST_ANNOTATIONS, MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ, UTILS_COHORT_STATS, CALL_WF:LOFREQ_FILTER, GATK_INDEX_FEATURE_FILE, CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ, VALIDATE_FASTQS_WF:FASTQ_VALIDATOR, MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL, MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP, STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_VIEW__TBP, GATK_HAPLOTYPE_CALLER, GATK_GENOTYPE_GVCFS, STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_MERGE__DELLY, GATK_VARIANT_RECALIBRATOR, UTILS_MULTIPLE_INFECTION_FILTER, CALL_WF:BGZIP__LOFREQ, MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY, MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP, TBPROFILER_VCF_PROFILE__COHORT, GATK_SELECT_VARIANTS__SNP, CALL_WF:SAMTOOLS_MERGE, MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP, MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:IQTREE, GATK_SELECT_VARIANTS__EXCLUSION, MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_VARIANTS_TO_TABLE, GATK_SELECT_VARIANTS__EXCLUSION__INDEL, UTILS_ELIMINATE_ANNOTATION, MINOR_VARIANTS_ANALYSIS_WF:UTILS_MULTIPLE_INFECTION_FILTER, TBPROFILER_VCF_PROFILE__DELLY, MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP, BCFTOOLS_MERGE, GATK_MERGE_VCFS, CALL_WF:UTILS_COHORT_STATS, BCFTOOLS_MERGE__DELLY, GATK_HAPLOTYPE_CALLER__MINOR_VARIANTS, LOFREQ_CALL__NTM, TBPROFILER_VCF_PROFILE__LOFREQ, LOFREQ_CALL, CALL_WF:GATK_COLLECT_WGS_METRICS, MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:IQTREE, GATK_APPLY_VQSR__SNP, CLUSTERPICKER__12SNP, GATK_VARIANTS_TO_TABLE, GATK_BASE_RECALIBRATOR, MERGE_WF:GATK_MERGE_VCFS__INC, SNPDISTS, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_SELECT_BEST_ANNOTATIONS, GATK_MERGE_VCFS__INC, GATK_FLAG_STAT, GATK_SELECT_VARIANTS__PHYLOGENY, GATK_INDEX_FEATURE_FILE__COHORT, VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION, CLUSTERPICKER, GATK_VARIANT_RECALIBRATOR__ANN7, GATK_VARIANT_RECALIBRATOR__ANN5, GATK_VARIANT_RECALIBRATOR__ANN6, SAMTOOLS_INDEX__LOFREQ, MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_VCF_PROFILE__COHORT, UTILS_SAMPLE_STATS, GATK_COMBINE_GVCFS, TBPROFILER_COLLATE__DELLY, BCFTOOLS_MERGE__LOFREQ, MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT, CALL_WF:GATK_MARK_DUPLICATES, GATK_APPLY_VQSR, CALL_WF:UTILS_REFORMAT_LOFREQ, STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_INDEX__DELLY, STRUCTURAL_VARIANTS_ANALYSIS_WF:DELLY_CALL, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4, CALL_WF:SAMTOOLS_INDEX__LOFREQ, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7, MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6, MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP, REPORTS_WF:UTILS_SUMMARIZE_RESISTANCE_RESULTS, GATK_VARIANT_RECALIBRATOR__ANN3, GATK_VARIANT_RECALIBRATOR__ANN4, GATK_VARIANT_RECALIBRATOR__ANN2, UTILS_ELIMINATE_ANNOTATION__ANN3, BCFTOOLS_VIEW__TBP, UTILS_ELIMINATE_ANNOTATION__ANN4, STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__DELLY, UTILS_ELIMINATE_ANNOTATION__ANN5, UTILS_ELIMINATE_ANNOTATION__ANN6, MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_VARIANTS_TO_TABLE, DELLY_CALL, MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPSITES, UTILS_ELIMINATE_ANNOTATION__ANN2, SNPSITES, IQTREE, CALL_WF:SAMTOOLS_STATS, SAMPLESHEET_VALIDATION, SAMTOOLS_INDEX__DELLY, UTILS_MERGE_COHORT_STATS, MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPSITES, CALL_WF:LOFREQ_INDELQUAL, CALL_WF:LOFREQ_CALL__NTM, GATK_MERGE_VCFS__EXC, UTILS_ELIMINATE_ANNOTATION__ANN7, CLUSTERPICKER__5SNP
+Jul-10 21:26:22.252 [main] DEBUG nextflow.Session - Igniting dataflow network (82)
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > VALIDATE_FASTQS_WF:FASTQ_VALIDATOR
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > VALIDATE_FASTQS_WF:UTILS_FASTQ_COHORT_VALIDATION
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > QUALITY_CHECK_WF:FASTQC
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MAP_WF:BWA_MEM
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:SAMTOOLS_MERGE
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:GATK_MARK_DUPLICATES
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:SAMTOOLS_INDEX
+Jul-10 21:26:22.253 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:GATK_HAPLOTYPE_CALLER
+Jul-10 21:26:22.254 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:LOFREQ_CALL__NTM
+Jul-10 21:26:22.254 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:LOFREQ_INDELQUAL
+Jul-10 21:26:22.254 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:SAMTOOLS_INDEX__LOFREQ
+Jul-10 21:26:22.256 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:LOFREQ_CALL
+Jul-10 21:26:22.257 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:LOFREQ_FILTER
+Jul-10 21:26:22.257 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:UTILS_REFORMAT_LOFREQ
+Jul-10 21:26:22.258 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:BGZIP__LOFREQ
+Jul-10 21:26:22.258 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ
+Jul-10 21:26:22.258 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:SAMTOOLS_STATS
+Jul-10 21:26:22.258 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:GATK_COLLECT_WGS_METRICS
+Jul-10 21:26:22.258 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:GATK_FLAG_STAT
+Jul-10 21:26:22.258 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:UTILS_SAMPLE_STATS
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALL_WF:UTILS_COHORT_STATS
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MINOR_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__LOFREQ
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__LOFREQ
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MINOR_VARIANTS_ANALYSIS_WF:UTILS_MULTIPLE_INFECTION_FILTER
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > UTILS_MERGE_COHORT_STATS
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:BWA_MEM__DELLY
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_MERGE__DELLY
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:GATK_MARK_DUPLICATES__DELLY
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_INDEX__DELLY
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:DELLY_CALL
+Jul-10 21:26:22.259 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_VIEW__TBP
+Jul-10 21:26:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__DELLY
+Jul-10 21:26:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__DELLY
+Jul-10 21:26:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__DELLY
+Jul-10 21:26:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PREPARE_COHORT_VCF:GATK_COMBINE_GVCFS
+Jul-10 21:26:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PREPARE_COHORT_VCF:GATK_GENOTYPE_GVCFS
+Jul-10 21:26:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PREPARE_COHORT_VCF:SNPEFF
+Jul-10 21:26:22.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PREPARE_COHORT_VCF:BGZIP
+Jul-10 21:26:22.261 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT
+Jul-10 21:26:22.261 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP
+Jul-10 21:26:22.261 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7
+Jul-10 21:26:22.261 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2
+Jul-10 21:26:22.262 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_SELECT_BEST_ANNOTATIONS
+Jul-10 21:26:22.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP
+Jul-10 21:26:22.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP
+Jul-10 21:26:22.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL
+Jul-10 21:26:22.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:GATK_MERGE_VCFS__INC
+Jul-10 21:26:22.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_VCF_PROFILE__COHORT
+Jul-10 21:26:22.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT
+Jul-10 21:26:22.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.264 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_VARIANTS_TO_TABLE
+Jul-10 21:26:22.264 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPSITES
+Jul-10 21:26:22.264 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPDISTS
+Jul-10 21:26:22.264 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:IQTREE
+Jul-10 21:26:22.264 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.264 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.266 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+Jul-10 21:26:22.267 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_VARIANTS_TO_TABLE
+Jul-10 21:26:22.267 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPSITES
+Jul-10 21:26:22.267 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPDISTS
+Jul-10 21:26:22.271 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:IQTREE
+Jul-10 21:26:22.271 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP
+Jul-10 21:26:22.271 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP
+Jul-10 21:26:22.271 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REPORTS_WF:MULTIQC
+Jul-10 21:26:22.271 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REPORTS_WF:UTILS_SUMMARIZE_RESISTANCE_RESULTS
+Jul-10 21:26:22.273 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_4995636afa2c012b: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/reports_wf.nf
+  Script_62a9334b1512caa2: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/haplotype_caller__minor_variants.nf
+  Script_74c41aa2b5c6a0dc: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/subworkflows/indel_analysis.nf
+  Script_9431d28d39b1243a: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/main.nf
+  Script_dc952bf0a6964f13: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/delly/call.nf
+  Script_68e07b247248b1f2: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/variants_to_table.nf
+  Script_247f75f55f5681c0: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/snpdists/snpdists.nf
+  Script_003157906aaeea2f: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/select_best_annotations.nf
+  Script_9b51ef7d4cb32674: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/samplesheet_validation.nf
+  Script_26a67d139838083a: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/summarize_resistance_results.nf
+  Script_0030f0c15ad1bd78: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/call_wf.nf
+  Script_951fe7af07cb0435: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/bcftools/merge.nf
+  Script_9731d3827226fadc: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/snpeff/snpeff.nf
+  Script_c35f1ab539914e9f: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/mark_duplicates.nf
+  Script_65b0a04ddfb1d822: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/index_feature_file.nf
+  Script_4196dbb61aeccb83: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/tbprofiler/vcf_profile__cohort.nf
+  Script_536a502f93b771ed: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/subworkflows/optimize_variant_recalibration.nf
+  Script_01f294afb82c3d6a: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/samtools/stats.nf
+  Script_3fa49ef5d699e1a1: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/bwa/mem.nf
+  Script_47114ccbe26d3203: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/samtools/index__lofreq.nf
+  Script_ab7d7efa7739d667: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/flag_stat.nf
+  Script_10ce1ce46082f9a0: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/fastqc/fastqc.nf
+  Script_9052467bfae185fc: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/reformat_lofreq.nf
+  Script_9fe1d47f5d2cee56: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/lofreq/filter.nf
+  Script_83483e667a30b6b8: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/tbprofiler/collate.nf
+  Script_762c37c3a9e0fc07: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/samtools/index.nf
+  Script_97e58962962def50: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/eliminate_annotation.nf
+  Script_2f40f36ee2f7ae83: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/snpsites/snpsites.nf
+  Script_d49ba3aad57acd5f: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/bgzip/bgzip.nf
+  Script_d84882c665f8107e: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/subworkflows/cluster_analysis.nf
+  Script_7fdf76c6710e2814: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/lofreq/call__ntm.nf
+  Script_077bd09de6d7a58b: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/genotype_gvcfs.nf
+  Script_d88122b8a957f035: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/cohort_stats.nf
+  Script_e61f803d83a3ee23: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/subworkflows/phylogeny_analysis.nf
+  Script_2c76530230cf28c3: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/sample_stats.nf
+  Script_69b418b4ecb51c97: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/merge_wf.nf
+  Script_4f2cb94b476298c4: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/bcftools/view__tbp.nf
+  Script_120167ea6bd32cf9: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/merge_vcfs.nf
+  Script_a008960a9d7e1838: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/merge_cohort_stats.nf
+  Script_d15ce5ac18706fc1: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/fastq_cohort_validation.nf
+  Script_8c888072afa10c58: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/lofreq/call.nf
+  Script_221a22e5ee848179: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/subworkflows/prepare_cohort_vcf.nf
+  Script_850f168d072307c8: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/haplotype_caller.nf
+  Script_4baede4bc5d9869e: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/validate_fastqs_wf.nf
+  Script_19af4f5df9a5338b: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/samtools/merge.nf
+  Script_82335a1324dbe264: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/iqtree/iqtree.nf
+  Script_e2cee68a1f145162: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/tbprofiler/vcf_profile__lofreq.nf
+  Script_77e893a699f0572c: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/subworkflows/major_variant_analysis.nf
+  Script_3ce1848b473127c7: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/combine_gvcfs.nf
+  Script_ca6b824d1f4e20e1: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/map_wf.nf
+  Script_675130077ef44c97: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/fastq_utils/validator.nf
+  Script_52894eefd696fdcc: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/utils/multiple_infection_filter.nf
+  Script_916b2ba831f22981: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/apply_bqsr.nf
+  Script_d33f3dd6d56a5887: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/multiqc/multiqc.nf
+  Script_1dda72582220f7aa: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/select_variants.nf
+  Script_6b24bcaf0ed323d4: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/lofreq/indelqual.nf
+  Script_30a7f45a94ba0112: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/structural_variants_analysis_wf.nf
+  Script_9975a8410ffa99dc: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/select_variants__exclusion.nf
+  Script_e51fb346db8396ed: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/quality_check_wf.nf
+  Script_d42dd567723cc27a: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/clusterpicker/clusterpicker.nf
+  Script_64fbff5132f14a45: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/variant_recalibrator.nf
+  Script_9b92af3d96abc057: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/subworkflows/snp_analysis.nf
+  Script_c50aa1ed4e7beb7e: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/apply_vqsr.nf
+  Script_cfa5f732c45d5640: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/base_recalibrator.nf
+  Script_05edc4451f39d76b: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/workflows/minor_variants_analysis_wf.nf
+  Script_977228a6312b1261: /scratch/ma95362/ETH_bovis_Sequence/magma_output/.nextflow/assets/TORCH-Consortium/MAGMA/modules/gatk/collect_wgs_metrics.nf
+Jul-10 21:26:22.273 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-10 21:26:22.273 [main] DEBUG nextflow.Session - Session await
+Jul-10 21:26:22.306 [Actor Thread 2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION; work-dir=null
+  error [nextflow.exception.ProcessUnrecoverableException]: Not a valid path value: 'samplesheet.magma.csv'
+Jul-10 21:26:22.318 [Actor Thread 2] ERROR nextflow.processor.TaskProcessor - Error executing process > 'VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION'
+
+Caused by:
+  Not a valid path value: 'samplesheet.magma.csv'
+
+
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Jul-10 21:26:22.320 [Actor Thread 2] DEBUG nextflow.Session - Session aborted -- Cause: Not a valid path value: 'samplesheet.magma.csv'
+Jul-10 21:26:22.328 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Jul-10 21:26:22.367 [Actor Thread 2] DEBUG nextflow.Session - The following nodes are still active:
+[process] VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION
+  status=ACTIVE
+  port 0: (value) bound ; channel: samplesheet
+  port 1: (cntrl) -     ; channel: $
+
+[process] VALIDATE_FASTQS_WF:FASTQ_VALIDATOR
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] VALIDATE_FASTQS_WF:UTILS_FASTQ_COHORT_VALIDATION
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: *
+  port 1: (cntrl) -     ; channel: $
+
+[process] QUALITY_CHECK_WF:FASTQC
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] MAP_WF:BWA_MEM
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: reference
+  port 2: (value) bound ; channel: *
+  port 3: (cntrl) -     ; channel: $
+
+[process] CALL_WF:SAMTOOLS_MERGE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALL_WF:GATK_MARK_DUPLICATES
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALL_WF:SAMTOOLS_INDEX
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALL_WF:GATK_HAPLOTYPE_CALLER
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref_fasta
+  port 2: (value) bound ; channel: *
+  port 3: (cntrl) -     ; channel: $
+
+[process] CALL_WF:LOFREQ_CALL__NTM
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: reference
+  port 2: (value) bound ; channel: *
+  port 3: (cntrl) -     ; channel: $
+
+[process] CALL_WF:LOFREQ_INDELQUAL
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref_fasta
+  port 2: (cntrl) -     ; channel: $
+
+[process] CALL_WF:SAMTOOLS_INDEX__LOFREQ
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALL_WF:LOFREQ_CALL
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref_fasta
+  port 2: (value) bound ; channel: *
+  port 3: (cntrl) -     ; channel: $
+
+[process] CALL_WF:LOFREQ_FILTER
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref_fasta
+  port 2: (cntrl) -     ; channel: $
+
+[process] CALL_WF:UTILS_REFORMAT_LOFREQ
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALL_WF:BGZIP__LOFREQ
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALL_WF:GATK_INDEX_FEATURE_FILE__LOFREQ
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: outputPrefix
+  port 2: (cntrl) -     ; channel: $
+
+[process] CALL_WF:SAMTOOLS_STATS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: reference
+  port 2: (cntrl) -     ; channel: $
+
+[process] CALL_WF:GATK_COLLECT_WGS_METRICS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: reference
+  port 2: (cntrl) -     ; channel: $
+
+[process] CALL_WF:GATK_FLAG_STAT
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref_fasta
+  port 2: (value) bound ; channel: *
+  port 3: (cntrl) -     ; channel: $
+
+[process] CALL_WF:UTILS_SAMPLE_STATS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALL_WF:UTILS_COHORT_STATS
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: sample_stats/*
+  port 1: (cntrl) -     ; channel: $
+
+[process] MINOR_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__LOFREQ
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: vcfs_file
+  port 1: (value) OPEN  ; channel: *
+  port 2: (cntrl) -     ; channel: $
+
+[process] MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__LOFREQ
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: resistanceDb
+  port 2: (cntrl) -     ; channel: $
+
+[process] MINOR_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__LOFREQ
+  status=ACTIVE
+  port 0: (value) bound ; channel: joint_name
+  port 1: (value) OPEN  ; channel: results/*
+  port 2: (value) bound ; channel: resistanceDb
+  port 3: (cntrl) -     ; channel: $
+
+[process] MINOR_VARIANTS_ANALYSIS_WF:UTILS_MULTIPLE_INFECTION_FILTER
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: per_sample_results
+  port 1: (cntrl) -     ; channel: $
+
+[process] UTILS_MERGE_COHORT_STATS
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: approved_samples_tsv
+  port 1: (value) OPEN  ; channel: rejected_samples_tsv
+  port 2: (value) OPEN  ; channel: call_wf_cohort_stats_tsv
+  port 3: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:BWA_MEM__DELLY
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: reference
+  port 2: (value) bound ; channel: *
+  port 3: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_MERGE__DELLY
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:GATK_MARK_DUPLICATES__DELLY
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:SAMTOOLS_INDEX__DELLY
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:DELLY_CALL
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: reference
+  port 2: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_VIEW__TBP
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:BCFTOOLS_MERGE__DELLY
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: vcfs_file
+  port 1: (value) OPEN  ; channel: *
+  port 2: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_VCF_PROFILE__DELLY
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: resistanceDb
+  port 2: (cntrl) -     ; channel: $
+
+[process] STRUCTURAL_VARIANTS_ANALYSIS_WF:TBPROFILER_COLLATE__DELLY
+  status=ACTIVE
+  port 0: (value) bound ; channel: joint_name
+  port 1: (queue) OPEN  ; channel: results/*
+  port 2: (value) bound ; channel: resistanceDb
+  port 3: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PREPARE_COHORT_VCF:GATK_COMBINE_GVCFS
+  status=ACTIVE
+  port 0: (value) bound ; channel: joint_name
+  port 1: (value) OPEN  ; channel: gvcfs_string
+  port 2: (value) OPEN  ; channel: gvcfs
+  port 3: (value) bound ; channel: ref_fasta
+  port 4: (value) bound ; channel: ref_exit_rif_gvcf
+  port 5: (value) bound ; channel: ref_exit_rif_gvcf_tbi
+  port 6: (value) bound ; channel: *
+  port 7: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PREPARE_COHORT_VCF:GATK_GENOTYPE_GVCFS
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref_fasta
+  port 2: (value) bound ; channel: *
+  port 3: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PREPARE_COHORT_VCF:SNPEFF
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref_fasta
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PREPARE_COHORT_VCF:BGZIP
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PREPARE_COHORT_VCF:GATK_INDEX_FEATURE_FILE__COHORT
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: -
+  port 1: (value) bound ; channel: outputPrefix
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__SNP
+  status=ACTIVE
+  port 0: (value) bound ; channel: variantType
+  port 1: (value) bound ; channel: prefix
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN7
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (value) bound ; channel: annotations
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN7
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisType
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN6
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (queue) OPEN  ; channel: annotations
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN6
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisType
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN5
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (queue) OPEN  ; channel: annotations
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN5
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisType
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN4
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (queue) OPEN  ; channel: annotations
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN4
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisType
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN3
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (queue) OPEN  ; channel: annotations
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN3
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisType
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:GATK_VARIANT_RECALIBRATOR__ANN2
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (queue) OPEN  ; channel: annotations
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_ELIMINATE_ANNOTATION__ANN2
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisType
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:OPTIMIZE_VARIANT_RECALIBRATION:UTILS_SELECT_BEST_ANNOTATIONS
+  status=ACTIVE
+  port 0: (value) bound ; channel: joint_name
+  port 1: (value) OPEN  ; channel: annotations_and_tranches_json_files/*
+  port 2: (value) OPEN  ; channel: recal_vcf_files/*
+  port 3: (value) OPEN  ; channel: tranches_files/*
+  port 4: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:GATK_APPLY_VQSR__SNP
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (value) bound ; channel: reference
+  port 3: (value) bound ; channel: *
+  port 4: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:SNP_ANALYSIS:GATK_SELECT_VARIANTS__EXCLUSION__SNP
+  status=ACTIVE
+  port 0: (value) bound ; channel: analysisMode
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (value) bound ; channel: intervalFile
+  port 3: (value) bound ; channel: reference
+  port 4: (value) bound ; channel: *
+  port 5: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:INDEL_ANALYSIS:GATK_SELECT_VARIANTS__INDEL
+  status=ACTIVE
+  port 0: (value) bound ; channel: variantType
+  port 1: (value) bound ; channel: prefix
+  port 2: (value) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:GATK_MERGE_VCFS__INC
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_VCF_PROFILE__COHORT
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: resistanceDb
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:MAJOR_VARIANT_ANALYSIS:TBPROFILER_COLLATE__COHORT
+  status=ACTIVE
+  port 0: (value) bound ; channel: joint_name
+  port 1: (queue) OPEN  ; channel: results/*
+  port 2: (value) bound ; channel: resistanceDb
+  port 3: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+  status=ACTIVE
+  port 0: (value) bound ; channel: variantType
+  port 1: (queue) OPEN  ; channel: prefix
+  port 2: (queue) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:GATK_VARIANTS_TO_TABLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPSITES
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:SNPDISTS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__INCCOMPLEX:IQTREE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__5SNP
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: snpCount
+  port 2: (queue) OPEN  ; channel: prefix
+  port 3: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:CLUSTER_ANALYSIS__INCCOMPLEX:CLUSTERPICKER__12SNP
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: snpCount
+  port 2: (queue) OPEN  ; channel: prefix
+  port 3: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_SELECT_VARIANTS__PHYLOGENY
+  status=ACTIVE
+  port 0: (value) bound ; channel: variantType
+  port 1: (queue) OPEN  ; channel: prefix
+  port 2: (queue) OPEN  ; channel: -
+  port 3: (value) bound ; channel: resourceFilesArg
+  port 4: (value) bound ; channel: resourceFiles
+  port 5: (value) bound ; channel: resourceFileIndexes
+  port 6: (value) bound ; channel: reference
+  port 7: (value) bound ; channel: *
+  port 8: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:GATK_VARIANTS_TO_TABLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPSITES
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:SNPDISTS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:PHYLOGENY_ANALYSIS__EXCOMPLEX:IQTREE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: prefix
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__5SNP
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: snpCount
+  port 2: (queue) OPEN  ; channel: prefix
+  port 3: (cntrl) -     ; channel: $
+
+[process] MERGE_WF:CLUSTER_ANALYSIS__EXCOMPLEX:CLUSTERPICKER__12SNP
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: snpCount
+  port 2: (queue) OPEN  ; channel: prefix
+  port 3: (cntrl) -     ; channel: $
+
+[process] REPORTS_WF:MULTIQC
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: *
+  port 1: (cntrl) -     ; channel: $
+
+[process] REPORTS_WF:UTILS_SUMMARIZE_RESISTANCE_RESULTS
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: minor_variants/*
+  port 1: (queue) OPEN  ; channel: major_variants/*
+  port 2: (queue) OPEN  ; channel: structural_variants/*
+  port 3: (cntrl) -     ; channel: $
+
+Jul-10 21:26:22.374 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-10 21:26:22.374 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-10 21:26:22.382 [Actor Thread 4] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Jul-10 21:26:22.385 [Actor Thread 5] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Jul-10 21:26:22.388 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=VALIDATE_FASTQS_WF:SAMPLESHEET_VALIDATION; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Jul-10 21:26:22.389 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Jul-10 21:26:22.543 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-10 21:26:22.679 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
