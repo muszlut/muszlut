@@ -1,3 +1,4 @@
+samplesheet: /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw/samplesheet.magma.csv
 study_name: Mbovis_Study
 output_dir: /scratch/ma95362/ETH_bovis_Sequence/magma_output
 samples:
