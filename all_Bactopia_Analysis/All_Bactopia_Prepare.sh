@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/musse_MGA/merged"
+OUTDIR="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -23,7 +23,7 @@ fi
 module load Bactopia/3.1.0
 cd $OUTDIR
 bactopia prepare \
-    --path /scratch/ma95362/musse_MGA/merged/first_run \
+    --path /scratch/ma95362/musse_MGA/merged/first_run_merged/all_reads \
     --species "Mycobacterium tuberculosis" \
     --genome-size 4410000 \
     > $OUTDIR/MGA_samples.txt
