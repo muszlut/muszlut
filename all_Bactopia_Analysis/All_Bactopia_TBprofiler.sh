@@ -25,7 +25,7 @@ module load TB-Profiler/6.6.5
 cd $TBPROFILER_OUT
 # ---- STEP 1: Run TB-Profiler via Bactopia tools ----
 echo "Running TB-Profiler on existing Bactopia results..."
-bactopia tools tb-profiler \
+bactopia-tools tb-profiler \
     --bactopia $BACTOPIA_OUT \
     --include "E*.,P*." \
     --outdir $TBPROFILER_OUT \
