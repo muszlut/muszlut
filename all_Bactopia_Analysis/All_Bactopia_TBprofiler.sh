@@ -25,11 +25,11 @@ module load TB-Profiler/6.6.5
 cd $TBPROFILER_OUT
 # ---- STEP 1: Run TB-Profiler via Bactopia tools ----
 echo "Running TB-Profiler on existing Bactopia results..."
-bactopia-tools tb-profiler \
-    --bactopia $BACTOPIA_OUT \
-    --include "E*.,P*." \
-    --outdir $TBPROFILER_OUT \
+bactopia tools tb-profiler \
+    --bactopia /scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/MGA_paired_end_samples \
+    --outdir /scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/MGA_tbprofiler_results \
     --threads $SLURM_CPUS_PER_TASK
+
 
 
 # ---- STEP 2: Collate TB-Profiler results ----
