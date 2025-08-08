@@ -25,10 +25,10 @@ module load TB-Profiler/6.6.5
 cd $TBPROFILER_OUT
 # ---- STEP 1: Run TB-Profiler via Bactopia tools ----
 echo "Running TB-Profiler on existing Bactopia results..."
-bactopia tools tb-profiler \
+bactopia-tools tb-profiler \
     --bactopia $BACTOPIA_OUT \
     --outdir $TBPROFILER_OUT \
-    --threads $SLURM_CPUS_PER_TASK
+    --cpus $SLURM_CPUS_PER_TASK
 
 # ---- STEP 2: Collate TB-Profiler results ----
 echo "Collating TB-Profiler results..."
