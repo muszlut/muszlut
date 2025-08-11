@@ -17,7 +17,7 @@ module load TB-Profiler/6.6.5
 
 # Directory where sample file is located
 SAMPLE_DIR="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis"
-SAMPLES_FILE="${SAMPLE_DIR}/samples.fofn"
+SAMPLES_FILE="${SAMPLE_DIR}/samples_clean.fofn"
 
 # Check if samples.fofn exists
 if [ ! -f "$SAMPLES_FILE" ]; then
