@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                            # Email recipient
 
 # ---------------- SETTINGS ----------------
-OUTDIR="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/MGA_paired_end_samples"
+OUTDIR="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
