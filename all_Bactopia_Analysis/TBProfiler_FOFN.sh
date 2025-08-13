@@ -12,8 +12,6 @@
 
 set -euo pipefail
 
-module load gsl/2.1-8
-module load ncurses/6.5
 module load TB-Profiler/6.6.5
 
 # Ensure TB-Profiler libraries are used
