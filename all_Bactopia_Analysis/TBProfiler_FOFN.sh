@@ -12,17 +12,22 @@
 
 set -euo pipefail
 
+module load gsl/2.1-8
+module load ncurses/6.5
 module load TB-Profiler/6.6.5
 
+# Ensure TB-Profiler libraries are used
+export LD_LIBRARY_PATH=/apps/eb/TB-Profiler/6.6.5/lib:$LD_LIBRARY_PATH
+
 OUTDIR="/scratch/ma95362/my_tbprofiler_results"
-mkdir -p $OUTDIR
-cd $OUTDIR
+mkdir -p "$OUTDIR"
+cd "$OUTDIR"
 FOFN="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/samples_clean.fofn"
 
 while read -r sample read1 read2; do
     echo "Processing $sample..."
     mkdir -p "$OUTDIR/$sample"
-    
+
     tb-profiler profile \
         -1 "$read1" \
         -2 "$read2" \
