@@ -10,31 +10,23 @@
 #SBATCH --mail-type=END,FAIL                  # Email notifications
 #SBATCH --mail-user=ma95362@uga.edu          # Email recipient
 
-set -euo pipefail  # safer bash settings
+set -euo pipefail
 
-# Load TB-Profiler module
 module load TB-Profiler/6.6.5
 
-# Set directories
-FOFN="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/samples_clean.fofn"
 OUTDIR="/scratch/ma95362/my_tbprofiler_results"
+mkdir -p $OUTDIR
+cd $OUTDIR
+FOFN="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/samples_clean.fofn"
 
-mkdir -p "$OUTDIR"
-
-# Change to the output directory
-cd "$OUTDIR"
-
-# Loop through samples in FOFN
-while read -r read1 read2; do
-    base=$(basename "$read1" _R1.fastq.gz)
-    SAMPLE_OUT="$OUTDIR/$base"
-    mkdir -p "$SAMPLE_OUT"
-
+while read -r sample read1 read2; do
+    echo "Processing $sample..."
+    mkdir -p "$OUTDIR/$sample"
+    
     tb-profiler profile \
         -1 "$read1" \
         -2 "$read2" \
-        -p "$base" \
-        --dir "$SAMPLE_OUT" \
-        --threads 8 \
-        --txt
+        -p "$sample" \
+        --dir "$OUTDIR/$sample" \
+        --threads 8
 done < "$FOFN"
