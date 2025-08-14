@@ -1,42 +1,55 @@
 #!/usr/bin/env python3
 
-import pandas as pd
 import json
-import glob
-import os
+import csv
+from pathlib import Path
 
-# Set your TBProfiler results directory
-OUTDIR = "/scratch/ma95362/my_tbprofiler_results"
+# Set your results directory
+RESULTS_DIR = Path("/scratch/ma95362/my_tbprofiler_results")
+OUTPUT_FILE = RESULTS_DIR / "merged_tbprofiler_results.csv"
 
-# Find all JSON result files in all sample subdirectories
-json_files = glob.glob(os.path.join(OUTDIR, "*/results/*.results.json"))
+# Prepare CSV header
+header = ["ID", "Date", "Strain", "Drug_resistance", "Median_depth", "Lineage", "Spoligotype"]
+rows = []
 
-# Prepare a list to store each sample's info
-data = []
+# Loop through sample folders
+for sample_dir in RESULTS_DIR.iterdir():
+    if not sample_dir.is_dir():
+        continue
+    
+    json_file = sample_dir / "results" / f"{sample_dir.name}.results.json"
+    if not json_file.exists():
+        continue
+    
+    with open(json_file) as f:
+        data = json.load(f)
+    
+    # Extract values safely
+    ID = data.get("id", "")
+    Date = data.get("timestamp", "")
+    Strain = data.get("strain", "")
+    Drug_resistance = data.get("drug_resistance", "")
+    Median_depth = data.get("median_depth", "")
 
-for f in json_files:
-    with open(f) as jfile:
-        report = json.load(jfile)
-        
-        # Extract fields you want (customize as needed)
-        data.append({
-            "ID": report.get("ID"),
-            "Date": report.get("Date"),
-            "Strain": report.get("Strain"),
-            "Drug_resistance": report.get("Drug-resistance"),
-            "Median_depth": report.get("Median Depth"),
-            # Example: extract top-level lineage summary
-            "Lineage": report.get("Lineage", {}).get("lineage", ""),
-            # Optionally, include spoligotype if available
-            "Spoligotype": report.get("Spoligotype", {}).get("octal", "")
-        })
+    # Lineage (take the last/highest one in the 'lineage' list if available)
+    Lineage = ""
+    lineage_list = data.get("lineage", [])
+    if lineage_list:
+        Lineage = lineage_list[-1].get("name", "")
 
-# Convert list of dicts to a pandas DataFrame
-df = pd.DataFrame(data)
+    # Spoligotype (take first if available)
+    Spoligotype = ""
+    spoligo_list = data.get("spoligotype", [])
+    if spoligo_list:
+        Spoligotype = spoligo_list[0].get("pattern", "")
 
-# Save merged results to CSV
-merged_csv = os.path.join(OUTDIR, "merged_tbprofiler_results.csv")
-df.to_csv(merged_csv, index=False)
+    rows.append([ID, Date, Strain, Drug_resistance, Median_depth, Lineage, Spoligotype])
 
-print(f"Merged results saved to {merged_csv}")
-print(df.head())
+# Write to CSV
+with open(OUTPUT_FILE, "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+    writer.writerows(rows)
+
+print(f"Merged results saved to {OUTPUT_FILE}")
+# This script merges TBProfiler results from multiple sample directories into a single CSV file.
