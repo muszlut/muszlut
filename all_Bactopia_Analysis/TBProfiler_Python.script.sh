@@ -10,16 +10,19 @@
 
 #SBATCH --mail-type=END,FAIL                            # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu                     # Where to send mail	
-#Set output directory variable
+
+# Directories
 OUTDIR="/scratch/ma95362/my_tbprofiler_results"
 SCRIPT="/home/ma95362/muszlut/all_Bactopia_Analysis"
 
+# Load TB-Profiler module (includes pathogenprofiler)
+module purge
+module load TB-Profiler/6.6.5-foss-2022b
 
-#Load modules 
-module load Biopython/1.84-foss-2023b
-
-
-#move to working diectory
+# Move to results directory
 cd $OUTDIR
 
-python $SCRIPT/python_tbprofiler_custom_script.py
+# Run your Python script
+python $SCRIPT/python_tbprofiler_custom_script.py \
+    --out merged_results.csv \
+    --dir $OUTDIR
