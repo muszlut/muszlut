@@ -15,6 +15,9 @@ set -euo pipefail
 # Load Micromamba
 module load Micromamba/2.3.0
 
+# Set Micromamba root manually (adjust to your actual path if different)
+export MAMBA_ROOT_PREFIX=/home/ma95362/micromamba
+
 # Initialize Micromamba for bash
 eval "$(micromamba shell hook --shell bash)"
 
