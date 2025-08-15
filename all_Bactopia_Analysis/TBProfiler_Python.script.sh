@@ -22,4 +22,4 @@ module load Biopython/1.84-foss-2023b
 #move to working diectory
 cd $OUTDIR
 
-python $SCRIPT/merge_tbprofiler_results.py
+python $SCRIPT/python_tbprofiler_custom_script.py
