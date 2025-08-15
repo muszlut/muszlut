@@ -17,8 +17,8 @@ SCRIPT="/home/ma95362/muszlut/all_Bactopia_Analysis"
 
 # Load TB-Profiler module (includes pathogenprofiler)
 module purge
-module load TB-Profiler/6.6.5-foss-2022b
-
+module load TB-Profiler/6.6.5
+#Move to results directory
 # Move to results directory
 cd $OUTDIR
 
