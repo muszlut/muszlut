@@ -5,6 +5,7 @@ import csv
 import json
 import argparse
 import os
+import glob
 from collections import defaultdict
 from tqdm import tqdm
 import pathogenprofiler as pp
@@ -17,7 +18,8 @@ def main(args):
     if args.samples:
         samples = [x.rstrip() for x in open(args.samples).readlines()]
     else:
-        samples = [x.replace(args.suffix,"") for x in os.listdir(args.dir) if x[-len(args.suffix):]==args.suffix]
+        samples = [os.path.splitext(os.path.basename(f))[0].replace(args.suffix, "")
+           for f in glob.glob(f"{args.dir}/**/*{args.suffix}", recursive***
 
     FLQ_set = set(["moxifloxacin","levofloxacin","ciprofloxacin","ofloxacin"])
     GPA_set = set(["bedaquiline","linezolid"])
