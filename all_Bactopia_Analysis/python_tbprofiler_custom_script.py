@@ -28,7 +28,13 @@ def main(args):
 
     # Open output CSV
     OUT = open(args.out, "w", newline='')
-    writer = csv.DictWriter(OUT, fieldnames=["sample","dr-class"])
+    writer = csv.DictWriter(
+        OUT,
+        fieldnames=[
+            "ID","Date","Strain","Drug_resistance","dr-class",
+            "Median_depth","Lineage","Sublineage","Spoligotype"
+        ]
+    )
     writer.writeheader()
 
     # Process each sample
@@ -57,12 +63,22 @@ def main(args):
         else:
             drtype = "Other"
 
-        writer.writerow({"sample": s, "dr-class": drtype})
+        writer.writerow({
+            "ID": data.get("id", s),
+            "Date": data.get("date", "NA"),
+            "Strain": data.get("strain", "NA"),
+            "Drug_resistance": ";".join(sorted(resistant_drugs)) if resistant_drugs else "None",
+            "dr-class": drtype,
+            "Median_depth": data.get("median_depth", "NA"),
+            "Lineage": data.get("main_lineage", "NA"),
+            "Sublineage": data.get("sub_lineage", "NA"),
+            "Spoligotype": data.get("spoligotype", "NA")
+        })
 
     OUT.close()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='TBProfiler summary script', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(description='TBProfiler extended summary script', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--out', type=str, required=True, help='Name of CSV output')
     parser.add_argument('--samples', type=str, help='File listing samples (optional)')
     parser.add_argument('--dir', default="results/", type=str, help='Directory containing results')
