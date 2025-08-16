@@ -29,7 +29,7 @@ RESULTS_DIR="/scratch/ma95362/my_tbprofiler_results"
 OUTPUT_CSV="/scratch/ma95362/my_tbprofiler_results/summary.csv"
 
 # Run the Python merge script
-python /home/ma95362/all_Bactopia_Analysis/python_tbprofiler_custom_script.py \
+python /home/ma95362/muszlut/all_Bactopia_Analysis/python_tbprofiler_custom_script.py \
     --dir "$RESULTS_DIR" \
     --out "$OUTPUT_CSV"
 
