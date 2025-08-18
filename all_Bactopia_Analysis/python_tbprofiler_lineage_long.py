@@ -15,34 +15,33 @@ def extract_lineage_fractions(json_path):
         output.append((sample_id, lineage, fraction))
     return output
 
-
 def main(path, output_file=None):
-results = []
+    results = []
 
-if os.path.isdir(path):
-for root, _, files in os.walk(path):
-for filename in files:
-if filename.endswith(".results.json"):
-full_path = os.path.join(root, filename)
-results.extend(extract_lineage_fractions(full_path))
-else:
-results.extend(extract_lineage_fractions(path))
+    if os.path.isdir(path):
+        for root, _, files in os.walk(path):
+            for filename in files:
+                if filename.endswith(".results.json"):
+                    full_path = os.path.join(root, filename)
+                    results.extend(extract_lineage_fractions(full_path))
+    else:
+        results.extend(extract_lineage_fractions(path))
 
-# Write output
-if output_file:
-with open(output_file, 'w', newline='') as out:
-writer = csv.writer(out, delimiter='\t')
-writer.writerow(["sample_id", "lineage", "fraction"])
-writer.writerows(results)
-else:
-print("sample_id\tlineage\tfraction")
-for row in results:
-print("\t".join(str(col) for col in row))
+    # Write output
+    if output_file:
+        with open(output_file, 'w', newline='') as out:
+            writer = csv.writer(out, delimiter='\t')
+            writer.writerow(["sample_id", "lineage", "fraction"])
+            writer.writerows(results)
+    else:
+        print("sample_id\tlineage\tfraction")
+        for row in results:
+            print("\t".join(str(col) for col in row))
 
 if __name__ == "__main__":
-if len(sys.argv) < 2:
-print("Usage: python tbprofiler_lineage_long.py <file_or_folder> [output.tsv]")
-sys.exit(1)
-path = sys.argv[1]
-output_file = sys.argv[2] if len(sys.argv) == 3 else None
-main(path, output_file)
+    if len(sys.argv) < 2:
+        print("Usage: python python_tbprofiler_lineage_long.py <file_or_folder> [output.tsv]")
+        sys.exit(1)
+    path = sys.argv[1]
+    output_file = sys.argv[2] if len(sys.argv) == 3 else None
+    main(path, output_file)
