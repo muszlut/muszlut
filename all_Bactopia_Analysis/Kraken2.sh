@@ -15,7 +15,7 @@
 module load Kraken2/2.1.3-gompi-2023a
 
 # Paths
-DB=/scratch/ma95362/kraken2_db
+DB=/scratch/ma95362/k2_standard_16gb_20240605 # Path to Kraken2 database
 INPUT=/scratch/ma95362/musse_MGA/merged/first_run_merged/all_reads/reads_for_Kraken2
 OUTPUT=/scratch/ma95362/musse_MGA/merged/first_run_merged/all_reads/reads_for_Kraken2/kraken2_output
 
