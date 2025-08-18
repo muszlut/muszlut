@@ -4,16 +4,17 @@ import os
 import csv
 
 def extract_lineage_fractions(json_path):
-with open(json_path, 'r') as f:
-data = json.load(f)
-sample_id = data.get("id", os.path.basename(json_path).replace(".results.json", ""))
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    sample_id = data.get("id", os.path.basename(json_path).replace(".results.json", ""))
 
-output = []
-for lineage_data in data.get("lineage", []):
-lineage = lineage_data.get("lineage", "NA")
-fraction = round(lineage_data.get("fraction", 0.0), 4)
-output.append((sample_id, lineage, fraction))
-return output
+    output = []
+    for lineage_data in data.get("lineage", []):
+        lineage = lineage_data.get("lineage", "NA")
+        fraction = round(lineage_data.get("fraction", 0.0), 4)
+        output.append((sample_id, lineage, fraction))
+    return output
+
 
 def main(path, output_file=None):
 results = []
