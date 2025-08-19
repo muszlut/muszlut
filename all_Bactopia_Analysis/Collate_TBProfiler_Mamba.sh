@@ -23,7 +23,7 @@ micromamba activate tbprofiler
 
 # Set working directories
 OUTDIR="/scratch/ma95362/my_tbprofiler_results"
-FOFN="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/samples_clean.fofn"
+FOFN="/scratch/ma95362/my_tbprofiler_results/results.fofn"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
