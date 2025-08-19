@@ -29,7 +29,7 @@ FOFN="/scratch/ma95362/my_tbprofiler_results/results.fofn"
 mkdir -p "$OUTDIR"
 
 # Collate TB-Profiler results
-tb-profiler collate --samples $FOFN --dir $OUTDIR --prefix all_samples --itol
+tb-profiler collate --samples samples_names.txt --dir /scratch/ma95362/my_tbprofiler_results/*/results --itol
 
 
 # Deactivate the Micromamba environment
