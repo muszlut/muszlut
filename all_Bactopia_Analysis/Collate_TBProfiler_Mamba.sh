@@ -29,10 +29,8 @@ FOFN="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/samples_clean.fofn"
 mkdir -p "$OUTDIR"
 
 # Collate TB-Profiler results
-tb-profiler collate \
-    --samples "$FOFN" \
-    --dir "$OUTDIR"/*/tools/tbprofiler \
-    --itol
+tb-profiler collate --samples $FOFN --dir $OUTDIR --prefix all_samples --itol
+
 
 # Deactivate the Micromamba environment
 micromamba deactivate
