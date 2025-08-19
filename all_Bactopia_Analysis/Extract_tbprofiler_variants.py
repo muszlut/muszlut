@@ -13,41 +13,48 @@ def parse_tbprofiler_results(json_file):
     records = []
 
     # Drug resistance mutations
-    if "dr_variants" in data:
-        for var in data["dr_variants"]:
-            record = {
-                "Sample": sample_id,
-                "Gene": var.get("gene", ""),
-                "Change": var.get("change", ""),
-                "Type": var.get("type", ""),
-                "Nucleotide Change": var.get("nucleotide_change", ""),
-                "Amino Acid Change": var.get("protein_change", ""),
-                "Drugs": ",".join(var.get("drug", [])) if isinstance(var.get("drug", []), list) else var.get("drug", ""),
-                "Confidence": var.get("confidence", ""),
-                "Freq": var.get("freq", ""),
-                "Depth": var.get("depth", ""),
-            }
-            records.append(record)
+    for var in data.get("dr_variants", []):
+        gene_name = var.get("gene") or var.get("gene_name") or var.get("locus_tag") or "NA"
+        aa_change = var.get("protein_change") or var.get("change") or "NA"
+        nuc_change = var.get("nucleotide_change") or "NA"
+        drugs = var.get("drug") or var.get("drugs") or []
+        drugs_str = ",".join(drugs) if isinstance(drugs, list) else drugs
+
+        record = {
+            "Sample": sample_id,
+            "Gene": gene_name,
+            "Change": aa_change,
+            "Type": var.get("type", ""),
+            "Nucleotide Change": nuc_change,
+            "Amino Acid Change": aa_change,
+            "Drugs": drugs_str,
+            "Confidence": var.get("confidence") or var.get("conf") or "",
+            "Freq": var.get("freq") or var.get("estimated_fraction") or "",
+            "Depth": var.get("depth", "")
+        }
+        records.append(record)
 
     # Other variants (non-drug resistance)
-    if "other_variants" in data:
-        for var in data["other_variants"]:
-            record = {
-                "Sample": sample_id,
-                "Gene": var.get("gene", ""),
-                "Change": var.get("change", ""),
-                "Type": var.get("type", ""),
-                "Nucleotide Change": var.get("nucleotide_change", ""),
-                "Amino Acid Change": var.get("protein_change", ""),
-                "Drugs": "None",
-                "Confidence": "NA",
-                "Freq": var.get("freq", ""),
-                "Depth": var.get("depth", ""),
-            }
-            records.append(record)
+    for var in data.get("other_variants", []):
+        gene_name = var.get("gene") or var.get("gene_name") or var.get("locus_tag") or "NA"
+        aa_change = var.get("protein_change") or var.get("change") or "NA"
+        nuc_change = var.get("nucleotide_change") or "NA"
+
+        record = {
+            "Sample": sample_id,
+            "Gene": gene_name,
+            "Change": aa_change,
+            "Type": var.get("type", ""),
+            "Nucleotide Change": nuc_change,
+            "Amino Acid Change": aa_change,
+            "Drugs": "None",
+            "Confidence": "NA",
+            "Freq": var.get("freq") or var.get("estimated_fraction") or "",
+            "Depth": var.get("depth", "")
+        }
+        records.append(record)
 
     return records
-
 
 def main(results_dir, output_tsv):
     all_records = []
@@ -64,10 +71,9 @@ def main(results_dir, output_tsv):
     df.to_csv(output_tsv, sep="\t", index=False)
     print(f"[INFO] Extracted {len(all_records)} variant records into {output_tsv}")
 
-
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python Extract_variants.py <results_dir> <output.tsv>")
+        print("Usage: python Extract_variants_fixed.py <results_dir> <output.tsv>")
         sys.exit(1)
 
     results_dir = sys.argv[1]
