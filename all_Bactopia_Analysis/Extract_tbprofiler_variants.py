@@ -19,9 +19,15 @@ def parse_tbprofiler_results(json_file):
         nuc_change = var.get("nucleotide_change") or "NA"
 
         drugs = var.get("drug") or var.get("drugs") or []
-        # Handle list of dicts, strings, or None values
+        # Robust handling of dicts, strings, and None
         if isinstance(drugs, list):
-            drugs_str = ",".join([d.get("name") if isinstance(d, dict) and d else str(d) for d in drugs if d])
+            cleaned = []
+            for d in drugs:
+                if isinstance(d, dict):
+                    cleaned.append(str(d.get("name", "NA")))
+                elif d is not None:
+                    cleaned.append(str(d))
+            drugs_str = ",".join(cleaned)
         else:
             drugs_str = str(drugs)
 
@@ -78,7 +84,7 @@ def main(results_dir, output_tsv):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python Extract_variants_fixed3.py <results_dir> <output.tsv>")
+        print("Usage: python Extract_variants_fixed4.py <results_dir> <output.tsv>")
         sys.exit(1)
 
     results_dir = sys.argv[1]
