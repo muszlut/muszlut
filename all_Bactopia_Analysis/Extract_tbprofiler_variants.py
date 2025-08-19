@@ -3,76 +3,73 @@ import os
 import sys
 import json
 import glob
+import pandas as pd
 
-def parse_tbprofiler_json(json_path):
-    with open(json_path, "r") as f:
+def parse_tbprofiler_results(json_file):
+    with open(json_file) as f:
         data = json.load(f)
-    
-    sample = data.get("sample", os.path.basename(json_path).replace(".results.json", ""))
-    median_depth = data.get("median_depth", "NA")
 
-    rows = []
+    sample_id = os.path.basename(json_file).replace(".results.json", "")
+    records = []
 
-    # Drug resistance variants
-    for var in data.get("dr_variants", []):
-        rows.append([
-            sample,
-            var.get("genome_pos", "NA"),
-            var.get("locus_tag", "NA"),
-            var.get("gene", "NA"),
-            var.get("var_type", "NA"),
-            var.get("change", "NA"),
-            var.get("depth", "NA"),
-            var.get("freq", "NA"),
-            ",".join(var.get("drugs", [])),
-            var.get("conf", "NA"),
-            var.get("comment", ""),
-            median_depth
-        ])
+    # Drug resistance mutations
+    if "dr_variants" in data:
+        for var in data["dr_variants"]:
+            record = {
+                "Sample": sample_id,
+                "Gene": var.get("gene", ""),
+                "Change": var.get("change", ""),
+                "Type": var.get("type", ""),
+                "Nucleotide Change": var.get("nucleotide_change", ""),
+                "Amino Acid Change": var.get("protein_change", ""),
+                "Drugs": ",".join(var.get("drug", [])) if isinstance(var.get("drug", []), list) else var.get("drug", ""),
+                "Confidence": var.get("confidence", ""),
+                "Freq": var.get("freq", ""),
+                "Depth": var.get("depth", ""),
+            }
+            records.append(record)
 
-    # Other variants
-    for var in data.get("other_variants", []):
-        rows.append([
-            sample,
-            var.get("genome_pos", "NA"),
-            var.get("locus_tag", "NA"),
-            var.get("gene", "NA"),
-            var.get("var_type", "NA"),
-            var.get("change", "NA"),
-            var.get("depth", "NA"),
-            var.get("freq", "NA"),
-            "",  # No drug association
-            "",  # No confidence
-            "",  # No comment
-            median_depth
-        ])
+    # Other variants (non-drug resistance)
+    if "other_variants" in data:
+        for var in data["other_variants"]:
+            record = {
+                "Sample": sample_id,
+                "Gene": var.get("gene", ""),
+                "Change": var.get("change", ""),
+                "Type": var.get("type", ""),
+                "Nucleotide Change": var.get("nucleotide_change", ""),
+                "Amino Acid Change": var.get("protein_change", ""),
+                "Drugs": "None",
+                "Confidence": "NA",
+                "Freq": var.get("freq", ""),
+                "Depth": var.get("depth", ""),
+            }
+            records.append(record)
 
-    return rows
+    return records
 
 
-def main(results_dir, output_file):
-    all_rows = []
-    header = [
-        "Sample", "Genome Position", "Locus Tag", "Gene Name", "Variant Type", 
-        "Change", "Depth", "Estimated Fraction", "Gene Associated Drug", 
-        "Confidence", "Comment", "Median Depth"
-    ]
+def main(results_dir, output_tsv):
+    all_records = []
 
-    json_files = glob.glob(os.path.join(results_dir, "*", "*.results.json"))
-    for jf in json_files:
-        all_rows.extend(parse_tbprofiler_json(jf))
+    # Search recursively for *.results.json
+    for json_file in glob.glob(os.path.join(results_dir, "**", "*.results.json"), recursive=True):
+        all_records.extend(parse_tbprofiler_results(json_file))
 
-    with open(output_file, "w") as out:
-        out.write("\t".join(header) + "\n")
-        for row in all_rows:
-            out.write("\t".join(map(str, row)) + "\n")
+    if not all_records:
+        print("No variants found in results.")
+        return
+
+    df = pd.DataFrame(all_records)
+    df.to_csv(output_tsv, sep="\t", index=False)
+    print(f"[INFO] Extracted {len(all_records)} variant records into {output_tsv}")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python extract_tbprofiler_variants.py <results_dir> <output.tsv>")
+    if len(sys.argv) != 3:
+        print("Usage: python Extract_variants.py <results_dir> <output.tsv>")
         sys.exit(1)
 
     results_dir = sys.argv[1]
-    output_file = sys.argv[2]
-    main(results_dir, output_file)
+    output_tsv = sys.argv[2]
+    main(results_dir, output_tsv)
