@@ -1,44 +1,60 @@
 #!/bin/bash
-#SBATCH --job-name=updated_Bactopia_Prep                         # Job name
-#SBATCH --partition=batch                                        # Partition (queue) name
-#SBATCH --ntasks=1                                               # Run on a single CPU
-#SBATCH --cpus-per-task=8                                        # Number of cores per task
-#SBATCH --mem=40gb                                               # Job memory request
-#SBATCH --time=05-00:00:00                                       # Time limit hrs:min:sec
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
+#SBATCH --job-name=updated_Bactopia_Prep                 # Job name
+#SBATCH --partition=batch                                # Partition (queue)
+#SBATCH --ntasks=1                                       # Single task
+#SBATCH --cpus-per-task=8                                # CPUs per task
+#SBATCH --mem=40gb                                       # Memory
+#SBATCH --time=05-00:00:00                               # Time limit (HH:MM:SS)
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
+#SBATCH --mail-type=END,FAIL                             # Mail events
+#SBATCH --mail-user=ma95362@uga.edu                      # Your email
 
-#SBATCH --mail-type=END,FAIL                                   # Mail events (NONE, BEGIN, END, FAIL, ALL)
-#SBATCH --mail-user=ma95362@uga.edu                            # Where to send mail	
-
-#Set output directory variable
+#----------------------------
+# Set output directory
+#----------------------------
 OUTDIR="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis"
+mkdir -p $OUTDIR
 
-#Tell the program to make  the outdir folder
-if [ ! -d $OUTDIR ] 
-    then 
-        mkdir -p $OUTDIR
-fi
-
+#----------------------------
+# Load Bactopia module
+#----------------------------
 module load Bactopia/3.2.0
 cd $OUTDIR
+
+#----------------------------
+# Prepare sample sheet
+#----------------------------
 bactopia prepare \
     --path /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw \
     --species "Mycobacterium bovis" \
     --genome-size 4410000 \
     > $OUTDIR/M.bovis_samples.txt
+
+#----------------------------
+# Run Bactopia pipeline
+#----------------------------
 bactopia \
     --samples $OUTDIR/M.bovis_samples.txt \
     --coverage 100 \
     --outdir $OUTDIR/M.bovis_paired_end_samples \
-    --max_cpus 4
-bactopia summary \
-    --bactopia-path $OUTDIR/M.bovis_paired_end_samples
+    --max_cpus 8 \
+    --skip_qc false \       # Ensure QC (Kraken2, FastQC, etc.) runs
+    --skip_kraken2 false    # Explicitly run Kraken2 for species ID
 
-#bactopia search \
-#    --query PRJNA1155881
-#bactopia \
-#    --accessions $OUTDIR/bactopia-accessions.txt \
-#    --coverage 100 \
-#    --outdir $OUTDIR/ena-multiple-samples \
-#    --max_cpus 8
+#----------------------------
+# Generate summary report
+#----------------------------
+bactopia summary \
+    --bactopia-path $OUTDIR/M.bovis_paired_end_samples \
+    --outdir $OUTDIR/M.bovis_summary
+
+#----------------------------
+# Optional: Extract top Kraken2 species hits for all samples
+#----------------------------
+echo -e "Sample\tTop_Kraken2_Species" > $OUTDIR/M.bovis_species_summary.txt
+for f in $OUTDIR/M.bovis_paired_end_samples/*/tools/kraken2/*.report; do
+    sample=$(basename $(dirname $(dirname $f)))
+    top_species=$(awk '{print $6; exit}' $f)
+    echo -e "${sample}\t${top_species}" >> $OUTDIR/M.bovis_species_summary.txt
+done
