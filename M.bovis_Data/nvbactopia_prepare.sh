@@ -13,7 +13,7 @@
 #----------------------------
 # Set output directory
 #----------------------------
-OUTDIR="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis"
+OUTDIR="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_Kraken2"
 mkdir -p $OUTDIR
 
 #----------------------------
