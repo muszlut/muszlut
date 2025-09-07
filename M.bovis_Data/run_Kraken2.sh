@@ -1,15 +1,15 @@
 #!/bin/bash
-#SBATCH --job-name=kraken2_bactopia
-#SBATCH --partition=batch
-#SBATCH --output=kraken2_%A_%a.log
-#SBATCH --error=kraken2_%A_%a.err
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=40G
-#SBATCH --time=05-00:00:00
-#SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=ma95362@uga.edu
-#SBATCH --array=0-63   # adjust to total number of samples minus 1
+#SBATCH --job-name=Bactopia_Kraken2                     # Job name
+#SBATCH --partition=batch                                # Partition (queue)
+#SBATCH --ntasks=1                                       # Single task
+#SBATCH --cpus-per-task=8                                # CPUs per task
+#SBATCH --mem=40gb                                       # Memory
+#SBATCH --time=05-00:00:00                               # Time limit (HH:MM:SS)
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
+#SBATCH --mail-type=END,FAIL                             # Mail events
+#SBATCH --mail-user=ma95362@uga.edu                      # Your email
+
 
 #-----------------------------------
 # Load Bactopia (Kraken2 included)
