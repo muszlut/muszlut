@@ -26,7 +26,7 @@ cd $OUTDIR
 # Prepare sample sheet
 #----------------------------
 bactopia prepare \
-    --path /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw \
+    --path /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs/fixed_fastqs \
     --species "Mycobacterium bovis" \
     --genome-size 4410000 \
     > $OUTDIR/M.bovis_samples.txt
