@@ -19,7 +19,7 @@ module load Bactopia/3.2.0
 #-----------------------------------
 # Input FASTQ directory
 #-----------------------------------
-FASTQ_DIR=/scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs
+FASTQ_DIR=/scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs/fixed_fastqs  
 cd $FASTQ_DIR || { echo "Directory not found: $FASTQ_DIR"; exit 1; }
 
 #-----------------------------------
