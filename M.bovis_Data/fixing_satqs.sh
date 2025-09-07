@@ -11,7 +11,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                  # Your email
 
 #-----------------------------------
-# Modules
+# Load BBMap
 #-----------------------------------
 module load BBMap/39.19
 
@@ -31,7 +31,7 @@ echo "FASTQ Fix Report - $(date)" > "$LOGFILE"
 echo "----------------------------------------" >> "$LOGFILE"
 
 #-----------------------------------
-# Function to fix a FASTQ and log discarded reads
+# Function to fix a FASTQ file
 #-----------------------------------
 fix_fastq() {
     local infile=$1
@@ -43,7 +43,11 @@ fix_fastq() {
     fi
 
     echo "Processing $infile ..."
-    reformat.sh in="$infile" out="$outfile" tossbrokenreads 2> tmp.log
+
+    # <-- key flags -->
+    # tossbrokenreads = remove reads with base-quality mismatch
+    # overwrite = allow writing to existing files
+    reformat.sh in="$infile" out="$outfile" tossbrokenreads overwrite 2> tmp.log
 
     # Extract number of discarded reads from stderr
     if grep -q "Discarded" tmp.log; then
@@ -60,12 +64,11 @@ fix_fastq() {
 # Process paired-end FASTQs
 #-----------------------------------
 for fq1 in *_R1.fastq.gz; do
-    fq2="${fq1/_R1/_R2}"  # Corresponding R2
+    fq2="${fq1/_R1/_R2}"
     if [[ -f "$fq2" ]]; then
         fix_fastq "$fq1" "$FIXED_DIR/$fq1"
         fix_fastq "$fq2" "$FIXED_DIR/$fq2"
     else
-        # Single-end read
         fix_fastq "$fq1" "$FIXED_DIR/$fq1"
     fi
 done
