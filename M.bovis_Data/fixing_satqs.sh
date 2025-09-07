@@ -32,8 +32,11 @@ REPAIR="$FIXED_DIR/fastq_repair_report.txt"
 
 echo "FASTQ Summary Report - $(date)" > "$SUMMARY"
 echo "----------------------------------------" >> "$SUMMARY"
+echo -e "Sample\tInput_Reads\tOutput_Reads\tDiscarded\tMethod" >> "$SUMMARY"
+
 echo "FASTQ Fix Report - $(date)" > "$DETAIL"
 echo "----------------------------------------" >> "$DETAIL"
+
 echo "FASTQ Repair Report - $(date)" > "$REPAIR"
 echo "----------------------------------------" >> "$REPAIR"
 
@@ -51,14 +54,25 @@ process_pair() {
 
     echo "Processing $fq1 and $fq2 ..." | tee -a "$DETAIL"
 
-    # First try reformat.sh
-    reformat.sh in1="$fq1" in2="$fq2" out1="$out1" out2="$out2" tossbrokenreads overwrite 2> tmp.log
+    # Run reformat.sh first
+    reformat.sh in1="$fq1" in2="$fq2" out1="$out1" out2="$out2" \
+        tossbrokenreads overwrite 2> tmp.log
+
+    # Extract stats
+    inreads=$(grep "Input:" tmp.log | awk '{print $2}' | tr -d ',')
+    outreads=$(grep "Output:" tmp.log | awk '{print $2}' | tr -d ',')
+    discarded=$((inreads - outreads))
+
+    method="reformat.sh"
+
+    # If mismatch, rerun with repair.sh
     if grep -q "Paired-end read count mismatch" tmp.log; then
         echo "Pair mismatch detected for $base → running repair.sh" | tee -a "$REPAIR"
         repair.sh in1="$fq1" in2="$fq2" out1="$out1" out2="$out2" outs="$singles" overwrite 2>> "$REPAIR"
+        method="repair.sh"
     fi
 
-    discarded=$(grep "Discarded" tmp.log | awk '{print $2}' | paste -sd+ - | bc || echo 0)
+    echo -e "$base\t$inreads\t$outreads\t$discarded\t$method" >> "$SUMMARY"
     echo "$base : $discarded reads discarded" | tee -a "$DETAIL"
 
     rm -f tmp.log
@@ -76,6 +90,6 @@ for fq1 in *_R1.fastq.gz; do
     fi
 done
 
+echo "----------------------------------------" >> "$SUMMARY"
 echo "Total pairs processed: $total_pairs" >> "$SUMMARY"
 echo "All FASTQs processed. Reports saved in $FIXED_DIR"
-
