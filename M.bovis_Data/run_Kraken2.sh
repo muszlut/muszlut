@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=kraken2_bactopia
+#SBATCH --partition=batch
 #SBATCH --output=kraken2_%A_%a.log
 #SBATCH --error=kraken2_%A_%a.err
 #SBATCH --ntasks=1
