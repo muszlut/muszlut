@@ -39,7 +39,7 @@ bactopia \
     --coverage 100 \
     --outdir $OUTDIR/M.bovis_paired_end_samples \
     --max_cpus 8 \
-    --skip_qc false \       # Ensure QC (Kraken2, FastQC, etc.) runs
+    --skip_qc false \
     --skip_kraken2 false    # Explicitly run Kraken2 for species ID
 
 #----------------------------
