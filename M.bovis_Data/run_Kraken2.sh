@@ -1,25 +1,24 @@
 #!/bin/bash
-#SBATCH --job-name=Bactopia_Kraken2                     # Job name
-#SBATCH --partition=batch                                # Partition (queue)
-#SBATCH --ntasks=1                                       # Single task
-#SBATCH --cpus-per-task=8                                # CPUs per task
-#SBATCH --mem=40gb                                       # Memory
-#SBATCH --time=05-00:00:00                               # Time limit (HH:MM:SS)
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
-#SBATCH --mail-type=END,FAIL                             # Mail events
-#SBATCH --mail-user=ma95362@uga.edu                      # Your email
-
+#SBATCH --job-name=Kraken2                     # Job name
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=40gb
+#SBATCH --time=05-00:00:00
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
 
 #-----------------------------------
-# Load Bactopia (Kraken2 included)
+# Load Kraken2
 #-----------------------------------
-module load Bactopia/3.2.0
+module load Kraken2/2.1.3-gompi-2023a
 
 #-----------------------------------
 # Input FASTQ directory
 #-----------------------------------
-FASTQ_DIR=/scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs/fixed_fastqs  
+FASTQ_DIR=/scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs/fixed_fastqs
 cd $FASTQ_DIR || { echo "Directory not found: $FASTQ_DIR"; exit 1; }
 
 #-----------------------------------
@@ -43,4 +42,3 @@ kraken2 \
   --threads 8 \
   --report ${BASE}_kraken2_report.txt \
   --output ${BASE}_kraken2_output.txt
-
