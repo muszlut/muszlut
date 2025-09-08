@@ -8,7 +8,7 @@
 #SBATCH --output=/scratch/ma95362/scratch/merge.%j.out
 #SBATCH --error=/scratch/ma95362/scratch/merge.%j.err
 
-module load Python/3.11.5
+module load Python/3.11.5   
 KRAKENTOOLS=/scratch/ma95362/KrakenTools
 
 WORKDIR=/scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs/fixed_fastqs
