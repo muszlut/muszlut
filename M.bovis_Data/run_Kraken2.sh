@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=Kraken2                     # Job name
+#SBATCH --job-name=kraken2_job
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=40gb
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=180gb
 #SBATCH --time=05-00:00:00
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err
