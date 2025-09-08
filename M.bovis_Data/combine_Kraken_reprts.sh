@@ -19,8 +19,23 @@ KRAKENTOOLS=/scratch/ma95362/KrakenTools   # <-- update if needed
 REPORTS_DIR=/scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs/fixed_fastqs
 OUTFILE=/scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/fixed_fastqs/fixed_fastqs/kraken2_combined.tsv
 
-# Combine reports into a single abundance table
+# Collect all report files
+# -------------------------------
+REPORT_FILES=(${REPORTS_DIR}/*_kraken2_report.txt)
+
+# Generate sample names (strip path and suffix)
+SAMPLE_NAMES=()
+for f in "${REPORT_FILES[@]}"; do
+    name=$(basename "$f" _kraken2_report.txt)
+    SAMPLE_NAMES+=("$name")
+done
+
+# -------------------------------
+# Run KrakenTools to combine reports
+# -------------------------------
 python $KRAKENTOOLS/combine_kreports.py \
-    -r ${REPORTS_DIR}/*.txt \
-    -o ${OUTFILE} \
-    -p
+    -r "${REPORT_FILES[@]}" \
+    -o "$OUTFILE" \
+    --sample-names "${SAMPLE_NAMES[@]}"
+
+echo "✅ Combined Kraken2 report written to: $OUTFILE"
