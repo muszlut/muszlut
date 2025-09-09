@@ -9,7 +9,7 @@
 #SBATCH --error=/scratch/ma95362/scratch/log.%A_%a.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
-#SBATCH --array=0-63   # adjust based on how many samples you have
+#SBATCH --array=0-63   # adjust based on how many samples you have (it should b be number_of_samples - 1)
 
 #-----------------------------------
 # Load Kraken2
