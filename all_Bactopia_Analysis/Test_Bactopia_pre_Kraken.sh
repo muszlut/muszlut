@@ -15,18 +15,19 @@
 #----------------------------
 OUTDIR="/scratch/ma95362/ETH_bovis_Sequence/Bactopia_Analysis"
 mkdir -p $OUTDIR
+cd $OUTDIR
 
 #----------------------------
 # Modules
 #----------------------------
 module load Bactopia/3.2.0
-module load Python/3.9.6-GCCcore-11.2.0
 
-cd $OUTDIR
+# Prevent Python from using user-local packages
+export PYTHONNOUSERSITE=1
 
-# Add user pip packages to PATH (for pandas/openpyxl)
-export PATH=$HOME/.local/bin:$PATH
-export PYTHONPATH=$HOME/.local/lib/python3.9/site-packages:$PYTHONPATH
+# Activate Bactopia conda environment and ensure compatible NumPy/SciPy
+source /home/ma95362/.bactopia/conda/bioconda--bactopia-sketcher-1.0.1/bin/activate
+conda install -y -c conda-forge numpy=1.26 scipy
 
 #----------------------------
 # Prepare samples
