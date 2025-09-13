@@ -1,41 +1,44 @@
 #!/bin/bash
-#SBATCH --job-name=Kraken2_Test_BacPrep                          # Job name
-#SBATCH --partition=batch                                        # Partition (queue) name
-#SBATCH --ntasks=1                                               # Run on a single CPU
-#SBATCH --cpus-per-task=8                                        # Number of cores per task
-#SBATCH --mem=40gb                                               # Job memory request
-#SBATCH --time=05-00:00:00                                       # Time limit hrs:min:sec
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out             # Standard output log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err              # Standard error log
-
-#SBATCH --mail-type=END,FAIL                                     # Mail events
-#SBATCH --mail-user=ma95362@uga.edu                              # Where to send mail	
+#SBATCH --job-name=M.bovis_Bactopia                        # Job name
+#SBATCH --partition=batch                                   # Partition
+#SBATCH --ntasks=1                                          # Single task
+#SBATCH --cpus-per-task=8                                   # CPUs per task
+#SBATCH --mem=40gb                                         # Memory
+#SBATCH --time=05-00:00:00                                  # Walltime
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out       # STDOUT
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err        # STDERR
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
 
 #----------------------------
-# Set output directory
+# Directories
 #----------------------------
-OUTDIR="/scratch/ma95362/musse_MGA/all_reads_Bactopia_Analysis/Test_Bactopia_pre_Kraken"
-
-# Make sure output directory exists
+OUTDIR="/scratch/ma95362/ETH_bovis_Sequence/Bactopia_Analysis"
 mkdir -p $OUTDIR
 
 #----------------------------
-# Load module
+# Modules
 #----------------------------
 module load Bactopia/3.2.0
+module load Python/3.9.6-GCCcore-11.2.0
+
 cd $OUTDIR
 
+# Add user pip packages to PATH (for pandas/openpyxl)
+export PATH=$HOME/.local/bin:$PATH
+export PYTHONPATH=$HOME/.local/lib/python3.9/site-packages:$PYTHONPATH
+
 #----------------------------
-# Prepare sample sheet
+# Prepare samples
 #----------------------------
 bactopia prepare \
     --path /scratch/ma95362/ETH_bovis_Sequence/reads/64_SH_Sequence_data/raw/sub_raw \
-    --species "Mycobacterium tuberculosis variety bovis" \
-    --genome_size 4200000-4500000 \
+    --species "Mycobacterium tuberculosis" \
+    --genome-size 4410000 \
     > $OUTDIR/MGA_samples.txt
 
 #----------------------------
-# Run Bactopia pipeline
+# Run Bactopia
 #----------------------------
 bactopia \
     --samples $OUTDIR/MGA_samples.txt \
@@ -46,35 +49,34 @@ bactopia \
     --skip_kraken2 false
 
 #----------------------------
-# Generate summary report
+# Generate summary
 #----------------------------
 bactopia summary \
-    --bactopia-path $OUTDIR/MGA_paired_end_samples
+    --bactopia-path $OUTDIR/MGA_paired_end_samples \
+    --outdir $OUTDIR/MGA_summary
 
 #----------------------------
-# Collect top 5 Kraken2 hits
+# Extract top 5 Kraken2 hits and export to Excel
 #----------------------------
-TOPKRAKEN="$OUTDIR/top5_kraken2_summary.tsv"
-echo -e "Sample\tRank\tPercent\tReads\tTaxonomy_ID\tRank_Code\tScientific_Name" > $TOPKRAKEN
-
-for KREPORT in $OUTDIR/MGA_paired_end_samples/*/kraken2/*.report.txt; do
-    SAMPLE=$(basename $(dirname $(dirname $KREPORT)))
-    # Grab the first 5 lines, add a numeric rank (1–5)
-    awk -v SAMP="$SAMPLE" 'NR<=5 {print SAMP"\t"NR"\t"$0}' OFS="\t" $KREPORT >> $TOPKRAKEN
-done
-
-#----------------------------
-# Convert TSV to Excel
-#----------------------------
-module load Python/3.9.6-GCCcore-11.2.0
-python3 - <<'EOF'
+python3 <<EOF
 import pandas as pd
+import glob
 import os
-outdir = os.environ["OUTDIR"]
-tsv_file = os.path.join(outdir, "top5_kraken2_summary.tsv")
-excel_file = os.path.join(outdir, "top5_kraken2_summary.xlsx")
-df = pd.read_csv(tsv_file, sep="\t")
-df.to_excel(excel_file, index=False)
-EOF
-#----------------------------
 
+kraken_files = glob.glob("$OUTDIR/MGA_paired_end_samples/*/kraken2/*_report.txt")
+all_data = []
+
+for f in kraken_files:
+    sample_name = os.path.basename(os.path.dirname(os.path.dirname(f)))
+    df = pd.read_csv(f, sep="\t", header=None, names=["perc", "reads", "reads_clade", "rank", "taxid", "name"])
+    df = df.sort_values(by="perc", ascending=False).head(5)  # top 5
+    df["sample"] = sample_name
+    all_data.append(df)
+
+if all_data:
+    final_df = pd.concat(all_data)
+    final_df = final_df[["sample", "perc", "reads", "reads_clade", "rank", "taxid", "name"]]
+    final_df.to_excel(os.path.join("$OUTDIR", "Top5_Kraken2.xlsx"), index=False)
+EOF
+
+echo "Bactopia pipeline finished. Top5 Kraken2 results saved to Top5_Kraken2.xlsx"
