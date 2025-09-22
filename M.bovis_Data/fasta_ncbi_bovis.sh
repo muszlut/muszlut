@@ -21,20 +21,7 @@ URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/835/GCF_000195835.3_AS
 mkdir -p $OUTDIR
 cd $OUTDIR
 
-# Log start time
-echo "Download started at $(date)"
 
 # Download and decompress the reference genome
-curl -s --fail $URL | gunzip -c > $OUTDIR/AF2122_97.fasta
+curl -s $URL | gunzip -c > $OUTDIR/genomic.fna
 
-# Check if download was successful
-if [ $? -eq 0 ]; then
-    echo "Download completed successfully at $(date)"
-else
-    echo "Download failed at $(date)" >&2
-    exit 1
-fi
-
-# Optional: Preview the header
-echo "Reference header:"
-head -n 1 $OUTDIR/AF2122_97.fasta
