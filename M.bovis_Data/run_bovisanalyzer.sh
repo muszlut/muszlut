@@ -18,7 +18,7 @@ conda activate bovisanalyzer
 
 # Define paths
 SAMPLESHEET=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/samplesheet.csv
-REFERENCE=/scratch/ma95362/ETH_bovis_Sequence/bovis_REF/Fasta
+REFERENCE=/scratch/ma95362/ETH_bovis_Sequence/bovis_REF/Fasta/AF2122_97.fasta
 KRAKEN2DB=/scratch/ma95362/kraken2_db
 OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
 
