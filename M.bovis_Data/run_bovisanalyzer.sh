@@ -1,19 +1,17 @@
 #!/bin/bash
 #SBATCH --job-name=bovis_analyzer                       # Job name
-#SBATCH --partition=batch                                # Partition (queue)
-#SBATCH --ntasks=1                                       # Single task
-#SBATCH --cpus-per-task=8                                # CPUs per task
-#SBATCH --mem=40gb                                       # Memory
-#SBATCH --time=05-00:00:00                               # Time limit (HH:MM:SS)
+#SBATCH --partition=batch                               # Partition (queue)
+#SBATCH --ntasks=1                                      # Single task
+#SBATCH --cpus-per-task=8                               # CPUs per task
+#SBATCH --mem=40gb                                      # Memory
+#SBATCH --time=05-00:00:00                              # Time limit (HH:MM:SS)
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
 #SBATCH --mail-type=END,FAIL                             # Mail events
 #SBATCH --mail-user=ma95362@uga.edu                      # Your email
 
-# Load Anaconda / Miniconda
-#module load anaconda/2020.11
-
-# Activate the bovisanalyzer environment
+# Initialize Conda in SLURM shell
+source $(conda info --base)/etc/profile.d/conda.sh
 conda activate bovisanalyzer
 
 # Define paths
@@ -24,7 +22,6 @@ OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
 
 # Make output directory if it doesn't exist
 mkdir -p $OUTDIR
-
 cd $OUTDIR
 
 # Run Bovisanalyzer
