@@ -16,12 +16,14 @@ source activate bovisanalyzer
 
 # Define paths
 SAMPLESHEET=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/samplesheet.csv
-REFERENCE=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/AF2122_97.fasta
-KRAKEN2DB=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/minikraken2_v1_8GB
-OUTDIR=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_results
+REFERENCE=/scratch/ma95362/ETH_bovis_Sequence/bovis_REF/Fasta
+KRAKEN2DB=/scratch/ma95362/kraken2_db
+OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
 
 # Make output directory if it doesn't exist
 mkdir -p $OUTDIR
+
+cd $OUTDIR
 
 # Run Bovisanalyzer
 nextflow run avantonder/bovisanalyzer \
