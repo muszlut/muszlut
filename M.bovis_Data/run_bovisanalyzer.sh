@@ -30,5 +30,4 @@ nextflow run avantonder/bovisanalyzer \
     --input $SAMPLESHEET \
     --reference $REFERENCE \
     --kraken2db $KRAKEN2DB \
-    --outdir $OUTDIR \
-    -resume
+    --outdir $OUTDIR 
