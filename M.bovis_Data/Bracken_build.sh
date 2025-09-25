@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=bracken_build          # Job name
-#SBATCH --partition=highmem               # High-memory partition
+#SBATCH --partition=highmem_p               # High-memory partition
 #SBATCH --ntasks=1                        # Single task
 #SBATCH --cpus-per-task=8                 # Threads for Bracken
 #SBATCH --mem=120gb                        # Memory
