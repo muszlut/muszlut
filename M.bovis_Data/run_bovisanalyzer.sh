@@ -3,7 +3,7 @@
 #SBATCH --partition=batch                               # Partition (queue)
 #SBATCH --ntasks=1                                      # Single task
 #SBATCH --cpus-per-task=8                               # CPUs per task
-#SBATCH --mem=40gb                                      # Memory
+#SBATCH --mem=80gb                                      # Memory
 #SBATCH --time=05-00:00:00                              # Time limit (HH:MM:SS)
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
@@ -32,4 +32,4 @@ nextflow run avantonder/bovisanalyzer \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
     -resume
-    
+
