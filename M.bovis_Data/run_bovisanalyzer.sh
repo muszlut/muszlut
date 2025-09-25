@@ -31,5 +31,6 @@ nextflow run avantonder/bovisanalyzer \
     --reference $REFERENCE \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
+    -c bovisanalyzer_bracken.config \
     -resume
 
