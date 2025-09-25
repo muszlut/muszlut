@@ -2,8 +2,8 @@
 #SBATCH --job-name=bovis_analyzer                       # Job name
 #SBATCH --partition=batch                               # Partition (queue)
 #SBATCH --ntasks=1                                      # Single task
-#SBATCH --cpus-per-task=8                               # CPUs per task
-#SBATCH --mem=80gb                                      # Memory
+#SBATCH --cpus-per-task=16                              # CPUs per task
+#SBATCH --mem=120gb                                      # Memory
 #SBATCH --time=05-00:00:00                              # Time limit (HH:MM:SS)
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
