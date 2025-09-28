@@ -1,42 +1,45 @@
 #!/bin/bash
-#SBATCH --job-name=bactopia_array_all       # Job name
-#SBATCH --partition=highmem
-#SBATCH --nodes=1
-#SBATCH --ntasks=64              # CPUs per job
-#SBATCH --mem=230G               # highmem per job
-#SBATCH --time=2-00:00:00
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err             # Standard error log
+#SBATCH --job-name=bactopia_array_full
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8          # Enough for assembly and variant calling
+#SBATCH --mem=32G                  # Reduced from 120G to allow more concurrent tasks
+#SBATCH --time=05-00:00:00
+#SBATCH --array=1-1399
+#SBATCH --output=/scratch/ma95362/scratch/log.%A_%a.out
+#SBATCH --error=/scratch/ma95362/scratch/log.%A_%a.err
 
-#SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
-#SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
-#SBATCH --array=1-1398           # one job per sample
+module load Bactopia/3.2.0
 
-module load Bactopia/3.1.0
+# Path to samples.txt
+SAMPLES=/scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt
 
-# Directories
-READS_DIR=/scratch/ma95362/eth_national_analysis/all_fastq_reads
-PROJECT_DIR=/scratch/ma95362/eth_national_analysis/project
-PANGENOME_DIR=/scratch/ma95362/eth_national_analysis/pangenome
-SNIPPY_DIR=/scratch/ma95362/eth_national_analysis/snippy
-SAMPLE_LIST=/scratch/ma95362/eth_national_analysis/all_fastq_reads/sample_list.txt
-REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
+# Get the line for this task
+LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" $SAMPLES)
 
-# Create output directories if they don't exist
-mkdir -p $PROJECT_DIR
-mkdir -p $PANGENOME_DIR
-mkdir -p $SNIPPY_DIR
+# Extract sample name and paired-end FASTQ files
+SAMPLE=$(echo $LINE | cut -f1)
+FQ1=$(echo $LINE | cut -f2)
+FQ2=$(echo $LINE | cut -f3)
 
-# Get sample name
-SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" ${SAMPLE_LIST})
+# Output directory for this sample
+OUTDIR=/scratch/ma95362/eth_national_analysis/bactopia_results/$SAMPLE
+mkdir -p $OUTDIR
+cd $OUTDIR || { echo "Failed to cd into $OUTDIR"; exit 1; } 
 
-# Step 1: Run Bactopia per sample (QC + assembly + annotation)
-bactopia --reads "${READS_DIR}/${SAMPLE}_R1.fastq.gz" "${READS_DIR}/${SAMPLE}_R2.fastq.gz" \
-         --genus Mycobacterium \
-         --outdir ${PROJECT_DIR}/${SAMPLE} \
-         --cpus 64
 
-# Step 2: Run pangenome only once after all array jobs are done
-# Use SLURM job dependencies to trigger pangenome after array completion
-# Submit pangenome job separately:
-# sbatch --dependency=afterok:<ARRAY_JOB_ID> pangenome_highmem.slurm
+# Skip already-processed samples
+if [ -f "$OUTDIR/bactopia.done" ]; then
+    echo "Sample $SAMPLE already processed. Skipping."
+    exit 0
+fi
+
+# Run full Bactopia workflow on paired-end reads
+bactopia --fq1 $FQ1 --fq2 $FQ2 \
+         --outdir $OUTDIR \
+         --species "Mycobacterium tuberculosis" \
+         --cpus 8 \
+         --genome-size 4400000
+
+# Mark as done
+touch $OUTDIR/bactopia.done
