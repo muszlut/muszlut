@@ -2,46 +2,70 @@
 #SBATCH --job-name=bactopia_array_full
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8          # Enough for assembly and variant calling
-#SBATCH --mem=32G                  # Reduced from 120G to allow more concurrent tasks
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
 #SBATCH --time=05-00:00:00
 #SBATCH --array=1-1399
-#SBATCH --output=/scratch/ma95362/scratch/log.%A_%a.out
-#SBATCH --error=/scratch/ma95362/scratch/log.%A_%a.err
-#SBATCH --mail-type=END,FAIL                             # Mail events
-#SBATCH --mail-user=ma95362@uga.edu                      # Your email
+#SBATCH --output=/scratch/ma95362/eth_national_analysis/logs/%A_%a.out
+#SBATCH --error=/scratch/ma95362/eth_national_analysis/logs/%A_%a.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
 
+# -------------------------
+# Setup
+# -------------------------
 module load Bactopia/3.2.0
 
-# Path to samples.txt
+# Paths
 SAMPLES=/scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt
+RESULTS=/scratch/ma95362/eth_national_analysis/bactopia_results
+LOGS=/scratch/ma95362/eth_national_analysis/logs
 
-# Get the line for this task
-LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" $SAMPLES)
+# Make sure results and log directories exist
+mkdir -p "$RESULTS"
+mkdir -p "$LOGS"
 
-# Extract sample name and paired-end FASTQ files
-SAMPLE=$(echo $LINE | cut -f1)
-FQ1=$(echo $LINE | cut -f2)
-FQ2=$(echo $LINE | cut -f3)
+# -------------------------
+# Get the line for this array task
+# -------------------------
+LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$SAMPLES" | tr -d '\r')
 
-# Output directory for this sample
-OUTDIR=/scratch/ma95362/eth_national_analysis/bactopia_results/$SAMPLE
-mkdir -p $OUTDIR
-cd $OUTDIR || { echo "Failed to cd into $OUTDIR"; exit 1; } 
+SAMPLE=$(echo "$LINE" | cut -f1)
+FQ1=$(echo "$LINE" | cut -f2)
+FQ2=$(echo "$LINE" | cut -f3)
 
+OUTDIR="$RESULTS/$SAMPLE"
+mkdir -p "$OUTDIR"
 
+# Debugging info
+echo "[$SLURM_ARRAY_TASK_ID] Processing sample: $SAMPLE"
+echo "FASTQ R1: $FQ1"
+echo "FASTQ R2: $FQ2"
+echo "Output directory: $OUTDIR"
+
+# -------------------------
 # Skip already-processed samples
+# -------------------------
 if [ -f "$OUTDIR/bactopia.done" ]; then
     echo "Sample $SAMPLE already processed. Skipping."
     exit 0
 fi
 
-# Run full Bactopia workflow on paired-end reads
-bactopia --fq1 $FQ1 --fq2 $FQ2 \
-         --outdir $OUTDIR \
-         --species "Mycobacterium tuberculosis" \
-         --cpus 8 \
-         --genome-size 4400000
+# -------------------------
+# Run Bactopia
+# -------------------------
+cd "$OUTDIR" || { echo "Failed to cd into $OUTDIR"; exit 1; }
 
+bactopia \
+    --fq1 "$FQ1" \
+    --fq2 "$FQ2" \
+    --outdir "$OUTDIR" \
+    --species "Mycobacterium tuberculosis" \
+    --cpus 8 \
+    --genome-size 4400000
+
+# -------------------------
 # Mark as done
-touch $OUTDIR/bactopia.done
+# -------------------------
+touch "$OUTDIR/bactopia.done"
+echo "[$SLURM_ARRAY_TASK_ID] Sample $SAMPLE finished."
