@@ -88,4 +88,4 @@ echo "[$SLURM_ARRAY_TASK_ID] Sample $SAMPLE finished."
 # -------------------------
 # Cleanup
 # -------------------------
-rm -f "$SAMPLES_CLEAN"
+#rm -f "$SAMPLES_CLEAN"
