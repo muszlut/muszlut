@@ -8,6 +8,8 @@
 #SBATCH --array=1-1399
 #SBATCH --output=/scratch/ma95362/scratch/log.%A_%a.out
 #SBATCH --error=/scratch/ma95362/scratch/log.%A_%a.err
+#SBATCH --mail-type=END,FAIL                             # Mail events
+#SBATCH --mail-user=ma95362@uga.edu                      # Your email
 
 module load Bactopia/3.2.0
 
