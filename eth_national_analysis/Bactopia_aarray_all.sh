@@ -5,18 +5,13 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=05-00:00:00
-#SBATCH --array=1-1399
 #SBATCH --output=/scratch/ma95362/eth_national_analysis/logs/%A_%a.out
 #SBATCH --error=/scratch/ma95362/eth_national_analysis/logs/%A_%a.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-# -------------------------
-# Setup
-# -------------------------
 module load Bactopia/3.2.0
 
-# Paths
 SAMPLES=/scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt
 RESULTS=/scratch/ma95362/eth_national_analysis/bactopia_results
 LOGS=/scratch/ma95362/eth_national_analysis/logs
@@ -24,46 +19,61 @@ LOGS=/scratch/ma95362/eth_national_analysis/logs
 mkdir -p "$RESULTS" "$LOGS"
 
 # -------------------------
-# Get the line for this array task
-# Format of samples.txt: SAMPLE<TAB>R1<TAB>R2
+# Prepare samples file (skip header & empty lines)
 # -------------------------
-LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$SAMPLES" | tr -d '\r')
+SAMPLES_CLEAN=$(mktemp)
+awk 'NR>1 && NF>0' "$SAMPLES" > "$SAMPLES_CLEAN"  # skip first line (header) and empty lines
+
+TOTAL=$(wc -l < "$SAMPLES_CLEAN")
+echo "Total samples to process: $TOTAL"
+
+# -------------------------
+# Check SLURM_ARRAY_TASK_ID
+# -------------------------
+if [ -z "$SLURM_ARRAY_TASK_ID" ]; then
+    echo "This script is meant to be run as an array job."
+    echo "Please submit with:"
+    echo "sbatch --array=1-$TOTAL $0"
+    exit 1
+fi
+
+# -------------------------
+# Get the line for this array task
+# -------------------------
+LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$SAMPLES_CLEAN" | tr -d '\r')
 
 SAMPLE=$(echo "$LINE" | cut -f1)
-FQ1=$(echo "$LINE" | cut -f2)
-FQ2=$(echo "$LINE" | cut -f3)
+FQ1=$(echo "$LINE" | cut -f4)
+FQ2=$(echo "$LINE" | cut -f5)
 
 OUTDIR="$RESULTS/$SAMPLE"
 mkdir -p "$OUTDIR"
 
-# Debugging info
 echo "[$SLURM_ARRAY_TASK_ID] Processing sample: $SAMPLE"
 echo "FASTQ R1: $FQ1"
 echo "FASTQ R2: $FQ2"
 echo "Output directory: $OUTDIR"
 
-# -------------------------
-# Skip already-processed samples
-# -------------------------
 if [ -f "$OUTDIR/bactopia.done" ]; then
     echo "Sample $SAMPLE already processed. Skipping."
     exit 0
 fi
 
-# -------------------------
-# Run Bactopia
-# -------------------------
+cd "$OUTDIR" || { echo "Failed to cd into $OUTDIR"; exit 1; }
+
 bactopia \
-    --R1 "$FQ1" \
-    --R2 "$FQ2" \
+    --r1 "$FQ1" \
+    --r2 "$FQ2" \
     --sample "$SAMPLE" \
     --outdir "$OUTDIR" \
     --species "Mycobacterium tuberculosis" \
-    --genome-size 4400000 \
-    --cpus 8
+    --cpus 8 \
+    --genome-size 4400000
 
-# -------------------------
-# Mark as done
-# -------------------------
 touch "$OUTDIR/bactopia.done"
 echo "[$SLURM_ARRAY_TASK_ID] Sample $SAMPLE finished."
+
+# -------------------------
+# Cleanup
+# -------------------------
+rm -f "$SAMPLES_CLEAN"
