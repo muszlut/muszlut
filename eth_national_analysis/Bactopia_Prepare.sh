@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=bactopia_prepare
-#SBATCH --partition=batch
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=32G
-#SBATCH --time=01:00:00
+#SBATCH --job-name=bactopia_prepare                      # Job name
+#SBATCH --partition=batch                               # Partition (queue)
+#SBATCH --ntasks=1                                      # Single task
+#SBATCH --cpus-per-task=16                              # CPUs per task
+#SBATCH --mem=120gb                                      # Memory
+#SBATCH --time=05-00:00:00                              # Time limit (HH:MM:SS)
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
 #SBATCH --mail-type=END,FAIL                             # Mail events
