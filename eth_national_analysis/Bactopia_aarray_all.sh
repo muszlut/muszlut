@@ -21,12 +21,11 @@ SAMPLES=/scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt
 RESULTS=/scratch/ma95362/eth_national_analysis/bactopia_results
 LOGS=/scratch/ma95362/eth_national_analysis/logs
 
-# Make sure results and log directories exist
-mkdir -p "$RESULTS"
-mkdir -p "$LOGS"
+mkdir -p "$RESULTS" "$LOGS"
 
 # -------------------------
 # Get the line for this array task
+# Format of samples.txt: SAMPLE<TAB>R1<TAB>R2
 # -------------------------
 LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$SAMPLES" | tr -d '\r')
 
@@ -54,15 +53,14 @@ fi
 # -------------------------
 # Run Bactopia
 # -------------------------
-cd "$OUTDIR" || { echo "Failed to cd into $OUTDIR"; exit 1; }
-
 bactopia \
-    --fq1 "$FQ1" \
-    --fq2 "$FQ2" \
+    --R1 "$FQ1" \
+    --R2 "$FQ2" \
+    --sample "$SAMPLE" \
     --outdir "$OUTDIR" \
     --species "Mycobacterium tuberculosis" \
-    --cpus 8 \
-    --genome-size 4400000
+    --genome-size 4400000 \
+    --cpus 8
 
 # -------------------------
 # Mark as done
