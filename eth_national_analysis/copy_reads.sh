@@ -12,11 +12,14 @@
 
 module load parallel   # parallel *is* usually a module, keep this line
 
-SRC=/work/fdqlab/Ethiopia_dataset_763
-DEST=/scratch/ma95362/eth_national_reads
-
+#SRC=/work/fdqlab/Ethiopia_dataset_763
+SRC=/scratch/ma95362/eth_national_reads
+#DEST=/scratch/ma95362/eth_national_reads
+DEST=/scratch/ma95362/eth_national_analysis/all_fastq_reads
 mkdir -p $DEST
 
 cd $SRC || { echo "Failed to cd into $SRC"; exit 1; }
 
-find $SRC -type f | parallel -j 8 rsync -avh --partial {} $DEST/
+#find $SRC -type f | parallel -j 8 rsync -avh --partial {} $DEST/
+find "$SRC" -type f -name "*.fastq.gz" | parallel -j 8 rsync -avh --partial {} "$DEST/"
+
