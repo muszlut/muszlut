@@ -55,6 +55,7 @@ FQ2=$(echo "$LINE" | cut -f6)  # corrected column for R2
 
 OUTDIR="$RESULTS/$SAMPLE"
 mkdir -p "$OUTDIR"
+cd "$OUTDIR" || { echo "Failed to cd into $OUTDIR"; exit 1; }
 
 echo "[$SLURM_ARRAY_TASK_ID] Processing sample: $SAMPLE"
 echo "FASTQ R1: $FQ1"
