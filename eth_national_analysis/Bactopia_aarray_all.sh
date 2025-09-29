@@ -64,13 +64,13 @@ echo "Output directory: $OUTDIR"
 # -------------------------
 # Skip already-processed samples
 # -------------------------
-if [ -f "$OUTDIR/bactopia.done" ]; then
-    echo "Sample $SAMPLE already processed. Skipping."
-    exit 0
-fi
-
-cd "$OUTDIR" || { echo "Failed to cd into $OUTDIR"; exit 1; }
-
+#if [ -f "$OUTDIR/bactopia.done" ]; then
+#    echo "Sample $SAMPLE already processed. Skipping."
+#    exit 0
+#fi
+#
+#cd "$OUTDIR" || { echo "Failed to cd into $OUTDIR"; exit 1; }
+#
 # -------------------------
 # Run Bactopia
 # -------------------------
