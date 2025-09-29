@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=23
 #SBATCH --mem=240G
-#SBATCH --time=10-00:00:00
+#SBATCH --time=05-00:00:00                              # Time limit (HH:MM:SS)
 #SBATCH --array=1-1398
 #SBATCH --output=/scratch/ma95362/eth_national_analysis/logs/snippy_%A_%a.out
 #SBATCH --error=/scratch/ma95362/eth_national_analysis/logs/snippy_%A_%a.err
