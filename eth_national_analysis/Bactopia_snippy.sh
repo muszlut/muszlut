@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=23
 #SBATCH --mem=240G
-#SBATCH --time=05-00:00:00                              # Time limit (HH:MM:SS)
+#SBATCH --time=05-00:00:00
 #SBATCH --array=1-1398
 #SBATCH --output=/scratch/ma95362/eth_national_analysis/logs/snippy_%A_%a.out
 #SBATCH --error=/scratch/ma95362/eth_national_analysis/logs/snippy_%A_%a.err
@@ -20,12 +20,10 @@ module load Bactopia/3.2.0
 # Paths
 # -------------------------
 SAMPLES=/scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt
-BRESULTS=/scratch/ma95362/eth_national_analysis/bactopia_results
 SNIPPY_RESULTS=/scratch/ma95362/eth_national_analysis/snippy_results
 REFERENCE=/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk
-SNIPPY_LOGS=/scratch/ma95362/eth_national_analysis/logs
 
-mkdir -p "$SNIPPY_RESULTS" "$SNIPPY_LOGS"
+mkdir -p "$SNIPPY_RESULTS"
 
 # -------------------------
 # Prepare samples file (skip header & empty lines)
@@ -50,26 +48,35 @@ fi
 # -------------------------
 LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$SAMPLES_CLEAN" | tr -d '\r')
 SAMPLE=$(echo "$LINE" | cut -f1)
+FQ1=$(echo "$LINE" | cut -f5)   # column with R1
+FQ2=$(echo "$LINE" | cut -f6)   # column with R2
 
 OUTDIR="$SNIPPY_RESULTS/$SAMPLE"
 mkdir -p "$OUTDIR"
 cd "$OUTDIR" || { echo "Failed to cd into $OUTDIR"; exit 1; }
 
 echo "[$SLURM_ARRAY_TASK_ID] Processing sample: $SAMPLE"
+echo "R1: $FQ1"
+echo "R2: $FQ2"
+echo "Output directory: $OUTDIR"
 
 # -------------------------
-# Run Snippy via Bactopia
+# Run Snippy via main Bactopia pipeline
 # -------------------------
-bactopia tools snippy \
-    --bactopia "$BRESULTS" \
-    --outdir "$OUTDIR" \
+bactopia \
+    --r1 "$FQ1" \
+    --r2 "$FQ2" \
     --sample "$SAMPLE" \
-    --cpus 23 \
-    --reference "$REFERENCE"
+    --outdir "$OUTDIR" \
+    --wf snippy \
+    --species "Mycobacterium tuberculosis" \
+    --reference "$REFERENCE" \
+    --cpus 23
 
 # -------------------------
 # Mark as done
 # -------------------------
 touch "$OUTDIR/snippy.done"
 echo "[$SLURM_ARRAY_TASK_ID] Sample $SAMPLE finished."
+
 
