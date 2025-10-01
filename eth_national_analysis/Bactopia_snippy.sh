@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=23
 #SBATCH --mem=240G
-#SBATCH --time=06-00:00:00
+#SBATCH --time=07-00:00:00
 #SBATCH --output=/scratch/ma95362/eth_national_analysis/logs/snippy_%j.out
 #SBATCH --error=/scratch/ma95362/eth_national_analysis/logs/snippy_%j.err
 #SBATCH --mail-type=END,FAIL
