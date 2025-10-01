@@ -23,8 +23,9 @@ mkdir -p $OUTDIR
 
 # Run Bactopia Snippy workflow on ALL samples
 bactopia \
-    --wf snippy \
-    --reference $REF \
-    --bactopia $BRES \
-    --outdir $OUTDIR \
-    --cpus 23
+  --wf snippy \
+  --reference /scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk \
+  --bactopia /scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt \
+  --outdir /scratch/ma95362/eth_national_analysis/snippy_results \
+  --cpus 23
+
