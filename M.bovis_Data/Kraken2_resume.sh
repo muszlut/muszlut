@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=200G
 #SBATCH --time=02-00:00:00
-#SBATCH --output=/scratch/ma95362/kraken2_resume.%j.out
-#SBATCH --error=/scratch/ma95362/kraken2_resume.%j.err
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out   # Standard output log
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err    # Standard error log
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
