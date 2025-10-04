@@ -23,7 +23,7 @@ KRAKEN2DB=/scratch/ma95362/kraken2_db/mini_db
 OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
 
 # Create output and logs directory
-mkdir -p $OUTDIR/logs
+mkdir -p $OUTDIR
 cd $OUTDIR
 
 # Run Bovisanalyzer
