@@ -17,12 +17,12 @@ conda activate bovisanalyzer
 # Define paths
 SAMPLESHEET=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/samplesheet.csv
 REFERENCE=/scratch/ma95362/ETH_bovis_Sequence/bovis_REF/Fasta/AF2122_97.fasta
-DUMMY_KRAKEN2DB=/scratch/ma95362/kraken2_dummy
+kraken2_db=/scratch/ma95362/kraken2_db
 OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
 
 # Make directories
 mkdir -p $OUTDIR
-mkdir -p $DUMMY_KRAKEN2DB
+mkdir -p $kraken2_db
 cd $OUTDIR
 
 # Run Bovisanalyzer
@@ -30,7 +30,7 @@ nextflow run avantonder/bovisanalyzer \
     -profile conda \
     --input $SAMPLESHEET \
     --reference $REFERENCE \
-    --kraken2db $DUMMY_KRAKEN2DB \
+    --kraken2db $kraken2_db \
     --outdir $OUTDIR \
     -resume \
     -c /scratch/ma95362/bovisanalyzer_custom.config
