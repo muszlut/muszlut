@@ -34,5 +34,5 @@ nextflow run avantonder/bovisanalyzer \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
     --threads 8 \
-    -resume \
-    -c /scratch/ma95362/bovisanalyzer_custom.config
+    -c /scratch/ma95362/bovisanalyzer_custom.config \
+    -resume 
