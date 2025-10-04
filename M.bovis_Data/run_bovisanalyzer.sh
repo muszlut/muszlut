@@ -1,16 +1,17 @@
 #!/bin/bash
-#SBATCH --job-name=bovis_analyzer                       # Job name
-#SBATCH --partition=batch                               # Partition (queue)
-#SBATCH --ntasks=1                                      # Single task
-#SBATCH --cpus-per-task=16                              # CPUs per task
-#SBATCH --mem=120gb                                      # Memory
-#SBATCH --time=05-00:00:00                              # Time limit (HH:MM:SS)
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out    # STDOUT log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err     # STDERR log
-#SBATCH --mail-type=END,FAIL                             # Mail events
-#SBATCH --mail-user=ma95362@uga.edu                      # Your email
+#SBATCH --job-name=bovis_analyzer
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8                  # Reduce CPU usage per task
+#SBATCH --mem=180gb                        # Increase memory if cluster allows
+#SBATCH --time=05-00:00:00
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err
 
-# Initialize Conda in SLURM shell
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
+
+# Initialize Conda
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate bovisanalyzer
 
@@ -20,16 +21,17 @@ REFERENCE=/scratch/ma95362/ETH_bovis_Sequence/bovis_REF/Fasta/AF2122_97.fasta
 KRAKEN2DB=/scratch/ma95362/kraken2_db
 OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
 
-# Make output directory if it doesn't exist
+# Create output directory
 mkdir -p $OUTDIR
 cd $OUTDIR
 
-# Run Bovisanalyzer
+# Run Bovisanalyzer with controlled forks
 nextflow run avantonder/bovisanalyzer \
     -profile conda \
     --input $SAMPLESHEET \
     --reference $REFERENCE \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
-    -resume
-
+    -resume \
+    -process.maxForks 4 \
+    -process.queueSize 8

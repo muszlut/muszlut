@@ -24,7 +24,6 @@ fi
 # Load Bactopia
 module load Bactopia/3.2.0-conda
 
-
 cd $OUTDIR
 
 bactopia prepare \
