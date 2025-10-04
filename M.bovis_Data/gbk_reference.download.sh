@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/home/ma95362/.conda/envs/mtbvartools/share/snpeff-5.2/data/AF2122_97"
+OUTDIR="/home/ma95362/.conda/envs/mtbvartools/share/snpeff-5.2-1/data/AF2122_97"
 #Set variable URL for genome website
 URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/835/GCF_000195835.3_ASM19583v2/GCF_000195835.3_ASM19583v2_genomic.gff.gz"
 
