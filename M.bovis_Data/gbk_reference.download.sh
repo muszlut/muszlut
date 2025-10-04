@@ -12,9 +12,9 @@
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/home/ma95362/.conda/envs/mtbvartools/share/snpeff-5.2-1/data/AF2122_97"
+OUTDIR="/home/ma95362/.conda/envs/mtbvartools/share/snpeff-5.2/data/AF2122_97"
 #Set variable URL for genome website
-URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/035/581/225/GCF_035581225.1_ASM3558122v1/GCF_035581225.1_ASM3558122v1_genomic.gbff.gz"
+URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/835/GCF_000195835.3_ASM19583v2/GCF_000195835.3_ASM19583v2_genomic.gff.gz"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -23,4 +23,4 @@ if [ ! -d $OUTDIR ]
 fi
 
 ###Grab annotated mtb H37Rv genome file from the NCBI URL variable then unzip it
-curl -s $URL | gunzip -c > $OUTDIR/genomic.gbff
+curl -s $URL | gunzip -c > $OUTDIR/genomic.gff
