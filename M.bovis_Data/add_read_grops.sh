@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=bovis_analyzer
+#SBATCH --job-name=add_read_groups
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
