@@ -26,12 +26,11 @@ CONFIG=/scratch/ma95362/bovisanalyzer_custom.config
 mkdir -p $OUTDIR
 cd $OUTDIR
 
-# Run Bovisanalyzer pipeline
+# Run Bovisanalyzer pipeline bovisanalyzer
 nextflow run avantonder/bovisanalyzer \
     -c $CONFIG \
     --input $SAMPLESHEET \
     --reference $REFERENCE \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
-    --vcf_filter "%QUAL>=25 && INFO/DP>=10 && MQ>=30" \
     -resume
