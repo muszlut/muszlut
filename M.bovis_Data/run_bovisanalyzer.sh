@@ -20,7 +20,7 @@ SAMPLESHEET=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_re
 REFERENCE=/scratch/ma95362/ETH_bovis_Sequence/bovis_REF/Fasta/AF2122_97.fasta
 KRAKEN2DB=/scratch/ma95362/kraken2_db/mini_db
 OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
-CONFIG=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_custom.config
+CONFIG=/scratch/ma95362/bovisanalyzer_custom.config
 
 # Create output and logs directory
 mkdir -p $OUTDIR
