@@ -11,42 +11,45 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-# Load conda
+# --- Activate Conda Environment ---
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate bovisanalyzer
 
-
-# Load required modules
+# --- Load Required Modules ---
 module load bwa
 module load samtools
 
-# Define directories
+# --- Define Directories ---
 FASTQ_DIR="/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output/rasusa"
 REF="/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output/bwa/index/bwa/AF2122_97"
 BAM_DIR="/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output/samtools"
 
-# Make output directory if not exists
+# --- Prepare Output Directory ---
 mkdir -p $BAM_DIR
-
 cd $BAM_DIR
 
-# Loop through all forward reads
+# --- Alignment Loop ---
 for R1 in ${FASTQ_DIR}/*_1.fastq.gz; do
     R2=${R1/_1.fastq.gz/_2.fastq.gz}
     SAMPLE=$(basename $R1 _1.fastq.gz)
 
-    # Skip if BAM already exists
-    if [[ -f ${BAM_DIR}/${SAMPLE}.sorted.bam ]]; then
-        echo "Skipping $SAMPLE (already processed)"
+    if [[ ! -f "$R2" ]]; then
+        echo "❌ Missing pair for $R1 — skipping"
         continue
     fi
 
-    echo "Processing sample: $SAMPLE"
+    # Skip already processed samples
+    if [[ -f "${BAM_DIR}/${SAMPLE}.sorted.bam" ]]; then
+        echo "⚠️  Skipping $SAMPLE (already processed)"
+        continue
+    fi
+
+    echo "🔹 Processing sample: $SAMPLE"
 
     # Align, convert to BAM, sort, and index
-    bwa mem -t 16 $REF $R1 $R2 | \
+    bwa mem -t 8 $REF $R1 $R2 | \
         samtools view -bS - | \
-        samtools sort -o ${BAM_DIR}/${SAMPLE}.sorted.bam
+        samtools sort -@ 8 -o ${BAM_DIR}/${SAMPLE}.sorted.bam -
 
     samtools index ${BAM_DIR}/${SAMPLE}.sorted.bam
 done
