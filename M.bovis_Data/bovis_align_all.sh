@@ -11,6 +11,11 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
+# Load conda
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate bovisanalyzer
+
+
 # Load required modules
 module load bwa
 module load samtools
