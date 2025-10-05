@@ -33,5 +33,5 @@ nextflow run avantonder/bovisanalyzer \
     --reference $REFERENCE \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
-    --skip_vcf_filter true \
+    --vcf_filter "%QUAL>=25 && INFO/DP>=10 && MQ>=30" \
     -resume
