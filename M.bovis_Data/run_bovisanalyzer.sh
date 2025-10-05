@@ -11,7 +11,6 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-
 # Load conda
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate bovisanalyzer
@@ -21,18 +20,17 @@ SAMPLESHEET=/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_re
 REFERENCE=/scratch/ma95362/ETH_bovis_Sequence/bovis_REF/Fasta/AF2122_97.fasta
 KRAKEN2DB=/scratch/ma95362/kraken2_db/mini_db
 OUTDIR=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_output
+CONFIG=/scratch/ma95362/ETH_bovis_Sequence/bovisanalyzer_custom.config
 
 # Create output and logs directory
 mkdir -p $OUTDIR
 cd $OUTDIR
 
-# Run Bovisanalyzer
+# Run Bovisanalyzer pipeline
 nextflow run avantonder/bovisanalyzer \
-    -profile conda \
+    -c $CONFIG \
     --input $SAMPLESHEET \
     --reference $REFERENCE \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
-    --threads 8 \
-    -c /scratch/ma95362/bovisanalyzer_custom.config \
-    -resume 
+    -resume
