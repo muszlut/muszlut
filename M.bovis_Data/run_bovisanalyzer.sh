@@ -33,4 +33,5 @@ nextflow run avantonder/bovisanalyzer \
     --reference $REFERENCE \
     --kraken2db $KRAKEN2DB \
     --outdir $OUTDIR \
+    --skip_vcf_filter true \
     -resume
