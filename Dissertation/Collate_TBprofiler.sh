@@ -17,18 +17,17 @@ module load Micromamba/2.3.0
 eval "$(micromamba shell hook --shell bash)"
 micromamba activate tbprofiler
 
-# Set directories
-RESULTS_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_results_conda"
+# Set working directories
+OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_results_conda"
 FOFN="/scratch/ma95362/eth_national_analysis/all_fastq_reads/all_samples.fofn"
-OUTDIR="${RESULTS_DIR}/collated_results"
 
+# Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
-
-# Generate FOFN with full paths to JSON files
-find "$RESULTS_DIR" -type f -name "*.results.json" | sort > "$FOFN"
+cd
 
 # Collate TB-Profiler results
-tb-profiler collate --samples "$FOFN" --outdir "$OUTDIR" --itol
+tb-profiler collate --samples samples_list.txt --dir /scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_results_conda/*/results --itol
 
-# Deactivate environment
+
+# Deactivate the Micromamba environment
 micromamba deactivate
