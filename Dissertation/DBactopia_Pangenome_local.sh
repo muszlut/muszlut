@@ -28,4 +28,4 @@ cd $OUTDIR
 bactopia \
     --wf pangenome \
     --bactopia $OUTDIR/ETH_paired_end_samples \
-    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.fofn 
+    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.txt
