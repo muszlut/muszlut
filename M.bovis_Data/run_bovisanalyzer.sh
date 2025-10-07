@@ -29,6 +29,7 @@ cd $OUTDIR
 
 # Run Bovisanalyzer pipeline bovisanalyzer
 nextflow run avantonder/bovisanalyzer \
+    -resume \
     -c $CONFIG \
     --input $SAMPLESHEET \
     --reference $REFERENCE \
