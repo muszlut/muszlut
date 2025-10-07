@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=DBactopia_Run
-#SBATCH --partition=batch
+#SBATCH --partition=highmem_p 
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=23
 #SBATCH --mem=240G
