@@ -18,7 +18,7 @@ module load Java/17.0.6
 
 
 # Set directories
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/DBactopia_Pangenome/local_samples_only"
+OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/"
 #FOFN="/scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.fofn"
 # Create output folder if not exist
 mkdir -p $OUTDIR
