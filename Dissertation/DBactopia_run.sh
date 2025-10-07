@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=DBactopia_Run
-#SBATCH --partition=highmem_p 
+#SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=23
 #SBATCH --mem=240G
@@ -17,30 +17,38 @@ module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 
 # -----------------------------
-# Set output directory
+# Set directories and FOFN
 # -----------------------------
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads"
-mkdir -p $OUTDIR
+FOFN="$OUTDIR/TBprofiler_FOFN_samples.fofn"
+RESULTS_DIR="$OUTDIR/ETH_paired_end_samples"
+
+mkdir -p $RESULTS_DIR
 cd $OUTDIR
 
 # -----------------------------
-# Prepare sample list (only if not exists)
+# Clean old reports to avoid conflicts
 # -----------------------------
-if [ ! -f $OUTDIR/ETH_samples.txt ]; then
-    bactopia prepare \
-        --path $OUTDIR \
-        --species "Mycobacterium tuberculosis" \
-        --genome-size 4410000 \
-        > $OUTDIR/ETH_samples.txt
-fi
+OLD_REPORTS=(
+    "$RESULTS_DIR/bactopia-report.tsv"
+    "$RESULTS_DIR/bactopia-exclude.tsv"
+    "$RESULTS_DIR/bactopia-summary.txt"
+)
+
+for file in "${OLD_REPORTS[@]}"; do
+    if [ -f "$file" ]; then
+        echo "Removing old report: $file"
+        rm "$file"
+    fi
+done
 
 # -----------------------------
-# Run Bactopia on samples with resume and retries
+# Run Bactopia using the FOFN
 # -----------------------------
 bactopia \
-    --samples $OUTDIR/ETH_samples.txt \
+    --samples $FOFN \
     --coverage 100 \
-    --outdir $OUTDIR/ETH_paired_end_samples \
+    --outdir $RESULTS_DIR \
     --max_cpus 23 \
     --resume
 
@@ -48,8 +56,8 @@ bactopia \
 # Generate summary and plots
 # -----------------------------
 bactopia summary \
-    --bactopia-path $OUTDIR/ETH_paired_end_samples
+    --bactopia-path $RESULTS_DIR
 
 bactopia plot \
-    --bactopia-path $OUTDIR/ETH_paired_end_samples \
-    --outdir $OUTDIR/ETH_paired_end_samples/plots
+    --bactopia-path $RESULTS_DIR \
+    --outdir $RESULTS_DIR/plots
