@@ -23,6 +23,7 @@ micromamba activate tbprofiler
 
 # Set working directories
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_results_conda"
+FOFN="/scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_results_conda/results.fofn"
 
 # Collate TB-Profiler results
 tb-profiler collate --samples samples_list.txt --dir "$OUTDIR"/*/results --itol
