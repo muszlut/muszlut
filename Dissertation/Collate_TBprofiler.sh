@@ -23,13 +23,13 @@ micromamba activate tbprofiler
 
 # Set working directories
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_results_conda"
-FOFN="/scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_FOFN_samples.fofn"
+FOFN="/scratch/ma95362/eth_national_analysis/all_fastq_reads/sample_list.txt"  # File of sample names (one per line)
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
-
+cd "$OUTDIR"
 # Collate TB-Profiler results
-tb-profiler collate --samples "$FOFN" --dir "$OUTDIR" --itol
+tb-profiler collate --samples sample_list.txt --dir "$OUTDIR" --itol
 
 
 # Deactivate the Micromamba environment
