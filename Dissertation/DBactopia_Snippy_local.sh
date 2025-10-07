@@ -18,7 +18,7 @@ module load Java/17.0.6
 
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/DBactopia_Snippy/Local_samples_only"
+OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples"
 REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 
 # Create output folder if not exist
@@ -29,4 +29,4 @@ bactopia \
     --wf snippy \
     --reference $REF \
     --bactopia $OUTDIR/ETH_paired_end_samples \
-    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.fofn 
+    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.txt
