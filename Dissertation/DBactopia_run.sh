@@ -17,47 +17,59 @@ module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 
 # -----------------------------
-# Set directories and FOFN
+# Define directories and input
 # -----------------------------
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads"
 FOFN="$OUTDIR/TBprofiler_FOFN_samples.fofn"
 RESULTS_DIR="$OUTDIR/ETH_paired_end_samples"
 
-mkdir -p $RESULTS_DIR
-cd $OUTDIR
+mkdir -p "$RESULTS_DIR"
+cd "$OUTDIR"
 
 # -----------------------------
-# Clean old reports to avoid conflicts
+# Check that FOFN exists and is valid
 # -----------------------------
-OLD_REPORTS=(
+if [ ! -f "$FOFN" ]; then
+    echo "ERROR: FOFN file not found at $FOFN"
+    exit 1
+fi
+
+# -----------------------------
+# Remove old reports to avoid overwrite errors
+# -----------------------------
+REPORTS=(
     "$RESULTS_DIR/bactopia-report.tsv"
     "$RESULTS_DIR/bactopia-exclude.tsv"
     "$RESULTS_DIR/bactopia-summary.txt"
 )
 
-for file in "${OLD_REPORTS[@]}"; do
-    if [ -f "$file" ]; then
-        echo "Removing old report: $file"
-        rm "$file"
+for r in "${REPORTS[@]}"; do
+    if [ -f "$r" ]; then
+        echo "Removing old report: $r"
+        rm "$r"
     fi
 done
 
 # -----------------------------
-# Run Bactopia using the FOFN
+# Run Bactopia (core step)
 # -----------------------------
 bactopia \
-    --samples $FOFN \
+    --samples "$FOFN" \
     --coverage 100 \
-    --outdir $RESULTS_DIR \
+    --outdir "$RESULTS_DIR" \
     --max_cpus 23 \
-    --resume
+    --check_samples \
+    -resume \
+    --force
 
 # -----------------------------
 # Generate summary and plots
 # -----------------------------
 bactopia summary \
-    --bactopia-path $RESULTS_DIR
+    --bactopia-path "$RESULTS_DIR" \
+    --force
 
 bactopia plot \
-    --bactopia-path $RESULTS_DIR \
-    --outdir $RESULTS_DIR/plots
+    --bactopia-path "$RESULTS_DIR" \
+    --outdir "$RESULTS_DIR/plots" \
+    --force
