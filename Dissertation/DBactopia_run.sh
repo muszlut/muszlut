@@ -20,7 +20,7 @@ module load Java/17.0.6
 # Define directories and input
 # -----------------------------
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads"
-FOFN="$OUTDIR/TBprofiler_FOFN_samples.fofn"
+FOFN="$OUTDIR/ForBactopia_FOFN_samples.fofn"
 RESULTS_DIR="$OUTDIR/ETH_paired_end_samples"
 
 mkdir -p "$RESULTS_DIR"
