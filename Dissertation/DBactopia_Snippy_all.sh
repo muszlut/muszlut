@@ -27,6 +27,6 @@ cd $OUTDIR
 # Run snippy workflow using all samples
 bactopia \
     --wf snippy \
-    --reference $REF \
-    --bactopia $OUTDIR/ETH_paired_end_samples \
+    --reference "$REF" \
+    --bactopia "$OUTDIR/Snippy_All_samples" \
     --exclude /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-exclude.tsv
