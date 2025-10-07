@@ -35,12 +35,6 @@ if [ ! -f $OUTDIR/ETH_samples.txt ]; then
 fi
 
 # -----------------------------
-# Set Nextflow retry settings
-# -----------------------------
-# Retry failed tasks up to 3 times
-export NXF_OPTS="-retry 3"
-
-# -----------------------------
 # Run Bactopia on samples with resume and retries
 # -----------------------------
 bactopia \
