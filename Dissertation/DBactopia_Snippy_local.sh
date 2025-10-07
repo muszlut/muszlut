@@ -29,5 +29,4 @@ bactopia \
     --wf snippy \
     --reference $REF \
     --bactopia $OUTDIR/ETH_paired_end_samples \
-    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.fofn \
-    --exclude $OUTDIR/ETH_paired_end_samples/bactopia-exclude.tsv
+    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.fofn 
