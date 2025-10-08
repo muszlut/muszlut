@@ -5,27 +5,42 @@
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=240G
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out   # STDOUT log
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err    # STDERR log
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
 # -----------------------------
 # Load environment modules
 # -----------------------------
+module purge
 module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 
+# -----------------------------
+# Define directories
+# -----------------------------
+WORKDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads"
+BACTOPIA_DIR="${WORKDIR}/ETH_paired_end_samples"
+FOFN="${WORKDIR}/all_samples.fofn"
+OUTDIR="${WORKDIR}/pangenome_results"
 
-# Set directories
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/"
-#FOFN="/scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.fofn"
-# Create output folder if not exist
-mkdir -p $OUTDIR
-cd $OUTDIR
+mkdir -p "${OUTDIR}" "${WORKDIR}/logs"
+cd "${OUTDIR}"
 
-# Run pangenome workflow using FOFN
+# -----------------------------
+# Run Bactopia Pangenome Workflow
+# -----------------------------
+echo "[$(date)] Starting Bactopia Pangenome Workflow..."
 bactopia \
     --wf pangenome \
-    --bactopia $OUTDIR/ETH_paired_end_samples \
-    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.txt
+    --bactopia "${BACTOPIA_DIR}" \
+    --include "${FOFN}" \
+    --outdir "${OUTDIR}" \
+    --cpus ${SLURM_CPUS_PER_TASK} \
+    --force \
+    --skip_check_input \
+    --species "Mycobacterium tuberculosis complex"
+
+echo "[$(date)] ✅ Bactopia Pangenome completed successfully."
+
