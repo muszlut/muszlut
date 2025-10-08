@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Local_Snippy_
+#SBATCH --job-name=Local_Snippy
 #SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
@@ -17,32 +17,17 @@ module purge
 module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 
-# -----------------------------
-# Define directories
-# -----------------------------
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads"
-BACTOPIA_DIR="${OUTDIR}/ETH_paired_end_samples"
-FOFN="${OUTDIR}/all_samples.fofn"
+
+#Set output directory variable
+OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/"
 REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
-RESULTS="${OUTDIR}/snippy_results"
 
-mkdir -p "${RESULTS}"
-cd "${RESULTS}"
-
-# -----------------------------
-# Run Bactopia Snippy Workflow (resumable)
-# -----------------------------
-echo "[$(date)] Starting Bactopia Snippy Workflow (resumable mode)..."
-
+# Create output folder if not exist
+mkdir -p $OUTDIR
+cd $OUTDIR
+# Run snippy workflow using all samples
 bactopia \
     --wf snippy \
-    --reference "${REF}" \
-    --bactopia "${BACTOPIA_DIR}" \
-    --include "${FOFN}" \
-    --outdir "${RESULTS}" \
-    --cpus ${SLURM_CPUS_PER_TASK} \
-    --force \
-    --skip_check_input \
-    --species "Mycobacterium tuberculosis complex" 
-
-echo "[$(date)] ✅ Bactopia Snippy completed (or resumed) successfully."
+    --reference "$REF" \
+    --bactopia "$OUTDIR/ETH_paired_end_samples" \
+    --include /scratch/ma95362/eth_national_analysis/all_fastq_reads/local_samples.txt
