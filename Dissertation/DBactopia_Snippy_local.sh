@@ -43,7 +43,6 @@ bactopia \
     --cpus ${SLURM_CPUS_PER_TASK} \
     --force \
     --skip_check_input \
-    --species "Mycobacterium tuberculosis complex" \
-    --resume
+    --species "Mycobacterium tuberculosis complex" 
 
 echo "[$(date)] ✅ Bactopia Snippy completed (or resumed) successfully."
