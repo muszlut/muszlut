@@ -26,7 +26,8 @@ mkdir -p "$OUTDIR"
 cd
 
 # Collate TB-Profiler results
-tb-profiler collate   --dir /scratch/ma95362/eth_national_analysis/all_fastq_reads/TBprofiler_results_conda/*/results   --prefix all_tbprofiler_results --itol
-
+tb-profiler collate \
+  --file_list /scratch/ma95362/eth_national_analysis/all_fastq_reads/all_samples.fofn \
+  --prefix selected_tbprofiler_results --itol
 # Deactivate the Micromamba environment
 micromamba deactivate
