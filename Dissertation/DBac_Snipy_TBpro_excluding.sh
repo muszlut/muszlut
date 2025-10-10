@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Snippy_TBpro_excluding_for all
+#SBATCH --job-name=Snippy_TBpro_excluding_for_all
 #SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
