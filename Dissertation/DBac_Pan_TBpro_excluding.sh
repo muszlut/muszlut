@@ -25,6 +25,7 @@ mkdir -p $OUTDIR
 cd $OUTDIR
 
 # Run pangenome workflow using FOFN
-bactopia tools pangenome \
+bactopia \
+    --wf pangenome \
     --bactopia $OUTDIR/ETH_paired_end_samples \
     --exclude /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-exclude_final.tsv
