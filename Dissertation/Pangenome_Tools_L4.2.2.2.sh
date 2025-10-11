@@ -32,4 +32,4 @@ cd $OUTDIR
 #The error log from after runniging above command recommends to continue with the following command for pangenome analysis
 bactopia -profile standard --bactopia bactopia --wf pangenome \
     --bactopia /scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia \
-    --include /home/ma95362/muszlut/Dissertation/bactopia-exclude_except_L4.2.2.2.tsv
+    --include /home/ma95362/muszlut/Dissertation/bactopia_only_L4.2.2.2.tsv
