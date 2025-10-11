@@ -24,7 +24,10 @@ OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_r
 mkdir -p $OUTDIR
 cd $OUTDIR
 
-# Run pangenome workflow using FOFN
-bactopia tools pangenome \
-    --samples /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_samples.txt \
-    --exclude /scratch/ma95362/eth_national_analysis/all_fastq_reads/bactopia-exclude_final.tsv
+# Run pangenome workflow using bactopia tools pangenome
+#bactopia tools pangenome \
+#    --samples /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_samples.txt \
+#    --exclude /scratch/ma95362/eth_national_analysis/all_fastq_reads/bactopia-exclude_final.tsv
+
+#The error log from after runniging above command recommends to continue with the following command for pangenome analysis
+bactopia -profile standard --bactopia bactopia --wf pangenome \
