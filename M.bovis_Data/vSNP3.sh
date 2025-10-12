@@ -22,7 +22,7 @@ STEP2_DIR=${BASE_DIR}/vsnp_project/step2_output
 mkdir -p $STEP1_DIR $STEP2_DIR
 
 # Reference
-REF_DIR=/home/ma95362/vsnp3_test_dataset/vsnp_dependencies/Mycobacterium_AF2122/Fasta
+REF_DIR=/home/ma95362/vsnp3_test_dataset/vsnp_dependencies/Mycobacterium_AF2122
 REF_FASTA=${REF_DIR}/NC_002945v4.fasta
 if [[ ! -f "$REF_FASTA" ]]; then
     echo "❌ Reference FASTA not found: $REF_FASTA"
