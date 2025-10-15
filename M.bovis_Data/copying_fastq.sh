@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=copy_fastqs
-#SBATCH --output=copy_fastqs_%j.log
-#SBATCH --error=copy_fastqs_%j.err
-#SBATCH --time=02:00:00          # adjust based on total data size
-#SBATCH --mem=8G                 # memory for the job
-#SBATCH --cpus-per-task=2        # optional
+#SBATCH --job-name=copy _fastqs
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=40G
+#SBATCH --time=1-00:00:00
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err
 #SBATCH --mail-type=END,FAIL
