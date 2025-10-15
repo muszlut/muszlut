@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=copy _fastqs
+#SBATCH --job-name=copy_fastqs
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
