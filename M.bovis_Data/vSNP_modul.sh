@@ -10,6 +10,10 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
+# Load conda
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate vsnp3
+
 # Set output directory and create if it doesn't exist
 OUTDIR="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs"
 REF_DIR="/home/ma95362/vsnp3_test_dataset/vsnp_dependencies/Mycobacterium_AF2122"
@@ -17,8 +21,6 @@ Step1="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M
 Step2="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/vSNP_output"/step2_output
 REF_FASTA=${REF_DIR}/NC_002945v4.fasta      
 mkdir -p $OUTDIR $Step1 $Step2
-
-module load vsnp3/3.26
 
 cd $OUTDIR
 
