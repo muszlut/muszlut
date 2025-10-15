@@ -1,31 +1,50 @@
 #!/bin/bash
-#SBATCH --job-name=Abebe_Tbprofiler_Lineages_Spoligo         # Job name
-#SBATCH --partition=batch                                    # Partition (queue) name
-#SBATCH --ntasks=1                                           # Run on a single CPU
-#SBATCH --cpus-per-task=8                                    # Number of cores per task
-#SBATCH --mem=40gb                                           # Job memory request
-#SBATCH --time=05-00:00:00                                   # Time limit d-hh:mm:ss
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out         # Standard output log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err          # Standard error log
-#SBATCH --array=0-39                                         # Update this based on the number of BAMs - 1
-#SBATCH --mail-type=END,FAIL                                 # Mail notifications
-#SBATCH --mail-user=ma95362@uga.edu                          # Your email address
+#SBATCH --job-name=M.bovis_TBprofiler_conda
+#SBATCH --partition=highmem_p           # high memory partition for clustering
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32             # parallelize clustering
+#SBATCH --mem=240G                     # enough memory for 1398 genomes
+#SBATCH --time=7-00:00:00
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out   # STDOUT log
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err    # STDERR log
+#SBATCH --mail-type=END,FAIL                  # Email notifications
+#SBATCH --mail-user=ma95362@uga.edu          # Email recipient
 
-# Load conda environment
-source ~/.bashrc
-conda activate tb-profiler-env
+set -euo pipefail  # safer bash settings
 
-# Set directories
-BAM_DIR=/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/all_bams
-OUT_DIR=/scratch/ma95362/ETH_bovis_Sequence/Abebe_all_samples/tbprofiler_output
+# Load Micromamba module
+module load Micromamba/2.3.0
 
-# Get list of BAM files
-BAM_FILES=($BAM_DIR/*.bam)
-BAM_FILE=${BAM_FILES[$SLURM_ARRAY_TASK_ID]}
-SAMPLE=$(basename "$BAM_FILE" .bam)
+# Initialize Micromamba for bash
+eval "$(micromamba shell hook --shell bash)"
 
-#move to working directory
-cd $OUT_DIR
+# Activate TB-Profiler environment
+micromamba activate tbprofiler
 
-# Run TBProfiler
-tb-profiler profile --bam "$BAM_FILE" --prefix "$OUT_DIR/$SAMPLE"
+# Set working directories
+FASTQ_DIR="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs"
+OUTDIR="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda"
+FOFN="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/tbprofiler.fofn"
+
+# Create output directory if it doesn't exist
+mkdir -p "$OUTDIR"
+cd "$OUTDIR"
+# Loop through each line in the FOFN (sample, read1, read2)
+while read -r sample read1 read2; do
+    echo "Processing $sample..."
+    SAMPLE_OUT="$OUTDIR/$sample"
+    mkdir -p "$SAMPLE_OUT"
+
+    tb-profiler profile \
+        -1 "$read1" \
+        -2 "$read2" \
+        -p "$sample" \
+        --db /home/ma95362/.conda/envs/mtbvartools/share/tbprofiler/tbdb \
+        --spoligotype \
+        --dir "$SAMPLE_OUT" \
+        --threads 8 \
+        --txt
+done < "$FOFN"
+
+# Deactivate the Micromamba environment
+micromamba deactivate
