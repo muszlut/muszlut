@@ -36,4 +36,4 @@ find $Step1 -type f -name "*_zc.vcf" -exec cp {} $Step2 \;
 #move to step2 folder
 cd $Step2
 # Run vSNP step 2 to combine SNPs and build tree        
-vsnp3_step2.py -a -t $REF_FASTA -remove_by_name $OUTDIR/bactopia_exclude.tsv
+vsnp3_step2.py -a -t $REF_FASTA -remove_by_name $OUTDIR/bactopia_exclude.xlsx
