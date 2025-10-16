@@ -26,11 +26,8 @@ cd "$OUTDIR"
 
 # Collate TB-Profiler results
 tb-profiler collate \
-  --dir /scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda \
-  --prefix selected_tbprofiler_results \
-  --itol \
-  --format txt
-
+  --samples /scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda/tbprofiler_results_paths.fofn \
+  --prefix selected_tbprofiler_results --itol
 # Deactivate the Micromamba environment
 micromamba deactivate
 
