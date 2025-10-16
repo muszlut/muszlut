@@ -19,14 +19,14 @@ micromamba activate tbprofiler
 
 # Set directories
 OUTDIR="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda"
-FOFN="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda/tbprofiler_results_paths.fofn"
+FOFN="/scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda/tbprofiler_results_paths_with_names_absolute.fofn"
 
 mkdir -p "$OUTDIR"
 cd "$OUTDIR"
 
 # Collate TB-Profiler results
 tb-profiler collate \
-  --samples /scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda/tbprofiler_results_paths.fofn \
+  --samples /scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/TBprofiler_results_conda/tbprofiler_results_paths_with_names_absolute.fofn \
   --itol
 # Deactivate the Micromamba environment
 micromamba deactivate
