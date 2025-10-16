@@ -25,9 +25,8 @@ mkdir -p "$OUTDIR"
 cd "$OUTDIR"
 
 # Collate TB-Profiler results
-tb-profiler collate \
-  --samples /scratch/ma95362/ETH_M.bovis/m.bovis_Bactopia_Analysis/with_fixed_reads/M.bovis_paired_end_samples/all_fastqs/tbprofiler_results_paths_with_names_absolute.fofn \
-  --itol
+#samples just needs to be a list of sample names. No path is required.
+tb-profiler collate --samples $FOFN/tbprofiler_results_paths_with_names_absolute.fofn --dir $OUTDIR/*/results --itol
 # Deactivate the Micromamba environment
 micromamba deactivate
 
