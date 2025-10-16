@@ -32,5 +32,4 @@ tb-profiler collate \
 micromamba deactivate
 
 
-# Deactivate the Micromamba environment
-micromamba deactivate
+
