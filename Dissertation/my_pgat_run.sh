@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=sharma_pgat
-#SBATCH --partition=batch
+#SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --time=2:00:00
-#SBATCH --mem=16G
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=240G
+#SBATCH --time=7-00:00:00
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err
 #SBATCH --mail-type=END,FAIL
