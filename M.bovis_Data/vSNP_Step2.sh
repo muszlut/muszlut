@@ -23,8 +23,6 @@ mkdir -p "$OUT_DIR"
 REF="/home/ma95362/vsnp3_test_dataset/vsnp_dependencies/Mycobacterium_AF2122/NC_002945v4.fasta"
 REF_GBK="/home/ma95362/vsnp3_test_dataset/vsnp_dependencies/Mycobacterium_AF2122/NC_002945v4.gbk"
 
-# Copy all *_zc.vcf files from Step1 output to Step2 directory
-find "$STEP1_OUT" -type f -name "*_zc.vcf" -exec cp {} "$OUT_DIR" \;
 
 # Move to Step2 folder
 cd "$OUT_DIR"
