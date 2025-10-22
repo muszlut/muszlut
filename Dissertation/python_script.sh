@@ -33,4 +33,4 @@ SCRIPT="/home/ma95362/muszlut/Dissertation/filter_extract.py"
 cd $OUTDIR
 
 # Run the script
-python $SCRIPT --dir results/
+~/.conda/envs/pyseer-env/bin/python $SCRIPT 
