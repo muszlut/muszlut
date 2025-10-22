@@ -32,9 +32,9 @@ cd $PANAROO_DIR || exit 1
 # ------------------------------
 # 3. Generate phylogenetic distance matrix
 # ------------------------------
-echo "Running phylogenetic distance matrix generation..."
-phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
-
+#echo "Running phylogenetic distance matrix generation..."
+#phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
+#I just did the above commands and generate phylogeny_K.tsv file manually then continue below
 # ------------------------------
 # 4. Run GWAS for each antibiotic
 # ------------------------------
