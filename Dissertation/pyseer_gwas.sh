@@ -43,7 +43,7 @@ which pyseer-runner.py
 # 4. Generate phylogenetic distance matrix
 # ------------------------------
 echo "Running phylogenetic distance matrix generation..."
-phylogeny_distance.py --lmm --tree $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
+phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
 
 # ------------------------------
 # 5. Loop through antibiotics and run GWAS
