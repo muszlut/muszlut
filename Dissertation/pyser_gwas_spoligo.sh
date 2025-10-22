@@ -47,3 +47,6 @@ pyseer \
 
 echo "✅ Pyseer GWAS for T3-ETH completed successfully on $(date)"
 conda deactivate
+
+#To get the threshold and patterns, run the following command in the directory of pyseer output after the above script is done
+#python ~/pyseer/scripts/count_patterns.py ./gene_patterns_T3ETH.txt
