@@ -22,7 +22,7 @@ sig_threshold <- 1.21e-4
 sig_hits <- subset(tbl, `lrt-pvalue` < sig_threshold)
 
 # Save results
-write.csv(sig_hits, "T3-ETH_significant_hits.csv", row.names = FALSE, quote = FALSE)
+write.csv(sig_hits, "T3-ETH_significant_hitsbyR.csv", row.names = FALSE, quote = FALSE)
 
 # Optional: Manhattan and QQ plots
 manhattan(tbl, p="lrt-pvalue", main="T3-ETH vs others (Pyseer GWAS)")
