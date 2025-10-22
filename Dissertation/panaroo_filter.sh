@@ -12,7 +12,7 @@
 
 # Load conda
 source $(conda info --base)/etc/profile.d/conda.sh
-conda activate panaroo
+conda activate panaroo-env
 
 # Define paths
 INPUT_FILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/gene_presence_absence.csv"
