@@ -53,7 +53,7 @@ echo "Starting GWAS for all antibiotics..."
 for anti in rifampicin isoniazid ethambutol pyrazinamide moxifloxacin levofloxacin bedaquiline delamanid pretomanid linezolid streptomycin amikacin kanamycin capreomycin clofazimine ethionamide para-aminosalicylic_acid cycloserine
 do
     echo "Running Pyseer for ${anti}..."
-    pyseer-runner.py \
+    pyseer \
         --lmm \
         --phenotypes $METADATA \
         --phenotype-column $anti \
