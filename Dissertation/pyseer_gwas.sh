@@ -24,6 +24,7 @@ PRES="${PANAROO_DIR}/gene_presence_absence_filt_pseudo_length.Rtab"
 # Create output directory
 mkdir -p $PYSEER_OUT
 
+cd $PANAROO_DIR
 echo "Running phylogenetic distance matrix generation..."
 python ~/pyseer/scripts/phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
 
