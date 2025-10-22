@@ -14,17 +14,18 @@
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate panaroo-env
 
-# Define paths
-INPUT_FILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/gene_presence_absence.csv"
-OUTPUT_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output"
+# Define directories
+INPUT_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo"
+INPUT_FILE="gene_presence_absence.csv"  # just the filename!
+OUTPUT_DIR="$INPUT_DIR/filtered_output"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
 
-# Move to the output directory
-cd "$OUTPUT_DIR"
+# Move to the input directory
+cd "$INPUT_DIR"
 
-# Run panaroo_filter_pa
+# Run Panaroo filter
 panaroo-filter-pa --input "$INPUT_FILE" --out_dir "$OUTPUT_DIR" --type pseudo,length
 
 echo "✅ Panaroo filter-pa completed successfully."
