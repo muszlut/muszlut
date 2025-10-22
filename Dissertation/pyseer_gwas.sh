@@ -22,7 +22,7 @@ source activate pyseer-env
 PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output"
 TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/iqtree/core-genome.treefile"
 PYSEER_OUT="${PANAROO_DIR}/pyseer_out"
-METADATA="${PANAROO_DIR}/metadata.tab"
+METADATA="${PANAROO_DIR}/metadata_numeric.tab"
 PRES="${PANAROO_DIR}/gene_presence_absence_filt_pseudo_length.Rtab"
 
 # Create output directory
