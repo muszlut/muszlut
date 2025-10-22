@@ -17,6 +17,8 @@ conda activate panaroo
 # Define paths
 INPUT_FILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/gene_presence_absence.csv"
 OUTPUT_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output"
+# Create output directory if it doesn't exist
+mkdir -p "$OUTPUT_DIR"
 
 # Move to the output directory
 cd "$OUTPUT_DIR"
