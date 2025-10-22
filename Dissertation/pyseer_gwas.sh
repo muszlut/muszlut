@@ -10,30 +10,62 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-# Activate conda environment
-source ~/.bashrc
-conda activate pyseer-env
+# ------------------------------
+# 1. Activate Conda environment
+# ------------------------------
+module load Miniforge3
+source activate pyseer-env
 
-# Go to your Panaroo filtered directory
-cd /scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output
+# ------------------------------
+# 2. Define directories and files
+# ------------------------------
+PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output"
+TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/iqtree/core-genome.treefile"
+PYSEER_OUT="${PANAROO_DIR}/pyseer_out"
+METADATA="${PANAROO_DIR}/metadata.tab"
+PRES="${PANAROO_DIR}/gene_presence_absence_filt_pseudo_length.Rtab"
 
 # Create output directory
-mkdir -p pyseer_out
+mkdir -p $PYSEER_OUT
+cd $PANAROO_DIR || exit 1
 
-# Step 1: Calculate phylogenetic distances
-phylogeny_distance.py --lmm /scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/iqtree/core-genome.treefile > pyseer_out/phylogeny_K.tsv
+# ------------------------------
+# 3. Add your custom scripts to PATH
+# ------------------------------
+export PATH=$PATH:/home/ma95362/pyseer_scripts
 
-# Step 2: Run GWAS for each antibiotic phenotype
+echo "Environment check:"
+which pyseer
+which phylogeny_distance.py
+which pyseer-runner.py
+
+# ------------------------------
+# 4. Generate phylogenetic distance matrix
+# ------------------------------
+echo "Running phylogenetic distance matrix generation..."
+phylogeny_distance.py --lmm --tree $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
+
+# ------------------------------
+# 5. Loop through antibiotics and run GWAS
+# ------------------------------
+echo "Starting GWAS for all antibiotics..."
+
 for anti in rifampicin isoniazid ethambutol pyrazinamide moxifloxacin levofloxacin bedaquiline delamanid pretomanid linezolid streptomycin amikacin kanamycin capreomycin clofazimine ethionamide para-aminosalicylic_acid cycloserine
 do
-  pyseer-runner.py --lmm \
-  --phenotypes ./metadata.tab \
-  --pres ./gene_presence_absence_filt_pseudo_length.Rtab \
-  --similarity ./pyseer_out/phylogeny_K.tsv \
-  --phenotype-column $anti \
-  --output-patterns ./pyseer_out/gene_patterns_${anti}.txt \
-  > ./pyseer_out/${anti}_gwas.txt
+    echo "Running Pyseer for ${anti}..."
+    pyseer-runner.py \
+        --lmm \
+        --phenotypes $METADATA \
+        --phenotype-column $anti \
+        --pres $PRES \
+        --similarity ${PYSEER_OUT}/phylogeny_K.tsv \
+        --cpu 16 \
+        --output-patterns ${PYSEER_OUT}/gene_patterns_${anti}.txt \
+        > ${PYSEER_OUT}/${anti}_gwas.txt
 done
 
-echo "✅ Pyseer GWAS completed successfully."
-conda deactivate
+# ------------------------------
+# 6. Completion message
+# ------------------------------
+echo "✅ Pyseer analysis completed successfully on $(date)"
+
