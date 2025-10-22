@@ -24,7 +24,7 @@ mkdir -p "$OUTPUT_DIR"
 cd "$OUTPUT_DIR"
 
 # Run panaroo_filter_pa with correct syntax
-panaroo_filter_pa --input "$INPUT_FILE" --out_dir "$OUTPUT_DIR" --type pseudo,length
+panaroo-filter-pa --input "$INPUT_FILE" --out_dir "$OUTPUT_DIR" --type pseudo,length
 
 echo "✅ Panaroo filter-pa completed successfully."
 
