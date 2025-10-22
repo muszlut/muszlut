@@ -1,7 +1,7 @@
 import pandas as pd
  
 # Load your GWAS results
-df = pd.read_csv("T3-ETH_gwas.txt", sep="\t")
+df = pd.read_csv("T3ETH_gwas.txt", sep="\t")
 
 # Remove "bad-chisq" entries if they exist
 df = df[~df["notes"].astype(str).str.contains("bad-chisq", na=False)]
