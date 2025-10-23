@@ -8,28 +8,42 @@ set.seed(1989)
 
 # Read GWAS results
 tbl <- fread("T3ETH_gwas.txt", data.table = FALSE)
-
-# Remove entries flagged as bad-chisq
 tbl <- tbl[!grepl("bad-chisq", tbl$notes), ]
 
-# Define Bonferroni-corrected significance threshold
+# Define Bonferroni threshold
 sig_threshold <- 1.21e-4
-
-# Filter for significant hits
 sig_hits <- subset(tbl, `lrt-pvalue` < sig_threshold)
 
 # Save filtered results
 write.csv(sig_hits, "T3ETH_significant_hitsbyR.csv", row.names = FALSE, quote = FALSE)
 
 # Add dummy CHR and BP columns for plotting
-tbl$CHR <- 1  # Assign all to chromosome 1
-tbl$BP <- seq_along(tbl$variant)  # Use row index as base pair position
-tbl$SNP <- tbl$variant  # Optional: label with variant name
+tbl$CHR <- 1
+tbl$BP <- seq_along(tbl$variant)
+tbl$SNP <- tbl$variant
 
-# Manhattan plot with simulated coordinates
-manhattan(tbl, chr = "CHR", bp = "BP", snp = "SNP", p = "lrt-pvalue",
-          main = "T3ETH vs others (Pyseer GWAS)", col = c("blue4", "orange3"))
+# Highlight top hits (e.g., mmaA4 if present)
+highlight_variants <- c("mmaA4")
+highlight_variants <- intersect(highlight_variants, tbl$SNP)
 
-# Generate QQ plots
-qq(tbl$`lrt-pvalue`, main = "QQ Plot: All Variants")
-qq(sig_hits$`lrt-pvalue`, main = "QQ Plot: Significant Variants")
+# Save Manhattan plot
+png("T3ETH_manhattan_plot.png", width = 1200, height = 800)
+manhattan(tbl,
+          chr = "CHR", bp = "BP", snp = "SNP", p = "lrt-pvalue",
+          main = "T3ETH vs Others (Pyseer GWAS)",
+          col = c("steelblue3", "darkorange2"),
+          cex = 1.2, cex.axis = 1.2, cex.lab = 1.4,
+          suggestiveline = FALSE,
+          genomewideline = -log10(sig_threshold),
+          highlight = highlight_variants)
+dev.off()
+
+# Save QQ plot (all variants)
+png("T3ETH_qq_all.png", width = 800, height = 800)
+qq(tbl$`lrt-pvalue`, main = "QQ Plot: All Variants", cex = 1.2)
+dev.off()
+
+# Save QQ plot (significant hits)
+png("T3ETH_qq_significant.png", width = 800, height = 800)
+qq(sig_hits$`lrt-pvalue`, main = "QQ Plot: Significant Variants", cex = 1.2)
+dev.off()
