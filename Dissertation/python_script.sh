@@ -18,8 +18,8 @@ source activate pyseer-env
 # ------------------------------
 # 2. Run the filtering and extraction script
 # Set working variables
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_T3ETH_out"
-SCRIPT="/home/ma95362/muszlut/Dissertation/filter_extract.py"
+OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_drugtype_out"
+SCRIPT="/home/ma95362/muszlut/Dissertation/filter_extract_DR.py"
 
 # Load necessary modules
 #module load Biopython/1.84-foss-2023b
