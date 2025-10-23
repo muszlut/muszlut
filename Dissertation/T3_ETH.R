@@ -21,8 +21,14 @@ sig_hits <- subset(tbl, `lrt-pvalue` < sig_threshold)
 # Save filtered results
 write.csv(sig_hits, "T3ETH_significant_hitsbyR.csv", row.names = FALSE, quote = FALSE)
 
-# Generate Manhattan plot
-manhattan(tbl, p = "lrt-pvalue", main = "T3ETH vs others (Pyseer GWAS)")
+# Add dummy CHR and BP columns for plotting
+tbl$CHR <- 1  # Assign all to chromosome 1
+tbl$BP <- seq_along(tbl$variant)  # Use row index as base pair position
+tbl$SNP <- tbl$variant  # Optional: label with variant name
+
+# Manhattan plot with simulated coordinates
+manhattan(tbl, chr = "CHR", bp = "BP", snp = "SNP", p = "lrt-pvalue",
+          main = "T3ETH vs others (Pyseer GWAS)", col = c("blue4", "orange3"))
 
 # Generate QQ plots
 qq(tbl$`lrt-pvalue`, main = "QQ Plot: All Variants")
