@@ -50,3 +50,5 @@ conda deactivate
 
 #To get the threshold and patterns, run the following command in the directory of pyseer output after the above script is done
 #python ~/pyseer/scripts/count_patterns.py ./gene_patterns_drugtype.txt (match this the output pattern file name)
+#Patterns:       412
+#Threshold:      1.21E-04
