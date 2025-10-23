@@ -22,7 +22,7 @@ source activate pyseer-env
 PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output"
 TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/iqtree/core-genome.treefile"
 PYSEER_OUT="${PANAROO_DIR}/pyseer_drugtype_out"
-METADATA="${PANAROO_DIR}/meta_numeric_T3ETH.tab"
+METADATA="${PANAROO_DIR}/metadata_resistance_level.tab"
 PRES="${PANAROO_DIR}/gene_presence_absence_filt_pseudo_length.Rtab"
 K_MATRIX="${PANAROO_DIR}/pyseer_out/phylogeny_K.tsv"
 
@@ -38,12 +38,12 @@ echo "Running Pyseer GWAS for drugtype"
 pyseer \
     --lmm \
     --phenotypes $METADATA \
-    --phenotype-column drtype \
+    --phenotype-column dr_type \
     --pres $PRES \
     --similarity $K_MATRIX \
     --cpu 16 \
-    --output-patterns ${PYSEER_OUT}/gene_patterns_drugtype.txt \
-    > ${PYSEER_OUT}/drugtype_gwas.txt
+    --output-patterns ${PYSEER_OUT}/resistance_level_gwas_patterns.txt \
+    > ${PYSEER_OUT}/resistance_level_gwas.txt
 
 echo "✅ Pyseer GWAS for drugtype completed successfully on $(date)"
 conda deactivate
