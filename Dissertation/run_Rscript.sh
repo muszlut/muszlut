@@ -10,8 +10,8 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 #run
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_T3ETH_out"
-TIDY="/home/ma95362/muszlut/Dissertation/T3_ETH.R"
+OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_drugtype_out"
+TIDY="/home/ma95362/muszlut/Dissertation/dr_gwas.R"
 
 module load Miniforge3
 source ~/.bashrc
