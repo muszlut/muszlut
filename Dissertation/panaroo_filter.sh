@@ -15,7 +15,7 @@ source $(conda info --base)/etc/profile.d/conda.sh
 conda activate panaroo-env
 
 # Define directories
-INPUT_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo"
+INPUT_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/panaroo"
 INPUT_FILE="gene_presence_absence.csv"  # just the filename!
 OUTPUT_DIR="$INPUT_DIR/filtered_output"
 
