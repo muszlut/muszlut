@@ -1,7 +1,7 @@
 # Load required libraries
 # library(tidyverse)
-library(data.table)
-library(qqman)
+# library(data.table)
+# library(qqman)
 
 # Set seed for reproducibility
 set.seed(1989)
