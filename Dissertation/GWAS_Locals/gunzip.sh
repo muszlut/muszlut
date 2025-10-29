@@ -20,3 +20,4 @@ cd /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples
 # -----------------------------
 # Example 1: decompress a single file
 gunzip -c core_gene_alignment_filtered.aln.gz > core_gene_alignment_filtered.aln
+
