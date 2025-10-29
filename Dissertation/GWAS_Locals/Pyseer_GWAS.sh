@@ -50,7 +50,8 @@ pyseer \
     --pres "${PRES}" \
     --similarity "${PYSEER_OUT}/phylogeny_K.tsv" \
     --cpu 16 \
-    > "${PYSEER_OUT}/EPTB_vs_Pulmonary_gwas.txt"
+    --output-patterns "${PYSEER_OUT}/gene_patterns_EPTB_PTb.txt" \
+    > "${PYSEER_OUT}/EPTB_vs_PTb_gwas.txt"
 
 echo "✅ Pyseer GWAS completed for EPTB vs Pulmonary."
 
