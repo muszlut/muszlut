@@ -19,11 +19,11 @@ source activate pyseer-env
 # ------------------------------
 # 2. Define directories and files
 # ------------------------------
-PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output"
-TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/iqtree/core-genome.treefile"
-PYSEER_OUT="${PANAROO_DIR}/pyseer_out"
-METADATA="${PANAROO_DIR}/metadata_numeric.tab"
-PRES="${PANAROO_DIR}/gene_presence_absence_filt_pseudo_length.Rtab"
+PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/panaroo"
+TREEFILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/iqtree/core-genome.contree          
+PYSEER_OUT=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/pyseer_output
+METADATA="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/metadata_local.tab"
+PRES="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/panaroo/filtered_output/gene_presence_absence_filt_pseudo_length.Rtab"
 
 # Create output directory
 mkdir -p $PYSEER_OUT
@@ -38,14 +38,12 @@ cd $PANAROO_DIR || exit 1
 # ------------------------------
 # 4. Run GWAS for each antibiotic
 # ------------------------------
-echo "Starting GWAS for all antibiotics..."
-for anti in rifampicin isoniazid ethambutol pyrazinamide moxifloxacin levofloxacin bedaquiline delamanid pretomanid linezolid streptomycin amikacin kanamycin capreomycin clofazimine ethionamide para-aminosalicylic_acid cycloserine
-do
-    echo "Running Pyseer for ${anti}..."
+echo "Running Pyseer GWAS for EPTB vs Pulmonary"
+
     pyseer \
         --lmm \
         --phenotypes $METADATA \
-        --phenotype-column $anti \
+        --phenotype-column $Phenotype_numeric \
         --pres $PRES \
         --similarity ${PYSEER_OUT}/phylogeny_K.tsv \
         --cpu 16 \
