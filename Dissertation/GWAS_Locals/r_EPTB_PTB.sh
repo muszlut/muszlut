@@ -25,7 +25,8 @@ fi
 cd $OUTDIR
 
 #Activate Renvironmemt previously created
-source activate r-tidyverse
+module load Miniforge3
+source activate pyseer-env
 
 #Run R script:here
 R --no-save < $TIDY
