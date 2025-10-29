@@ -28,7 +28,7 @@ OUTPUT_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_en
 # ------------------------------
 echo "Running count_patterns.py on $(basename $PATTERN_FILE)..."
 
-python ${PYSEER_SCRIPT} --alpha 0.05 --pattern_file ${PATTERN_FILE} > ${OUTPUT_FILE}
+python ${PYSEER_SCRIPT} --alpha 0.05 --cores 4  ${PATTERN_FILE} > ${OUTPUT_FILE}
 
 echo "✅ Pattern counting completed successfully."
 echo "Output file saved to: ${OUTPUT_FILE}"
