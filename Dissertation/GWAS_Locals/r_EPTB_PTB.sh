@@ -10,22 +10,20 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-#Set output directory variable
+# Set output directory
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/pyseer_output"
-#Location of R script
 TIDY="/home/ma95362/muszlut/Dissertation/GWAS_Locals/pyseer_anlaysis_EPTB_PTB.R"
 
-
-#Tell the program to make  the outdir folder
-if [ ! -d $OUTDIR ] 
-    then 
-        mkdir -p $OUTDIR
+# Create output directory if it doesn't exist
+if [ ! -d "$OUTDIR" ]; then
+    mkdir -p "$OUTDIR"
 fi
 
-cd $OUTDIR
+cd "$OUTDIR"
 
-#Activate Renvironmemt previously created
-source activate r-tidyverse
+# Activate Conda environment
+source /home/ma95362/miniconda3/etc/profile.d/conda.sh
+conda activate r-tidyverse
 
-#Run R script:here
-R --no-save < $TIDY
+# Run the R script
+Rscript "$TIDY"
