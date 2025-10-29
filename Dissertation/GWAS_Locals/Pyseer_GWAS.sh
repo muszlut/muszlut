@@ -20,40 +20,46 @@ source activate pyseer-env
 # 2. Define directories and files
 # ------------------------------
 PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/panaroo"
-TREEFILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/iqtree/core-genome.contree          
-PYSEER_OUT=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/pyseer_output
+TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/iqtree/core-genome.contree"
+PYSEER_OUT="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/pyseer_output"
 METADATA="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/metadata_local.tab"
 PRES="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_local_all/panaroo/filtered_output/gene_presence_absence_filt_pseudo_length.Rtab"
 
-# Create output directory
-mkdir -p $PYSEER_OUT
-cd $PANAROO_DIR || exit 1
+# Ensure output directory exists
+mkdir -p "${PYSEER_OUT}"
+cd "${PANAROO_DIR}" || { echo "❌ ERROR: Panaroo directory not found."; exit 1; }
 
 # ------------------------------
-# 3. Generate phylogenetic distance matrix
+# 3. (Skipped) Phylogenetic distance generation
 # ------------------------------
-#echo "Running phylogenetic distance matrix generation..."
-#phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
-#I just did the above commands and generate phylogeny_K.tsv file manually then continue below
-# ------------------------------
-# 4. Run GWAS for each antibiotic
-# ------------------------------
-echo "Running Pyseer GWAS for EPTB vs Pulmonary"
+# You already generated phylogeny_K.tsv manually
 
-    pyseer \
-        --lmm \
-        --phenotypes $METADATA \
-        --phenotype-column $Phenotype_numeric \
-        --pres $PRES \
-        --similarity ${PYSEER_OUT}/phylogeny_K.tsv \
-        --cpu 16 \
-        --output-patterns ${PYSEER_OUT}/gene_patterns_${anti}.txt \
-        > ${PYSEER_OUT}/${anti}_gwas.txt
-done
+# ------------------------------
+# 4. Run GWAS analysis
+# ------------------------------
+echo "Running Pyseer GWAS for EPTB vs Pulmonary..."
+
+# Define the phenotype column (must match column name in metadata_local.tab)
+PHENOCOL="Phenotype_numeric"
+
+# Run Pyseer LMM
+pyseer \
+    --lmm \
+    --phenotypes "${METADATA}" \
+    --phenotype-column "${PHENOCOL}" \
+    --pres "${PRES}" \
+    --similarity "${PYSEER_OUT}/phylogeny_K.tsv" \
+    --cpu 16 \
+    > "${PYSEER_OUT}/EPTB_vs_Pulmonary_gwas.txt"
+
+echo "✅ Pyseer GWAS completed for EPTB vs Pulmonary."
 
 # ------------------------------
 # 5. Completion message
 # ------------------------------
-echo "✅ Pyseer analysis completed successfully on $(date)"
-# Deactivate Conda environment
+echo "✅ All Pyseer analyses completed successfully on $(date)."
+
+# ------------------------------
+# 6. Deactivate environment
+# ------------------------------
 conda deactivate
