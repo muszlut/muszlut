@@ -21,7 +21,11 @@ fi
 
 cd "$OUTDIR"
 
-# Load module R
-module load R/4.4.1-gfbf-2023b
+# Activate Conda environment
+source /apps/conda/etc/profile.d/conda.sh
+conda activate r-tidyverse
+export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
+# Load R module
+#module load R/4.4.1-gfbf-2023b
 # Run the R script
 Rscript "$TIDY"
