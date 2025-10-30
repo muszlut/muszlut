@@ -20,8 +20,8 @@ source activate pyseer-env
 # 2. Define paths
 # ------------------------------
 PYSEER_SCRIPT=/home/ma95362/pyseer/scripts/count_patterns.py
-PATTERN_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_output/gene_patterns_EPTB_PTb.txt
-OUTPUT_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_output/gene_patterns_EPTB_PTb_counts.txt
+PATTERN_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_DR_output/gene_patterns_DR.txt
+OUTPUT_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_DR_output/gene_patterns_DR_counts.txt
 
 # ------------------------------
 # 3. Run count_patterns.py
