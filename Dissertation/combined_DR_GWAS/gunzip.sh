@@ -14,7 +14,7 @@
 # Load any required modules
 # -----------------------------
 #module load gzip/1.12   # or module load gzip (if available)
-cd /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368
+cd /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo
 # -----------------------------
 # Define input and output files
 # -----------------------------
