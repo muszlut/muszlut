@@ -17,7 +17,7 @@ conda activate panaroo-env
 # Define directories
 INPUT_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo"
 OUTPUT_DIR="$INPUT_DIR/Plot_output"
-SCRIPT_PATH="/home/ma95362/muszlut/Dissertation/panaroo_rarefaction_plot.py"
+SCRIPT_PATH="/home/ma95362/muszlut/Dissertation/plot_refraction.py"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
