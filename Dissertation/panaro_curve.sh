@@ -17,7 +17,7 @@ conda activate panaroo-env
 # Define directories
 INPUT_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo"
 OUTPUT_DIR="$INPUT_DIR/Plot_output"
-
+SCRIPT_PATH="/home/ma95362/muszlut/Dissertation/panaroo_rarefaction_plot.py"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
@@ -25,11 +25,9 @@ mkdir -p "$OUTPUT_DIR"
 # Move to the input directory
 cd "$INPUT_DIR"
 
-# Run Panaroo filter
-panaroo-plot --input /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo \
-             --plot-type rarefaction \
-             --output panaroo_rarefaction_curve.png
+# Run the Python script
+python "$SCRIPT_PATH"
 
-echo "✅ Panaroo plot completed successfully."
+echo "✅ Panaroo rarefaction plot completed successfully."
 
 conda deactivate
