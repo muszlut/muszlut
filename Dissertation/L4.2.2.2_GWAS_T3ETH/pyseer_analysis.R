@@ -9,8 +9,8 @@ set.seed(1989)
 # Define file paths
 # ---------------------------
 gwas_dir <- "/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_out"
-gwas_file <- file.path(gwas_dir, "L4.2.2.2_Binary_DR_gwas.txt")
-counts_file <- file.path(gwas_dir, "L4.2.2.2_Binary_DR_patterns2.txt")
+gwas_file <- file.path(gwas_dir, "L4.2.2.2_Binary_T3_ETHfamily_gwas.txt")
+counts_file <- file.path(gwas_dir, "count_L4.2.2.2_Binary_T3_ETHfamily_patterns.txt")
 
 cat("Reading GWAS results from:", gwas_file, "\n")
 gwas_data <- fread(gwas_file, data.table = FALSE)
@@ -42,11 +42,11 @@ cat("Number of significant hits:", nrow(sig_hits), "\n")
 # Save outputs
 # ---------------------------
 write.csv(gwas_data,
-          file = file.path(gwas_dir, "L4.2.2.2_Binary_DR_results.csv"),
+          file = file.path(gwas_dir, "L4.2.2.2_Binary_T3_ETHfamily_results.csv"),
           quote = FALSE, row.names = FALSE)
 
 write.csv(sig_hits,
-          file = file.path(gwas_dir, "L4.2.2.2_Binary_DR_significant_hits.csv"),
+          file = file.path(gwas_dir, "L4.2.2.2_Binary_T3_ETHfamily_significant_hits.csv"),
           quote = FALSE, row.names = FALSE)
 
 cat("✅ Results saved successfully in", gwas_dir, "\n")
