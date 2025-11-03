@@ -23,7 +23,7 @@ PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_to
 TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/iqtree/core-genome.treefile"
 PYSEER_OUT="${PANAROO_DIR}/pyseer_out"
 METADATA="${PANAROO_DIR}/metadata_all_numeric.tab"
-PRES="${PANAROO_DIR}/gene_presence_absence_filt_pseudo_length.Rtab"
+PRES="${PANAROO_DIR}/struct_presence_absence.Rtab"
 
 # Ensure output directory exists
 mkdir -p "${PYSEER_OUT}"
