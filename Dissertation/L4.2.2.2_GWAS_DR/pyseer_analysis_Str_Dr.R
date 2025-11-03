@@ -9,7 +9,7 @@ set.seed(1989)
 # Define file paths
 # ---------------------------
 gwas_dir <- "/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_out"
-gwas_file <- file.path(gwas_dir, "Str_DR_gwas.txt")
+gwas_file <- file.path(gwas_dir, "2Str_DR_gwas.txt")
 counts_file <- file.path(gwas_dir, "count_Str_DR_patterns.txt")
 
 cat("Reading GWAS results from:", gwas_file, "\n")
