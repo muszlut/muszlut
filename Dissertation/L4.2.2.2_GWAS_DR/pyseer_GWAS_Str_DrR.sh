@@ -50,8 +50,8 @@ pyseer \
     --pres "${PRES}" \
     --similarity "${PYSEER_OUT}/phylogeny_K.tsv" \
     --cpu 16 \
-    --output-patterns "${PYSEER_OUT}/STR_DR_patterns_DR.txt" \
-    > "${PYSEER_OUT}/Str_DR_gwas.txt"
+    --output-patterns "${PYSEER_OUT}/2STR_DR_patterns_DR.txt" \
+    > "${PYSEER_OUT}/2Str_DR_gwas.txt"
 
 echo "✅ Pyseer GWAS completed for DR."
 
