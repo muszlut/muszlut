@@ -30,7 +30,7 @@ mkdir -p "${PYSEER_OUT}"
 cd "${PANAROO_DIR}" || { echo "❌ ERROR: Panaroo directory not found."; exit 1; }
 
 # ------------------------------
-# 3. (Skipped) Phylogenetic distance generation
+# 3. (Skipped) Phylogenetic distance generations
 # ------------------------------
 # You already generated phylogeny_K.tsv manually
 
