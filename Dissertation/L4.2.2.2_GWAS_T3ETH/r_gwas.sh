@@ -12,7 +12,7 @@
 
 # Set output directory
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_out"
-TIDY="/home/ma95362/muszlut/Dissertation/L4.2.2.2_GWAS_DR/pyseer_analysis.R"
+TIDY="/home/ma95362/muszlut/Dissertation/L4.2.2.2_GWAS_T3ETH/pyseer_analysis.R"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
