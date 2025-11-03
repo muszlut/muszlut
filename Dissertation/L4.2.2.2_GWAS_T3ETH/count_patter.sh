@@ -20,8 +20,8 @@ source activate pyseer-env
 # 2. Define paths
 # ------------------------------
 PYSEER_SCRIPT=/home/ma95362/pyseer/scripts/count_patterns.py
-PATTERN_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_out/L4.2.2.2_Binary_DR_gwas.txt
-OUTPUT_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_out/L4.2.2.2_Binary_DR_patterns2.txt
+PATTERN_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_out/L4.2.2.2_Binary_T3_ETHfamily_gwas.txt
+OUTPUT_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/panaroo/filtered_output/pyseer_out/count_L4.2.2.2_Binary_T3_ETHfamily_patterns.txt
 
 # ------------------------------
 # 3. Run count_patterns.py
