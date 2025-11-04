@@ -23,7 +23,7 @@ PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_e
 TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/core_tree.treefile"
 PYSEER_OUT="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_DR_output"
 METADATA="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/Full_metadata.tab"
-PRES="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/struct_presence_absence.Rtab"
+PRES="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/filtered_output/gene_presence_absence_filt_pseudo_length.Rtab"
 
 # Ensure output directory exists
 mkdir -p "${PYSEER_OUT}"
@@ -40,7 +40,7 @@ cd "${PANAROO_DIR}" || { echo "❌ ERROR: Panaroo directory not found."; exit 1;
 echo "Running Pyseer GWAS for Structural variant analysis for DR..."
 
 # Define the phenotype column (must match column name in metadata_local.tab)
-PHENOCOL="dr_classN"
+PHENOCOL="Sublineage_binary"
 
 # Run Pyseer LMM
 pyseer \
@@ -50,8 +50,8 @@ pyseer \
     --pres "${PRES}" \
     --similarity "${PYSEER_OUT}/phylogeny_K.tsv" \
     --cpu 16 \
-    --output-patterns "${PYSEER_OUT}/STR_DR_patterns_DR.txt" \
-    > "${PYSEER_OUT}/Str_DR_gwas.txt"
+    --output-patterns "${PYSEER_OUT}/Combined_VS_L4.2.2.2pattern.txt" \
+    > "${PYSEER_OUT}/Combined_VS_L4.2.2.2_gwas.txt"
 
 echo "✅ Pyseer GWAS completed for DR."
 
