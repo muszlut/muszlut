@@ -11,7 +11,7 @@
 #SBATCH --mail-user=ma95362@uga.edu
 
 # Set output directory
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_DR_output"
+OUTDIR="c"
 TIDY="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/Rscript_for_Lineage_SIT.R"
 
 # Create output directory if it doesn't exist
@@ -24,7 +24,8 @@ cd "$OUTDIR"
 # Activate Conda environment
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate r-tidyverse
-export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
+export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyve
+rse/lib/R/library
 
 # Run the R script
 Rscript "$TIDY" > R_output.log 2>&1

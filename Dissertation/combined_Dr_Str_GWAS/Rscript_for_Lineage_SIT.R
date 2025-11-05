@@ -1,8 +1,9 @@
-# Load required libraries
+# Load libraries
 library(readr)
 library(dplyr)
-library(ggplot2)
 library(tidyr)
+library(ggplot2)
+library(epitools)
 
 # Load metadata
 meta <- read_tsv("/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/Full_metadata.tab")
@@ -14,71 +15,43 @@ meta <- meta %>%
     family = gsub("family'|'", "", family)
   )
 
-# Plot: Path ID vs Sublineage
-path_lineage_counts <- meta %>%
-  count(Path_ID_cysE_neighbourhood_gene, sub_lineage) %>%
-  rename(Path_ID = Path_ID_cysE_neighbourhood_gene)
-
-p1 <- ggplot(path_lineage_counts, aes(x = factor(Path_ID), y = n, fill = sub_lineage)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Path - Sublineage Association", x = "Path ID", y = "Number of Genomes", fill = "Sublineage") +
-  theme_minimal()
-ggsave("path_sublineage_plot.pdf", plot = p1, width = 8, height = 6)
-
-# Highlight group: SIT-149 or T3-ETH
-highlight_group <- meta %>% filter(SIT == "149" | family == "T3-ETH")
-
-# Plot: Path ID vs Phenotype
-p2 <- ggplot(highlight_group, aes(x = factor(Path_ID_cysE_neighbourhood_gene), fill = Phenotype)) +
-  geom_bar(position = "stack") +
-  labs(title = "SIT-149 / T3-ETH by Path ID and Phenotype", x = "Path ID", y = "Number of Genomes", fill = "Phenotype") +
-  theme_minimal()
-ggsave("SIT149_T3ETH_by_Phenotype.pdf", plot = p2, width = 8, height = 6)
-
-# Plot: Path ID vs Drug Resistance Class
-p3 <- ggplot(highlight_group, aes(x = factor(Path_ID_cysE_neighbourhood_gene), fill = dr_class)) +
-  geom_bar(position = "stack") +
-  labs(title = "SIT-149 / T3-ETH by Path ID and Drug Resistance", x = "Path ID", y = "Number of Genomes", fill = "Drug Resistance Class") +
-  theme_minimal()
-ggsave("SIT149_T3ETH_by_dr_class.pdf", plot = p3, width = 8, height = 6)
-
-# Function to run enrichment test
-run_enrichment_test <- function(matrix, label) {
-  chi <- chisq.test(matrix)
-  if (any(chi$expected < 5)) {
-    test <- fisher.test(matrix)
-    test_type <- "Fisher"
-  } else {
-    test <- chi
-    test_type <- "Chi-squared"
-  }
+# Function to run enrichment test and calculate odds ratio
+run_enrichment <- function(var, label) {
+  df <- meta %>%
+    mutate(path1 = Path_ID_cysE_neighbourhood_gene == 1, group = !!sym(var)) %>%
+    mutate(group = group == label) %>%
+    count(path1, group) %>%
+    pivot_wider(names_from = group, values_from = n, values_fill = 0)
+  mat <- as.matrix(df[, -1])
+  test <- if (any(chisq.test(mat)$expected < 5)) fisher.test(mat) else chisq.test(mat)
+  or <- oddsratio(mat)
   data.frame(
-    Comparison = label,
-    Test = test_type,
+    Comparison = paste("Path 1 vs", label),
+    Test = ifelse(any(chisq.test(mat)$expected < 5), "Fisher", "Chi-squared"),
     P_value = test$p.value,
+    Odds_Ratio = or$measure[2,1],
+    CI_lower = or$measure[2,2],
+    CI_upper = or$measure[2,3],
     stringsAsFactors = FALSE
   )
 }
 
-# Build and test: Path 1 vs Sublineage 4.2.2.2
-enrichment_4222 <- meta %>%
-  mutate(path1 = Path_ID_cysE_neighbourhood_gene == 1, is_4222 = sub_lineage == "lineage4.2.2.2") %>%
-  count(path1, is_4222) %>%
-  pivot_wider(names_from = is_4222, values_from = n, values_fill = 0)
-matrix_4222 <- as.matrix(enrichment_4222[, -1])
-summary_4222 <- run_enrichment_test(matrix_4222, "Path 1 vs Sublineage 4.2.2.2")
+# Run all comparisons
+summary_4222 <- run_enrichment("sub_lineage", "lineage4.2.2.2")
+summary_t3eth <- run_enrichment("family", "T3-ETH")
+summary_sit149 <- run_enrichment("SIT", "149")
 
-# Build and test: Path 1 vs Family T3-ETH
-enrichment_t3eth <- meta %>%
-  mutate(path1 = Path_ID_cysE_neighbourhood_gene == 1, is_t3eth = family == "T3-ETH") %>%
-  count(path1, is_t3eth) %>%
-  pivot_wider(names_from = is_t3eth, values_from = n, values_fill = 0)
-matrix_t3eth <- as.matrix(enrichment_t3eth[, -1])
-summary_t3eth <- run_enrichment_test(matrix_t3eth, "Path 1 vs Family T3-ETH")
+# Combine and save
+enrichment_summary <- bind_rows(summary_4222, summary_t3eth, summary_sit149)
+write.table(enrichment_summary, "enrichment_summary_with_OR.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 
-# Build and test: Path 1 vs SIT-149
-enrichment_sit149 <- meta %>%
-  mutate(path1 = Path_ID_cysE_neighbourhood_gene == 1, is_sit149 = SIT == "149") %>%
-  count(path1, is_sit149) %>%
-  pivot_wider(names_from = is_sit149, values_from = n, values_fill = 0)
-matrix_sit149 <- as.matrix(enrichment_sit149[, -1])
+# Forest plot
+ggplot(enrichment_summary, aes(x = Comparison, y = Odds_Ratio)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = CI_lower, ymax = CI_upper), width = 0.2) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "gray") +
+  scale_y_log10() +
+  labs(title = "Odds Ratios for Path 1 Enrichment", y = "Odds Ratio (log scale)", x = "") +
+  theme_minimal() +
+  coord_flip()
+ggsave("path1_enrichment_forestplot.pdf", width = 8, height = 5)
