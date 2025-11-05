@@ -27,4 +27,4 @@ conda activate r-tidyverse
 export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
 
 # Run the R script
-Rscript "$TIDY"
+Rscript "$TIDY" > R_output.log 2>&1
