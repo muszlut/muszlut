@@ -12,7 +12,7 @@
 
 # Set output directory
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_DR_output"
-TIDY="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/Rscript_for_Path_association.R"
+TIDY="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/Rscript_for_Lineage_SIT.R"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
