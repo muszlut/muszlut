@@ -2,6 +2,7 @@
 library(readr)
 library(dplyr)
 library(ggplot2)
+library(tidyr)
 
 # Load metadata
 meta <- read_tsv("/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/Full_metadata.tab")
@@ -22,7 +23,7 @@ path_lineage_counts <- meta %>%
 ggplot(path_lineage_counts, aes(x = factor(Path_ID), y = n, fill = sub_lineage)) +
   geom_bar(stat = "identity") +
   labs(
-    title = "Path–Sublineage Association",
+    title = "Path - Sublineage Association",
     x = "Path ID (cysE neighborhood)",
     y = "Number of Genomes",
     fill = "Sublineage"
@@ -44,12 +45,24 @@ ggplot(highlight_group, aes(x = factor(Path_ID_cysE_neighbourhood_gene), fill = 
   ) +
   theme_minimal()
 
-# Optional: test enrichment of Path 1 in sublineage 4.2.2.2
+# Enrichment test: Path 1 vs sublineage 4.2.2.2
 enrichment_table <- meta %>%
   mutate(
     path1 = Path_ID_cysE_neighbourhood_gene == 1,
     is_4222 = sub_lineage == "lineage4.2.2.2"
   ) %>%
-  count(path1, is_4222)
+  count(path1, is_4222) %>%
+  pivot_wider(names_from = is_4222, values_from = n, values_fill = 0)
 
-chisq.test(enrichment_table)
+# Convert to matrix and run Chi-squared test
+test_matrix <- as.matrix(enrichment_table[, -1])
+chi <- chisq.test(test_matrix)
+
+# Use Fisher's exact test if expected counts are low
+if (any(chi$expected < 5)) {
+  message("Using Fisher's exact test due to low expected counts")
+  fisher.test(test_matrix)
+} else {
+  message("Using Chi-squared test")
+  chi
+}
