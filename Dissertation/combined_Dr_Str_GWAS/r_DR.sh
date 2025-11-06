@@ -12,9 +12,8 @@
 
 # Set working directory
 WORKDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_DR_output"
-SCRIPT="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/path_enrichment_analysis.R"
+SCRIPT="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/Rscript_for_Path_association.R"
 
-# Activate Conda
 # Activate Conda
 conda activate r-tidyverse
 export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
