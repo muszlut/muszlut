@@ -15,7 +15,7 @@ WORKDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_s
 SCRIPT="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/path_enrichment_analysis.R"
 
 # Activate Conda
-source ~/miniconda3/etc/profile.d/conda.sh
+# Activate Conda
 conda activate r-tidyverse
 export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
 
