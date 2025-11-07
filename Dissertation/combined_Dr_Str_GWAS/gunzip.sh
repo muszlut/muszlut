@@ -19,7 +19,7 @@ cd /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples
 # Define input and output files
 # -----------------------------
 # Example 1: decompress a single file
-gunzip -c gene_data.csv.gz > gene_data.csv
+gunzip -c pan_genome_reference.fa.gz > pan_genome_reference.fa
 
 # Example to group all the significant hits and put it into a new csv file to show you which isolates have them
 #grep -E "group_2728|group_2726|group_2586|group_2104" gene_presence_absence.csv > selected_high_significant_genes.csv
