@@ -12,7 +12,7 @@
 
 # Set working directory
 WORKDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_DR_output"
-SCRIPT="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/Rscript_for_Path_association.R"
+SCRIPT="/home/ma95362/muszlut/Dissertation/combined_Dr_Str_GWAS/Rscript_for_Lineage_SIT.R"
 
 # Activate Conda
 conda activate r-tidyverse
