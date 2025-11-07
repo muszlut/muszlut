@@ -20,7 +20,8 @@ if [ ! -d $OUTDIR ]
         mkdir -p $OUTDIR
 fi
 
-module load Bactopia/3.1.0
+module load Bactopia/3.2.0-conda
+module load Java/17.0.6
 cd $OUTDIR
 #bactopia summary --bactopia-path $OUTDIR/ena-multiple-samples/
 bactopia search \
