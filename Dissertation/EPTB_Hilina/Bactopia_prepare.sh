@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                             # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/EPTB_Hilina/"
+OUTDIR="/scratch/ma95362/EPTB_Hilina/reads_Bactopia_Analysis"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -29,7 +29,7 @@ cd $OUTDIR
 
 
 bactopia prepare \
-    --path /scratch/ma95362/eth_national_analysis/all_fastq_reads \
+    --path /scratch/ma95362/EPTB_Hilina/reads \
     --species "Mycobacterium tuberculosis" \
     --genome-size 4400000 \
-    > /scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt
+    > /scratch/ma95362/EPTB_Hilina/reads_Bactopia_Analysis/samples.txt
