@@ -24,10 +24,10 @@ module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 cd $OUTDIR
 #bactopia summary --bactopia-path $OUTDIR/ena-multiple-samples/
-bactopia search \
-    --query PRJNA1174701
-#bactopia \
-#    --accessions $OUTDIR/bactopia-accessions.txt \
-#    --coverage 100 \
-#    --outdir $OUTDIR/ena-multiple-samples \
-#    --max_cpus 8
+#bactopia search \
+#    --query PRJNA1174701
+bactopia \
+    --accessions $OUTDIR/bactopia-accessions.txt \
+    --coverage 100 \
+    --outdir $OUTDIR/ena-multiple-samples \
+    --max_cpus 8
