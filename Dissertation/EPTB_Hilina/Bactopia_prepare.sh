@@ -2,8 +2,8 @@
 #SBATCH --job-name=Bactopia_PRJNA1174701                        # Job name
 #SBATCH --partition=batch                                       # Partition (queue) name
 #SBATCH --ntasks=1                                              # Run on a single CPU
-#SBATCH --cpus-per-task=8                                       # Number of cores per task
-#SBATCH --mem=40gb                                              # Job memory request
+#SBATCH --cpus-per-task=16                                       # Number of cores per task
+#SBATCH --mem=120gb                                              # Job memory request
 #SBATCH --time=02-00:00:00                                      # Time limit hrs:min:sec
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out            # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err             # Standard error log
@@ -37,5 +37,5 @@ cd $OUTDIR
 bactopia \
     --samples samples.txt \
     --coverage 100 \
-    --max_cpus 2 \
+    --max_cpus 16 \
     --outdir ena-multiple-samples
