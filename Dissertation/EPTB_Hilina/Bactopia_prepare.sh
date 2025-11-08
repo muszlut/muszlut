@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                             # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/EPTB_Hilina/reads"
+OUTDIR="/scratch/ma95362/EPTB_Hilina/ETH_Bactopia_Prepare"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -26,7 +26,7 @@ module load Bactopia/3.2.0-conda
 mkdir -p $OUTDIR
 cd $OUTDIR
 bactopia prepare \
-    --path $OUTDIR \
+    --path /scratch/ma95362/EPTB_Hilina/reads \
     --species "Mycobacterium tuberculosis" \
     --genome-size 4410000 \
     > $OUTDIR/ETH_samples.txt
