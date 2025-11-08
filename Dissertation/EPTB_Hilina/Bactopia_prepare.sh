@@ -20,7 +20,7 @@ if [ ! -d $OUTDIR ]
         mkdir -p $OUTDIR
 fi
 
-module load Bactopia/3.2.0-conda
+module load Bactopia/3.2.0
 
 # Make output directory if it doesn't exist
 mkdir -p $OUTDIR
