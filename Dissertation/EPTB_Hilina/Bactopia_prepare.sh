@@ -2,7 +2,7 @@
 #SBATCH --job-name=Bactopia_PRJNA1174701                        # Job name
 #SBATCH --partition=batch                                       # Partition (queue) name
 #SBATCH --ntasks=1                                              # Run on a single CPU
-#SBATCH --cpus-per-task=16                                       # Number of cores per task
+#SBATCH --cpus-per-task=4                                       # Number of cores per task
 #SBATCH --mem=120gb                                              # Job memory request
 #SBATCH --time=02-00:00:00                                      # Time limit hrs:min:sec
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out            # Standard output log
@@ -12,7 +12,7 @@
 #SBATCH --mail-user=ma95362@uga.edu                             # Where to send mail	
 
 #Set output directory variable
-OUTDIR="/scratch/ma95362/EPTB_Hilina/reads_Bactopia_Analysis"
+OUTDIR="/scratch/ma95362/EPTB_Hilina/reads"
 
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
@@ -21,14 +21,19 @@ if [ ! -d $OUTDIR ]
 fi
 
 module load Bactopia/3.2.0-conda
-module load Java/17.0.6
 
 # Make output directory if it doesn't exist
 mkdir -p $OUTDIR
 cd $OUTDIR
-
+bactopia prepare \
+    --path $OUTDIR \
+    --species "Mycobacterium tuberculosis" \
+    --genome-size 4410000 \
+    > $OUTDIR/ETH_samples.txt
 bactopia \
-    --samples samples.txt \
+    --samples $OUTDIR/ETH_samples.txt \
     --coverage 100 \
-    --max_cpus 16 \
-    --outdir local-multiple-samples
+    --outdir $OUTDIR/ETH_paired_end_samples \
+    --max_cpus 4
+bactopia summary \
+    --bactopia-path $OUTDIR/ETH_paired_end_samples
