@@ -22,12 +22,14 @@ fi
 
 module load Bactopia/3.2.0-conda
 module load Java/17.0.6
+
+# Make output directory if it doesn't exist
+mkdir -p $OUTDIR
 cd $OUTDIR
-#bactopia summary --bactopia-path $OUTDIR/ena-multiple-samples/
-#bactopia search \
-#    --query PRJNA1174701
-bactopia \
-    --accessions $OUTDIR/bactopia-accessions.txt \
-    --coverage 100 \
-    --outdir $OUTDIR/ena-multiple-samples \
-    --max_cpus 8
+
+
+bactopia prepare \
+    --path /scratch/ma95362/eth_national_analysis/all_fastq_reads \
+    --species "Mycobacterium tuberculosis" \
+    --genome-size 4400000 \
+    > /scratch/ma95362/eth_national_analysis/bactopia_prepare/samples.txt
