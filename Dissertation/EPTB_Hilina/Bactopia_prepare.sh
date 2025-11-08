@@ -33,9 +33,17 @@ cd $OUTDIR
 #    --species "Mycobacterium tuberculosis" \
 #    --genome-size 4400000 \
 #    > /scratch/ma95362/EPTB_Hilina/reads_Bactopia_Analysis/samples.txt
-
-bactopia \
-    --samples samples.txt \
-    --coverage 100 \
-    --max_cpus 16 \
-    --outdir ena-multiple-samples
+#
+#bactopia \
+#    --samples samples.txt \
+#    --coverage 100 \
+#    --max_cpus 16 \
+#    --outdir ena-multiple-samples
+bactopia -profile standard \
+  --samples samples.txt \
+  --coverage 100 \
+  --max_cpus 16 \
+  --outdir ena-multiple-samples
+bactopia summary \
+    --bactopia-path $OUTDIR/ena-multiple-samples
+#bactopia search \
