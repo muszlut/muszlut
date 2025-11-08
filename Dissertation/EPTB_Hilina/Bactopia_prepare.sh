@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=Bactopia_PRJNA1174701                        # Job name
+#SBATCH --job-name=Bactopia_PRJNA1174701_new                     # Job name
 #SBATCH --partition=batch                                       # Partition (queue) name
 #SBATCH --ntasks=1                                              # Run on a single CPU
-#SBATCH --cpus-per-task=4                                       # Number of cores per task
+#SBATCH --cpus-per-task=16                                       # Number of cores per task
 #SBATCH --mem=120gb                                              # Job memory request
-#SBATCH --time=02-00:00:00                                      # Time limit hrs:min:sec
+#SBATCH --time=07-00:00:00                                      # Time limit hrs:min:sec
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out            # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err             # Standard error log
 
@@ -34,6 +34,6 @@ bactopia \
     --samples $OUTDIR/ETH_samples.txt \
     --coverage 100 \
     --outdir $OUTDIR/ETH_paired_end_samples \
-    --max_cpus 4
+    --max_cpus 16
 bactopia summary \
     --bactopia-path $OUTDIR/ETH_paired_end_samples
