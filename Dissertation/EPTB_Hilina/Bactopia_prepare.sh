@@ -28,8 +28,14 @@ mkdir -p $OUTDIR
 cd $OUTDIR
 
 
-bactopia prepare \
-    --path /scratch/ma95362/EPTB_Hilina/reads \
-    --species "Mycobacterium tuberculosis" \
-    --genome-size 4400000 \
-    > /scratch/ma95362/EPTB_Hilina/reads_Bactopia_Analysis/samples.txt
+#bactopia prepare \
+#    --path /scratch/ma95362/EPTB_Hilina/reads \
+#    --species "Mycobacterium tuberculosis" \
+#    --genome-size 4400000 \
+#    > /scratch/ma95362/EPTB_Hilina/reads_Bactopia_Analysis/samples.txt
+
+bactopia \
+    --samples samples.txt \
+    --coverage 100 \
+    --max_cpus 2 \
+    --outdir ena-multiple-samples
