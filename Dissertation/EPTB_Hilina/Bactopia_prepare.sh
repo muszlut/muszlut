@@ -1,39 +1,36 @@
 #!/bin/bash
-#SBATCH --job-name=Bactopia_PRJNA1174701_new                     # Job name
-#SBATCH --partition=batch                                       # Partition (queue) name
-#SBATCH --ntasks=1                                              # Run on a single CPU
-#SBATCH --cpus-per-task=16                                       # Number of cores per task
-#SBATCH --mem=120gb                                              # Job memory request
-#SBATCH --time=07-00:00:00                                      # Time limit hrs:min:sec
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out            # Standard output log
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err             # Standard error log
+#SBATCH --job-name=Bactopia_Mtb
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=120gb
+#SBATCH --time=03-00:00:00
+#SBATCH --output=/scratch/ma95362/log.%j.out
+#SBATCH --error=/scratch/ma95362/log.%j.err
 
-#SBATCH --mail-type=END,FAIL                                    # Mail events (NONE, BEGIN, END, FAIL, ALL)
-#SBATCH --mail-user=ma95362@uga.edu                             # Where to send mail	
+#SBATCH --mail-type=END,FAIL                                   
+#SBATCH --mail-user=ma95362@uga.edu                         
 
-#Set output directory variable
+module load Bactopia/3.1.0
+
 OUTDIR="/scratch/ma95362/EPTB_Hilina/ETH_Bactopia_Prepare"
+READS="/scratch/ma95362/EPTB_Hilina/reads"
 
-#Tell the program to make  the outdir folder
-if [ ! -d $OUTDIR ] 
-    then 
-        mkdir -p $OUTDIR
-fi
-
-module load Bactopia/3.2.0
-
-# Make output directory if it doesn't exist
-mkdir -p $OUTDIR
-cd $OUTDIR
+# Step 1: Prepare
 bactopia prepare \
-    --path /scratch/ma95362/EPTB_Hilina/reads \
-    --species "Mycobacterium tuberculosis" \
-    --genome-size 4410000 \
-    > $OUTDIR/ETH_samples.txt
+  --path $READS \
+  --species "Mycobacterium tuberculosis" \
+  --genome-size 4410000 \
+  > $OUTDIR/ETH_samples.txt
+
+# Step 2: Run analysis
 bactopia \
-    --samples $OUTDIR/ETH_samples.txt \
-    --coverage 100 \
-    --outdir $OUTDIR/ETH_paired_end_samples \
-    --max_cpus 16
+  --samples $OUTDIR/ETH_samples.txt \
+  --coverage 100 \
+  --outdir $OUTDIR/ETH_paired_end_samples \
+  --max_cpus 8
+
+# Step 3: Generate summary
 bactopia summary \
-    --bactopia-path $OUTDIR/ETH_paired_end_samples
+  --bactopia-path $OUTDIR/ETH_paired_end_samples
+
