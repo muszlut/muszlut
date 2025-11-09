@@ -7,30 +7,45 @@
 #SBATCH --time=03-00:00:00
 #SBATCH --output=/scratch/ma95362/log.%j.out
 #SBATCH --error=/scratch/ma95362/log.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
 
-#SBATCH --mail-type=END,FAIL                                   
-#SBATCH --mail-user=ma95362@uga.edu                         
-
+# Load the Bactopia module
 module load Bactopia/3.1.0
 
-OUTDIR="/scratch/ma95362/EPTB_Hilina/ETH_Bactopia_Prepare"
-READS="/scratch/ma95362/EPTB_Hilina/reads"
+# Define directories
+OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe"
+SEARCH_DIR="${OUTDIR}/Bactopia_Search"
+PREPARE_DIR="${OUTDIR}/Bactopia_Prepare"
+RUN_DIR="${OUTDIR}/Bactopia_Run"
 
-# Step 1: Prepare
+# Step 1: Create main output directories
+mkdir -p $SEARCH_DIR $PREPARE_DIR $RUN_DIR
+
+echo "=== Step 1: Running bactopia search ==="
+bactopia search \
+    --query PRJNA1174701 \
+    --output $SEARCH_DIR
+
+echo "=== Step 2: Preparing samples ==="
 bactopia prepare \
-  --path $READS \
-  --species "Mycobacterium tuberculosis" \
-  --genome-size 4410000 \
-  > $OUTDIR/ETH_samples.txt
+    --path $SEARCH_DIR \
+    --species "Mycobacterium tuberculosis" \
+    --genome-size 4410000 \
+    --output $PREPARE_DIR
 
-# Step 2: Run analysis
+# Extract the samples file path
+SAMPLES_FILE="${PREPARE_DIR}/samples.txt"
+
+echo "=== Step 3: Running bactopia main analysis ==="
 bactopia \
-  --samples $OUTDIR/ETH_samples.txt \
-  --coverage 100 \
-  --outdir $OUTDIR/ETH_paired_end_samples \
-  --max_cpus 8
+    --samples $SAMPLES_FILE \
+    --outdir $RUN_DIR \
+    --coverage 100 \
+    --max_cpus 8
 
-# Step 3: Generate summary
+echo "=== Step 4: Generating summary report ==="
 bactopia summary \
-  --bactopia-path $OUTDIR/ETH_paired_end_samples
+    --bactopia-path $RUN_DIR
 
+echo "=== All steps completed successfully! ==="
