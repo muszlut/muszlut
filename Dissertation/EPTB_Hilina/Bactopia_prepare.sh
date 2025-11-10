@@ -20,7 +20,9 @@ mkdir -p $OUTDIR
 cd $OUTDIR 
 bactopia search \
     --query PRJNA1174701 \
-    --force
+    --force \
+    --genome-size 4500000
+
 #echo "=== Step 2: Preparing samples ==="
 #bactopia prepare \
 #    --path $OUTDIR/Bactopia_Search \
