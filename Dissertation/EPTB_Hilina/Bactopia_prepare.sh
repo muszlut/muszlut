@@ -21,7 +21,9 @@ cd $OUTDIR
 bactopia search \
     --query PRJNA1174701 \
     --force \
-    --genome-size 4500000
+    --genome-size 4400000 \
+    --coverage 100
+
 
 #echo "=== Step 2: Preparing samples ==="
 #bactopia prepare \
