@@ -12,6 +12,12 @@
 
 # Load the Bactopia module
 module load Bactopia/3.2.0-conda
+module load EDirect/20.5.20231006-GCCcore-12.3.0
+
+bactopia search \
+    --query PRJNA1174701 \
+    --output $OUTDIR/Bactopia_Search \
+    --force
 
 # Define directories
 OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe"
