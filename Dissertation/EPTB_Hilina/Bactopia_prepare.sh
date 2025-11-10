@@ -23,7 +23,7 @@ cd $OUTDIR
 #    --force \
 #    --genome-size 4400000 \
 #    --min-coverage 20
-bactopia --accessions bactopia-filtered.txt \
+bactopia --accessions bactopia-accessions.txt \
          --outdir $OUTDIR/Bactopia_Run \
          --species "Mycobacterium tuberculosis" \
          --threads 16
