@@ -22,7 +22,8 @@ bactopia search \
     --query PRJNA1174701 \
     --force \
     --genome-size 4400000 \
-    --coverage 100
+    --min-coverage 20
+
 
 
 #echo "=== Step 2: Preparing samples ==="
