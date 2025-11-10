@@ -2,7 +2,7 @@
 #SBATCH --job-name=Bactopia_Mtb
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=120gb
 #SBATCH --time=03-00:00:00
 #SBATCH --output=/scratch/ma95362/log.%j.out
@@ -18,28 +18,12 @@ OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe"
 # Step 1: Create main output directories
 mkdir -p $OUTDIR
 cd $OUTDIR 
-bactopia search \
-    --query PRJNA1174701 \
-    --force \
-    --genome-size 4400000 \
-    --min-coverage 20
-
-
-
-#echo "=== Step 2: Preparing samples ==="
-#bactopia prepare \
-#    --path $OUTDIR/Bactopia_Search \
-#    --species "Mycobacterium tuberculosis" \
-#    --genome-size 4410000 \
-#    --output $OUTDIR/Bactopia_Prepare
-# Extract the samples file path
-#SAMPLES_FILE="${OUTDIR}/Bactopia_Prepare/samples.txt"
-
-#bactopia \
-#    --samples $SAMPLES_FILE \
-#    --outdir $RUN_DIR \
-#    --coverage 100 \
-#    --max_cpus 8
-#bactopia summary \
-#    --bactopia-path $RUN_DIR
-
+#bactopia search \
+#    --query PRJNA1174701 \
+#    --force \
+#    --genome-size 4400000 \
+#    --min-coverage 20
+bactopia --accessions bactopia-filtered.txt \
+         --outdir $OUTDIR/Bactopia_Run \
+         --species "Mycobacterium tuberculosis" \
+         --threads 16
