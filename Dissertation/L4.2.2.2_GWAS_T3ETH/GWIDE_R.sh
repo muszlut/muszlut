@@ -10,14 +10,21 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-# Initialize Conda for non-interactive shell
-source ~/.bashrc
-# Activate Conda
+# 🧠 Metadata
+echo "Running on node: $(hostname)"
+echo "SLURM Job ID: $SLURM_JOB_ID"
+
+# 🧬 Robust Conda activation
+eval "$(conda shell.bash hook)"
 conda activate r-tidyverse
-export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
-# Set working directory
+
+# 📦 Log R version and packages
+Rscript -e 'cat("R version:\n"); print(R.version.string); cat("\nLoaded packages:\n"); print(.packages())'
+
+# 📁 Set working directory and script path
 WORKDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome_of_L4.2.2.2.2/R_analysis_output"
 SCRIPT="/home/ma95362/muszlut/Dissertation/L4.2.2.2_GWAS_T3ETH/GWIDE_L4.2.2.2.R"
-# Run R script
+
+# 🚀 Run R script
 cd "$WORKDIR"
 Rscript "$SCRIPT"
