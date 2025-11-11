@@ -16,8 +16,8 @@ library(readr)
 library(ggrepel)
 
 # 1️⃣ Load gene-level entropy
-entropy <- read_tsv("alignment_entropy.csv")
-
+Sys.setenv("VROOM_CONNECTION_SIZE" = 5000000)  # increase buffer size
+entropy <- read_csv("alignment_entropy.csv", col_names = c("gene", "entropy"))
 # 2️⃣ Load gene coordinates
 coords <- read_tsv("core-genome.position_cross_reference.txt.gz")
 
