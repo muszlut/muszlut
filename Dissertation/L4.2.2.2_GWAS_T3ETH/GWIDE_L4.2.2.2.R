@@ -22,7 +22,8 @@ stopifnot(file.exists("core-genome.importation_status.txt"))
 stopifnot(file.exists("L4.2.2.2_Binary_T3_ETHfamily_significant_hits.csv"))
 
 # 1️⃣ Load gene-level entropy (using base R to avoid vroom buffer issues)
-entropy <- read.csv("alignment_entropy.csv", header = FALSE, col.names = c("gene", "entropy"), stringsAsFactors = FALSE)
+library(data.table)
+entropy <- fread("alignment_entropy.csv", header = FALSE, col.names = c("gene", "entropy"))
 
 # 2️⃣ Load gene coordinates
 coords <- read_tsv("core-genome.position_cross_reference.txt.gz", show_col_types = FALSE)
