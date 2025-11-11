@@ -1,3 +1,7 @@
+# ===============================
+# R Script: Genome-wide plot
+# ===============================
+
 # ✅ Pre-flight package check
 required <- c("ggplot2", "ggrepel", "dplyr", "tidyr", "readr")
 missing <- required[!sapply(required, requireNamespace, quietly = TRUE)]
@@ -11,17 +15,14 @@ library(dplyr)
 library(readr)
 library(ggrepel)
 
-# 🔧 Increase buffer size
-Sys.setenv("VROOM_CONNECTION_SIZE" = 5000000)
-
 # 🧪 Validate input files
 stopifnot(file.exists("alignment_entropy.csv"))
 stopifnot(file.exists("core-genome.position_cross_reference.txt.gz"))
 stopifnot(file.exists("core-genome.importation_status.txt"))
 stopifnot(file.exists("L4.2.2.2_Binary_T3_ETHfamily_significant_hits.csv"))
 
-# ✅ Now load entropy safely
-entropy <- read_csv("alignment_entropy.csv", col_names = c("gene", "entropy"), show_col_types = FALSE)
+# 1️⃣ Load gene-level entropy (using base R to avoid vroom buffer issues)
+entropy <- read.csv("alignment_entropy.csv", header = FALSE, col.names = c("gene", "entropy"), stringsAsFactors = FALSE)
 
 # 2️⃣ Load gene coordinates
 coords <- read_tsv("core-genome.position_cross_reference.txt.gz", show_col_types = FALSE)
