@@ -8,8 +8,6 @@ missing <- required[!sapply(required, requireNamespace, quietly = TRUE)]
 if (length(missing) > 0) {
   stop("Missing packages: ", paste(missing, collapse = ", "))
 }
-# 🔧 Increase buffer size for large lines
-Sys.setenv("VROOM_CONNECTION_SIZE" = 5000000)
 
 # 📦 Load libraries
 library(ggplot2)
@@ -17,13 +15,22 @@ library(dplyr)
 library(readr)
 library(ggrepel)
 
-# 1️⃣ Load gene-level entropy
-Sys.setenv("VROOM_CONNECTION_SIZE" = 5000000)  # increase buffer size
-entropy <- read_csv("alignment_entropy.csv", col_names = c("gene", "entropy"))
-# 2️⃣ Load gene coordinates
-coords <- read_tsv("core-genome.position_cross_reference.txt.gz")
+# 🔧 Increase buffer size for large lines
+Sys.setenv("VROOM_CONNECTION_SIZE" = 5000000)
 
-# Merge entropy with coordinates
+# 🧪 Validate input files exist
+stopifnot(file.exists("alignment_entropy.csv"))
+stopifnot(file.exists("core-genome.position_cross_reference.txt.gz"))
+stopifnot(file.exists("core-genome.importation_status.txt"))
+stopifnot(file.exists("L4.2.2.2_Binary_T3_ETHfamily_significant_hits.csv"))
+
+# 1️⃣ Load gene-level entropy
+entropy <- read_csv("alignment_entropy.csv", col_names = c("gene", "entropy"), show_col_types = FALSE)
+
+# 2️⃣ Load gene coordinates
+coords <- read_tsv("core-genome.position_cross_reference.txt.gz", show_col_types = FALSE)
+
+# 🔗 Merge entropy with coordinates
 genes <- coords %>%
   left_join(entropy, by = "gene") %>%
   mutate(entropy_color = case_when(
@@ -33,14 +40,14 @@ genes <- coords %>%
   ))
 
 # 3️⃣ Load recombinant tracts
-recomb <- read_tsv("core-genome.importation_status.txt")
+recomb <- read_tsv("core-genome.importation_status.txt", show_col_types = FALSE)
 recomb$color <- "Recombination"
 
 # 4️⃣ Load pyseer hits
-pyseer <- read_tsv("L4.2.2.2_Binary_T3_ETHfamily_significant_hits.csv") %>%
+pyseer <- read_tsv("L4.2.2.2_Binary_T3_ETHfamily_significant_hits.csv", show_col_types = FALSE) %>%
   select(gene, beta, lrt_pvalue)
 
-# Merge pyseer hits with gene coordinates
+# 🔗 Merge pyseer hits with gene coordinates
 pyseer <- coords %>%
   inner_join(pyseer, by = "gene") %>%
   mutate(y_pos = 1.05)
