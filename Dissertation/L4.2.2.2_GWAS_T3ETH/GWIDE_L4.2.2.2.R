@@ -8,6 +8,8 @@ missing <- required[!sapply(required, requireNamespace, quietly = TRUE)]
 if (length(missing) > 0) {
   stop("Missing packages: ", paste(missing, collapse = ", "))
 }
+# 🔧 Increase buffer size for large lines
+Sys.setenv("VROOM_CONNECTION_SIZE" = 5000000)
 
 # 📦 Load libraries
 library(ggplot2)
