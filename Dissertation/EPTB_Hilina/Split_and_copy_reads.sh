@@ -14,8 +14,8 @@
 # module load BBMap
 module load BBMap/39.19-GCC-13.3.0
 # Set base directory
-BASE_DIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run"
-DEST_DIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/split_reads"
+BASE_DIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run"
+DEST_DIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads"
 cd "$BASE_DIR"
 # Create destination directory if it doesn't exist
 mkdir -p "$DEST_DIR"
