@@ -29,7 +29,7 @@ FOFN="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/TBprofiler_results_c
 mkdir -p "$OUTDIR"
 
 # Collate TB-Profiler results
-tb-profiler collate --samples samples_names.txt --dir /scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/TBprofiler_results_conda/*/results --itol
+tb-profiler collate --samples sample_names.txt --dir /scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/TBprofiler_results_conda/*/results --itol
 
 
 # Deactivate the Micromamba environment
