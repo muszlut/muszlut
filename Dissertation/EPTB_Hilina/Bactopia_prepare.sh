@@ -38,8 +38,8 @@ conda activate bactopia
 # -------------------------------
 # ✅ Step 2: Define directories
 # -------------------------------
-OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe"
-
+#OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe" This was previous OUTDIR definition until we do the summary step (Step4)
+OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run"
 # Create output directory
 mkdir -p $OUTDIR
 cd $OUTDIR
