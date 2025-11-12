@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Bactopia_Mtb
+#SBATCH --job-name=Tbprofiler_FOFN
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
@@ -17,7 +17,7 @@ chmod +x generate_fofn.sh
 READ_DIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/split_reads"
 
 # Output file
-FOFN="/scratch/ma95362/EPTB_Hilina/reads/TBprofiler_reads.fofn"
+FOFN="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/TBprofiler_reads.fofn"
 
 # Generate FOFN
 for r1 in "$READ_DIR"/*_R1.fastq.gz; do

@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name=TBprofiler_conda
-#SBATCH --partition=highmem_p           # high memory partition for clustering
+#SBATCH --partition=batch           
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32             # parallelize clustering
-#SBATCH --mem=240G                     # enough memory for 1398 genomes
-#SBATCH --time=7-00:00:00
-#SBATCH --output=/scratch/ma95362/EPTB_Hilina/Newe/logs/log.%j.out   # STDOUT log
-#SBATCH --error=/scratch/ma95362/EPTB_Hilina/Newe/logs/log.%j.err    # STDERR log
-#SBATCH --mail-type=END,FAIL                  # Email notifications
-#SBATCH --mail-user=ma95362@uga.edu          # Email recipient
+#SBATCH --cpus-per-task=32             
+#SBATCH --mem=120G                    
+#SBATCH --time=03-00:00:00
+#SBATCH --output=/scratch/ma95362/EPTB_Hilina/Newe/logs/log.%j.out   
+#SBATCH --error=/scratch/ma95362/EPTB_Hilina/Newe/logs/log.%j.err    
+#SBATCH --mail-type=END,FAIL                 
+#SBATCH --mail-user=ma95362@uga.edu         
 
 set -euo pipefail  # safer bash settings
 
@@ -22,10 +22,9 @@ eval "$(micromamba shell hook --shell bash)"
 micromamba activate tbprofiler
 
 # Set working directories
-FASTQ_DIR="/scratch/ma95362/EPTB_Hilina/reads"
+FASTQ_DIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/split_reads"
 OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe/TBprofiler_results_conda"
-FOFN="/scratch/ma95362/EPTB_Hilina/reads/TBprofiler_reads.fofn"
-
+FOFN="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/TBprofiler_reads.fofn"
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
 cd "$OUTDIR"
