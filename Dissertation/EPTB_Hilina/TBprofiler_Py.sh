@@ -18,6 +18,7 @@ SCRIPT="/home/ma95362/muszlut/Dissertation/EPTB_Hilina/TBprofiler.py"
 # Load necessary modules
 module load Biopython/1.84-foss-2023b
 module load Python/3.11.5-GCCcore-13.2.0
+module load TB-Profiler/6.6.5
 
 # Upgrade pip and install required Python packages in user space
 pip install --user --upgrade pip
