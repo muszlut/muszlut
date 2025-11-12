@@ -24,7 +24,7 @@ micromamba activate tbprofiler
 # Set working directories
 FASTQ_DIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads"
 OUTDIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/TBprofiler_results_conda"
-FOFN="/home/ma95362/muszlut/Dissertation/EPTB_Hilina/TBprofiler_reads.fofn"
+FOFN="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/TBprofiler_reads.fofn"
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
 cd "$OUTDIR"
