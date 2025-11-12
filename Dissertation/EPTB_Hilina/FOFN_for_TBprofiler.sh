@@ -14,10 +14,10 @@
 chmod +x generate_fofn.sh
 
 # Set the directory with your reads
-READ_DIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/split_reads"
+READ_DIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads"
 
 # Output file
-FOFN="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/TBprofiler_reads.fofn"
+FOFN="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/TBprofiler_reads.fofn"
 
 # Generate FOFN
 for r1 in "$READ_DIR"/*_R1.fastq.gz; do
