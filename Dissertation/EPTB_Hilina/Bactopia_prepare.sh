@@ -47,10 +47,13 @@ cd $OUTDIR
 # ✅ Step 3: Run Bactopia
 # -------------------------------
 # Option 1 — run accessions list
-bactopia \
-    --accessions bactopia-accessions.txt \
-    --outdir $OUTDIR/Bactopia_Run \
-    --species "Mycobacterium tuberculosis" \
-    --max_cpus 16
-
-
+#bactopia \
+#    --accessions bactopia-accessions.txt \
+#    --outdir $OUTDIR/Bactopia_Run \
+#    --species "Mycobacterium tuberculosis" \
+#    --max_cpus 16
+# -------------------------------
+# ✅ Step 4: Generate summary
+# -------------------------------
+bactopia summary \
+    --bactopia-path "$OUTDIR"
