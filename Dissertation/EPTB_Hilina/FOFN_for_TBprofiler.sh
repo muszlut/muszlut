@@ -14,7 +14,7 @@
 chmod +x generate_fofn.sh
 
 # Set the directory with your reads
-READ_DIR="/scratch/ma95362/EPTB_Hilina/reads"
+READ_DIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run/split_reads"
 
 # Output file
 FOFN="/scratch/ma95362/EPTB_Hilina/reads/TBprofiler_reads.fofn"
