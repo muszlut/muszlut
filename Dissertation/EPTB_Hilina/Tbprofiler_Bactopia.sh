@@ -11,7 +11,7 @@
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=ma95362@uga.edu  # Where to send mail	
 #Set output directory variableklkjl
-OUTDIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run"
+OUTDIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/"
 
 
 #Tell the program to make  the outdir folder
@@ -26,4 +26,5 @@ cd $OUTDIR
 bactopia \
     -profile singularity \
     --wf tbprofiler \
-    --bactopia $OUTDIR
+    --bactopia $OUTDIR/split_reads
+    
