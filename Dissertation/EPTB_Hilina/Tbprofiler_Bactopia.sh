@@ -11,16 +11,17 @@
 #SBATCH --mail-type=END,FAIL          
 #SBATCH --mail-user=ma95362@uga.edu  
 #Set output directory variable
-OUTDIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/"
+OUTDIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/"
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
     then 
         mkdir -p $OUTDIR
 fi
 module load Bactopia/3.2.0-conda
-module load EDirect/20.5.20231006-GCCcore-12.3.0
+#module load EDirect/20.5.20231006-GCCcore-12.3.0
+#module load BBMap/39.19-GCC-13.3.0
 cd $OUTDIR
 bactopia \
-    -profile singularity \
     --wf tbprofiler \
-    --bactopia $OUTDIR
+    --bactopia $OUTDIR \
+    --max_cpus 8
