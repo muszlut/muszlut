@@ -26,4 +26,4 @@ cd $OUTDIR
 bactopia \
     -profile singularity \
     --wf tbprofiler \
-    --bactopia $OUTDIR/ETH_full_analysis
+    --bactopia $OUTDIR
