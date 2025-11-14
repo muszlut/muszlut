@@ -23,4 +23,4 @@ cd $OUTDIR
 bactopia \
     -profile singularity \
     --wf tbprofiler \
-    --bactopia $OUTDIR/split_reads
+    --bactopia $OUTDIR
