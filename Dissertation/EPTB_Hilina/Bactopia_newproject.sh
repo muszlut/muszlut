@@ -10,57 +10,49 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-#OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe" This was previous OUTDIR definition until we do the summary step (Step4)
+# -------------------------------
+# SETUP OUTPUT DIRECTORY
+# -------------------------------
 OUTDIR="/scratch/ma95362/EPTB_Hilina/new_project"
-# Create output directory
 mkdir -p $OUTDIR
 cd $OUTDIR
-# -------------------------------
-# ✅ Step 0: (Optional) Download accessions list
-# -------------------------------
-#To download the accessions list first, uncomment the lines below
+
+echo "---- Step 1: Loading Modules ----"
 module load Bactopia/3.2.0-conda
-#module load EDirect/20.5.20231006-GCCcore-12.3.0
-bactopia search \
-    --query PRJNA1174701 \
-    --include-runs \
-    --force \
+module load EDirect      # Needed to fetch SRR accessions
+
+# -------------------------------
+# STEP 1: FETCH SRR ACCESSIONS FROM BIOPROJECT
+# -------------------------------
+echo "---- Step 2: Fetching SRR accessions from BioProject PRJNA1174701 ----"
+
+esearch -db sra -query PRJNA1174701 \
+    | efetch -format runinfo \
+    | cut -d ',' -f 1 \
+    | grep SRR \
+    > srr_list.txt
+
+NUM_SRR=$(wc -l < srr_list.txt)
+
+echo "Found $NUM_SRR SRR accessions."
+echo "Saved to: ${OUTDIR}/srr_list.txt"
+
+if [ "$NUM_SRR" -eq 0 ]; then
+    echo "ERROR: No SRR entries found! Check the BioProject or network connection."
+    exit 1
+fi
+
+# -------------------------------
+# STEP 2: RUN BACTOPIA USING SRR IDs
+# -------------------------------
+echo "---- Step 3: Running Bactopia on SRR IDs ----"
+
+bactopia \
+    --accessions srr_list.txt \
+    --outdir $OUTDIR \
+    --cpus 16 \
     --genome-size 4400000 \
-    --min-coverage 20
-# -------------------------------
-# ✅ Step 1: Activate Conda first
-# -------------------------------
-# Load miniconda module if needed on Sapelo2
-#module load Miniconda3/22.11.1-1
+    --min-coverage 20 \
+    --force
 
-# Initialize Conda for non-interactive shell
-#source ~/.bashrc
-
-# Activate your Bactopia Conda environment
-#conda activate bactopia
-
-# (Alternative — if mamba was installed)
-# mamba activate bactopia
-
-# -------------------------------
-# ✅ Step 2: Define directories
-# -------------------------------
-#OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe" This was previous OUTDIR definition until we do the summary step (Step4)
-#OUTDIR="/scratch/ma95362/EPTB_Hilina/Newe/Bactopia_Run"
-# Create output directory
-#mkdir -p $OUTDIR
-#cd $OUTDIR
-# -------------------------------
-# ✅ Step 3: Run Bactopia
-# -------------------------------
-# Option 1 — run accessions list
-#bactopia \
-#    --accessions bactopia-accessions.txt \
-#    --outdir $OUTDIR/Bactopia_Run \
-#    --species "Mycobacterium tuberculosis" \
-#    --max_cpus 16
-# -------------------------------
-# ✅ Step 4: Generate summary
-# -------------------------------
-#bactopia summary \
-#    --bactopia-path "$OUTDIR"
+echo "---- Bactopia finished successfully ----"
