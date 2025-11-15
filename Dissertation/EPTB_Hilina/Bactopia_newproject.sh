@@ -19,7 +19,7 @@ cd $OUTDIR
 
 echo "---- Step 1: Loading Modules ----"
 module load Bactopia/3.2.0-conda
-module load EDirect      # Needed to fetch SRR accessions
+module load EDirect/20.5.20231006-GCCcore-12.3.0
 
 # -------------------------------
 # STEP 1: FETCH SRR ACCESSIONS FROM BIOPROJECT
