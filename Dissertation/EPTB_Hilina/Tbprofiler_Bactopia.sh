@@ -1,17 +1,17 @@
 #!/bin/bash
-#SBATCH --job-name=bactopia_singularity       
+#SBATCH --job-name=tbprofiler_by_module       
 #SBATCH --partition=batch            
 #SBATCH --ntasks=1                   
-#SBATCH --cpus-per-task=8              
+#SBATCH --cpus-per-task=16              
 #SBATCH --mem=40gb                    
 #SBATCH --time=06:00:00              
-#SBATCH --output=/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/log.%j.out          
-#SBATCH --error=/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/log.%j.err             
+#SBATCH --output=/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/log.%j.out          
+#SBATCH --error=/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/log.%j.err             
 
 #SBATCH --mail-type=END,FAIL          
 #SBATCH --mail-user=ma95362@uga.edu  
 #Set output directory variable
-OUTDIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/"
+OUTDIR="/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/"
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
     then 
@@ -24,4 +24,4 @@ cd $OUTDIR
 bactopia \
     --wf tbprofiler \
     --bactopia $OUTDIR \
-    --max_cpus 8
+    --max_cpus 16
