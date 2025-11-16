@@ -28,3 +28,13 @@ bactopia prepare \
     --species "Mycobacterium tuberculosis" \
     --genome-size 4410000 \
     > "$OUTDIR/Hilina_samples.txt"
+# Run Bactopia pipeline
+bactopia \
+    --samples "$OUTDIR/Hilina_samples.txt" \
+    --coverage 100 \
+    --outdir "$OUTDIR" \
+    --max_cpus 8
+
+# Generate summary
+bactopia summary \
+    --bactopia-path "$OUTDIR"
