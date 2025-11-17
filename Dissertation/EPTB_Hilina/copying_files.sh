@@ -2,7 +2,7 @@
 #SBATCH --job-name=copy_SRR3122_dirs
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=120gb
 #SBATCH --time=03-00:00:00
 #SBATCH --output=/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/log.%j.out
