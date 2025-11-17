@@ -11,8 +11,8 @@
 #SBATCH --mail-user=ma95362@uga.edu                      # Your email
 
 # Define paths
-SRC_DIR=/scratch/ma95362/EPTB_Hilina
-DEST_DIR=/scratch/ma95362/EPTB_Hilina/reads
+SRC_DIR=/scratch/ma95362/eth_national_analysis/all_fastq_reads
+DEST_DIR=/scratch/ma95362/ggcaller_reads
 
 # Create destination if not exist
 mkdir -p $DEST_DIR
