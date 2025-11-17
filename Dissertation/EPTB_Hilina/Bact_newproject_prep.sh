@@ -6,7 +6,7 @@
 #SBATCH --mem=120gb
 #SBATCH --time=03-00:00:00
 #SBATCH --output=/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/log.%j.out
-#SBATCH --error=q/log.%j.err
+#SBATCH --error=/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/log.%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
