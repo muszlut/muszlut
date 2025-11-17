@@ -37,6 +37,12 @@ cd $OUTDIR
 # Generate summary
 #bactopia summary \
 #    --bactopia-path "$OUTDIR"
+#SRR31229027
+#SRR31228991
+#SRR31229028
+#SRR31229109
+#SRR31229077
+#SRR31229064
 bactopia \
     --wf tbprofiler \
     --bactopia $OUTDIR \
