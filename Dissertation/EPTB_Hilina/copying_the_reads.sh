@@ -16,6 +16,6 @@ DEST_DIR=/scratch/ma95362/ggcaller_reads
 
 # Create destination if not exist
 mkdir -p $DEST_DIR
-
+cd $SRC_DIR
 # Copy all fastq.gz files
 cp ${SRC_DIR}/*.fastq.gz ${DEST_DIR}/
