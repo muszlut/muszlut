@@ -25,8 +25,8 @@ eval "$(micromamba shell hook --shell bash)"
 micromamba activate tbprofiler
 
 # Define directories
-RESULTS_DIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/TBprofiler_results_conda"
-OUTPUT_CSV="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/TBprofiler_results_conda/summary.csv"
+RESULTS_DIR="/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/TBprofiler_results_conda"
+OUTPUT_CSV="/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/TBprofiler_results_conda/summary.csv"
 
 # Run the Python merge script
 python /home/ma95362/muszlut/all_Bactopia_Analysis/python_tbprofiler_custom_script.py \
