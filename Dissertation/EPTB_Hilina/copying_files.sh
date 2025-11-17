@@ -13,8 +13,8 @@
 
 # Define source and destination directories
 SRC_DIR="/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare"
-DEST_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples"
-
+#DEST_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples"
+DEST_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia"
 
 # List of directories to exclude
 EXCLUDE=("SRR31229027" "SRR31228991" "SRR31229028" "SRR31229109" "SRR31229077" "SRR31229064")
