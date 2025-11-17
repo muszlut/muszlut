@@ -22,9 +22,9 @@ eval "$(micromamba shell hook --shell bash)"
 micromamba activate tbprofiler
 
 # Set working directories
-FASTQ_DIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads"
-OUTDIR="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/split_reads/TBprofiler_results_conda"
-FOFN="/scratch/ma95362/EPTB_Hilina/Bactopia_Run/TBprofiler_reads.fofn"
+FASTQ_DIR="/scratch/ma95362/EPTB_Hilina/new_project/curl_download_all"
+OUTDIR="/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/TBprofiler_results_conda"
+FOFN="/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopia_prepare/tb_fofn.fofn"
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
 cd "$OUTDIR"
