@@ -10,24 +10,38 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
+# -------------------------------
+# Activate environment and TMPDIR
+# -------------------------------
 echo "Activating ggcaller environment..."
-module purge
-source ~/.bashrc
+# Only purge if needed
+# module purge
+export TMPDIR=/scratch/$USER/tmp
+mkdir -p "$TMPDIR"
+
+# Activate Conda environment
+source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ggcaller-env
 
+# -------------------------------
 # Paths
-#READDIR="/scratch/ma95362/ggcaller_reads"
+# -------------------------------
 OUTDIR="/scratch/ma95362/test_ggcaller_out"
 READLIST="${OUTDIR}/test_list.txt"
-
 mkdir -p "$OUTDIR"
 
-echo "Generating reads list..."
+# -------------------------------
+# Check reads list
+# -------------------------------
 echo "Reads list generated:"
 cat "$READLIST"
+
+# -------------------------------
+# Run ggCaller
+# -------------------------------
 echo "Running ggCaller..."
 ggcaller \
-    --refs "$READLIST" \
+    --reads "$READLIST" \
     --out "$OUTDIR" \
     --threads 16 \
     --clean-mode strict \
