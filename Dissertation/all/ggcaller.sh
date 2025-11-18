@@ -10,35 +10,30 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-# -------------------------------
-# Activate environment and TMPDIR
-# -------------------------------
-echo "Activating ggcaller environment..."
-# Only purge if needed
-# module purge
+echo "Loading Conda module and activating ggcaller environment..."
+module purge
+module load anaconda3   # Load cluster-provided Conda
+conda activate ggcaller-env
+
+# Set TMPDIR to avoid /tmp space issues
 export TMPDIR=/scratch/$USER/tmp
 mkdir -p "$TMPDIR"
 
-# Activate Conda environment
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate ggcaller-env
-
-# -------------------------------
 # Paths
-# -------------------------------
 OUTDIR="/scratch/ma95362/test_ggcaller_out"
 READLIST="${OUTDIR}/test_list.txt"
+
 mkdir -p "$OUTDIR"
 
-# -------------------------------
-# Check reads list
-# -------------------------------
+# Optional: regenerate reads list automatically
+# Find all .fna.gz in /main/assembler directories of your samples
+# and save to READLIST
+find /scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples \
+    -type f -path "*/main/assembler/*.fna.gz" > "$READLIST"
+
 echo "Reads list generated:"
 cat "$READLIST"
 
-# -------------------------------
-# Run ggCaller
-# -------------------------------
 echo "Running ggCaller..."
 ggcaller \
     --reads "$READLIST" \
