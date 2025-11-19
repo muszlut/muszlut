@@ -12,7 +12,7 @@
 
 # Set output directory
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out"
-TIDY="/home/ma95362/muszlut/Dissertation/all/L4_GWAS/pyseer_analysisSTR.R"
+Rscript="/home/ma95362/muszlut/Dissertation/all/L4_GWAS/pyseer_analysisSTR.R"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
@@ -22,10 +22,10 @@ fi
 cd "$OUTDIR"
 
 # Activate Conda environment
-source /apps/conda/etc/profile.d/conda.sh
-conda activate r-tidyverse
-export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
+#source /apps/conda/etc/profile.d/conda.sh
+#conda activate r-tidyverse
+#export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
 # Load R module
-#module load R/4.4.1-gfbf-2023b
+module load R/4.4.1-gfbf-2023b
 # Run the R script
-Rscript "$TIDY"
+Rscript "$Rscript"
