@@ -33,7 +33,7 @@ cd $PANAROO_DIR || exit 1
 # 3. Generate phylogenetic distance matrix
 # ------------------------------
 #echo "Running phylogenetic distance matrix generation..."
-phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
+#phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
 #I just did the above commands and generate phylogeny_K.tsv file manually then continue below
 # ------------------------------
 # 4. Run GWAS for each antibiotic
@@ -41,18 +41,18 @@ phylogeny_distance.py --lmm $TREEFILE > ${PYSEER_OUT}/phylogeny_K.tsv
 echo "Running Pyseer GWAS for DR..."
 
 # Define the phenotype column (must match column name in metadata_local.tab)
-#PHENOCOL="Spoligo_T3_ETHfamily"
+PHENOCOL="Spoligo_T3_ETHfamily"
 
 # Run Pyseer LMM
-#pyseer \
-#    --lmm \
-#    --phenotypes "${METADATA}" \
-#    --phenotype-column "${PHENOCOL}" \
-#    --pres "${PRES}" \
-#    --similarity "${PYSEER_OUT}/phylogeny_K.tsv" \
-#    --cpu 16 \
-#    --output-patterns "${PYSEER_OUT}/gene_patterns_New_L4_T3_ETHfamily.txt" \
-#    > "${PYSEER_OUT}/New_L4_T3_ETHfamily_gwas.txt"
+pyseer \
+    --lmm \
+    --phenotypes "${METADATA}" \
+    --phenotype-column "${PHENOCOL}" \
+    --pres "${PRES}" \
+    --similarity "${PYSEER_OUT}/phylogeny_K.tsv" \
+    --cpu 16 \
+    --output-patterns "${PYSEER_OUT}/gene_patterns_New_L4_T3_ETHfamily.txt" \
+    > "${PYSEER_OUT}/New_L4_T3_ETHfamily_gwas.txt"
 
 echo "✅ Pyseer GWAS completed for New_L4_T3_ETHfamily."
 
