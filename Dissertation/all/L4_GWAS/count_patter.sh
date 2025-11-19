@@ -20,8 +20,9 @@ source activate pyseer-env
 # 2. Define paths
 # ------------------------------
 PYSEER_SCRIPT=/home/ma95362/pyseer/scripts/count_patterns.py
-PATTERN_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out/gene_patterns_New_L4_T3_ETHfamily.txt 
-OUTPUT_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out/count_New_L4_T3_ETHfamily_patterns.txt
+#PATTERN_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out/gene_patterns_New_L4_T3_ETHfamily.txt 
+PATTERN_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out/gene_patterns_STR_New_L4_T3_ETHfamily.txt
+OUTPUT_FILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out/count_STR_New_L4_T3_ETHfamily_patterns.txt
 
 # ------------------------------
 # 3. Run count_patterns.py

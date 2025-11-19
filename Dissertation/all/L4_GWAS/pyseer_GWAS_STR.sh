@@ -19,7 +19,7 @@ source activate pyseer-env
 # ------------------------------
 # 2. Define directories and files
 # ------------------------------
-PANAROO_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output"
+PANAROO_DIR=""
 TREEFILE="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/iqtree/core-genome.treefile"
 PYSEER_OUT="${PANAROO_DIR}/pyseer_out"
 METADATA="${PANAROO_DIR}/New_L4_metadata.txt"
