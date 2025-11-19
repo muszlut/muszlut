@@ -5,14 +5,14 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
 #SBATCH --time=02:00:00
-#SBATCH --output=/scratch/ma95362/scratch/R_eptb_ptb_%j.out
-#SBATCH --error=/scratch/ma95362/scratch/R_eptb_ptb_%j.err
+#SBATCH --output=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/panaroo_scratch_log/log.%j.out
+#SBATCH --error=/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/panaroo_scratch_log/log.%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
 # Set output directory
 OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out"
-TIDY="/home/ma95362/muszlut/Dissertation/all/L4_GWAS/ETH/pyseer_analysis.R"
+TIDY="/home/ma95362/muszlut/Dissertation/all/L4_GWAS/pyseer_analysis.R"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
