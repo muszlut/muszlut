@@ -10,7 +10,7 @@ set.seed(1989)
 # ---------------------------
 gwas_dir <- "/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia/bactopia-runs/pangenome-20251117-164856/panaroo/filtered_output/pyseer_out"
 gwas_file <- file.path(gwas_dir, "STR_New_L4_T3_ETHfamily_gwas.txt")
-counts_file <- file.path(gwas_dir, "count_New_L4_T3_ETHfamily_patterns.txt")
+counts_file <- file.path(gwas_dir, "count_STR_New_L4_T3_ETHfamily_patterns.txt")
 
 cat("Reading GWAS results from:", gwas_file, "\n")
 gwas_data <- fread(gwas_file, data.table = FALSE)
