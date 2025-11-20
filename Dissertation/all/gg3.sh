@@ -45,6 +45,6 @@ ggcaller \
   --color bifrost_graph_reads.gfa.colors \
   --kmer 31 \
   --threads 16 \
-  --out ggcaller_output
+  --out ggCaller_output
 
 echo "END: $(date)"
