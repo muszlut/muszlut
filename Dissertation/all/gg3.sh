@@ -41,8 +41,9 @@ cd /scratch/ma95362/ggcaller_reads
 # 2. Run ggCaller with color file
 # -------------------------
 ggcaller \
-  --graph bifrost_graph_reads.gfa \
-  --color bifrost_graph_reads.bfg_colors \
+  --graph test_reads.gfa \
+  --colours test_reads.bfg_colors \
+  --reads-list test_reads.txt \
   --kmer 31 \
   --threads 16 \
   --out ggCaller_output
