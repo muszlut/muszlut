@@ -19,16 +19,25 @@ module load miniconda3          # Or appropriate module on your cluster
 # Activate conda environment
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ggc_env
+bifrost build \
+    -r test_reads.txt \
+    -k 31 \
+    -o bifrost_graph_reads \
+    -t 8 \
+    --colors
+
+
+
 # Path to graph and output
-GRAPH="bifrost_graph_reads.gfa"
-OUTDIR="ggcaller_output"
+#GRAPH="bifrost_graph_reads.gfa"
+#OUTDIR="ggcaller_output"
 
 # Run ggCaller
-ggcaller \
-    --graph $GRAPH \
-    --out $OUTDIR \
-    --threads 8 \
-    --kmer 31
+#ggcaller \
+#    --graph $GRAPH \
+#    --out $OUTDIR \
+#    --threads 8 \
+#    --kmer 31
 
 # Optional: print completion message
 echo "ggCaller run finished at $(date)"
