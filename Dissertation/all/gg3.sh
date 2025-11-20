@@ -3,7 +3,7 @@
 #SBATCH --partition=batch
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=60G
 #SBATCH --time=48:00:00
 #SBATCH --output=/scratch/ma95362/test_ggcaller_out/log.%j.out
@@ -34,7 +34,7 @@ cd /scratch/ma95362/ggcaller_reads
 ggcaller \
   --graph bifrost_graph_reads.gfa \
   --kmer 31 \
-  --threads 8 \
+  --threads 16 \
   --out ggcaller_output
 
 echo "END: $(date)"
