@@ -2,7 +2,7 @@
 #SBATCH --job-name=ggcaller_new
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=32
 #SBATCH --mem=40G
 #SBATCH --time=10:00:00
 #SBATCH --output=/scratch/ma95362/test_ggcaller_out/log.%j.out
