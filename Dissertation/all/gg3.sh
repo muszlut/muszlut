@@ -27,12 +27,22 @@ conda activate ggc_env
 # Move to submission folder
 # -------------------------
 cd /scratch/ma95362/ggcaller_reads
+# -------------------------
+# 1. Build colored Bifrost graph
+# -------------------------
+bifrost build \
+  -r test_reads.txt \
+  -k 31 \
+  -o bifrost_graph_reads \
+  --colors \
+  --threads 16
 
 # -------------------------
-# Run ggCaller using Bifrost graph
+# 2. Run ggCaller with color file
 # -------------------------
 ggcaller \
   --graph bifrost_graph_reads.gfa \
+  --color bifrost_graph_reads.gfa.colors \
   --kmer 31 \
   --threads 16 \
   --out ggcaller_output
