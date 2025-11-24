@@ -36,7 +36,7 @@ bactopia \
     --max_cpus 8
 # Generate summary
 bactopia summary \
-#    --bactopia-path "$OUTDIR"
+    --bactopia-path "$OUTDIR"
 #bactopia \
 #    --wf tbprofiler \
 #    --bactopia $OUTDIR \
