@@ -23,19 +23,19 @@ mkdir -p "$OUTDIR"
 # Move to working directory
 cd $OUTDIR
 # Prepare samples for Bactopia
-bactopia prepare \
-    --path "$READS_DIR" \
-    --species "Mycobacterium tuberculosis" \
-    --genome-size 4410000 \
-    > "$OUTDIR/samples.txt"
+#bactopia prepare \
+#    --path "$READS_DIR" \
+#    --species "Mycobacterium tuberculosis" \
+#    --genome-size 4410000 \
+#    > "$OUTDIR/samples.txt"
 # Run Bactopia pipeline
-#bactopia \
-#    --samples "$OUTDIR/samples.txt" \
-#    --coverage 100 \
-#    --outdir "$OUTDIR" \
-#    --max_cpus 8
+bactopia \
+    --samples "$OUTDIR/samples.txt" \
+    --coverage 100 \
+    --outdir "$OUTDIR" \
+    --max_cpus 8
 # Generate summary
-#bactopia summary \
+bactopia summary \
 #    --bactopia-path "$OUTDIR"
 #bactopia \
 #    --wf tbprofiler \
