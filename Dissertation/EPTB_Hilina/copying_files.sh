@@ -16,12 +16,11 @@ SRC_DIR="/scratch/ma95362/EPTB_Hilina/new_project_logs/curl_download_all/Bactopi
 #DEST_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples"
 DEST_DIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/pangenome_tools_results/bactopia"
 
-# List of directories to exclude
-EXCLUDE=("SRR31229027" "SRR31228991" "SRR31229028" "SRR31229109" "SRR31229077" "SRR31229064")
-cd $SRC_DIR
-echo "Copying SRR3122* directories except excluded ones..."
 
-for dir in "$SRC_DIR"/SRR3122*/; do
+cd $SRC_DIR
+echo "Copying SRR2882* directories except excluded ones..."
+
+for dir in "$SRC_DIR"/SRR2882*/; do
     [ -d "$dir" ] || continue
     basename=$(basename "$dir")
     
