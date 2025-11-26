@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=All_Pangenome
+#SBATCH --job-name=Tb_profiler
 #SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
@@ -14,7 +14,7 @@
 # Step 0: Set Output Directory
 # -------------------------------
 # Variables
-READS_DIR="/scratch/ma95362/all_in_all_reads"
+#READS_DIR="/scratch/ma95362/all_in_all_reads"
 OUTDIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare"
 # Load Bactopia module
 module load Bactopia/3.2.0-conda
@@ -29,15 +29,16 @@ cd $OUTDIR
 #    --genome-size 4410000 \
 #    > "$OUTDIR/samples.txt"
 # Run Bactopia pipeline
-bactopia \
-    --samples "$OUTDIR/samples.txt" \
-    --coverage 100 \
-    --outdir "$OUTDIR" \
-    --max_cpus 8
-# Generate summary
-bactopia summary \
-    --bactopia-path "$OUTDIR"
 #bactopia \
-#    --wf tbprofiler \
-#    --bactopia $OUTDIR \
-#    --max_cpus 32
+#    --samples "$OUTDIR/samples.txt" \
+#    --coverage 100 \
+#    --outdir "$OUTDIR" \
+#    --max_cpus 8
+# Generate summary
+#bactopia summary \
+#    --bactopia-path "$OUTDIR"
+bactopia \
+    --wf tbprofiler \
+    --bactopia $OUTDIR \
+    --max_cpus 32 \
+    --exclude /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-exclude.tsv
