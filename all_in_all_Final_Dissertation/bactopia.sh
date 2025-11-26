@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=240G
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/log.%j.out
-#SBATCH --error=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/log.%j.err
+#SBATCH --output=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/tbprofiler/log.%j.out
+#SBATCH --error=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/tbprofiler/log.%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
@@ -40,5 +40,4 @@ cd $OUTDIR
 bactopia \
     --wf tbprofiler \
     --exclude "$OUTDIR"/bactopia-exclude.tsv \
-    --bactopia $OUTDIR \
-    --max_cpus 32 
+    --bactopia $OUTDIR 
