@@ -39,6 +39,6 @@ cd $OUTDIR
 #    --bactopia-path "$OUTDIR"
 bactopia \
     --wf tbprofiler \
+    --exclude "$OUTDIR"/bactopia-exclude.tsv \
     --bactopia $OUTDIR \
-    --max_cpus 32 \
-    --exclude /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-exclude.tsv
+    --max_cpus 32 
