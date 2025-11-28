@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=Tb_profiler
+#SBATCH --job-name=All_Pangenome
 #SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=240G
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/tbprofiler/log.%j.out
-#SBATCH --error=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/tbprofiler/log.%j.err
+#SBATCH --output=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/pangenome/log.%j.out
+#SBATCH --error=/scratch/ma95362/all_in_all_reads/bactopia_prepare/logs/pangenome/log.%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
@@ -18,6 +18,7 @@
 OUTDIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare"
 # Load Bactopia module
 module load Bactopia/3.2.0-conda
+module load Java/17.0.6
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
 # Move to working directory
@@ -38,6 +39,6 @@ cd $OUTDIR
 #bactopia summary \
 #    --bactopia-path "$OUTDIR"
 bactopia \
-    --wf tbprofiler \
-    --exclude "$OUTDIR"/bactopia-exclude.tsv \
-    --bactopia $OUTDIR 
+    --wf pangenome \
+    --bactopia $OUTDIR \
+    --exclude /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-exclude.tsv
