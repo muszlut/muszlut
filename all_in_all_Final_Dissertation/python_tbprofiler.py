@@ -10,7 +10,7 @@ from tqdm import tqdm
 import pathogenprofiler as pp
 import tbprofiler as tbprofiler
 
-# Full standardized drug list you want as columns
+# Standard columns for drugs
 drug_list = [
     "rifampicin","isoniazid","ethambutol","pyrazinamide",
     "moxifloxacin","levofloxacin","bedaquiline","delamanid",
@@ -20,49 +20,53 @@ drug_list = [
 ]
 
 def extract_mutations(variant_list):
-    """Return dict: drug -> mutation string"""
+    """Return drug -> mutation string"""
     drug_to_mut = {}
     for v in variant_list:
-        mut = f"{v['gene']} {v['change']} ({v['freq']})" if "change" in v else v.get("note","")
+        mut = f"{v.get('gene','NA')} {v.get('change','NA')} ({v.get('freq','NA')})"
         for d in v.get("drugs", []):
             drug_to_mut[d["drug"]] = mut
     return drug_to_mut
 
 def main(args):
-    # Read sample list or search folder
+
+    # ---- Get files ----
     if args.samples:
         samples = [x.strip() for x in open(args.samples)]
         files = [os.path.join(args.dir, s, "results", f"{s}.results.json") for s in samples]
     else:
         files = glob.glob(os.path.join(args.dir, "**", f"*{args.suffix}"), recursive=True)
-        samples = [os.path.splitext(os.path.basename(f))[0].replace(args.suffix, "") for f in files]
+        samples = [os.path.basename(f).replace(args.suffix, "") for f in files]
 
-    # Drug sets for resistance-class rules
+    # Drug classification sets
     FLQ_set = {"moxifloxacin","levofloxacin","ciprofloxacin","ofloxacin"}
     GPA_set = {"bedaquiline","linezolid"}
 
-    # Output CSV
+    # ---- Output CSV ----
     OUT = open(args.out, "w", newline='')
     fieldnames = [
         "sample","main_lineage","sub_lineage","spoligotype","drtype",
         "target_median_depth","pct_reads_mapped","num_reads_mapped",
         "num_dr_variants","num_other_variants"
     ] + drug_list
-
     writer = csv.DictWriter(OUT, fieldnames=fieldnames)
     writer.writeheader()
 
-    # Loop samples
-    for s, f in tqdm(zip(samples, files), total=len(samples), desc="Processing"):
-        data = json.load(open(pp.filecheck(f)))
+    # ---- Loop through ALL JSON FILES ----
+    for f in tqdm(files, desc="Processing", total=len(files)):
 
-        # Extract resistance mutations
+        try:
+            data = json.load(open(pp.filecheck(f)))
+        except Exception as e:
+            print(f"[WARNING] Could not read {f}: {e}")
+            continue
+
+        sample = os.path.basename(f).replace(args.suffix, "")
+
         dr_mutations = extract_mutations(data.get("dr_variants", []))
-        other_mutations = data.get("other_variants", [])
-
         resistant_drugs = set(dr_mutations.keys())
 
-        # DR-type classification
+        # ---- DR classification ----
         rif = "rifampicin" in resistant_drugs
         inh = "isoniazid" in resistant_drugs
         flq = len(FLQ_set.intersection(resistant_drugs)) > 0
@@ -81,9 +85,9 @@ def main(args):
         else:
             drtype = "Other"
 
-        # Build output row
+        # ---- Prepare row ----
         row = {
-            "sample": s,
+            "sample": sample,
             "main_lineage": data.get("main_lineage", "NA"),
             "sub_lineage": data.get("sub_lineage", "NA"),
             "spoligotype": data.get("spoligotype", "NA"),
@@ -92,16 +96,16 @@ def main(args):
             "pct_reads_mapped": data.get("pct_reads_mapped", "NA"),
             "num_reads_mapped": data.get("num_reads_mapped", "NA"),
             "num_dr_variants": len(data.get("dr_variants", [])),
-            "num_other_variants": len(data.get("other_variants", []))
+            "num_other_variants": len(data.get("other_variants", [])),
         }
 
-        # Add per-drug mutation (or "-")
         for drug in drug_list:
             row[drug] = dr_mutations.get(drug, "-")
 
         writer.writerow(row)
 
     OUT.close()
+    print(f"\n[DONE] Wrote output file: {args.out}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extended TBProfiler summary")
