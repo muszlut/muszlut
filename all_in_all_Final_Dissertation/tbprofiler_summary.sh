@@ -26,10 +26,11 @@ micromamba activate tbprofiler
 
 # Define directories
 RESULTS_DIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results"
-OUTPUT_CSV="/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results/summary.csv"
+OUTPUT_CSV="/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results/summarylatest.csv"
 
 # Run the Python merge script
-python /home/ma95362/muszlut/all_Bactopia_Analysis/python_tbprofiler_custom_script.py \
+#python /home/ma95362/muszlut/all_Bactopia_Analysis/python_tbprofiler_custom_script.py \
+#python /home/ma95362/muszlut/all_in_all_Final_Dissertation/python_tbprofiler.py \
     --dir "$RESULTS_DIR" \
     --out "$OUTPUT_CSV"
 
