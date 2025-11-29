@@ -46,7 +46,7 @@ def main(args):
     OUT = open(args.out, "w", newline='')
     fieldnames = [
         "sample","main_lineage","sub_lineage","spoligotype","drtype",
-        "target_median_depth","pct_reads_mapped","num_reads_mapped",
+        "target_median_depth","median_depth","pct_reads_mapped","num_reads_mapped",
         "num_dr_variants","num_other_variants"
     ] + drug_list
     writer = csv.DictWriter(OUT, fieldnames=fieldnames)
@@ -93,6 +93,7 @@ def main(args):
             "spoligotype": data.get("spoligotype", "NA"),
             "drtype": drtype,
             "target_median_depth": data.get("median_depth", "NA"),
+            "median_depth": data.get("median_depth", "NA"),  # Added explicitly
             "pct_reads_mapped": data.get("pct_reads_mapped", "NA"),
             "num_reads_mapped": data.get("num_reads_mapped", "NA"),
             "num_dr_variants": len(data.get("dr_variants", [])),
