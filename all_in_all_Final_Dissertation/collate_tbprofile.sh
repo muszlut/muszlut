@@ -13,7 +13,9 @@
 OUTDIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results"
 FOFN='/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results'
 
+#Load TB-Profiler module     
 
+module load TB-Profiler/6.6.5
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
     then 
@@ -21,11 +23,11 @@ if [ ! -d $OUTDIR ]
 fi
 
 #Load modules
-module load Miniconda3/23.5.2-0
+#module load Miniconda3/23.5.2-0
 
 #activate conda envirnoment (should be version 6.3.0)
 
-source activate tb-profiler-env
+#source activate tb-profiler-env
 
 #move to working directory:
 cd $OUTDIR
