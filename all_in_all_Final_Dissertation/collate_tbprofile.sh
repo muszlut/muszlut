@@ -33,4 +33,4 @@ fi
 cd $OUTDIR
 
 #samples just needs to be a list of sample names. No path is required.
-tb-profiler collate --samples $FOFN/samples_only.txt --dir $OUTDIR --itol
+tb-profiler collate --dir $OUTDIR --samples samples_only.txt  --itol
