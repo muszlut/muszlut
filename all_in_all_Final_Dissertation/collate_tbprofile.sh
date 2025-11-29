@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=8               
 #SBATCH --mem=40gb                     
 #SBATCH --time=06:00:00         
-#SBATCH --output=/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results/log/collate/log.%j.out          
-#SBATCH --error=/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results/log/collate/log.%j.err             
+#SBATCH --output=/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results/logs/collate/log.%j.out          
+#SBATCH --error=/scratch/ma95362/all_in_all_reads/bactopia_prepare/my_tbprofiler_results/logs/collate/log.%j.err             
 #SBATCH --mail-type=END,FAIL         
 #SBATCH --mail-user=ma95362@uga.edu  
 #Set output directory variable
