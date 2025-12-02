@@ -40,7 +40,7 @@ cd "${PANAROO_DIR}" || { echo "❌ ERROR: Panaroo directory not found."; exit 1;
 echo "Running Pyseer GWAS for EPTB vs Pulmonary..."
 
 # Define the phenotype column (must match column name in metadata_local.tab)
-PHENOCOL="Phenotype_R"
+PHENOCOL="Tb_form_binary"
 
 # Run Pyseer LMM
 pyseer \
