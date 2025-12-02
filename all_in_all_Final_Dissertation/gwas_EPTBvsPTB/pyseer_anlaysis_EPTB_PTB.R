@@ -9,8 +9,8 @@ set.seed(1989)
 # Define file paths
 # ---------------------------
 gwas_dir <- "/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/pyseer_output"
-gwas_file <- file.path(gwas_dir, "T3_ETH_gwas.txt")
-counts_file <- file.path(gwas_dir, "gene_patterns_T3_ETH_counts.txt")
+gwas_file <- file.path(gwas_dir, "STR_T3_ETH_gwas.txt")
+counts_file <- file.path(gwas_dir, "gene_patterns_STR_T3_ETH_counts.txt")
 
 cat("Reading GWAS results from:", gwas_file, "\n")
 gwas_data <- fread(gwas_file, data.table = FALSE)
@@ -42,11 +42,11 @@ cat("Number of significant hits:", nrow(sig_hits), "\n")
 # Save outputs
 # ---------------------------
 write.csv(gwas_data,
-          file = file.path(gwas_dir, "T3_ETH_results.csv"),
+          file = file.path(gwas_dir, "STR_T3_ETH_results.csv"),
           quote = FALSE, row.names = FALSE)
 
 write.csv(sig_hits,
-          file = file.path(gwas_dir, "T3_ETH_significant_hits.csv"),
+          file = file.path(gwas_dir, "STR_T3_ETH_significant_hits.csv"),
           quote = FALSE, row.names = FALSE)
 
 cat("✅ Results saved successfully in", gwas_dir, "\n")
