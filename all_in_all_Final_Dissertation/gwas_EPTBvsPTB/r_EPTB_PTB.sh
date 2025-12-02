@@ -10,22 +10,19 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-# Set output directory
+# Set output directory and R script
 OUTDIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/pyseer_output"
 TIDY="/home/ma95362/muszlut/all_in_all_Final_Dissertation/gwas_EPTBvsPTB/pyseer_anlaysis_EPTB_PTB.R"
 
-# Create output directory if it doesn't exist
-if [ ! -d "$OUTDIR" ]; then
-    mkdir -p "$OUTDIR"
-fi
-
+mkdir -p "$OUTDIR"
 cd "$OUTDIR"
 
-# Activate Conda environment
-source /apps/conda/etc/profile.d/conda.sh
+# Load conda and activate environment
+module load Miniforge3/24.11.3-0
 conda activate r-tidyverse
+
+# Optional: set R library path
 export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
-# Load R module
-#module load R/4.4.1-gfbf-2023b
+
 # Run the R script
 Rscript "$TIDY"
