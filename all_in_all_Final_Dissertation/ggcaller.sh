@@ -13,6 +13,8 @@
 echo "Job started on $(date)"
 
 # Load the ggcaller module installed by GACRC
+
+module module purge
 module load ggCaller/1.4.1
 
 # Move to the directory where you submitted the job
