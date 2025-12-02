@@ -11,7 +11,23 @@
 #SBATCH --mail-user=ma95362@uga.edu
 
 # ------------------------------
-# Set output directory and R script
+# Load Conda and enable "conda activate"
+# ------------------------------
+module load Miniforge3/24.11.3-0
+source $CONDA_PREFIX/etc/profile.d/conda.sh
+
+# ------------------------------
+# Activate R environment
+# ------------------------------
+conda activate r-tidyverse452
+
+# ------------------------------
+# Ensure the correct R library path
+# ------------------------------
+export R_LIBS_USER=$CONDA_PREFIX/lib/R/library
+
+# ------------------------------
+# Set directories
 # ------------------------------
 OUTDIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/pyseer_output"
 TIDY="/home/ma95362/muszlut/all_in_all_Final_Dissertation/gwas_EPTBvsPTB/pyseer_anlaysis_EPTB_PTB.R"
@@ -20,15 +36,6 @@ mkdir -p "$OUTDIR"
 cd "$OUTDIR"
 
 # ------------------------------
-# Activate Conda environment
-# ------------------------------
-module load Miniforge3/24.11.3-0       # Load conda module
-conda activate r-tidyverse452          # Activate the environment with R 4.5.2
-
-# Optional: set R library path
-export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse452/lib/R/library
-
-# ------------------------------
-# Run the R script
+# Run R script
 # ------------------------------
 Rscript "$TIDY"
