@@ -1,5 +1,6 @@
 #!/bin/bash
-#SBATCH --job-name=iqtree_core         # Job name
+#SBATCH --job-name=iqtree_core
+#SBATCH --partition=batch
 #SBATCH --output=iqtree_core_%j.out    # Standard output file
 #SBATCH --error=iqtree_core_%j.err     # Standard error file
 #SBATCH --ntasks=1                      # Number of tasks (1 for IQ-TREE)
