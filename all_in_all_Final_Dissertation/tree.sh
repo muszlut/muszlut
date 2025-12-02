@@ -17,5 +17,6 @@
 module load Miniforge3
 source activate pyseer-env
 
+cd /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449
 # Run IQ-TREE
 iqtree -s core_gene_alignment.aln -pre core_tree -nt 8 -fast -m GTR
