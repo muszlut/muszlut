@@ -61,6 +61,6 @@ echo "✅ Pyseer GWAS completed for EPTB vs Pulmonary."
 echo "✅ All Pyseer analyses completed successfully on $(date)."
 
 # ------------------------------
-# 6. Deactivate environment
+# 6. Deactivate environments
 # ------------------------------
 conda deactivate
