@@ -15,8 +15,9 @@
 # ------------------------------
 # 1. Activate Conda environment
 # ------------------------------
-module load Miniforge3
-source activate pyseer-env
+# Load conda
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate panaroo-env
 
 cd /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449
 # Run IQ-TREE
