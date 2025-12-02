@@ -11,8 +11,8 @@
 #SBATCH --mail-user=ma95362@uga.edu
 
 # Set output directory
-OUTDIR="/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_output"
-TIDY="/home/ma95362/muszlut/Dissertation/combined_GWAS/pyseer_anlaysis_EPTB_PTB.R"
+OUTDIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/pyseer_output"
+TIDY="/home/ma95362/muszlut/all_in_all_Final_Dissertation/gwas_EPTBvsPTB/pyseer_anlaysis_EPTB_PTB.R"
 
 # Create output directory if it doesn't exist
 if [ ! -d "$OUTDIR" ]; then
