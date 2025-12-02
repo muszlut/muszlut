@@ -18,11 +18,10 @@ mkdir -p "$OUTDIR"
 cd "$OUTDIR"
 
 # Load conda and activate environment
-module load Miniforge3/24.11.3-0
-conda activate r-tidyverse
+module load R/4.4.2-gfbf-2024a
 
 # Optional: set R library path
-export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
+#export R_LIBS_USER=/home/ma95362/.conda/envs/r-tidyverse/lib/R/library
 
 # Run the R script
 Rscript "$TIDY"
