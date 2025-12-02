@@ -40,7 +40,7 @@ cd "${PANAROO_DIR}" || { echo "❌ ERROR: Panaroo directory not found."; exit 1;
 echo "Running Pyseer GWAS for EPTB vs Pulmonary..."
 
 # Define the phenotype column (must match column name in metadata_local.tab)
-PHENOCOL="Tb_form_binary"
+PHENOCOL="T3_ETH"
 
 # Run Pyseer LMM
 pyseer \
@@ -50,8 +50,8 @@ pyseer \
     --pres "${PRES}" \
     --similarity "${PYSEER_OUT}/phylogeny_K.tsv" \
     --cpu 16 \
-    --output-patterns "${PYSEER_OUT}/gene_patterns_EPTB_PTb.txt" \
-    > "${PYSEER_OUT}/EPTB_vs_PTb_gwas.txt"
+    --output-patterns "${PYSEER_OUT}/gene_patterns_T3_ETH.txt" \
+    > "${PYSEER_OUT}/T3_ETH_gwas.txt"
 
 echo "✅ Pyseer GWAS completed for EPTB vs Pulmonary."
 

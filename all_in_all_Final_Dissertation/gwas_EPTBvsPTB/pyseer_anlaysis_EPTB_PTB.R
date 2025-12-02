@@ -9,8 +9,8 @@ set.seed(1989)
 # Define file paths
 # ---------------------------
 gwas_dir <- "/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/pyseer_output"
-gwas_file <- file.path(gwas_dir, "EPTB_vs_PTb_gwas.txt")
-counts_file <- file.path(gwas_dir, "gene_patterns_EPTB_PTb_counts.txt")
+gwas_file <- file.path(gwas_dir, "T3_ETH_gwas.txt")
+counts_file <- file.path(gwas_dir, "gene_patterns_T3_ETH_counts.txt")
 
 cat("Reading GWAS results from:", gwas_file, "\n")
 gwas_data <- fread(gwas_file, data.table = FALSE)
