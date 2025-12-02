@@ -19,8 +19,8 @@ source activate pyseer-env
 # --------------------------
 # Define input/output files
 # --------------------------
-TREEFILE=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/core_tree.treefile         # <-- change this
-PYSEER_OUT=/scratch/ma95362/eth_national_analysis/all_fastq_reads/ETH_paired_end_samples/bactopia-runs/pangenome_of_1368/panaroo/pyseer_output  # <-- change this
+TREEFILE=/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/core_tree.treefile         # <-- change this
+PYSEER_OUT=/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/pyseer_output  # <-- change this
 
 # Create output directory if it doesn't exist
 mkdir -p ${PYSEER_OUT}
