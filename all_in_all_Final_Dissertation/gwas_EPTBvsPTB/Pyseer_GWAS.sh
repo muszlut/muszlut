@@ -20,7 +20,7 @@ source activate pyseer-env
 # 2. Define directories and files
 # ------------------------------
 PANAROO_DIR="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo"
-TREEFILE="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/core_tre.treefile"
+TREEFILE="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/core_tree.treefile"
 PYSEER_OUT="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/pyseer_output"
 METADATA="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/metadata.tab"
 PRES="/scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449/panaroo/filtered_output/gene_presence_absence_filt_pseudo_length.Rtab"
