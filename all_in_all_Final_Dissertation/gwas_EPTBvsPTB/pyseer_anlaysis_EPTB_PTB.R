@@ -42,11 +42,11 @@ cat("Number of significant hits:", nrow(sig_hits), "\n")
 # Save outputs
 # ---------------------------
 write.csv(gwas_data,
-          file = file.path(gwas_dir, "EPTB_PT_all_results.csv"),
+          file = file.path(gwas_dir, "T3_ETH_results.csv"),
           quote = FALSE, row.names = FALSE)
 
 write.csv(sig_hits,
-          file = file.path(gwas_dir, "EPTB_PT_significant_hits.csv"),
+          file = file.path(gwas_dir, "T3_ETH_significant_hits.csv"),
           quote = FALSE, row.names = FALSE)
 
 cat("✅ Results saved successfully in", gwas_dir, "\n")
