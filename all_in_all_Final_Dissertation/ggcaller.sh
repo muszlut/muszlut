@@ -12,15 +12,11 @@
 
 echo "Job started on $(date)"
 
-# Load the ggcaller module installed by GACRC
-
-module module purge
+module purge
 module load ggCaller/1.4.1
 
-# Move to the directory where you submitted the job
 cd /scratch/ma95362/ggcaller_module
 
-# Run ggCaller
 ggcaller --refs Bentley_et_al_2006_CPS_sequences/input.txt \
          --annotation ultrasensitive \
          --diamonddb Bentley_et_al_2006_CPS_protein_sequences.faa \
