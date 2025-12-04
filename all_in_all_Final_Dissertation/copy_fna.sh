@@ -16,7 +16,7 @@ dst="/scratch/ma95362/all_in_all_reads/ggcaller_pangenome_fna"
 exclude="${src}/bactopia-exclude.tsv"
 
 mkdir -p "$dst"
-
+cd "$src"
 echo "Reading exclude list..."
 declare -A exclude_map
 
