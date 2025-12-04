@@ -52,6 +52,7 @@ echo "2. ggCaller በ --reads mode እየተጀመረ ነው..."
 ggcaller --reads input.txt \
          --threads 8 \
          --out Reads_Pangenome_Output \
+         --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
          --annotation sensitive # ጂኖችን በጥልቀት ስም ለመስጠት ይህንን አማራጭ እንጨምራለን
 
 # ------------------------------------------------------------------------------
