@@ -12,11 +12,12 @@
 
 # Define paths
 #SRC_DIR=/scratch/ma95362/eth_national_analysis/all_fastq_reads
-SRC_DIR=/scratch/ma95362/all_in_all_reads
-DEST_DIR=/scratch/ma95362/all_in_all_reads/test_reads
+SRC_DIR=/scratch/ma95362/all_in_all_reads/bactopia_prepare
+DEST_DIR=/scratch/ma95362/all_in_all_reads/ggcaller_pangenome_fna
 
 # Create destination if not exist
 mkdir -p $DEST_DIR
 cd $SRC_DIR
 # Copy all fastq.gz files
-cp ${SRC_DIR}/SRR26800486_R1.fastq.gz SRR28821528_R1.fastq.gz  SRR28821811_R1.fastq.gz  SRR29096822_R1.fastq.gz SRR26800486_R2.fastq.gz  SRR28821528_R2.fastq.gz  SRR28821811_R2.fastq.gz  SRR29096822_R2.fastq.gz ${DEST_DIR}/
+cp ${SRC_DIR}/*/main/assembly/*.fna.gz ${DEST_DIR}/
+exclude /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-exclude.tsv

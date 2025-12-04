@@ -16,7 +16,7 @@ DEST_DIR="/scratch/ma95362/all_in_all_reads"
 echo "Copying all SRR2882* fastq.gz files..."
 mkdir -p "$DEST_DIR"
 
-cp ${SRC_DIR}/SRR2882*.fastq.gz "$DEST_DIR"/
+cp ${SRC_DIR}/SRR2882.fastq.gz "$DEST_DIR"/
 
 echo "Copy completed."
 
