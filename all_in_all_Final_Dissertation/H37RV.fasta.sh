@@ -20,8 +20,7 @@ if [ ! -d $OUTDIR ]
 fi
 
  #Load modulesss
-module load NCBI-Datasets-CLI/16.4.4
-
+module load ncbi-genome-download/0.3.3-GCCcore-12.3.0
 #move to working directory
 cd $OUTDIR
 
