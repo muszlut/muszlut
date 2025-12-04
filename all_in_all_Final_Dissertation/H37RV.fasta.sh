@@ -12,14 +12,13 @@
 
 #Set output directory variable
 OUTDIR="/scratch/ma95362/ggcaller_module/referenece"
-cd $OUTDIR
-#Set variable URL for genome website
-URL=" https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz "
-
 #Tell the program to make  the outdir folder
 if [ ! -d $OUTDIR ] 
     then 
         mkdir -p $OUTDIR
 fi
+cd $OUTDIR
+#Set variable URL for genome website
+URL=" https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz "
 
 #gunzip -c GCF_000195955.2_ASM19595v2_genomic.fna.gz
