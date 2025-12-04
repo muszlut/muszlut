@@ -22,4 +22,4 @@ if [ ! -d $OUTDIR ]
         mkdir -p $OUTDIR
 fi
 
-gunzip -c GCF_000195955.2_ASM19595v2_genomic.fna.gz
+#gunzip -c GCF_000195955.2_ASM19595v2_genomic.fna.gz
