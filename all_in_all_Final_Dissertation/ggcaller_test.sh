@@ -13,48 +13,43 @@
 # ==============================================================================
 # ሞጁሎችን መጫን (Module Loading)
 # ==============================================================================
-# እርስዎ የመረጡት የ ggCaller ሞጁል ስሪት
 module load ggCaller/1.4.1
-# ggCaller/Panaroo የሚጠቀምባቸውን ሌሎች ሶፍትዌሮች ሊያካትት ይችላል
-# (እርስዎ anaconda3ን ስላስወገዱ፣ ggCaller/1.4.1 ሁሉንም ጥገኞች እንደሚጭን ተገምቷል)
 
 # ==============================================================================
 # የሥራ ቦታ (Working Directory)
 # ==============================================================================
-# ወደ ፋይሎችዎ ቦታ መሄድ
-cd /scratch/ma95362/all_in_all_reads/test_reads
+# አሁን ባሉበት ፎልደር መሰረት ተስተካክሏል
+cd /scratch/ma95362/all_in_all_reads/test_reads 
 
 # ------------------------------------------------------------------------------
 # ደረጃ 1: ለ ggCaller የሚያስፈልገውን የፋይል ዝርዝር ማዘጋጀት
 # ------------------------------------------------------------------------------
 
-echo "1. የፋይል ዝርዝር እየተዘጋጀ ነው (input.txt)..."
+echo "1. የተገጣጠሙ ፋይሎች (Assembly FASTA/FNA) ዝርዝር እየተዘጋጀ ነው (input.txt)..."
 
-# አሁን ያለንበትን ፎልደር (Working Directory) ተጠቅሞ የፋይል ዝርዝር ይፈጥራል።
-ls -d -1 $PWD/*.fastq.gz > input.txt
+# ማስተካከያ: .fasta ወደ .fna.gz ተቀይሯል. ggCaller የ .gz (Gzip) ቅርጸትን ማንበብ ይችላል።
+ls -d -1 $PWD/*.fna.gz > input.txt 
 
 if [ -f "input.txt" ]; then
     echo "ዝርዝሩ በ input.txt ላይ ተቀምጧል:"
-    # የተዘረዘሩትን ፋይሎች ብዛት ማሳየት (ለማጣራት)
     wc -l input.txt
 else
-    echo "!!! ስህተት: input.txt አልተፈጠረም። የፋይል ቅጥያዎ ትክክል መሆኑን ያረጋግጡ።"
+    echo "!!! ስህተት: input.txt አልተፈጠረም። የፋይል ቅጥያዎ (.fna.gz) ትክክል መሆኑን ያረጋግጡ።"
     exit 1
 fi
 
 # ------------------------------------------------------------------------------
-# ደረጃ 2: ggCallerን ማስኬድ (ችግሩን የሚፈታው --clean-mode sensitive ተጨምሯል)
+# ደረጃ 2: ggCallerን ማስኬድ (--refs ተጠቅመን)
 # ------------------------------------------------------------------------------
 
-echo "2. ggCaller በ --reads mode እና Sensitive Clean Mode እየተጀመረ ነው..."
+echo "2. ggCaller በ --refs mode (Assembly FNA) እየተጀመረ ነው..."
 
-# --clean-mode sensitive የተጨመረው "No genes detected in graph" የሚለውን ችግር ለመፍታት ነው።
-ggcaller --reads input.txt \
+# --refs የሚለው አማራጭ Assembly ፋይሎችን ማንበብ እንዲችል ያደርገዋል።
+ggcaller --refs input.txt \
          --threads 8 \
-         --out Reads_Pangenome_Output \
+         --out Assembly_Pangenome_Output \
          --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
-         --annotation sensitive \
-         --clean-mode sensitive 
+         --annotation sensitive 
 
 # ------------------------------------------------------------------------------
 # መጨረሻ
@@ -62,7 +57,7 @@ ggcaller --reads input.txt \
 
 if [ $? -eq 0 ]; then
     echo "3. ggCaller ሥራውን በተሳካ ሁኔታ አጠናቋል።"
-    echo "ውጤቶችዎ በ Reads_Pangenome_Output ፎልደር ውስጥ ይገኛሉ።"
+    echo "ውጤቶችዎ በ Assembly_Pangenome_Output ፎልደር ውስጥ ይገኛሉ።"
 else
     echo "4. !!! ስህተት: ggCaller ሥራውን ሳያጠናቅቅ ቆሟል። እባክዎ slurm-*.err ፋይሉን ይመልከቱ።"
 fi
