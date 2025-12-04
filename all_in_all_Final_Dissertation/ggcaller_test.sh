@@ -1,21 +1,22 @@
 #!/bin/bash
-#SBATCH --job-name=ggcaller_CPS
-#SBATCH --partition=batch
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=32G
-#SBATCH --time=24:00:00
+#SBATCH --job-name=ggcaller_CPS           # የስራው ስም
+#SBATCH --partition=batch                 # የሚላክበት ክፍል (Partition)
+#SBATCH --ntasks=1                        # ዋናው ፕሮሰስ ብዛት
+#SBATCH --cpus-per-task=8               # የሚያስፈልግ የኮር ብዛት
+#SBATCH --mem=32G                       # የሚያስፈልገው የማስታወሻ መጠን
+#SBATCH --time=24:00:00                   # ከፍተኛው የሥራ ጊዜ (24 ሰዓት)
 #SBATCH --output=/scratch/ma95362/ggcaller_module/logs/log.%j.out
 #SBATCH --error=/scratch/ma95362/ggcaller_module/logs/log.%j.err
-#SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=ma95362@uga.edu
+#SBATCH --mail-type=END,FAIL              # ስራው ሲያልቅ ወይም ሲበላሽ ኢሜይል ይላካል
+#SBATCH --mail-user=ma95362@uga.edu       # ኢሜይል የሚላክለት አድራሻ
 
 # ==============================================================================
 # ሞጁሎችን መጫን (Module Loading)
 # ==============================================================================
-# ggCaller እና ሌሎች የሚያስፈልጉ ሶፍትዌሮችን (ለምሳሌ Python, Panaroo) መጫን።
-# ክላስተርዎ ሞጁል ሲስተም የሚጠቀም ከሆነ፣ እንደ ክላስተሩ ህግ እነዚህን ማስተካከል ይኖርብዎታል።
+# እርስዎ የመረጡት የ ggCaller ሞጁል ስሪት
 module load ggCaller/1.4.1
+# ggCaller/Panaroo የሚጠቀምባቸውን ሌሎች ሶፍትዌሮች ሊያካትት ይችላል
+# (እርስዎ anaconda3ን ስላስወገዱ፣ ggCaller/1.4.1 ሁሉንም ጥገኞች እንደሚጭን ተገምቷል)
 
 # ==============================================================================
 # የሥራ ቦታ (Working Directory)
@@ -29,8 +30,7 @@ cd /scratch/ma95362/all_in_all_reads/test_reads
 
 echo "1. የፋይል ዝርዝር እየተዘጋጀ ነው (input.txt)..."
 
-# $PWD ማለት አሁን ያለንበት ፎልደር አድራሻ ማለት ነው።
-# .fastq.gz የሚጨርሱትን ፋይሎች በሙሉ ይዘረዝራል።
+# አሁን ያለንበትን ፎልደር (Working Directory) ተጠቅሞ የፋይል ዝርዝር ይፈጥራል።
 ls -d -1 $PWD/*.fastq.gz > input.txt
 
 if [ -f "input.txt" ]; then
@@ -43,17 +43,18 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# ደረጃ 2: ggCallerን ማስኬድ
+# ደረጃ 2: ggCallerን ማስኬድ (ችግሩን የሚፈታው --clean-mode sensitive ተጨምሯል)
 # ------------------------------------------------------------------------------
 
-echo "2. ggCaller በ --reads mode እየተጀመረ ነው..."
+echo "2. ggCaller በ --reads mode እና Sensitive Clean Mode እየተጀመረ ነው..."
 
-# $SLURM_CPUS_PER_TASK ከላይ በ #SBATCH የተሰጠውን የኮር ብዛት (8) ይጠቀማል።
+# --clean-mode sensitive የተጨመረው "No genes detected in graph" የሚለውን ችግር ለመፍታት ነው።
 ggcaller --reads input.txt \
          --threads 8 \
          --out Reads_Pangenome_Output \
          --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
-         --annotation sensitive # ጂኖችን በጥልቀት ስም ለመስጠት ይህንን አማራጭ እንጨምራለን
+         --annotation sensitive \
+         --clean-mode sensitive 
 
 # ------------------------------------------------------------------------------
 # መጨረሻ
