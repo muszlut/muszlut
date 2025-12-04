@@ -38,16 +38,15 @@ echo "Job started at $(date)"
 # -------------------------------
 # Run ggCaller
 # -------------------------------
-ggcaller \
-    --reads /scratch/ma95362/all_in_all_reads/small_reads.txt \
-    --refs /scratch/ma95362/all_in_all_reads/refs_list.txt \
-    --annotation ultrasensitive \
-    --alignment pan \
-    --aligner def \
-    --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
-    --threads 32 \
-    --save \
-    --out /scratch/ma95362/all_in_all_reads/ggcaller_results
+ggcaller --reads /scratch/ma95362/all_in_all_reads/small_reads_fixed.txt \
+         --refs /scratch/ma95362/all_in_all_reads/refs_list.txt \
+         --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
+         --annotation ultrasensitive \
+         --alignment pan \
+         --aligner def \
+         --threads 32 \
+         --save \
+         --out /scratch/ma95362/all_in_all_reads/ggcaller_results
 
 # -------------------------------
 # Check if ggCaller ran successfully
