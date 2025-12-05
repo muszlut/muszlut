@@ -2,8 +2,8 @@
 #SBATCH --job-name=ggcaller_all           # የስራው ስም
 #SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
-#SBATCH --mem=240G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=2000G
 #SBATCH --time=7-00:00:00
 #SBATCH --output=/scratch/ma95362/ggcaller_module/logs/log.%j.out
 #SBATCH --error=/scratch/ma95362/ggcaller_module/logs/log.%j.err
