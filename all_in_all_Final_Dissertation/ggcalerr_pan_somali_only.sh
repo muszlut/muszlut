@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=895G
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/scratch/ma95362/ggcaller_module/logs/log.%j.out
-#SBATCH --error=/scratch/ma95362/ggcaller_module/logs/log.%j.err
+#SBATCH --output=/scratch/ma95362/ggcaller_module/logs/somali/log.%j.out
+#SBATCH --error=/scratch/ma95362/ggcaller_module/logs/somali/log.%j.err
 #SBATCH --mail-type=BEGIN,END,FAIL             # ስራው ሲያልቅ ወይም ሲበላሽ ኢሜይል ይላካል
 #SBATCH --mail-user=ma95362@uga.edu       # ኢሜይል የሚላክለት አድራሻ
 
