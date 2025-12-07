@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=ggcaller_all           # የስራው ስም
+#SBATCH --job-name=ggcaller_somali_only           # የስራው ስም
 #SBATCH --partition=highmem_p
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
@@ -19,7 +19,7 @@ module load ggCaller/1.4.1
 # የሥራ ቦታ (Working Directory)
 # ==============================================================================
 # አሁን ባሉበት ፎልደር መሰረት ተስተካክሏል
-cd /scratch/ma95362/all_in_all_reads/ggcaller_pangenome_fna
+cd /scratch/ma95362/all_in_all_reads/ggcaller_pangenome_fna_somali_only
 
 # ------------------------------------------------------------------------------
 # ደረጃ 1: ለ ggCaller የሚያስፈልገውን የፋይል ዝርዝር ማዘጋጀት
