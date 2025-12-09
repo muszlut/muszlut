@@ -50,7 +50,9 @@ ggcaller --refs input.txt \
          --out Assembly_Pangenome_Output_strict \
          --min-orf-length 210 \
          --min-orf-score 60 \
-         --identity-cutoff 0.98 
+         --identity-cutoff 0.98 \
+         --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
+         --annotation sensitive
    
 # ------------------------------------------------------------------------------
 # መጨረሻ
