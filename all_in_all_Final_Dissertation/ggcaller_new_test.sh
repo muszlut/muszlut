@@ -48,18 +48,17 @@ echo "2. ggCaller በ --refs mode (Assembly FNA) እየተጀመረ ነው..."
 ggcaller --refs input.txt \
          --threads 8 \
          --out Assembly_Pangenome_Output_strict \
-         --min-gene-len 180 \
-         --min-protein-length 70 \
-         --cds-only \
-         --keep-paralogs \
-         --cluster   
+         --min-orf-length 210 \
+         --min-orf-score 60 \
+         --identity-cutoff 0.98 
+   
 # ------------------------------------------------------------------------------
 # መጨረሻ
 # ------------------------------------------------------------------------------
 
 if [ $? -eq 0 ]; then
     echo "3. ggCaller ሥራውን በተሳካ ሁኔታ አጠናቋል።"
-    echo "ውጤቶችዎ በ Assembly_Pangenome_Output ፎልደር ውስጥ ይገኛሉ።"
+    echo "ውጤቶችዎ በ Assembly_Pangenome_Output_strict ፎልደር ውስጥ ይገኛሉ።"
 else
     echo "4. !!! ስህተት: ggCaller ሥራውን ሳያጠናቅቅ ቆሟል። እባክዎ slurm-*.err ፋይሉን ይመልከቱ።"
 fi
