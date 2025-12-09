@@ -47,12 +47,13 @@ echo "2. ggCaller በ --refs mode (Assembly FNA) እየተጀመረ ነው..."
 # --refs የሚለው አማራጭ Assembly ፋይሎችን ማንበብ እንዲችል ያደርገዋል።
 ggcaller --refs input.txt \
          --threads 8 \
-         --out Assembly_Pangenome_Output_strict \
+         --out Assembly_Pangenome_Output_strict2 \
          --min-orf-length 210 \
          --min-orf-score 60 \
          --identity-cutoff 0.98 \
+         --len-diff-cutoff 0.99 \
          --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
-         --annotation sensitive
+         --annotation ultrasensitive
    
 # ------------------------------------------------------------------------------
 # መጨረሻ
