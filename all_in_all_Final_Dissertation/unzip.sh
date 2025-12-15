@@ -14,9 +14,13 @@
 # Load any required modules
 # -----------------------------
 #module load gzip/1.12   # or module load gzip (if available)
-cd /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449
+#cd /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449
+cd /scratch/ma95362/new_ggcaller_pro
 # -----------------------------
 # Define input and output files
 # -----------------------------
 # Example 1: decompress a single file
-gunzip -c core_gene_alignment_filtered.aln.gz > core_gene_alignment_filtered.aln
+gunzip -c ERR6397190.faa.gz > ERR6397190.faa
+gunzip -c ERR6397187.faa.gz > ERR6397187.faa
+gunzip -c ERR6397199.faa.gz > ERR6397199.faa
+gunzip -c ERR6397200.faa.gz > ERR6397200.faa
