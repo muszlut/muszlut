@@ -20,7 +20,7 @@ cd /scratch/ma95362/new_ggcaller_pro
 # Define input and output files
 # -----------------------------
 # Example 1: decompress a single file
-gunzip -c ERR6397190.faa.gz > ERR6397190.faa
-gunzip -c ERR6397187.faa.gz > ERR6397187.faa
-gunzip -c ERR6397199.faa.gz > ERR6397199.faa
-gunzip -c ERR6397200.faa.gz > ERR6397200.faa
+gunzip -c ERR6397190.ffn.gz > ERR6397190.ffn
+gunzip -c ERR6397187.ffn.gz > ERR6397187.ffn
+gunzip -c ERR6397199.ffn.gz > ERR6397199.ffn
+gunzip -c ERR6397200.ffn.gz > ERR6397200.ffn
