@@ -15,12 +15,12 @@
 # -----------------------------
 #module load gzip/1.12   # or module load gzip (if available)
 #cd /scratch/ma95362/all_in_all_reads/bactopia_prepare/bactopia-runs/pangenome-20251128-070449
-cd /scratch/ma95362/new_ggcaller_pro
+cd /scratch/ma95362/new_ggcaller_pro/ggcaller_input
 # -----------------------------
 # Define input and output files
 # -----------------------------
 # Example 1: decompress a single file
-gunzip -c ERR6397190.ffn.gz > ERR6397190.ffn
-gunzip -c ERR6397187.ffn.gz > ERR6397187.ffn
-gunzip -c ERR6397199.ffn.gz > ERR6397199.ffn
-gunzip -c ERR6397200.ffn.gz > ERR6397200.ffn
+gunzip -k ERR6397190.ffn.gz 
+gunzip -k ERR6397187.ffn.gz 
+gunzip -k ERR6397199.ffn.gz 
+gunzip -k ERR6397200.ffn.gz 
