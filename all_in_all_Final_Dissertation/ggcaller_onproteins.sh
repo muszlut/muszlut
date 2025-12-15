@@ -14,7 +14,7 @@ module load ggCaller/1.4.1
 cd /scratch/ma95362/new_ggcaller_pro
 
 # scalable input
-ls ggcaller_input/*.faa > input.txt
+ls ggcaller_input/*.ffn > input.txt
 
 ggcaller \
   --refs input.txt \
