@@ -11,10 +11,10 @@
 #SBATCH --mail-user=ma95362@uga.edu
 
 # 1. Load the Miniforge module
-ml Miniforge3/24.7.1-0
+ml Miniforge3/24.11.3-0
 
-# 2. Activate your environment
-source activate ~/ncbi_upload_env
+# 2. Activate the environment (using the path that worked)
+source activate /home/ma95362/ncbi_upload_env
 
 # 3. Your Specific NCBI Credentials
 NCBI_USER="subftp"
