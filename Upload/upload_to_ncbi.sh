@@ -1,11 +1,14 @@
 #!/bin/bash
-#SBATCH --job-name=ncbi_upload      
-#SBATCH --partition=batch           
-#SBATCH --ntasks=1                  
-#SBATCH --mem=4gb                   
-#SBATCH --time=48:00:00             
-#SBATCH --output=ncbi_upload_%j.out
-#SBATCH --error=ncbi_upload_%j.err
+#SBATCH --job-name=ncbi_upload  
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=60gb
+#SBATCH --time=48:00:00  
+#SBATCH --output=/scratch/ma95362/scratch/ncbi_upload.%j.out
+#SBATCH --error=/scratch/ma95362/scratch/ncbi_upload.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
 
 # 1. Load the Miniforge module
 ml Miniforge3/24.7.1-0
@@ -20,11 +23,11 @@ REMOTE_DIR="uploads/musse.girma_aau.edu.et_vf8TknxA"
 
 # 4. Give your subfolder a meaningful name (NO SPACES)
 # You can change 'my_fastq_submission' to something like 'Girma_Project_2024'
-SUBMISSION_FOLDER="Ethiopian_Somali_region_TB_fastq_submission"
+SUBMISSION_FOLDER="mtb_Ethiopia_somali_Musse"
 
 # 5. Navigate to your data directory on Sapelo2
 # Replace the path below with the actual folder where your FASTQs are
-cd /scratch/ma95362/YOUR_DATA_FOLDER_NAME
+cd /scratch/ma95362/clean_sequences_reads
 
 echo "Starting upload at $(date)"
 
@@ -35,6 +38,7 @@ set ftp:ssl-allow no
 cd ${REMOTE_DIR}
 mkdir -p ${SUBMISSION_FOLDER}
 cd ${SUBMISSION_FOLDER}
+prompt # Disable interactive prompts
 mput *.fastq.gz
 bye
 EOF
