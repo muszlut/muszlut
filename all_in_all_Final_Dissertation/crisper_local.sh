@@ -14,7 +14,7 @@
 # ===============================
 # Activate conda environment
 # ===============================
-source ~/miniconda3/etc/profile.d/conda.sh
+source ~/.bashrc
 conda activate crisprbuilder_tb
 
 # ===============================
