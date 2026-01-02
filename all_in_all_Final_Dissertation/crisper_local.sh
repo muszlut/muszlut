@@ -19,14 +19,23 @@ conda activate crisprbuilder_tb
 
 # Directories
 CRISPR_DIR="$HOME/CRISPRbuilder-TB"
-mkdir -p "$CRISPR_DIR/data" 
+INPUT_FASTA="$CRISPR_DIR/data/P01.fasta"
+OUTPUT_DIR="$CRISPR_DIR/results/P01"
 
-# Copy your local contigs (SPAdes output) into data/
-# cp /home/ma95362/crisprbuilder_test/P01/P01_spades/contigs.fasta $CRISPR_DIR/data/P01.fasta
+mkdir -p "$CRISPR_DIR/data"
+mkdir -p "$OUTPUT_DIR"
+
+# Copy your SPAdes contigs if not already in data/
+# cp /home/ma95362/crisprbuilder_test/P01/P01_spades/contigs.fasta "$INPUT_FASTA"
 
 cd "$CRISPR_DIR" || exit 1
 
-# RUN CRISPRbuilder on local FASTA (do NOT use -i or -sra)
-python crisprbuilder.py -out results/P01 -num_threads 12
+# ===============================
+# RUN CRISPRbuilder on local FASTA
+# ===============================
+python crisprbuilder.py \
+    -sra "$INPUT_FASTA" \
+    -out "$OUTPUT_DIR" \
+    -num_threads 12
 
 echo "✔ CRISPRbuilder completed successfully for P01"
