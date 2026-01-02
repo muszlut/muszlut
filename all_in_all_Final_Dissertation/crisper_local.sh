@@ -41,7 +41,7 @@ cp "$ASSEMBLY" "$CRISPR_DIR/data/${SAMPLE}.fasta"
 # ===============================
 cd "$CRISPR_DIR" || exit 1
 
-python CRISPRbuilder.py \
+python crisprbuilder.py \
   -i "data/${SAMPLE}.fasta" \
   -out "results/${SAMPLE}" \
   -num_threads 12
