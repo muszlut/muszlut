@@ -3,7 +3,7 @@
 #SBATCH --partition=batch
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=12
 #SBATCH --mem=64G
 #SBATCH --time=24:00:00
 #SBATCH --output=/scratch/ma95362/crisprbuilder_test/logs/log.%j.out
@@ -41,8 +41,9 @@ cp "$ASSEMBLY" "$CRISPR_DIR/data/${SAMPLE}.fasta"
 # ===============================
 cd "$CRISPR_DIR" || exit 1
 
-python crisprbuilder.py \
+python CRISPRbuilder.py \
   -i "data/${SAMPLE}.fasta" \
-  -o "results/${SAMPLE}"
+  -out "results/${SAMPLE}" \
+  -num_threads 12
 
 echo "✔ CRISPRbuilder completed successfully for ${SAMPLE}"
