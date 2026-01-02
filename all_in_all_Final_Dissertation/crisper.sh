@@ -18,7 +18,12 @@ conda activate crisprbuilder_tb
 cd $HOME/CRISPRbuilder-TB
 
 # Run CRISPRbuilder
+#python crisprbuilder.py \
+#  -sra /home/ma95362/crisprbuilder_test/SRR26800480 \
+#  -out /home/ma95362/crisprbuilder_test/SRR26800480 \
+#  -num_threads 12
+
 python crisprbuilder.py \
-  -sra /home/ma95362/crisprbuilder_test/SRR26800480 \
-  -out /home/ma95362/crisprbuilder_test/SRR26800480 \
+  -sra /home/ma95362/crisprbuilder_test/P4 \
+  -out /home/ma95362/crisprbuilder_test/P4 \
   -num_threads 12
