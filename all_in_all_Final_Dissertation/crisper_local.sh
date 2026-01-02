@@ -14,11 +14,9 @@
 source ~/.bashrc
 conda activate crisprbuilder_tb
 
-
-
 cd /home/ma95362/crisprbuilder_test/P4_readss
 
-perl /home/ma95362/CRISPRbuilder-TB/CRISPRbuilder-TB.pl \
+python /home/ma95362/CRISPRbuilder-TB/crisprbuilder.py \
   -i P04._R1.fastq.gz \
   -j P04._R2.fastq.gz \
   -o output_P04
