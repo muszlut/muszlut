@@ -14,14 +14,7 @@
 source ~/.bashrc
 conda activate crisprbuilder_tb
 
-# Define paths
-GENOME=/home/ma95362/crisprbuilder_test/P4/P04.fna
-READS_DIR=/home/ma95362/crisprbuilder_test/P4_reads
-OUT_DIR=/home/ma95362/crisprbuilder_test/P4_out
 
-# Create reads directory
-mkdir -p $READS_DIR
-mkdir -p $OUT_DIR
 
 # Simulate Illumina reads from the genome
 #wgsim -1 150 -2 150 -N 1000000 $GENOME $READS_DIR/P04_R1.fq $READS_DIR/P04_R2.fq
@@ -33,6 +26,7 @@ cd $HOME/CRISPRbuilder-TB
 #    -num_threads 12
 
 python crisprbuilder.py \
-  -sra /home/ma95362/crisprbuilder_test/P4 \
-  -out /home/ma95362/crisprbuilder_test/P4_out \
+  -sra /home/ma95362/crisprbuilder_test/P4_input \
+  -out /home/ma95362/crisprbuilder_test/P4_output \
   -num_threads 12
+
