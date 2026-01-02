@@ -17,32 +17,16 @@
 source ~/.bashrc
 conda activate crisprbuilder_tb
 
-# ===============================
-# Fixed sample paths (YOUR DATA)
-# ===============================
-SAMPLE="P01"
-ASSEMBLY="/home/ma95362/crisprbuilder_test/P01/P01_spades/contigs.fasta"
+# Directories
 CRISPR_DIR="$HOME/CRISPRbuilder-TB"
+mkdir -p "$CRISPR_DIR/data" "$CRISPR_DIR/results" logs
 
-# ===============================
-# Prepare directories
-# ===============================
-mkdir -p "$CRISPR_DIR/data"
-mkdir -p "$CRISPR_DIR/results"
-mkdir -p logs
+# Make sure your FASTA is in the data folder
+# cp /path/to/P01/contigs.fasta $CRISPR_DIR/data/P01.fasta
 
-# ===============================
-# Copy contigs into CRISPRbuilder
-# ===============================
-cp "$ASSEMBLY" "$CRISPR_DIR/data/${SAMPLE}.fasta"
-
-# ===============================
-# Run CRISPRbuilder-TB
-# ===============================
 cd "$CRISPR_DIR" || exit 1
 
-python crisprbuilder.py \
-  -out "results/${SAMPLE}" \
-  -num_threads 12
+# Run CRISPRbuilder-TB on all FASTA files in data/
+python crisprbuilder.py -out results/P01 -num_threads 12
 
-echo "✔ CRISPRbuilder completed successfully for ${SAMPLE}"
+echo "✔ CRISPRbuilder completed successfully for P01"
