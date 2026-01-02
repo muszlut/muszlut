@@ -16,17 +16,9 @@ conda activate crisprbuilder_tb
 
 
 
-# Simulate Illumina reads from the genome
-#wgsim -1 150 -2 150 -N 1000000 $GENOME $READS_DIR/P04_R1.fq $READS_DIR/P04_R2.fq
-cd $HOME/CRISPRbuilder-TB
-# Run CRISPRbuilder on the simulated reads
-#python $HOME/CRISPRbuilder-TB/crisprbuilder.py \
-#    -sra $READS_DIR \
-#    -out $OUT_DIR \
-#    -num_threads 12
+cd /home/ma95362/crisprbuilder_test/P4_readss
 
-python crisprbuilder.py \
-  -sra /home/ma95362/crisprbuilder_test/P4_input \
-  -out /home/ma95362/crisprbuilder_test/P4_output \
-  -num_threads 12
-
+perl /home/ma95362/CRISPRbuilder-TB/CRISPRbuilder-TB.pl \
+  -i P04._R1.fastq.gz \
+  -j P04._R2.fastq.gz \
+  -o output_P04
