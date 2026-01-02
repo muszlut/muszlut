@@ -33,9 +33,7 @@ cd "$CRISPR_DIR" || exit 1
 # ===============================
 # RUN CRISPRbuilder on local FASTA
 # ===============================
-python crisprbuilder.py \
-    -sra "$INPUT_FASTA" \
-    -out "$OUTPUT_DIR" \
-    -num_threads 12
+python crisprbuilder.py -sra P01 -out results/P01 -num_threads 12
+
 
 echo "✔ CRISPRbuilder completed successfully for P01"
