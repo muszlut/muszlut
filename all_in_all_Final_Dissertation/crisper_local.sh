@@ -25,7 +25,7 @@ mkdir -p $OUT_DIR
 
 # Simulate Illumina reads from the genome
 #wgsim -1 150 -2 150 -N 1000000 $GENOME $READS_DIR/P04_R1.fq $READS_DIR/P04_R2.fq
-
+cd $HOME/CRISPRbuilder-TB
 # Run CRISPRbuilder on the simulated reads
 #python $HOME/CRISPRbuilder-TB/crisprbuilder.py \
 #    -sra $READS_DIR \
