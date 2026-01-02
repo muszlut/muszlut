@@ -17,6 +17,6 @@ conda activate crisprbuilder_tb
 cd /home/ma95362/CRISPRbuilder-TB
 
 python crisprbuilder.py \
-  -sra /home/ma95362/crisprbuilder_test/P4_readss \
+  -sra /home/ma95362/crisprbuilder_test/P4_readss/P04_combined.fastq.gz \
   -out /home/ma95362/crisprbuilder_test/P4_readss/output_P04 \
   -num_threads 12
