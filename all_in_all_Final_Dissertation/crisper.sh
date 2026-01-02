@@ -23,7 +23,7 @@ cd $HOME/CRISPRbuilder-TB
 #  -out /home/ma95362/crisprbuilder_test/SRR26800480 \
 #  -num_threads 12
 
-python crisprbuilder.py \
-  -sra /home/ma95362/crisprbuilder_test/P4 \
-  -out /home/ma95362/crisprbuilder_test/P4 \
+python $HOME/CRISPRbuilder-TB/crisprbuilder.py \
+  -fasta /home/ma95362/crisprbuilder_test/P4/P04.fna \
+  -out /home/ma95362/crisprbuilder_test/P4_out \
   -num_threads 12
