@@ -3,56 +3,41 @@
 #SBATCH --partition=batch
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=12
 #SBATCH --mem=16G
 #SBATCH --time=24:00:00
-#SBATCH --output=/scratch/ma95362/scratch/ncbi_upload.%j.out
-#SBATCH --error=/scratch/ma95362/scratch/ncbi_upload.%j.err
+#SBATCH --output=/scratch/ma95362/CRISPRbuilder-TB/logs.%A_%a.out
+#SBATCH --error=/scratch/ma95362/CRISPRbuilder-TB/logs.%A_%a.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
+#SBATCH --array=1-257%20 
 
 # -------------------------
-# Load environment
+# 1. Environment & Paths
 # -------------------------
 module purge
 source ~/.bashrc
 conda activate crisprbuilder_tb
 
-# -------------------------
-# Paths
-# -------------------------
 BASE_DIR=/scratch/ma95362/CRISPRbuilder-TB
-SEQ_DIR=$BASE_DIR/sequences
-SCRIPT=$BASE_DIR/crisprbuilder.py
+SAMPLE_FILE=$BASE_DIR/samples.txt  # The list of sample names
 
+# Move to the project directory
 cd $BASE_DIR || exit 1
 
-echo "Starting CRISPRbuilder-TB (-sra mode)"
-echo "Base directory: $BASE_DIR"
-echo "Sequences directory: $SEQ_DIR"
+# -------------------------
+# 2. Get Sample Name
+# -------------------------
+# Extract the sample name from the specific line in samples.txt matching the Array ID
+SAMPLE_NAME=$(sed -n "${SLURM_ARRAY_TASK_ID}p" $SAMPLE_FILE)
+
+echo "Processing Task ID: $SLURM_ARRAY_TASK_ID"
+echo "Sample Name: $SAMPLE_NAME"
+echo "Working Directory: $(pwd)"
 
 # -------------------------
-# Run CRISPRbuilder per sample
+# 3. Run CRISPRbuilder
 # -------------------------
-for sample_dir in $SEQ_DIR/*; do
-    sample=$(basename "$sample_dir")
-
-    fasta=${sample_dir}/${sample}_shuffled.fasta
-
-    if [[ -f "$fasta" ]]; then
-        echo "======================================"
-        echo "Processing sample: $sample"
-        echo "FASTA: $fasta"
-        echo "======================================"
-
-        cd "$sample_dir" || exit 1
-
-        python3 $SCRIPT -sra
-
-        cd $BASE_DIR || exit 1
-    else
-        echo "WARNING: shuffled FASTA not found for $sample"
-    fi
-done
-
-echo "All samples processed."
+# Use the sample name (folder name) as the -sra argument.
+# The tool will look inside the 'sequences/' directory for this name.
+python crisprbuilder.py -sra "$SAMPLE_NAME" -num_threads 12
