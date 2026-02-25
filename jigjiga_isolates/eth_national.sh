@@ -3,7 +3,7 @@
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
-#SBATCH --mem=200gb
+#SBATCH --mem=120gb
 #SBATCH --time=07-00:00:00
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err
