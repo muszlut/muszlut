@@ -12,33 +12,22 @@
 
 set -euo pipefail
 
-# -------------------------------
-# Load Modules
-# -------------------------------
 module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 
-# -------------------------------
-# Directories
-# -------------------------------
-OUTDIR="/scratch/ma95362/publication/eth_3rd_national_dataset"
+OUTDIR="/scratch/ma95362/eth_3rd_national_dataset"
 SEARCHDIR="$OUTDIR/search"
 RUNNAME="ena_prjna1104194_700"
 
 mkdir -p "$SEARCHDIR"
 cd "$OUTDIR"
 
-# -------------------------------
-# Step 1: Search SRA
-# -------------------------------
+# Step 1: Search
 bactopia search \
     --query PRJNA1104194 \
-    --datasets sra \
     --outdir "$SEARCHDIR"
 
-# -------------------------------
-# Step 2: Run Full Pipeline
-# -------------------------------
+# Step 2: Run
 bactopia \
     --accessions "$SEARCHDIR/bactopia-accessions.txt" \
     --coverage 30 \
