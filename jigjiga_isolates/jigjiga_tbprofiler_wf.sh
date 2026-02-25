@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=snippy                                      # Job name
+#SBATCH --job-name=tbprofiler                                  # Job name
 #SBATCH --partition=batch                                      # Partition (queue) name
 #SBATCH --ntasks=1                                             # Run on a single CPU
 #SBATCH --cpus-per-task=32                                     # Number of cores per task
