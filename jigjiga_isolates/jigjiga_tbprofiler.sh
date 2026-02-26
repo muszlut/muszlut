@@ -21,6 +21,9 @@ eval "$(conda shell.bash hook)"
 # Activate TB-Profiler environment
 conda activate tbprofiler_env
 
+# Increase Java memory for Trimmomatic
+#export _JAVA_OPTIONS="-Xmx32g"
+
 # Set working directories
 READS_DIR="/scratch/ma95362/clean_sequences_reads"
 OUTDIR="/scratch/ma95362/publication/tbprofiler_results"
@@ -47,5 +50,6 @@ do
         --db "$DB" \
         --prefix "$SAMPLE" \
         --txt \
+        --no_trim \
         --dir "$OUTDIR"
 done
