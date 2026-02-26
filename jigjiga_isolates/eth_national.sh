@@ -23,13 +23,17 @@ mkdir -p "$SEARCHDIR"
 cd "$OUTDIR"
 
 # Step 1: Search
-bactopia search \
-    --query PRJNA1104194 \
-    --outdir "$SEARCHDIR"
+#bactopia search \
+#    --query PRJNA1104194 \
+#    --outdir "$SEARCHDIR"
 
 # Step 2: Run
-bactopia \
-    --accessions "$SEARCHDIR/bactopia-accessions.txt" \
-    --coverage 30 \
-    --outdir "$OUTDIR/$RUNNAME" \
-    --max_cpus $SLURM_CPUS_PER_TASK
+#bactopia \
+#    --accessions "$SEARCHDIR/bactopia-accessions.txt" \
+#    --coverage 30 \
+#    --outdir "$OUTDIR/$RUNNAME" \
+#    --max_cpus $SLURM_CPUS_PER_TASK
+
+# Step 3: summary
+bactopia summary \
+    --bactopia-path "$OUTDIR"
