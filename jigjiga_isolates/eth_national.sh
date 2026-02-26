@@ -35,5 +35,4 @@ cd "$OUTDIR"
 #    --max_cpus $SLURM_CPUS_PER_TASK
 
 # Step 3: summary
-bactopia summary \
-    --bactopia-path "$OUTDIR"
+bactopia summary --bactopia "$OUTDIR/$RUNNAME"
