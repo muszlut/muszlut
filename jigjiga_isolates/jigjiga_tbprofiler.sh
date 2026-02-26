@@ -3,7 +3,7 @@
 #SBATCH --partition=batch                     # Queue/partition
 #SBATCH --ntasks=1                            # Number of tasks (single-process)
 #SBATCH --cpus-per-task=16                    # Number of CPU cores
-#SBATCH --mem=64gb                            # Memory allocation
+#SBATCH --mem=80gb                            # Memory allocation
 #SBATCH --time=07-00:00:00                    # Max runtime (7 days)
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out   # STDOUT log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err    # STDERR log
