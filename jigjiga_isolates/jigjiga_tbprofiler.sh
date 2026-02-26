@@ -12,9 +12,8 @@
 
 set -euo pipefail
 
-module load Micromamba/2.3.0
-eval "$(micromamba shell hook --shell bash)"
-micromamba activate tbprofiler_env
+module load Miniforge3
+conda activate tbprofiler_env
 
 READS_DIR="/scratch/ma95362/clean_sequences_reads"
 OUTDIR="/scratch/ma95362/publication/tbprofiler_results"
