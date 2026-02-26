@@ -35,4 +35,5 @@ cd "$OUTDIR"
 #    --max_cpus $SLURM_CPUS_PER_TASK
 
 # Step 3: summary
-bactopia-summary --bactopia-path /scratch/ma95362/eth_3rd_national_dataset/ena_prjna1104194_700
+bactopia-summary \
+    --bactopia-path /scratch/ma95362/eth_3rd_national_dataset/ena_prjna1104194_700
