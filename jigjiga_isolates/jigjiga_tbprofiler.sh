@@ -15,6 +15,9 @@ set -euo pipefail  # safer bash settings
 # Load Conda/Miniforge module
 module load Miniforge3
 
+# Initialize Conda for bash
+eval "$(conda shell.bash hook)"
+
 # Activate TB-Profiler environment
 conda activate tbprofiler_env
 
