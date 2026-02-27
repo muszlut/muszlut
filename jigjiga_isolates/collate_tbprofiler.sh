@@ -40,6 +40,5 @@ cd $OUTDIR
 #tb-profiler collate --samples samples.txt --dir $OUTDIR --itol
 #otherwise
 tb-profiler collate \
-    --dir $OUTDIR/results \
-    --itol \
-    --csv 
+    --dir /scratch/ma95362/publication/tbprofiler_results/results \
+    --itol
