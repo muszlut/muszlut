@@ -13,7 +13,7 @@
 
 #Set output directory variable
 OUTDIR="/scratch/ma95362/publication/tbprofiler_results"
-FOFN='/scratch/ma95362/publication/bactopia-runs/snippy-20260225-174952'
+#FOFN='/scratch/ma95362/publication/tbprofiler_results'
 
 # Load Conda/Miniforge module
 module load Miniforge3
@@ -31,6 +31,9 @@ if [ ! -d $OUTDIR ]
 fi
 #move to working directory:
 cd $OUTDIR
+#to generate FOFN 
+#cd /scratch/ma95362/publication/tbprofiler_results
+#ls -d */ | sed 's#/##' > samples.txt
 
 #samples just needs to be a list of sample names. No path is required.
-tb-profiler collate --samples $FOFN/genomic.samples.txt --dir $OUTDIR --itol
+tb-profiler collate --samples samples.txt --dir $OUTDIR --itol
