@@ -52,3 +52,18 @@ tb-profiler collate \
 #    binary=$(grep -A1 '"spoligotype"' $f | grep '"binary"' | head -1 | sed 's/.*"binary": "//;s/".*//')
 #    echo -e "${sample}\t${binary}" >> spoligotype_binary_matrix.txt
 #done
+
+#AND, I used this to call all the spoligotypes in one file, but it is not formatted as a matrix. It is just a list of sample names and their spoligotypes.
+
+#echo -e "SampleID\tLineageName\tLineageNumber\tSublineage\tBinary\tOctal\tFamily\tSIT" > tbprofiler_summary.tsv && \
+#for f in *.txt; do \
+#  id=$(grep -m1 "^ID:" "$f" | awk '{print $2}'); \
+#  lineage_name=$(grep -m1 "^Lineage Fraction" -A1 "$f" | tail -n1 | awk '{print $3}'); \
+#  lineage_number=$(grep -m1 "^Lineage Fraction" -A1 "$f" | tail -n1 | awk '{print $1}'); \
+#  sublineage=$(grep -m1 "^Lineage Fraction" -A1 "$f" | tail -n1 | awk '{print $2}'); \
+#  binary=$(grep -m1 "^Binary:" "$f" | awk '{print $2}'); \
+#  octal=$(grep -m1 "^Octal:" "$f" | awk '{print $2}'); \
+#  family=$(grep -m1 "^Family:" "$f" | awk '{print $2}'); \
+#  sit=$(grep -m1 "^SIT:" "$f" | awk '{print $2}'); \
+#  echo -e "${id}\t${lineage_name}\t${lineage_number}\t${sublineage}\t${binary}\t${octal}\t${family}\t${sit}"; \
+#done >> tbprofiler_summary.tsv
