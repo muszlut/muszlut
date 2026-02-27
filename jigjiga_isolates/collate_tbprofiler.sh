@@ -36,4 +36,7 @@ cd $OUTDIR
 #ls -d */ | sed 's#/##' > samples.txt
 
 #samples just needs to be a list of sample names. No path is required.
-tb-profiler collate --samples samples.txt --dir $OUTDIR --itol
+#if FOFN is there
+#tb-profiler collate --samples samples.txt --dir $OUTDIR --itol
+#otherwise
+tb-profiler collate --dir /scratch/ma95362/publication/tbprofiler_results --itol
