@@ -42,4 +42,4 @@ cd $OUTDIR
 tb-profiler collate \
     --dir $OUTDIR/results \
     --itol \
-    --txt
+    --csv 
