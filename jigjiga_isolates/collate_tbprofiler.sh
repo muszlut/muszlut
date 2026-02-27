@@ -42,3 +42,13 @@ cd $OUTDIR
 tb-profiler collate \
     --dir /scratch/ma95362/publication/tbprofiler_results/results \
     --itol
+
+#To isoltae the binary output of the spoligotype, you can use the following command in the /results directory directly on the terminarl or here :
+#echo -e "Sample\tSpoligotype_binary" > spoligotype_binary_matrix.txt
+#
+#for f in *.results.json
+#do
+#    sample=$(basename $f .results.json)
+#    binary=$(grep -A1 '"spoligotype"' $f | grep '"binary"' | head -1 | sed 's/.*"binary": "//;s/".*//')
+#    echo -e "${sample}\t${binary}" >> spoligotype_binary_matrix.txt
+#done
