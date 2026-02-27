@@ -39,4 +39,7 @@ cd $OUTDIR
 #if FOFN is there
 #tb-profiler collate --samples samples.txt --dir $OUTDIR --itol
 #otherwise
-tb-profiler collate --dir /scratch/ma95362/publication/tbprofiler_results --itol
+tb-profiler collate \
+    --dir $OUTDIR/results \
+    --itol \
+    --txt
