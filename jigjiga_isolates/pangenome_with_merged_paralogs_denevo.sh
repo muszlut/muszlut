@@ -20,7 +20,7 @@ OUTDIR="/scratch/ma95362/publication"
 # Load modules
 # -------------------------------
 
-module load Bactopia/4.0.0-conda
+module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 
 # -------------------------------

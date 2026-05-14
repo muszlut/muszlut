@@ -22,7 +22,7 @@ REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 # Load modules
 # -------------------------------
 
-module load Bactopia/4.0.0-conda
+module load Bactopia/3.2.0-conda
 module load Java/17.0.6
 
 # -------------------------------
