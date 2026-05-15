@@ -19,6 +19,7 @@ READS_DIR="/scratch/ma95362/clean_sequences_reads"
 OUTDIR="/scratch/ma95362/SRA_publication"
 #REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 # Load Bactopia module
+module purge
 module load Bactopia/4.0.0-conda
 module load Java/17.0.6
 # Create output directory if it doesn't exist
