@@ -22,6 +22,10 @@ OUTDIR="/scratch/ma95362/SRA_publication"
 export TMPDIR=/scratch/ma95362/tmp
 mkdir -p $TMPDIR
 
+# Clean env conflicts
+unset CONDA_PREFIX
+unset CONDA_DEFAULT_ENV
+
 # Load Bactopia module
 module purge
 module load Bactopia/4.0.0-conda
