@@ -31,11 +31,11 @@ mkdir -p "$OUTDIR"
 # Move to working directory
 cd $OUTDIR
 # Prepare samples for Bactopia
-#bactopia prepare \
-#    --path "$READS_DIR" \
-#    --species "Mycobacterium tuberculosis" \
-#    --genome-size 4410000 \
-#    > "$OUTDIR/samples.txt"
+bactopia prepare \
+    --path "$READS_DIR" \
+    --species "Mycobacterium tuberculosis" \
+    --genome-size 4410000 \
+    > "$OUTDIR/samples.txt"
 # Run Bactopia pipeline
 bactopia \
     --samples "$OUTDIR/samples.txt" \
