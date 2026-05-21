@@ -5,6 +5,7 @@
 #SBATCH --cpus-per-task=16                                     # Number of cores per task
 #SBATCH --mem=120gb                                            # Job memory request
 #SBATCH --time=07-00:00:00                                     # Time limit hrs:min:sec
+#SBATCH --gres=lscratch:100
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
 
@@ -20,6 +21,8 @@ OUTDIR="/scratch/ma95362/SRA_publication"
 #REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 # Load Bactopia module
 module load Bactopia/4.0.0-conda
+export BACTOPIA_CACHE=/lscratch/$USER/bactopia-cache
+mkdir -p $BACTOPIA_CACHE/{conda,datasets,singularity}
 # Create output directory if it doesn't exist
 mkdir -p "$OUTDIR"
 # Move to working directory
