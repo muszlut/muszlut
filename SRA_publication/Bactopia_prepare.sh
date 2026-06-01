@@ -5,7 +5,6 @@
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=120gb
 #SBATCH --time=07-00:00:00
-#SBATCH --gres=lscratch:100
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err
 
@@ -25,8 +24,8 @@ module load Bactopia/4.0.0-conda
 # -------------------------------
 # Use lscratch for Bactopia cache
 # -------------------------------
-export BACTOPIA_CACHE=/lscratch/ma95362/bactopia-cache
-mkdir -p $BACTOPIA_CACHE/{conda,datasets,singularity}
+#export BACTOPIA_CACHE=/lscratch/ma95362/bactopia-cache
+#mkdir -p $BACTOPIA_CACHE/{conda,datasets,singularity}
 
 # -------------------------------
 # Create output directory
