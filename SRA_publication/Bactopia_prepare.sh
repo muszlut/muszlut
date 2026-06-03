@@ -53,7 +53,9 @@ bactopia \
     --samples "$OUTDIR/samples.txt" \
     --coverage 100 \
     --outdir "$OUTDIR" \
-    --max_cpus 32
+    --max_cpus 8 \
+    --max_memory 60.GB \  
+    -resume
 # Generate summary
 #bactopia summary \
 #    --bactopia-path "$OUTDIR"
