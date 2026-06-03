@@ -19,6 +19,7 @@ OUTDIR="/scratch/ma95362/SRA_publication"
 # -------------------------------
 # Load Bactopia
 # -------------------------------
+module purge
 module load Bactopia/4.0.0-conda
 
 # -------------------------------
