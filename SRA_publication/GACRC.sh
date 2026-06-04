@@ -75,7 +75,7 @@ bactopia \
     --wf snippy \
     --bactopia "$OUTDIR" \
     --reference "$REF" \
-    --outdir "$OUTDIR/snippy" \
+    --outdir "$OUTDIR/snippy1" \
     --max_cpus 16 \
     --max_memory 70.GB \
     -resume
