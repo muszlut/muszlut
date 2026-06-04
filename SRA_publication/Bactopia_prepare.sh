@@ -59,7 +59,9 @@ cd "$OUTDIR"
 #    -resume
 # Generate summary
 bactopia summary \
-    --bactopia-path "$OUTDIR"
+    --bactopia-path "$OUTDIR" \
+    -resume
+
 #bactopia \
 #    --wf snippy \
 #    --reference $REF \
