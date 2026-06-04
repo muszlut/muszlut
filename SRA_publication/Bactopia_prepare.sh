@@ -65,7 +65,8 @@ cd "$OUTDIR"
 bactopia \
     --wf snippy \
     --reference $REF \
-    --bactopia $OUTDIR 
+    --bactopia $OUTDIR \
+    -resume
 #bactopia \
 #    --wf pangenome \
 #    --bactopia $OUTDIR
