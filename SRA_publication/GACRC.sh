@@ -17,7 +17,7 @@
 # -------------------------------
 READS_DIR="/scratch/ma95362/clean_sequences_reads"
 OUTDIR="/scratch/ma95362/SRAG_publication"
-#REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
+REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 # -------------------------------
 # Load Bactopia
 # -------------------------------
@@ -68,8 +68,16 @@ cd "$OUTDIR"
 #find "$OUTDIR" -name "versions.yml" -delete
 # Run summary
 #bactopia summary --bactopia-path "$OUTDIR"
+
+# Run Snippy workflow
+# -------------------------------
 bactopia \
     --wf snippy \
-    --reference $REF \
-    --bactopia $OUTDIR/snippy1 
+    --bactopia "$OUTDIR" \
+    --reference "$REF" \
+    --outdir "$OUTDIR/snippy" \
+    --max_cpus 16 \
+    --max_memory 70.GB \
+    -resume
+ 
 
