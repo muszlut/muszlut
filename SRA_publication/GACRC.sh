@@ -65,7 +65,11 @@ cd "$OUTDIR"
 #    -resume
 # Generate summary
 # Clean bad version files
-find "$OUTDIR" -name "versions.yml" -delete
+#find "$OUTDIR" -name "versions.yml" -delete
 # Run summary
-bactopia summary --bactopia-path "$OUTDIR"
+#bactopia summary --bactopia-path "$OUTDIR"
+bactopia \
+    --wf snippy \
+    --reference $REF \
+    --bactopia $OUTDIR/snippy1 
 
