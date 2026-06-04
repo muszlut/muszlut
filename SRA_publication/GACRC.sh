@@ -64,6 +64,8 @@ cd "$OUTDIR"
 #    --max_memory 60.GB \
 #    -resume
 # Generate summary
-bactopia summary \
-    --bactopia-path "$OUTDIR"
-    
+# Clean bad version files
+find "$OUTDIR" -name "versions.yml" -delete
+# Run summary
+bactopia summary --bactopia-path "$OUTDIR"
+
