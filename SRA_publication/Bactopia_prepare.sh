@@ -15,7 +15,7 @@
 # -------------------------------
 READS_DIR="/scratch/ma95362/clean_sequences_reads"
 OUTDIR="/scratch/ma95362/SRA_publication"
-#REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
+REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 # -------------------------------
 # Load Bactopia
 # -------------------------------
@@ -58,14 +58,15 @@ cd "$OUTDIR"
 #    --max_memory 60.GB \
 #    -resume
 # Generate summary
-# Clean bad version files
-find "$OUTDIR" -name "versions.yml" -delete
-# Run summary
-bactopia summary --bactopia-path "$OUTDIR"
-#bactopia \
-#    --wf snippy \
-#    --reference $REF \
-#    --bactopia $OUTDIR 
+######### Clean bad version files
+#find "$OUTDIR" -name "versions.yml" -delete
+######### Run summary
+#bactopia summary --bactopia-path "$OUTDIR"
+bactopia \
+    --wf snippy \
+    --reference $REF \
+    --bactopia $OUTDIR 
+    -resume
 #bactopia \
 #    --wf pangenome \
 #    --bactopia $OUTDIR
