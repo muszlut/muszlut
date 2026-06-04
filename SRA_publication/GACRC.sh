@@ -17,7 +17,7 @@
 # -------------------------------
 READS_DIR="/scratch/ma95362/clean_sequences_reads"
 OUTDIR="/scratch/ma95362/SRAG_publication"
-
+#REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 # -------------------------------
 # Load Bactopia
 # -------------------------------
