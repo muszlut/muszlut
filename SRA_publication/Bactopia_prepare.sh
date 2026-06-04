@@ -66,7 +66,6 @@ bactopia \
     --wf snippy \
     --reference $REF \
     --bactopia $OUTDIR 
-    -resume
 #bactopia \
 #    --wf pangenome \
 #    --bactopia $OUTDIR
