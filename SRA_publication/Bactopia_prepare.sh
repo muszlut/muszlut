@@ -41,25 +41,25 @@ cd "$OUTDIR"
 # -------------------------------
 # Prepare samples
 # -------------------------------
-bactopia prepare \
-    --path "$READS_DIR" \
-    --species "Mycobacterium tuberculosis" \
-    --genome-size 4410000 \
-    > "$OUTDIR/samples.txt"
-
+#bactopia prepare \
+#    --path "$READS_DIR" \
+#    --species "Mycobacterium tuberculosis" \
+#    --genome-size 4410000 \
+#    > "$OUTDIR/samples.txt"
+#
 # -------------------------------
 # Run Bactopia
 # -------------------------------
-bactopia \
-    --samples "$OUTDIR/samples.txt" \
-    --coverage 100 \
-    --outdir "$OUTDIR" \
-    --max_cpus 8 \
-    --max_memory 60.GB \
-    -resume
+#bactopia \
+#    --samples "$OUTDIR/samples.txt" \
+#    --coverage 100 \
+#    --outdir "$OUTDIR" \
+#    --max_cpus 8 \
+#    --max_memory 60.GB \
+#    -resume
 # Generate summary
-#bactopia summary \
-#    --bactopia-path "$OUTDIR"
+bactopia summary \
+    --bactopia-path "$OUTDIR"
 #bactopia \
 #    --wf snippy \
 #    --reference $REF \
