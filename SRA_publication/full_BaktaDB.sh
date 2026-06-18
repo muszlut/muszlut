@@ -11,7 +11,9 @@
 mkdir -p /scratch/ma95362/bakta_logs
 mkdir -p /scratch/ma95362/full_bakta_db
 cd /scratch/ma95362/full_bakta_db
-singularity exec /apps/singularity-images/ggcallaroo_v0.1.0.sif \
-bakta_db download \
-    --output /scratch/ma95362/full_bakta_db \
-    --type full
+
+wget -c https://zenodo.org/record/14916843/files/db.tar.xz
+
+xz -t db.tar.xz
+
+tar -xJf db.tar.xz
