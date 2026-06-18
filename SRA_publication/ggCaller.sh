@@ -1,0 +1,67 @@
+#!/bin/bash
+#SBATCH --job-name=ggCaller
+#SBATCH --partition=batch
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=120gb
+#SBATCH --time=07-00:00:00
+#SBATCH --output=/scratch/ma95362/scratch/log.%j.out
+#SBATCH --error=/scratch/ma95362/scratch/log.%j.err
+
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=ma95362@uga.edu
+
+# ==============================================================================
+# የሥራ ቦታ (Working Directory)
+# ==============================================================================
+# አሁን ባሉበት ፎልደር መሰረት ተስተካክሏል
+cd /scratch/ma95362/257_assembled_files
+
+# ==============================================================================
+# ሞጁሎችን መጫን (Module Loading)
+# ==============================================================================
+singularity exec /apps/singularity-images/ggcaller_v1.5.0.sif ggcaller --help
+
+# ------------------------------------------------------------------------------
+# ደረጃ 1: ለ ggCaller የሚያስፈልገውን የፋይል ዝርዝር ማዘጋጀት
+# ------------------------------------------------------------------------------
+
+echo "1. የተገጣጠሙ ፋይሎች (Assembly FASTA/FNA) ዝርዝር እየተዘጋጀ ነው (input.txt)..."
+
+# ማስተካከያ: .fasta ወደ .fna.gz ተቀይሯል. ggCaller የ .gz (Gzip) ቅርጸትን ማንበብ ይችላል።
+ls -d -1 $PWD/*.fna > input.txt 
+
+if [ -f "input.txt" ]; then
+    echo "ዝርዝሩ በ input.txt ላይ ተቀምጧል:"
+    wc -l input.txt
+else
+    echo "!!! ስህተት: input.txt አልተፈጠረም። የፋይል ቅጥያዎ (.fna.gz) ትክክል መሆኑን ያረጋግጡ።"
+    exit 1
+fi
+
+# ------------------------------------------------------------------------------
+# ደረጃ 2: ggCallerን ማስኬድ (--refs ተጠቅመን)
+# ------------------------------------------------------------------------------
+
+echo "2. ggCaller በ --refs mode (Assembly FNA) እየተጀመረ ነው..."
+
+# --refs የሚለው አማራጭ Assembly ፋይሎችን ማንበብ እንዲችል ያደርገዋል።
+ggcaller \
+  --refs input.txt \
+  --gene-finding-only \
+  --save \
+  --threads 32 \
+  --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
+  --out MTB_ggcaller
+
+
+# ------------------------------------------------------------------------------
+# መጨረሻ
+# ------------------------------------------------------------------------------
+
+if [ $? -eq 0 ]; then
+    echo "3. ggCaller ሥራውን በተሳካ ሁኔታ አጠናቋል።"
+    echo "ውጤቶችዎ በ MTB_ggcaller ፎልደር ውስጥ ይገኛሉ።"
+else
+    echo "4. !!! ስህተት: ggCaller ሥራውን ሳያጠናቅቅ ቆሟል። እባክዎ slurm-*.err ፋይሉን ይመልከቱ።"
+fi
