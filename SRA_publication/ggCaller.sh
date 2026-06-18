@@ -46,7 +46,7 @@ fi
 echo "2. ggCaller በ --refs mode (Assembly FNA) እየተጀመረ ነው..."
 
 # --refs የሚለው አማራጭ Assembly ፋይሎችን ማንበብ እንዲችል ያደርገዋል።
-singularity exec /apps/singularity-images/ggcaller_v1.5.0.sif
+singularity exec /apps/singularity-images/ggcaller_v1.5.0.sif \
 ggcaller \
   --refs input.txt \
   --gene-finding-only \
