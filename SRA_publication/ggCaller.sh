@@ -20,13 +20,13 @@ cd /scratch/ma95362/257_assembled_files
 # ==============================================================================
 # ሞጁሎችን መጫን (Module Loading)
 # ==============================================================================
-singularity exec /apps/singularity-images/ggcaller_v1.5.0.sif ggcaller --help
+singularity exec /apps/singularity-images/ggcaller_v1.5.0.sif
 
 # ------------------------------------------------------------------------------
 # ደረጃ 1: ለ ggCaller የሚያስፈልገውን የፋይል ዝርዝር ማዘጋጀት
 # ------------------------------------------------------------------------------
 
-echo "1. የተገጣጠሙ ፋይሎች (Assembly FASTA/FNA) ዝርዝር እየተዘጋጀ ነው (input.txt)..."
+echo "1. የተገጣጠሙ ፋይሎች (Assembly FASTA/fna) ዝርዝር እየተዘጋጀ ነው (input.txt)..."
 
 # ማስተካከያ: .fasta ወደ .fna.gz ተቀይሯል. ggCaller የ .gz (Gzip) ቅርጸትን ማንበብ ይችላል።
 ls -d -1 $PWD/*.fna > input.txt 
@@ -35,7 +35,7 @@ if [ -f "input.txt" ]; then
     echo "ዝርዝሩ በ input.txt ላይ ተቀምጧል:"
     wc -l input.txt
 else
-    echo "!!! ስህተት: input.txt አልተፈጠረም። የፋይል ቅጥያዎ (.fna.gz) ትክክል መሆኑን ያረጋግጡ።"
+    echo "!!! ስህተት: input.txt አልተፈጠረም። የፋይል ቅጥያዎ (.fna) ትክክል መሆኑን ያረጋግጡ።"
     exit 1
 fi
 
@@ -46,22 +46,16 @@ fi
 echo "2. ggCaller በ --refs mode (Assembly FNA) እየተጀመረ ነው..."
 
 # --refs የሚለው አማራጭ Assembly ፋይሎችን ማንበብ እንዲችል ያደርገዋል።
+singularity exec /apps/singularity-images/ggcaller_v1.5.0.sif
 ggcaller \
   --refs input.txt \
   --gene-finding-only \
   --save \
   --threads 32 \
-  --balrog-db /scratch/ma95362/ggcaller_db/ggCallerdb \
+  --balrog-db /scratch/ma95362/ggcaller_db \
   --out MTB_ggcaller
 
 
 # ------------------------------------------------------------------------------
 # መጨረሻ
 # ------------------------------------------------------------------------------
-
-if [ $? -eq 0 ]; then
-    echo "3. ggCaller ሥራውን በተሳካ ሁኔታ አጠናቋል።"
-    echo "ውጤቶችዎ በ MTB_ggcaller ፎልደር ውስጥ ይገኛሉ።"
-else
-    echo "4. !!! ስህተት: ggCaller ሥራውን ሳያጠናቅቅ ቆሟል። እባክዎ slurm-*.err ፋይሉን ይመልከቱ።"
-fi
