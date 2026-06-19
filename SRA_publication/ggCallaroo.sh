@@ -10,16 +10,15 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
-cd /scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results
-
-singularity exec /apps/singularity-images/ggcallaroo_v0.1.0.sif \
 snakemake \
 -s /app/Snakefile \
+--directory /scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results \
 --cores 32 \
+--use-conda \
+--dry-run \
 --config \
 refs=/scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results/test_refs.txt \
-balrog-db=/scratch/ma95362/ggcaller_db \
 bakta_db=/scratch/ma95362/full_bakta_db/db \
 output_dir=/scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results \
-ggcaller_cli_args="--save" \
+ggcaller_cli_args="--save --balrog-db /scratch/ma95362/ggcaller_db" \
 panaroo_cli_args="--clean-mode moderate"
