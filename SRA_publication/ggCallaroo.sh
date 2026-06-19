@@ -18,6 +18,7 @@ snakemake \
 -s /app/Snakefile \
 --directory /scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results \
 --cores 32 \
+--use-conda \
 --config \
 refs=/scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results/test_refs.txt \
 bakta_db=/scratch/ma95362/full_bakta_db/db \
