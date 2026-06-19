@@ -10,11 +10,11 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
+singularity exec /apps/singularity-images/ggcallaroo_v0.1.0.sif \
 snakemake \
 -s /app/Snakefile \
 --directory /scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results \
 --cores 32 \
---use-conda \
 --dry-run \
 --config \
 refs=/scratch/ma95362/257_assembled_files/MTB_ggcaller/test-ggcallaroo_results/test_refs.txt \
