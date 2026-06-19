@@ -7,6 +7,8 @@
 #SBATCH --time=06:00:00
 #SBATCH --output=/scratch/ma95362/bakta_logs/bakta_db_%j.out
 #SBATCH --error=/scratch/ma95362/bakta_logs/bakta_db_%j.err
+#SBATCH --mail-type=BEGIN,END,FAIL             
+#SBATCH --mail-user=ma95362@uga.edu  
 
 mkdir -p /scratch/ma95362/bakta_logs
 mkdir -p /scratch/ma95362/bakta_db
