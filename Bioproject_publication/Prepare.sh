@@ -35,10 +35,10 @@ cd $OUTDIR
 #bactopia summary \
 #    --bactopia-path $OUTDIR/MGA_paired_end_samples
 
-bactopia search \
-    --query PRJNA1392122
-#bactopia \
-#    --accessions $OUTDIR/bactopia-accessions.txt \
-#    --coverage 100 \
-#    --outdir $OUTDIR/ena-multiple-samples \
-#    --max_cpus 8
+#bactopia search \
+#    --query PRJNA1392122
+bactopia \
+    --accessions $OUTDIR/bactopia-accessions.txt \
+    --coverage 100 \
+    --outdir $OUTDIR/ena-multiple-samples \
+    --max_cpus 8
