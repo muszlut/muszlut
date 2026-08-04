@@ -2,8 +2,8 @@
 #SBATCH --job-name=All_BacPrep                                   # Job name
 #SBATCH --partition=batch                                        # Partition (queue) name
 #SBATCH --ntasks=1                                               # Run on a single CPU
-#SBATCH --cpus-per-task=8                                        # Number of cores per task
-#SBATCH --mem=40gb                                               # Job memory request
+#SBATCH --cpus-per-task=16                                        # Number of cores per task
+#SBATCH --mem=120gb                                               # Job memory request
 #SBATCH --time=05-00:00:00                                       # Time limit hrs:min:sec
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out           # Standard output log
 #SBATCH --error=/scratch/ma95362/scratch/log.%j.err            # Standard error log
@@ -41,4 +41,4 @@ bactopia \
     --accessions $OUTDIR/bactopia-accessions.txt \
     --coverage 100 \
     --outdir $OUTDIR/ena-multiple-samples \
-    --max_cpus 8
+    --max_cpus 16
