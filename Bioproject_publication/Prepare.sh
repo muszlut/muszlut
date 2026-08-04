@@ -22,11 +22,11 @@ fi
 
 module load Bactopia/3.2.0
 cd $OUTDIR
-#bactopia prepare \
-#    --path /scratch/ma95362/musse_MGA/merged/first_run_merged/all_reads \
-#    --species "Mycobacterium tuberculosis" \
-#    --genome-size 4410000 \
-#    > $OUTDIR/MGA_samples.txt
+bactopia prepare \
+    --path /scratch/ma95362/clean_sequences_reads \
+    --species "Mycobacterium tuberculosis" \
+    --genome-size 4410000 \
+    > $OUTDIR/MGA_samples.txt
 #bactopia \
 #    --samples $OUTDIR/MGA_samples.txt \
 #    --coverage 100 \
@@ -37,8 +37,8 @@ cd $OUTDIR
 
 #bactopia search \
 #    --query PRJNA1392122
-bactopia \
-    --accessions $OUTDIR/bactopia-accessions.txt \
-    --coverage 100 \
-    --outdir $OUTDIR/ena-multiple-samples \
-    --max_cpus 16
+#bactopia \
+#    --accessions $OUTDIR/bactopia-accessions.txt \
+#    --coverage 100 \
+#    --outdir $OUTDIR/ena-multiple-samples \
+#    --max_cpus 16
