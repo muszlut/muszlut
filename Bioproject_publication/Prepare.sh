@@ -27,11 +27,11 @@ cd $OUTDIR
 #    --species "Mycobacterium tuberculosis" \
 #    --genome-size 4410000 \
 #    > $OUTDIR/MGA_samples.txt
-bactopia \
-    --samples $OUTDIR/MGA_samples.txt \
-    --coverage 100 \
-    --outdir $OUTDIR/MGA_paired_end_samples \
-    --max_cpus 16
+#bactopia \
+#    --samples $OUTDIR/MGA_samples.txt \
+#    --coverage 100 \
+#    --outdir $OUTDIR/MGA_paired_end_samples \
+#    --max_cpus 16
 bactopia summary \
     --bactopia-path $OUTDIR/MGA_paired_end_samples
 
