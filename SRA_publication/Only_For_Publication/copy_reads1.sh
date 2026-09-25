@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=copy_E22_E23
+#SBATCH --job-name=copy_E10_E22_E23
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=2G
 #SBATCH --time=00:30:00
-#SBATCH --output=/scratch/ma95362/scratch/copy_E22_E23.%j.out
-#SBATCH --error=/scratch/ma95362/scratch/copy_E22_E23.%j.err
+#SBATCH --output=/scratch/ma95362/scratch/copy_E10_E22_E23.%j.out
+#SBATCH --error=/scratch/ma95362/scratch/copy_E10_E22_E23.%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
@@ -16,39 +16,42 @@ set -euo pipefail
 SRC="/work/fdqlab/Ethiopia_wgs_mtb_2024/second_run"
 DEST="/scratch/ma95362/clean_sequences_reads"
 
-# Create destination directory if needed
+# Create destination directory
 mkdir -p "$DEST"
 
-# Check that source directory exists
-if [ ! -d "$SRC" ]; then
-    echo "ERROR: Source directory does not exist: $SRC"
-    exit 1
-fi
+# Files to copy
+FILES=(
+    "E10._R1.fastq.gz"
+    "E10._R2.fastq.gz"
+    "E22._R1.fastq.gz"
+    "E22._R2.fastq.gz"
+    "E23._R1.fastq.gz"
+    "E23._R2.fastq.gz"
+)
 
-# Check that all four files exist
-for file in E22.1.fq.gz E22.2.fq.gz E23.1.fq.gz E23.2.fq.gz
-do
-    if [ ! -f "$SRC/$file" ]; then
-        echo "ERROR: File not found: $SRC/$file"
+# Check that all files exist
+for FILE in "${FILES[@]}"; do
+    if [ ! -f "$SRC/$FILE" ]; then
+        echo "ERROR: File not found: $SRC/$FILE"
         exit 1
     fi
 done
 
-# Copy E22 and E23 paired-end reads
-cp -v \
-    "$SRC/E22.1.fq.gz" \
-    "$SRC/E22.2.fq.gz" \
-    "$SRC/E23.1.fq.gz" \
-    "$SRC/E23.2.fq.gz" \
-    "$DEST/"
+# Copy files
+for FILE in "${FILES[@]}"; do
+    cp -v "$SRC/$FILE" "$DEST/"
+done
 
 echo ""
-echo "Copy completed successfully."
-echo "Destination: $DEST"
+echo "======================================"
+echo "Copy completed successfully!"
+echo "======================================"
 
 # Verify copied files
 ls -lh \
-    "$DEST/E22.1.fq.gz" \
-    "$DEST/E22.2.fq.gz" \
-    "$DEST/E23.1.fq.gz" \
-    "$DEST/E23.2.fq.gz"
+    "$DEST/E10._R1.fastq.gz" \
+    "$DEST/E10._R2.fastq.gz" \
+    "$DEST/E22._R1.fastq.gz" \
+    "$DEST/E22._R2.fastq.gz" \
+    "$DEST/E23._R1.fastq.gz" \
+    "$DEST/E23._R2.fastq.gz"
