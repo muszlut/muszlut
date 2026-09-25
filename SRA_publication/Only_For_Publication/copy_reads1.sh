@@ -13,7 +13,7 @@
 set -euo pipefail
 
 # Source and destination directories
-SRC="/work/fdqlab/Ethiopia_wgs_mtb_2024/second_run"
+SRC="/work/fdqlab/Ethiopia_wgs_mtb_2024/first_run"
 DEST="/scratch/ma95362/clean_sequences_reads"
 
 # Create destination directory
