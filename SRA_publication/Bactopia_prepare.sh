@@ -2,7 +2,7 @@
 #SBATCH --job-name=Bactopia_prepare
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=120G
 #SBATCH --time=07-00:00:00
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out
