@@ -43,17 +43,17 @@ cd "$OUTDIR"
 ## -------------------------------
 # Run Bactopia
 # -------------------------------
-export NXF_OPTS="-Xms2g -Xmx8g"
+#export NXF_OPTS="-Xms2g -Xmx8g"
 
-bactopia \
-    --samples "$OUTDIR/samples.txt" \
-    --coverage 100 \
-    --max_cpus 16 \
-    --outdir "$OUTDIR" \
-    -resume \
-    -process.maxForks 4
-` 
-#bactopia summary --bactopia-path "$OUTDIR"
+#bactopia \
+#    --samples "$OUTDIR/samples.txt" \
+#    --coverage 100 \
+#    --max_cpus 16 \
+#    --outdir "$OUTDIR" \
+#    -resume \
+#    -process.maxForks 4
+#` 
+bactopia summary --bactopia-path "$OUTDIR"
 #bactopia \
 #    --wf snippy \
 #    --reference $REF \
