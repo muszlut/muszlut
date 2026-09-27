@@ -62,10 +62,12 @@ bactopia \
     --wf snippy \
     --reference "$REF" \
     --bactopia "$OUTDIR" \
+    --exclude snippy_exclude.txt \
     --outdir /scratch/ma95362/Bio_project_publication/snippy_results \
     --max_cpus 24 \
     -process.maxForks 8 \
     -resume
+``
 #bactopia \
 #    --wf pangenome \
 #    --bactopia $OUTDIR
