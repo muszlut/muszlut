@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --job-name=Bactopia_prepare_&_run
+#SBATCH --job-name=Bactopia_snippy
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=24
 #SBATCH --mem=120G
 #SBATCH --time=07-00:00:00
 #SBATCH --output=/scratch/ma95362/scratch/log.%j.out
@@ -23,7 +23,7 @@ source activate bactopia4
 # -------------------------------
 READS_DIR="/scratch/ma95362/clean_sequences_reads"
 OUTDIR="/scratch/ma95362/Bio_project_publication"
-#REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
+REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
 
 # -------------------------------
 # Create output directory
@@ -53,11 +53,19 @@ cd "$OUTDIR"
 #    -resume \
 #    -process.maxForks 4
 #` 
-bactopia summary --bactopia-path "$OUTDIR"
-#bactopia \
-#    --wf snippy \
-#    --reference $REF \
-#    --bactopia $OUTDIR 
+#bactopia summary --bactopia-path "$OUTDIR"
+# Run Snippy
+# Nextflow JVM memory
+export NXF_OPTS="-Xms2g -Xmx8g"
+#Then, now run SNippy workflow with the reference genome and the Bactopia output directory
+bactopia \
+    --wf snippy \
+    --reference "$REF" \
+    --bactopia "$OUTDIR" \
+    --outdir /scratch/ma95362/Bio_project_publication/snippy_results \
+    --max_cpus 24 \
+    -process.maxForks 8 \
+    -resume
 #bactopia \
 #    --wf pangenome \
 #    --bactopia $OUTDIR
