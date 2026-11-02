@@ -32,6 +32,9 @@ MAN=$OUT/fastq_manifest.tsv
 mkdir -p "$OUT/depth"
 
 module load Mamba/23.11.0-0
+# minimap2 comes from the cluster module, not the conda env (loaded BEFORE activating so
+# that conda's samtools still takes precedence on PATH).
+module load minimap2/2.28-GCCcore-13.2.0
 source activate mtb_gwas
 
 # ---- 0. candidate sequences (written by step 06) ----
@@ -42,8 +45,14 @@ if [ ! -s "$REF" ]; then
 fi
 
 # ---- 1. fastq manifest: sample -> read file(s) ----
-if [ ! -s "$MAN" ]; then
+# Built ONLY by --check: array tasks must never build it concurrently (they would
+# all append to the same file). Array tasks read it and fail if it is missing.
+if [ "${1:-}" != "--check" ] && [ ! -s "$MAN" ]; then
+    echo "missing $MAN - run 'bash $0 --check' first"; exit 1
+fi
+if [ "${1:-}" = "--check" ]; then
     echo "building fastq manifest by searching $PROJ ..."
+    rm -f "$MAN"
     find "$PROJ" -name '*.fastq.gz' -o -name '*.fq.gz' 2>/dev/null | grep -v -i 'unpaired\|singleton' > "$OUT/all_fastq.txt" || true
     : > "$MAN"
     while read -r s; do
