@@ -25,7 +25,7 @@ SNIPPY=$PROJ/snippy_results/bactopia-runs/snippy-20260927-161232
 GBK=/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk   # H37Rv NC_000962.3
 SCRIPTS=$PROJ/gwas/scripts
 OUT=$PROJ/gwas/tree
-mkdir -p "$OUT"; cd "$OUT"  
+mkdir -p "$OUT"; cd "$OUT"
 
 [ -s "$GBK" ] || { echo "H37Rv GenBank not found at $GBK"; exit 1; }
 [ -s "$SNIPPY/core-snp-clean.full.aln.gz" ] || { echo "snippy alignment not found in $SNIPPY"; exit 1; }
