@@ -10,15 +10,15 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 #
-# Runs the full GWAS in one job:
-#   (optional) 02_masked_tree.sh -> 03_pyseer_gwas.sh -> 04_T3ETH_compare.sh
+# Launcher kept in the home directory; all step scripts and data files are in
+#   /scratch/ma95362/Bio_project_publication/gwas/scripts
 # Usage:
-#   sbatch run_all.sh               (tree already built)
-#   sbatch run_all.sh --with-tree   (rebuild the masked tree first)
+#   sbatch run-all_scripts.sh               (tree already built)
+#   sbatch run-all_scripts.sh --with-tree   (rebuild the masked tree first)
 set -euo pipefail
 
 PROJ=/scratch/ma95362/Bio_project_publication
-export SCRIPTS=$PROJ/gwas/scripts      # 'export' passes this folder to the step scripts
+export SCRIPTS=$PROJ/gwas/scripts          # step scripts read their inputs from here
 cd "$SCRIPTS"
 
 if [ "${1:-}" = "--with-tree" ]; then
