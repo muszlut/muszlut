@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Bactopia_PanPanaroo_merged
+#SBATCH --job-name=01_setup_env
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=24
