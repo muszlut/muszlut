@@ -40,21 +40,36 @@ done
 echo "===== 1. read-level genotype matrix"
 python3 "$SCRIPTS/make_readlevel_rtab.py" "$RL/depth" "$SCRIPTS/covariates.tsv" "$OUT/readlevel"
 
-npat () { sort -u "$1" | wc -l; }
+npat () { sort -u "$1" 2>/dev/null | wc -l; }
 
-echo; echo "===== 2. pyseer LMM on read-level genotypes"
-# min-af 0 / max-af 1: only 5 genes here, and genes present in all isolates are
-# informative (they are the proof of artefact), so nothing is filtered out.
+echo; echo "===== 2. invariant genes (cannot be association-tested)"
+# A gene present in all 257 isolates has zero variance: the LMM is singular and pyseer
+# cannot test it. That is not a loss - invariance IS the result for those genes, and it
+# is reported here descriptively instead.
+awk -F'\t' 'NR>1 {p=0; for(i=2;i<=NF;i++) p+=$i;
+    printf "  %-14s present in %d/%d%s\n", $1, p, NF-1,
+           (p==NF-1 ? "   <- invariant: present in every isolate, not testable" : "")}' \
+    "$OUT/readlevel.Rtab"
+
+echo; echo "===== 3. pyseer LMM on read-level genotypes (variable genes only)"
+# 0.01-0.99 drops the invariant genes automatically and keeps everything informative.
 run () {   # $1 phenotype column  $2 phenotype file
     local tag="$1_readlevel"
-    pyseer --phenotypes "$2" --phenotype-column "$1" --pres "$OUT/readlevel.Rtab" \
+    if ! pyseer --phenotypes "$2" --phenotype-column "$1" --pres "$OUT/readlevel.Rtab" \
            --similarity "$PY/phylogeny_K.tsv" --lmm \
-           --min-af 0 --max-af 1 --cpu 4 \
-           --output-patterns "patterns_${tag}.txt" > "pyseer_${tag}.tsv" 2> "pyseer_${tag}.log"
+           --min-af 0.01 --max-af 0.99 --cpu 4 \
+           --output-patterns "patterns_${tag}.txt" > "pyseer_${tag}.tsv" 2> "pyseer_${tag}.log"; then
+        echo "--- $1: pyseer FAILED, its log says:"; sed 's/^/      /' "pyseer_${tag}.log"; echo
+        return 0
+    fi
     local n thr
-    n=$(npat "patterns_${tag}.txt"); thr=$(awk -v n="$n" 'BEGIN{printf "%.3g", 0.05/n}')
+    n=$(npat "patterns_${tag}.txt"); thr=$(awk -v n="$n" 'BEGIN{if(n>0) printf "%.3g", 0.05/n; else printf "n/a"}')
     echo "--- $1 (patterns=$n, threshold=$thr)"
-    column -t -s$'\t' "pyseer_${tag}.tsv" | cut -c1-150
+    if [ "$(wc -l < "pyseer_${tag}.tsv")" -le 1 ]; then
+        echo "      no variants tested; pyseer log:"; sed 's/^/      /' "pyseer_${tag}.log"
+    else
+        column -t -s$'\t' "pyseer_${tag}.tsv" | cut -c1-150
+    fi
     echo
 }
 run EPTB "$SCRIPTS/phenotypes.tsv"
@@ -62,7 +77,7 @@ for c in T3ETH_vs_otherL4222 T3ETH_vs_otherL4 T3ETH_vs_all; do
     [ -s "$SCRIPTS/pheno_$c.tsv" ] && run "$c" "$SCRIPTS/pheno_$c.tsv"
 done
 
-echo "===== 3. side by side with the assembly-based results"
+echo "===== 4. side by side with the assembly-based results"
 printf "%-34s %-14s %-14s\n" variant p_assembly p_readlevel
 for v in group_1905 group_1965 group_589 group_1946 group_2137; do
     pa=$(awk -F'\t' -v v="$v" '$1==v{print $4}' "$PY/pyseer_EPTB_genes.tsv" 2>/dev/null | head -1)
