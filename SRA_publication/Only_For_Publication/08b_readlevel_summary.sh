@@ -25,7 +25,10 @@ OUT=$PROJ/gwas/readlevel
 # Which depth set to summarise:
 #   (no argument) -> depth      MAPQ >= 20, written by 08a and 08c
 #   depth_q0      -> depth_q0   unfiltered, written by 08c only
-DSET=${1:-depth}
+# Settable two ways, in case sbatch does not forward positional arguments:
+#   sbatch 08b_readlevel_summary.sh depth_q0
+#   sbatch --export=ALL,DSET=depth_q0 08b_readlevel_summary.sh
+DSET=${1:-${DSET:-depth}}
 SUF=$([ "$DSET" = "depth" ] && echo "" || echo "_${DSET#depth_}")
 
 n=$(ls -1 "$OUT/$DSET"/*.tsv 2>/dev/null | wc -l)
