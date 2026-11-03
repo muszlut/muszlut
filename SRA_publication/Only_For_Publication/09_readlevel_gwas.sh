@@ -28,17 +28,23 @@ PROJ=/scratch/ma95362/Bio_project_publication
 SCRIPTS=${SCRIPTS:-$PROJ/gwas/scripts}
 PY=$PROJ/gwas/pyseer
 RL=$PROJ/gwas/readlevel
-OUT=$RL/gwas
+
+# Which depth set to genotype from, by argument or environment variable:
+#   depth     MAPQ >= 20 (default)      -> results in gwas/readlevel/gwas
+#   depth_q0  unfiltered, from 08c      -> results in gwas/readlevel/gwas_q0
+DSET=${1:-${DSET:-depth}}
+SUF=$([ "$DSET" = "depth" ] && echo "" || echo "_${DSET#depth_}")
+OUT=$RL/gwas$SUF
 mkdir -p "$OUT"; cd "$OUT"
 
 for f in "$SCRIPTS/make_readlevel_rtab.py" "$SCRIPTS/phenotypes.tsv" "$SCRIPTS/covariates.tsv" \
          "$PY/phylogeny_K.tsv"; do
     [ -s "$f" ] || { echo "missing input: $f"; exit 1; }
 done
-[ -d "$RL/depth" ] || { echo "missing $RL/depth - run 08a first"; exit 1; }
+[ -d "$RL/$DSET" ] || { echo "missing $RL/$DSET - run 08a (or 08c for depth_q0) first"; exit 1; }
 
-echo "===== 1. read-level genotype matrix"
-python3 "$SCRIPTS/make_readlevel_rtab.py" "$RL/depth" "$SCRIPTS/covariates.tsv" "$OUT/readlevel"
+echo "===== 1. read-level genotype matrix (depth set: $DSET -> $OUT)"
+python3 "$SCRIPTS/make_readlevel_rtab.py" "$RL/$DSET" "$SCRIPTS/covariates.tsv" "$OUT/readlevel"
 
 npat () { sort -u "$1" 2>/dev/null | wc -l; }
 
