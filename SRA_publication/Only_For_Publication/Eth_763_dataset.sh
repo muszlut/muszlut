@@ -93,7 +93,7 @@ bactopia \
     --samples "$SAMPLES" \
     --coverage 100 \
     --max_cpus 32 \
-    --max_memory 120 \
+    --max_memory 120.GB \
     --outdir "$RESULT_DIR" \
     -w "$WORK_DIR" \
     -profile singularity \
