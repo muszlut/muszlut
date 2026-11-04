@@ -1,4 +1,3 @@
-```bash
 #!/bin/bash
 #SBATCH --job-name=Mtb_8_BioProjects
 #SBATCH --partition=batch
@@ -191,4 +190,3 @@ echo "Results directory:"
 echo "$RESULT_DIR"
 
 echo "Workflow completed."
-```
