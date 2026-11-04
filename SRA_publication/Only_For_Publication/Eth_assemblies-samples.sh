@@ -69,24 +69,32 @@ if [[ ! -s "${PROJECT}.zip" ]]; then
         --filename "${PROJECT}.zip"
 fi
 
-rm -rf ncbi_dataset
-unzip -q -o "${PROJECT}.zip"
+# Extract and gzip only on the first run. Re-creating the files on a
+# resubmission would change their timestamps and make -resume redo everything.
+if ! ls "${FNA_DIR}"/*.fna.gz >/dev/null 2>&1; then
 
-# ============================================================
-# 4. One gzipped FASTA per sample, named by assembly accession
-#    e.g. GCA_030415455.1.fna.gz
-# ============================================================
-echo "Collecting FASTA files ..."
+    rm -rf ncbi_dataset
+    unzip -q -o "${PROJECT}.zip"
 
-for DIR in ncbi_dataset/data/GCA_*; do
-    ACC=$(basename "$DIR")
-    FNA=$(ls "$DIR"/*.fna 2>/dev/null | head -n 1 || true)
-    if [[ -n "$FNA" ]]; then
-        gzip -c "$FNA" > "${FNA_DIR}/${ACC}.fna.gz"
-    else
-        echo "WARNING: no FASTA for ${ACC}"
-    fi
-done
+    # ============================================================
+    # 4. One gzipped FASTA per sample, named by assembly accession
+    #    e.g. GCA_030415455.1.fna.gz
+    # ============================================================
+    echo "Collecting FASTA files ..."
+
+    for DIR in ncbi_dataset/data/GCA_*; do
+        ACC=$(basename "$DIR")
+        FNA=$(ls "$DIR"/*.fna 2>/dev/null | head -n 1 || true)
+        if [[ -n "$FNA" ]]; then
+            gzip -c "$FNA" > "${FNA_DIR}/${ACC}.fna.gz"
+        else
+            echo "WARNING: no FASTA for ${ACC}"
+        fi
+    done
+
+else
+    echo "FASTA files already collected; reusing them."
+fi
 
 N_ASM=$(ls "${FNA_DIR}"/*.fna.gz | wc -l)
 echo "=========================================="
@@ -94,7 +102,7 @@ echo "Assemblies collected: ${N_ASM} (BioProject lists 146 BioSamples)"
 echo "=========================================="
 
 # Lookup table: assembly accession -> BioSample -> strain name (for your metadata)
-if command -v dataformat >/dev/null 2>&1; then
+if command -v dataformat >/dev/null 2>&1 && [[ -s ncbi_dataset/data/assembly_data_report.jsonl ]]; then
     dataformat tsv genome \
         --inputfile ncbi_dataset/data/assembly_data_report.jsonl \
         --fields accession,assminfo-biosample-accession,organism-infraspecific-strain \
@@ -125,13 +133,16 @@ fi
 
 # ============================================================
 # 6. Run Bactopia on the assemblies
+#    Launched from ASM_DIR (not BASE_DIR) so it can run at the same
+#    time as the BioProject job without a Nextflow lock conflict.
 # ============================================================
-cd "$BASE_DIR"
+cd "$ASM_DIR"
 
 bactopia \
     --samples "$SAMPLES" \
-    --max_cpus 32 \
-    --max_memory 120.GB \
+    --max_cpus 8 \
+    --max_memory 100.GB \
+    --max_time 12.h \
     --outdir "$RESULT_DIR" \
     -w "$WORK_DIR" \
     -profile singularity \

@@ -92,8 +92,9 @@ echo "Starting Bactopia ..."
 bactopia \
     --samples "$SAMPLES" \
     --coverage 100 \
-    --max_cpus 32 \
-    --max_memory 120.GB \
+    --max_cpus 8 \
+    --max_memory 100.GB \
+    --max_time 12.h \
     --outdir "$RESULT_DIR" \
     -w "$WORK_DIR" \
     -profile singularity \
