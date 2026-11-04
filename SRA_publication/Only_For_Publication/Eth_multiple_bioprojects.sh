@@ -7,8 +7,8 @@
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=120G
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/scratch/ma95362/scratch/log.%j.out
-#SBATCH --error=/scratch/ma95362/scratch/log.%j.err
+#SBATCH --output=/scratch/ma95362/Bio_project_publication/Mtb_Multiple_BioProjects/logs/log.%j.out
+#SBATCH --error=/scratch/ma95362/Bio_project_publication/Mtb_Multiple_BioProjects/logs/log.%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=ma95362@uga.edu
 
