@@ -115,6 +115,26 @@ echo "=========================================="
 echo "Starting Bactopia analysis..."
 cd "$BASE_DIR"
 
+# ------------------------------------------------------------
+# Custom Nextflow config:
+#  - time: Bactopia's QC step requests 2 h by default and
+#    --max_time only caps that, so set the time on every step directly.
+#  - errorStrategy: retry a failed sample once, then skip it so
+#    one bad sample does not kill the whole run.
+#    Skipped samples are listed in results/bactopia-runs/*/nf-reports.
+# Changing these settings does not invalidate -resume.
+# ------------------------------------------------------------
+CUSTOM_CONFIG="${BASE_DIR}/mtb_custom.config"
+cat > "$CUSTOM_CONFIG" <<'EOF'
+process {
+    withName: '.*' {
+        time          = '12.h'
+        errorStrategy = { task.attempt <= 1 ? 'retry' : 'ignore' }
+        maxRetries    = 1
+    }
+}
+EOF
+
 if bactopia \
     --accessions "$COMBINED" \
     --coverage 100 \
@@ -123,6 +143,7 @@ if bactopia \
     --max_time 12.h \
     --outdir "$RESULT_DIR" \
     -w "$WORK_DIR" \
+    -c "$CUSTOM_CONFIG" \
     -resume
 then
     echo "=========================================="
