@@ -46,7 +46,6 @@ echo "  rows containing a fragmented-gene separator (;): $(grep -c ';' "$PAN/gen
 
 echo; echo "===== 2. are our candidates flagged?"
 for g in group_1905 group_1965 group_589 group_1946 group_2137; do
-    line=$(awk -F',' -v g="$g" '$1 ~ "^\""?g {print $1; exit}' "$PAN/gene_presence_absence.csv" || true)
     hit=$(grep -m1 -E "^\"?${g}(_stop|_len)?\"?," "$PAN/gene_presence_absence.csv" || true)
     if [ -n "$hit" ]; then
         name=$(echo "$hit" | cut -d',' -f1)
@@ -58,10 +57,13 @@ for g in group_1905 group_1965 group_589 group_1946 group_2137; do
 done
 
 echo; echo "===== 3. panaroo-filter-pa (remove pseudogenes, length outliers, fragmented)"
-panaroo-filter-pa -i "$PAN/gene_presence_absence.csv" -o "$OUT" --type pseudo,length,frag
+# panaroo-filter-pa builds its output path as <out_dir> + <the input path it was given>, so
+# an absolute -i produces a nonsensical destination. Copy the matrix in and use a bare name.
+cp -f "$PAN/gene_presence_absence.csv" "$OUT/gene_presence_absence.csv"
+( cd "$OUT" && panaroo-filter-pa -i gene_presence_absence.csv -o ./ --type pseudo,length,frag )
 ls -1 "$OUT"/gene_presence_absence*.Rtab 2>/dev/null || true
-RTAB=$(ls -1 "$OUT"/gene_presence_absence*filtered*.Rtab 2>/dev/null | head -1)
-[ -n "$RTAB" ] || RTAB=$(ls -1 "$OUT"/gene_presence_absence*.Rtab 2>/dev/null | grep -v "^$PAN" | head -1)
+RTAB=$(ls -1 "$OUT"/*_filt_*.Rtab 2>/dev/null | head -1)
+[ -n "$RTAB" ] || RTAB=$(ls -1 "$OUT"/*filt*.Rtab "$OUT"/*.Rtab 2>/dev/null | head -1)
 [ -n "$RTAB" ] || { echo "could not find the filtered Rtab; check the panaroo-filter-pa output above"; exit 1; }
 echo "filtered matrix: $RTAB"
 echo "  clusters before: $tot   after: $(( $(wc -l < "$RTAB") - 1 ))"
