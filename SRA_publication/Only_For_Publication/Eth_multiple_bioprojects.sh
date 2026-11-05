@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=Mtb_7_BioProjects
+#SBATCH --job-name=Mtb_7_BioProjects_sing
 #SBATCH --partition=batch
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -20,6 +20,11 @@ module load Mamba/23.11.0-0
 source activate bactopia4
 export PYTHONNOUSERSITE=1
 
+# Containers, same as the Eth763 and PRJNA975069 runs
+module load Apptainer 2>/dev/null || module load Singularity 2>/dev/null || true
+export NXF_SINGULARITY_CACHEDIR=/scratch/ma95362/singularity_cache
+mkdir -p "$NXF_SINGULARITY_CACHEDIR"
+
 # ============================================================
 # 2. Define directories
 # ============================================================
@@ -27,8 +32,8 @@ BASE_DIR="/scratch/ma95362/Bio_project_publication/Mtb_Multiple_BioProjects"
 
 SEARCH_DIR="${BASE_DIR}/search"
 ACCESSION_DIR="${BASE_DIR}/accessions"
-RESULT_DIR="${BASE_DIR}/results"
-WORK_DIR="${BASE_DIR}/work"
+RESULT_DIR="${BASE_DIR}/results_singularity"   # fresh, separate from the old conda run
+WORK_DIR="${BASE_DIR}/work_singularity"
 
 mkdir -p "$SEARCH_DIR" "$ACCESSION_DIR" "$RESULT_DIR" "$WORK_DIR"
 cd "$BASE_DIR"
@@ -108,9 +113,10 @@ echo "=========================================="
 # 5. Run Bactopia
 #    --max_memory below the Slurm --mem (120G) so parallel tasks
 #    can never exceed the allocation and get killed by Slurm.
-#    Profile kept as 'standard' (conda) because the first 205
-#    samples were run with it; switching profile would redo them.
-#    -resume skips everything already finished.
+#    -profile singularity: the conda ('standard') run kept hanging in QC,
+#    while the singularity runs (Eth763, PRJNA975069) worked. Using the
+#    same profile for all three datasets also keeps the methods identical.
+#    -resume skips everything already finished if you resubmit.
 # ============================================================
 echo "Starting Bactopia analysis..."
 cd "$BASE_DIR"
@@ -144,6 +150,7 @@ if bactopia \
     --outdir "$RESULT_DIR" \
     -w "$WORK_DIR" \
     -c "$CUSTOM_CONFIG" \
+    -profile singularity \
     -resume
 then
     echo "=========================================="
