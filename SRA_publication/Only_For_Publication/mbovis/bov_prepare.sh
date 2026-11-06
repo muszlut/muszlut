@@ -43,17 +43,15 @@ bactopia prepare \
 ## -------------------------------
 # Run Bactopia
 # -------------------------------
-#export NXF_OPTS="-Xms2g -Xmx8g"
-
-#bactopia \
-#    --samples "$OUTDIR/samples.txt" \
-#    --coverage 100 \
-#    --max_cpus 16 \
-#    --outdir "$OUTDIR" \
-#    -resume \
-#    -process.maxForks 4
-#` 
-#bactopia summary --bactopia-path "$OUTDIR"
+export NXF_OPTS="-Xms2g -Xmx8g"
+bactopia \
+    --samples "$OUTDIR/samples.txt" \
+    --coverage 100 \
+    --max_cpus 16 \
+    --outdir "$OUTDIR" \
+    -resume \
+    -process.maxForks 4
+bactopia summary --bactopia-path "$OUTDIR"
 # Run Snippy
 # Nextflow JVM memory
 #export NXF_OPTS="-Xms2g -Xmx8g"
