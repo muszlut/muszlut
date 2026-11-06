@@ -19,8 +19,14 @@
 #
 # The original files are never modified.
 #
-# Run:  sbatch recover_corrupt_fastqs.sh
+# Run:  sbatch recover_corrupt_reads.sh
 # =============================================================================
+
+# --------------------------- environment -------------------------------------
+# A batch shell does not inherit the interactive conda environment, so load
+# what we need here. SeqKit comes from the cluster module system.
+
+module load SeqKit/2.9.0
 
 set -uo pipefail          # NOTE: deliberately no -e; zcat exits non-zero on
                           # every corrupt file and that is expected here.
@@ -37,11 +43,12 @@ BAD="288P 305G 318G 320P 322G 323G 32_HK 336G 341P 342P 343P 379 380 383 SU109"
 
 # ------------------------------ preflight ------------------------------------
 
-command -v seqkit >/dev/null 2>&1 || {
-    echo "ERROR: seqkit not found. Activate the environment that provides it," >&2
-    echo "       or load a module, before running this script." >&2
+if ! command -v seqkit >/dev/null 2>&1; then
+    echo "ERROR: seqkit not on PATH after 'module load SeqKit/2.9.0'." >&2
+    echo "       Check 'module spider SeqKit' for an available version." >&2
     exit 1
-}
+fi
+echo "seqkit: $(command -v seqkit) ($(seqkit version 2>&1 | head -1))"
 
 # pigz gives a large speedup on recompression if it is available
 if command -v pigz >/dev/null 2>&1; then
@@ -79,18 +86,22 @@ for s in $BAD; do
 
         # awk buffers four lines and only emits a record once all four exist,
         # so a partial record at the corruption point is silently dropped.
-        n=$( zcat "$SRC/$f" 2>/dev/null \
-             | awk '
-                 { buf[NR % 4] = $0 }
-                 NR % 4 == 0 {
-                     print buf[1]; print buf[2]; print buf[3]; print buf[0]
-                     kept++
-                 }
-                 END { print kept + 0 > "/dev/stderr" }
-               ' 2> >(cat > "$OUT/.count.$$") \
-             | $ZIP > "$OUT/$f"
-             cat "$OUT/.count.$$" )
-        rm -f "$OUT/.count.$$"
+        # The record count is written to a side file rather than stderr so it
+        # survives the pipeline cleanly.
+        countfile="$OUT/.count.$$"
+        zcat "$SRC/$f" 2>/dev/null \
+          | awk -v cf="$countfile" '
+                { buf[NR % 4] = $0 }
+                NR % 4 == 0 {
+                    print buf[1]; print buf[2]; print buf[3]; print buf[0]
+                    kept++
+                }
+                END { print kept + 0 > cf }
+            ' \
+          | $ZIP > "$OUT/$f"
+
+        n=$(cat "$countfile" 2>/dev/null || echo 0)
+        rm -f "$countfile"
 
         bytes=$(stat -c %s "$OUT/$f" 2>/dev/null || echo 0)
         printf "%s\t%s\t%s\t%s\n" "$s" "$r" "${n:-0}" "$bytes" >> "$REPORT"
@@ -104,7 +115,8 @@ echo
 
 # --------------------------- step 2: restore pairing -------------------------
 # R1 and R2 almost certainly stopped at different records, so the two files
-# are out of sync. seqkit pair keeps only reads present in both.
+# are out of sync. seqkit pair keeps only reads present in both and writes
+# them to the directory given by -O.
 
 cd "$OUT" || exit 1
 
@@ -124,8 +136,8 @@ echo
 
 # ------------------------------ step 3: verify -------------------------------
 
-SUMMARY="$OUT/paired/verification.tsv"
 mkdir -p "$OUT/paired"
+SUMMARY="$OUT/paired/verification.tsv"
 printf "sample\tR1_reads\tR2_reads\tpairing\tgzip\test_depth_x\tverdict\n" > "$SUMMARY"
 
 echo "=============================================================="
