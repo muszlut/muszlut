@@ -23,7 +23,11 @@ source activate bactopia4
 # -------------------------------
 READS_DIR="/scratch/ma95362/Bio_project_publicatio/mbovis_seq"
 OUTDIR="/scratch/ma95362/Bio_project_publication/Mbovis"
-#REF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gbk"
+REF="/scratch/ma95362/ref_mbovis/ncbi_dataset/data/GCF_000195835.3/genomic.gbk"
+EXCLUDE="$OUTDIR/exclude.txt"
+INCLUDE="$OUTDIR/include.txt"
+[ -s "$REF" ]     || { echo "ERROR: $REF missing" >&2; exit 1; }
+[ -s "$INCLUDE" ] || { echo "ERROR: $INCLUDE missing" >&2; exit 1; }
 
 # -------------------------------
 # Create output directory
@@ -51,25 +55,22 @@ export NXF_OPTS="-Xms1g -Xmx6g"
 #    -work-dir /scratch/ma95362/Bio_project_publication/Mbovis/work \
 #    -resume
 #bactopia summary --bactopia-path "$OUTDIR"
-bactopia \
-    --wf tbprofiler \
-    --bactopia /scratch/ma95362/Bio_project_publication/Mbovis \
-    -c sapelo2.config \
-    -resume
+#bactopia \
+#    --wf tbprofiler \
+#    --bactopia /scratch/ma95362/Bio_project_publication/Mbovis \
+#    -c sapelo2.config \
+#    -resume
 # Run Snippy
 # Nextflow JVM memory
 #export NXF_OPTS="-Xms2g -Xmx8g"
 #Then, now run SNippy workflow with the reference genome and the Bactopia output directory
-#bactopia \
-#    --wf snippy \
-#    --reference "$REF" \
-#    --bactopia "$OUTDIR" \
-#    --exclude snippy_exclude.txt \
-#    --outdir /scratch/ma95362/Bio_project_publication/snippy_results \
-#    --max_cpus 24 \
-#    -process.maxForks 8 \
-#    -resume
-#``
+bactopia --wf snippy \
+    --bactopia "$OUTDIR" \
+    --reference "$REF" \
+    --include "$INCLUDE" \
+    -c "$OUTDIR/sapelo2.config" \
+    -work-dir "$OUTDIR/work-snippy" \
+    -resume
 #bactopia \
 #    --wf pangenome \
 #    --bactopia $OUTDIR
