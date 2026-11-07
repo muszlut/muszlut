@@ -13,26 +13,43 @@
 # =============================================================================
 # Region of Difference (RD) typing for the 38 MTBC isolates.
 #
-# Two independent parts, because the two reference genomes can answer
-# different questions:
+# All coordinates below were determined EMPIRICALLY from these BAMs rather
+# than taken from the literature, by finding the exact zero-coverage
+# boundaries and confirming they are identical across every member of a
+# group. Verify the gene content against the published RD definitions
+# before using the published RD names in the manuscript.
 #
-#   PART A  vs H37Rv (TB-Profiler BAMs)
-#           RD9, RD4, RD1 are PRESENT in H37Rv and deleted in various MTBC
-#           members, so they can only be scored against H37Rv:
-#               RD9 deleted, RD4 intact   -> M. caprae
-#               RD9 deleted, RD4 deleted  -> M. bovis
-#               RD9 intact                -> M. tuberculosis sensu stricto
-#               RD1 also deleted          -> BCG
-#           Coordinates are looked up from the H37Rv GFF by Rv locus tag,
-#           not hardcoded, so they are correct for this assembly.
+# ---------------------------------------------------------------------------
+# WHAT WAS FOUND (H37Rv / NC_000962.3, BAM contig name "Chromosome")
 #
-#   PART B  vs M. bovis AF2122/97 (vSNP3 BAMs)
-#           RDAf2 is deleted in African 2 strains and PRESENT in AF2122/97
-#           (a Eu1 strain), so it is scored here. Rather than trusting a
-#           published coordinate, this does a data-driven scan: it finds
-#           windows with no coverage in the 20 Af2CC samples that ARE
-#           covered in the 14 non-Af2 M. bovis samples. A region that
-#           partitions the dataset exactly along the Af2 split is RDAf2.
+#   RD9 core        2,330,074 - 2,332,101   (2,028 bp)
+#       Deleted in ALL 38 isolates -> none is M. tuberculosis sensu stricto.
+#       NB the Rv2072c-Rv2075c span used earlier includes the intact
+#       FLANKING genes, which is why every sample read ~51% zero and a
+#       >80% threshold never fired.
+#
+#   M. bovis deletion   1,696,017 - 1,708,748  (12,732 bp)
+#       Identical outer boundaries in all 34 M. bovis. Some samples show
+#       ~20 bp islands of coverage inside it (e.g. 1,701,629-1,701,647);
+#       those are mismapped reads at 1-2x against ~40-90x flanking.
+#
+#   La2 deletion        1,688,917 - 1,700,496  (11,580 bp)
+#       Identical in all four La2 samples (97G, 100GP, 106GP, 097G_400),
+#       breakpoints agreeing to within 1 bp.
+#
+#   The two deletions OVERLAP only between 1,700,497 and 1,696,017, so a
+#   simple "RD4 percent deleted" is ambiguous. This script instead scores
+#   the two NON-overlapping windows, which give a clean binary:
+#       BOV_ONLY  1,700,497 - 1,708,748  deleted in M. bovis, present in La2
+#       CAP_ONLY  1,688,917 - 1,696,016  deleted in La2, present in M. bovis
+#
+#   RD1             4,348,827 - 4,359,782
+#       0% zero coverage in all 38 -> RD1 intact, no BCG.
+#
+# PART B re-runs the data-driven Af2 deletion scan against AF2122/97.
+#   Previously found: NC_002945.4:681,580-695,673 (14,094 bp), identical
+#   breakpoints in all 20 Af2 isolates, spanning BQ2027_MB0599-MB0610
+#   including mce2R. Candidate RDAf2 - confirm against Berg et al. 2011.
 #
 # Run: sbatch rd_typing.sh
 # =============================================================================
@@ -46,117 +63,113 @@ set -euo pipefail
 OUT="/scratch/ma95362/rd_typing"
 BACTOPIA="/scratch/ma95362/Bio_project_publication/Mbovis"
 VSNP="/scratch/ma95362/vsnp3/step1"
-
 H37RV_GFF="/scratch/ma95362/gbk/ncbi_dataset/data/GCF_000195955.2/genomic.gff"
-WINDOW=1000          # bp, for the part B deletion scan
-MIN_DEPTH=5          # a window below this mean depth counts as absent
 
-# Group membership from the vSNP3 step 2 output
+WINDOW=1000          # bp, for the part B deletion scan
+MIN_DEPTH=5          # window mean below this counts as absent (part B)
+DEPTH_CUT=3          # per-base depth below this counts as absent (part A)
+ZERO_CALL=80         # % of a window below DEPTH_CUT to call it deleted
+
 AF2="17 151P 213P 262G 264G 264P 271G 281G 281P 283G 292G 300P 301G 304G 304P 305G 308P 310P 342P 343P"
 NONAF2="120PG 231G 258G 259G 262P 288P 307G 318G 322G 323G 32_HK 341P 147 234GP"
 CAPRAE="097G_400 100GP 106GP 97G"
 
-mkdir -p "$OUT/logs"
+# Empirically determined intervals (see header)
+RD9_CORE="2330074-2332101"
+BOV_ONLY="1700497-1708748"
+CAP_ONLY="1688917-1696016"
+RD1_SPAN="4348827-4359782"
+
+mkdir -p "$OUT/logs" "$OUT/cov"
 cd "$OUT"
 
 echo "Started: $(date)"
 echo
 
 # =============================================================================
-# PART A - RD9 / RD4 / RD1 against H37Rv
+# PART A - RD typing against H37Rv
 # =============================================================================
 
 echo "############ PART A: RD typing against H37Rv ############"
 echo
 
-if [ ! -s "$H37RV_GFF" ]; then
-    echo "SKIPPING PART A: H37Rv GFF not found at $H37RV_GFF" >&2
-    echo "Download with:" >&2
-    echo "  datasets download genome accession GCF_000195955.2 --include genome,gff3,gbff" >&2
-else
-
-# Look up the flanking genes of each RD by Rv locus tag and take the span.
-# RD9  : Rv2072c - Rv2075c
-# RD4  : Rv1505c - Rv1516c
-# RD1  : Rv3871  - Rv3879c
-span_from_tags () {
-    local first="$1" last="$2"
-    awk -F'\t' -v a="$first" -v b="$last" '
-        $3=="gene" && $9 ~ ("locus_tag=" a "(;|$)") { s=$4 }
-        $3=="gene" && $9 ~ ("locus_tag=" b "(;|$)") { e=$5 }
-        END { if (s && e) { if (s>e) {t=s; s=e; e=t}; print s"\t"e } }
-    ' "$H37RV_GFF"
-}
-
 PROBE=$(ls "$BACTOPIA"/*/tools/tbprofiler/supplemental/*.bam 2>/dev/null | head -1)
+[ -n "$PROBE" ] || { echo "ERROR: no TB-Profiler BAMs found under $BACTOPIA" >&2; exit 1; }
 CHROM=$(samtools view -H "$PROBE" | awk '$1=="@SQ"{sub("SN:","",$2); print $2; exit}')
-echo "H37Rv contig (from BAM): $CHROM"
-
-declare -A RD
-for spec in "RD9:Rv2072c:Rv2075c" "RD4:Rv1505c:Rv1516c" "RD1:Rv3871:Rv3879c"; do
-    name=${spec%%:*}; rest=${spec#*:}
-    first=${rest%%:*}; last=${rest##*:}
-    coords=$(span_from_tags "$first" "$last")
-    if [ -n "$coords" ]; then
-        RD[$name]="$coords"
-        printf "  %-5s %s..%s  (%s - %s)\n" "$name" $(echo "$coords") "$first" "$last"
-    else
-        echo "  $name: could not resolve $first / $last in the GFF" >&2
-    fi
-done
+echo "Contig from BAM header: $CHROM"
+echo "  RD9 core  $RD9_CORE"
+echo "  BOV_ONLY  $BOV_ONLY   (deleted in M. bovis, present in La2)"
+echo "  CAP_ONLY  $CAP_ONLY   (deleted in La2, present in M. bovis)"
+echo "  RD1       $RD1_SPAN"
 echo
 
+# mean depth and % of bases below DEPTH_CUT for one region
+region_stats () {
+    local bam="$1" reg="$2"
+    samtools depth -a -r "${CHROM}:${reg}" "$bam" 2>/dev/null \
+      | awk -v c="$DEPTH_CUT" '{t+=$3; n++; if($3<c) z++}
+             END { if(n==0) print "0 100"; else printf "%.1f %.1f", t/n, 100*(z+0)/n }'
+}
+
 {
-printf "sample"
-for n in RD9 RD4 RD1; do printf "\t%s_mean\t%s_pct_zero" "$n" "$n"; done
-printf "\tcall\n"
+printf "sample\tgroup\tRD9_mean\tRD9_pctdel\tBOVonly_mean\tBOVonly_pctdel"
+printf "\tCAPonly_mean\tCAPonly_pctdel\tRD1_mean\tRD1_pctdel\tcall\n"
 
 for s in $AF2 $NONAF2 $CAPRAE; do
+    case " $CAPRAE " in *" $s "*) grp="La2" ;; *) case " $AF2 " in *" $s "*) grp="Af2" ;; *) grp="nonAf2" ;; esac ;; esac
+
     b="$BACTOPIA/$s/tools/tbprofiler/supplemental/$s.bam"
     [ -f "$b" ] || { echo "$s: no H37Rv bam" >&2; continue; }
-    [ -f "$b.bai" ] || samtools index "$b" 2>/dev/null || true
 
-    printf "%s" "$s"
-    declare -A pz
-    for n in RD9 RD4 RD1; do
-        [ -n "${RD[$n]:-}" ] || { printf "\tNA\tNA"; pz[$n]=-1; continue; }
-        read -r st en <<< "${RD[$n]}"
-        read -r mean pct <<< "$(samtools depth -a -r "${CHROM}:${st}-${en}" "$b" \
-            | awk '{t+=$3; n++; if($3==0) z++} END {
-                     if(n==0) print "0 100"; else printf "%.1f %.1f", t/n, 100*(z+0)/n }')"
-        printf "\t%s\t%s" "$mean" "$pct"
-        pz[$n]=${pct%%.*}
-    done
+    read -r rd9_m  rd9_z  <<< "$(region_stats "$b" "$RD9_CORE")"
+    read -r bov_m  bov_z  <<< "$(region_stats "$b" "$BOV_ONLY")"
+    read -r cap_m  cap_z  <<< "$(region_stats "$b" "$CAP_ONLY")"
+    read -r rd1_m  rd1_z  <<< "$(region_stats "$b" "$RD1_SPAN")"
 
-    # interpret: >80% of the region at zero coverage = deleted
-    call="unresolved"
-    if   [ "${pz[RD9]}" -gt 80 ] && [ "${pz[RD4]}" -gt 80 ]; then call="M. bovis"
-    elif [ "${pz[RD9]}" -gt 80 ] && [ "${pz[RD4]}" -le 80 ]; then call="M. caprae"
-    elif [ "${pz[RD9]}" -le 80 ];                            then call="M. tuberculosis s.s."
+    rd9i=${rd9_z%%.*}; bovi=${bov_z%%.*}; capi=${cap_z%%.*}; rd1i=${rd1_z%%.*}
+
+    if [ "$rd9i" -lt "$ZERO_CALL" ]; then
+        call="M. tuberculosis sensu stricto (RD9 intact)"
+    elif [ "$bovi" -ge "$ZERO_CALL" ] && [ "$capi" -lt "$ZERO_CALL" ]; then
+        call="M. bovis"
+    elif [ "$capi" -ge "$ZERO_CALL" ] && [ "$bovi" -lt "$ZERO_CALL" ]; then
+        call="M. caprae-like (La2)"
+    else
+        call="unresolved"
     fi
-    [ "${pz[RD1]}" -gt 80 ] && call="$call + RD1-deleted (BCG-like)"
+    [ "$rd1i" -ge "$ZERO_CALL" ] && call="$call; RD1 DELETED (BCG-like)"
 
-    printf "\t%s\n" "$call"
+    printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" \
+        "$s" "$grp" "$rd9_m" "$rd9_z" "$bov_m" "$bov_z" \
+        "$cap_m" "$cap_z" "$rd1_m" "$rd1_z" "$call"
 done
 } | tee "$OUT/rd_typing_h37rv.tsv" | column -t -s$'\t'
 
+echo
+echo "Part A -> $OUT/rd_typing_h37rv.tsv"
+echo
+
+# ------------------------- annotate the two intervals ------------------------
+
+if [ -s "$H37RV_GFF" ]; then
+  for spec in "M.bovis_deletion:1696017:1708748" "La2_deletion:1688917:1700496" "RD9_core:2330074:2332101"; do
+      n=${spec%%:*}; r=${spec#*:}; st=${r%%:*}; en=${r##*:}
+      echo "=== genes in $n ($st-$en)"
+      awk -F'\t' -v s="$st" -v e="$en" '$3=="gene" && $4<e && $5>s {
+          match($0,/locus_tag=[^;]*/); lt=substr($0,RSTART+10,RLENGTH-10)
+          nm="-"; if (match($0,/;Name=[^;]*/)) nm=substr($0,RSTART+6,RLENGTH-6)
+          printf "   %8d-%-8d %-16s %s\n", $4, $5, lt, nm }' "$H37RV_GFF"
+      echo
+  done | tee "$OUT/rd_gene_content.txt"
 fi
 
-echo
-echo "Part A written to $OUT/rd_typing_h37rv.tsv"
-echo
-
 # =============================================================================
-# PART B - data-driven RDAf2 scan against AF2122/97
+# PART B - data-driven Af2 deletion scan against AF2122/97
 # =============================================================================
 
 echo "############ PART B: deletion scan against AF2122/97 ############"
-echo "Looking for windows absent in Af2CC and present in non-Af2 M. bovis."
 echo
 
-mkdir -p "$OUT/cov"
-
-# Mean depth per window, per sample
 for s in $AF2 $NONAF2; do
     cf="$OUT/cov/${s}.win.txt"
     [ -s "$cf" ] && continue
@@ -169,71 +182,47 @@ for s in $AF2 $NONAF2; do
       | sort -k1,1n > "$cf"
 done
 
-echo
-echo "  comparing groups..."
-
 python3 - "$OUT" "$WINDOW" "$MIN_DEPTH" "$AF2" "$NONAF2" <<'PY'
-import sys, os, glob
+import sys, os
 out, win, mind = sys.argv[1], int(sys.argv[2]), float(sys.argv[3])
-af2    = sys.argv[4].split()
-nonaf2 = sys.argv[5].split()
+af2, nonaf2 = sys.argv[4].split(), sys.argv[5].split()
 
 def load(s):
     p = os.path.join(out, "cov", f"{s}.win.txt")
     if not os.path.exists(p): return None
-    d = {}
-    for line in open(p):
-        a, b = line.split()
-        d[int(a)] = float(b)
-    return d
+    return {int(a): float(b) for a, b in (l.split() for l in open(p))}
 
-cov = {s: load(s) for s in af2 + nonaf2}
-cov = {s: v for s, v in cov.items() if v}
-A = [s for s in af2 if s in cov]
-B = [s for s in nonaf2 if s in cov]
-print(f"  Af2 samples: {len(A)}   non-Af2 samples: {len(B)}")
+cov = {s: v for s, v in ((s, load(s)) for s in af2 + nonaf2) if v}
+A = [s for s in af2 if s in cov]; B = [s for s in nonaf2 if s in cov]
+print(f"  Af2: {len(A)}   non-Af2: {len(B)}")
 
-positions = set()
-for v in cov.values(): positions |= set(v)
+positions = set().union(*(set(v) for v in cov.values()))
+hits = [p for p in sorted(positions)
+        if max(cov[s].get(p, 0) for s in A) < mind
+        and min(cov[s].get(p, 0) for s in B) >= mind]
 
-hits = []
-for p in sorted(positions):
-    a = [cov[s].get(p, 0) for s in A]
-    b = [cov[s].get(p, 0) for s in B]
-    if not a or not b: continue
-    if max(a) < mind and min(b) >= mind:
-        hits.append(p)
-
-# merge adjacent windows into regions
 regions, start, prev = [], None, None
 for p in hits:
-    if start is None:
-        start = prev = p
-    elif p == prev + win:
-        prev = p
-    else:
-        regions.append((start, prev + win)); start = prev = p
+    if start is None: start = prev = p
+    elif p == prev + win: prev = p
+    else: regions.append((start, prev + win)); start = prev = p
 if start is not None: regions.append((start, prev + win))
 
 with open(os.path.join(out, "af2_specific_deletions.tsv"), "w") as fh:
     fh.write("start\tend\tlength_bp\n")
-    print("\n  Regions absent in ALL Af2 and present in ALL non-Af2:")
-    if not regions:
-        print("    (none found)")
-    for s, e in regions:
+    print("\n  Absent in ALL Af2, present in ALL non-Af2:")
+    for s, e in regions or []:
         fh.write(f"{s}\t{e}\t{e-s}\n")
         print(f"    NC_002945.4:{s}-{e}   {e-s} bp")
+    if not regions: print("    (none)")
 PY
 
 echo
-echo "Part B written to $OUT/af2_specific_deletions.tsv"
+echo "Part B -> $OUT/af2_specific_deletions.tsv"
 echo
-echo "Annotate any region found with:"
-echo "  awk -F'\\t' -v s=<start> -v e=<end> '\$3==\"gene\" && \$4<e && \$5>s' \\"
-echo "    /scratch/ma95362/ref_mbovis/ncbi_dataset/data/GCF_000195835.3/genomic.gff"
-echo
-echo "A single region of roughly 10-15 kb that splits the dataset exactly along"
-echo "the Af2 / non-Af2 line is RDAf2. Check its genes against Berg et al. 2011"
-echo "(J Bacteriol, African 2 clonal complex) before naming it in the paper."
+echo "Previously refined to base resolution: NC_002945.4:681,580-695,673"
+echo "(14,094 bp), identical in all 20 Af2 isolates, spanning"
+echo "BQ2027_MB0599-MB0610 including mce2R. Candidate RDAf2 -- confirm the"
+echo "gene content against Berg et al. 2011, J Bacteriol 193(3):670."
 echo
 echo "Finished: $(date)"
