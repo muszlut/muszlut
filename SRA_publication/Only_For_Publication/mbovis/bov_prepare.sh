@@ -36,8 +36,8 @@ cd "$OUTDIR"
 # -------------------------------
 bactopia prepare \
     --path "$READS_DIR" \
-    --species "Mycobacterium tuberculosis" \
-    --genome-size 4410000 \
+    --species "Mycobacterium bovis" \
+    --genome-size 4345492 \
     > "$OUTDIR/samples.txt"
 
 ## -------------------------------
