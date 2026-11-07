@@ -43,14 +43,19 @@ cd "$OUTDIR"
 # Run Bactopia
 # -------------------------------
 export NXF_OPTS="-Xms1g -Xmx6g"
+#bactopia \
+#    --samples "$OUTDIR/samples.txt" \
+#    --coverage 100 \
+#    --outdir "$OUTDIR" \
+#    -c sapelo2.config \
+#    -work-dir /scratch/ma95362/Bio_project_publication/Mbovis/work \
+#    -resume
+#bactopia summary --bactopia-path "$OUTDIR"
 bactopia \
-    --samples "$OUTDIR/samples.txt" \
-    --coverage 100 \
-    --outdir "$OUTDIR" \
+    --wf tbprofiler \
+    --bactopia /scratch/ma95362/Bio_project_publication/Mbovis \
     -c sapelo2.config \
-    -work-dir /scratch/ma95362/Bio_project_publication/Mbovis/work \
     -resume
-bactopia summary --bactopia-path "$OUTDIR"
 # Run Snippy
 # Nextflow JVM memory
 #export NXF_OPTS="-Xms2g -Xmx8g"
