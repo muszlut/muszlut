@@ -2,9 +2,9 @@
 #SBATCH --job-name=Bactopia_bovis
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=24
-#SBATCH --mem=120G
-#SBATCH --time=07-00:00:00
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=12G
+#SBATCH --time=2-00:00:00
 #SBATCH --output=/scratch/ma95362/Bio_project_publication/Mbovis/logs/log.%j.out
 #SBATCH --error=/scratch/ma95362/Bio_project_publication/Mbovis/logs/log.%j.err
 #SBATCH --mail-type=END,FAIL
@@ -34,23 +34,22 @@ cd "$OUTDIR"
 # -------------------------------
 # Prepare samples
 # -------------------------------
-bactopia prepare \
-    --path "$READS_DIR" \
-    --species "Mycobacterium bovis" \
-    --genome-size 4345492 \
-    > "$OUTDIR/samples.txt"
-
+#bactopia prepare \
+#    --path "$READS_DIR" \
+#    --species "Mycobacterium bovis" \
+#    --genome-size 4345492 \
+#    > "$OUTDIR/samples.txt"
 ## -------------------------------
 # Run Bactopia
 # -------------------------------
-export NXF_OPTS="-Xms2g -Xmx8g"
+export NXF_OPTS="-Xms1g -Xmx6g"
 bactopia \
     --samples "$OUTDIR/samples.txt" \
     --coverage 100 \
-    --max_cpus 16 \
     --outdir "$OUTDIR" \
-    -resume \
-    -process.maxForks 4
+    -c sapelo2.config \
+    -work-dir /scratch/ma95362/Bio_project_publication/Mbovis/work \
+    -resume
 bactopia summary --bactopia-path "$OUTDIR"
 # Run Snippy
 # Nextflow JVM memory
