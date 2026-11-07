@@ -21,15 +21,22 @@
 #
 # ---------------------------------------------------------------------------
 # NOTES FROM EARLIER FAILURES
+#   * '-r' is the reference FASTA flag, NOT '-f'. In vSNP3 3.31 the usage
+#     line reads:  [-f FASTATOFASTQ] [-r [FASTA ...]] [-b [GBK ...]]
+#     Passing the reference to -f makes vSNP3 CONVERT the reference genome
+#     into FASTQ reads (it wrote NC_002945v4_R1/R2.fastq.gz, ~220 MB each,
+#     took 10 minutes) and then abort with "REFERENCE NOT FOUND" because
+#     FASTA was still None. The tool's own help example shows '-f *fasta',
+#     which is wrong for this version; the usage line is correct.
 #   * 'module load' must come BEFORE 'set -u': Lmod's module shell function
 #     references unset variables internally and dies silently under -u.
-#   * The reference files are now named explicitly. The previous version used
-#     'ls "$DEPS"/*.fasta "$DEPS"/*.fna | head -1'; with no .fna present, ls
+#   * Reference files are named explicitly. An earlier version used
+#     'ls "$DEPS"/*.fasta "$DEPS"/*.fna | head -1'; with no .fna present ls
 #     exited 2, 'set -o pipefail' propagated it, and 'set -e' killed the
 #     script before any output -- exit code 2, empty logs, 2 seconds.
 #   * The module's dependencies directory under /apps is read-only, so
 #     vsnp3_path_adder.py cannot register a reference type. The FASTA and
-#     GBK are therefore passed explicitly with -f and -b instead of -t.
+#     GBK are therefore passed explicitly instead of via -t.
 #
 # Run:  sbatch vsnp3_step1.sh
 # Test: sbatch --array=1-1 vsnp3_step1.sh
@@ -76,6 +83,10 @@ WORK="$BASE/step1/$SAMPLE"
 mkdir -p "$WORK"
 cd "$WORK"
 
+# Clear any leftovers from a previous failed attempt, but keep nothing that
+# would be mistaken for fresh output. The symlinks are recreated below.
+rm -f ./*.fastq.gz ./*.vcf ./*.bam ./*.bai 2>/dev/null || true
+
 echo "Sample:     $SAMPLE  (array task ${SLURM_ARRAY_TASK_ID})"
 echo "Reference:  $REF_FASTA"
 echo "Annotation: $REF_GBK"
@@ -89,14 +100,15 @@ ln -sf "$R1" .
 ln -sf "$R2" .
 
 # ------------------------------- run step 1 ----------------------------------
-# -spoligo is required: spoligotyping for TB complex isolates is NOT run by
-# default in vSNP3 3.x.
+#   -r        reference FASTA   (NOT -f; see notes above)
+#   -b        GenBank annotation
+#   -spoligo  spoligotyping is NOT run by default in vSNP3 3.x
 
 vsnp3_step1.py \
     -n "$SAMPLE" \
     -r1 "${SAMPLE}_R1.fastq.gz" \
     -r2 "${SAMPLE}_R2.fastq.gz" \
-    -f "$REF_FASTA" \
+    -r "$REF_FASTA" \
     -b "$REF_GBK" \
     -spoligo
 
