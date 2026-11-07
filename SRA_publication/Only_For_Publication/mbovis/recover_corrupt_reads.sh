@@ -23,17 +23,23 @@
 # ---------------------------------------------------------------------------
 # RUN HISTORY
 #   job 49892221  failed at preflight (seqkit not loaded) - no work done
-#   job 49892389  step 1 OK, step 2 killed at exactly 16.0 GB (MaxRSS 16775636K)
-#                 seqkit pair loads the whole first file into memory; the kill
-#                 left truncated gzip streams ("unexpected end of file").
+#   job 49892389  step 1 ran, step 2 killed at exactly 16.0 GB (MaxRSS
+#                 16775636K); the kill left truncated gzip streams.
+#   job 49901106  step 2 with 64G: NOT memory (peak 8.1 GB). seqkit rejected
+#                 288P_R2 with "bad fastq format". Cause: the corruption
+#                 injects newlines near the end of the readable region, which
+#                 shifts the 4-line FASTQ framing. The original step-1 awk
+#                 assumed NR%4 framing and copied the misalignment through.
+#                 Diagnosed in 288P_R2 at line 28598475 of 28602340 (~1000
+#                 bad records at the tail; everything before is clean).
 #
-# Step 1 output is verified clean, so STEP 1 IS NOW DISABLED (RUN_SALVAGE=0).
-# Memory raised 16G -> 64G for the re-run of step 2.
-#
-# To re-run step 1 from scratch (e.g. fresh source files), set RUN_SALVAGE=1.
+# Step 1 now VALIDATES each record (header ^@, separator ^+, seq/qual lengths
+# equal) and STOPS at the first violation rather than resyncing: data past a
+# framing break is not trustworthy. RUN_SALVAGE is back to 1 to regenerate.
+# Memory stays at 64G (harmless; actual peak was 8 GB).
 # =============================================================================
 
-RUN_SALVAGE=0             # 1 = run step 1 salvage, 0 = skip (already done)
+RUN_SALVAGE=1             # 1 = run step 1 salvage, 0 = skip (already done)
 RUN_PAIR=1                # 1 = run step 2 pairing
 RUN_VERIFY=1              # 1 = run step 3 verification
 
@@ -109,17 +115,31 @@ if [ "$RUN_SALVAGE" -eq 1 ]; then
 
             echo "[salvage] $f"
 
-            # awk buffers four lines and only emits a record once all four
-            # exist, so a partial record at the corruption point is dropped.
+            # Buffer four lines, VALIDATE them as a real FASTQ record, and emit
+            # only if valid. Stop at the first violation: the corruption can
+            # inject newlines that shift the framing, and everything after such
+            # a break is unreliable. (awk's exit still runs the END block, so
+            # the record count is written.)
             countfile="$OUT/.count.$$"
             zcat "$SRC/$f" 2>/dev/null \
               | awk -v cf="$countfile" '
-                    { buf[NR % 4] = $0 }
-                    NR % 4 == 0 {
-                        print buf[1]; print buf[2]; print buf[3]; print buf[0]
-                        kept++
+                    { rec[++i] = $0 }
+                    i == 4 {
+                        if (rec[1] ~ /^@/ && rec[3] ~ /^\+/ && \
+                            length(rec[2]) == length(rec[4]) && \
+                            length(rec[2]) > 0) {
+                            print rec[1]; print rec[2]; print rec[3]; print rec[4]
+                            kept++
+                            i = 0
+                        } else {
+                            stopped = NR
+                            exit
+                        }
                     }
-                    END { print kept + 0 > cf }
+                    END {
+                        print kept + 0 > cf
+                        if (stopped) printf "           framing lost at line %d; truncated there\n", stopped
+                    }
                 ' \
               | $ZIP > "$OUT/$f"
 
