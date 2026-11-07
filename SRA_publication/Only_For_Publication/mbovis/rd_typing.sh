@@ -88,8 +88,9 @@ span_from_tags () {
     ' "$H37RV_GFF"
 }
 
-CHROM=$(awk -F'\t' '$3=="gene"{print $1; exit}' "$H37RV_GFF")
-echo "H37Rv contig: $CHROM"
+PROBE=$(ls "$BACTOPIA"/*/tools/tbprofiler/supplemental/*.bam 2>/dev/null | head -1)
+CHROM=$(samtools view -H "$PROBE" | awk '$1=="@SQ"{sub("SN:","",$2); print $2; exit}')
+echo "H37Rv contig (from BAM): $CHROM"
 
 declare -A RD
 for spec in "RD9:Rv2072c:Rv2075c" "RD4:Rv1505c:Rv1516c" "RD1:Rv3871:Rv3879c"; do
