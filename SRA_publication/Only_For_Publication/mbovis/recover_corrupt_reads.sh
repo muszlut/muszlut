@@ -138,7 +138,10 @@ if [ "$RUN_SALVAGE" -eq 1 ]; then
                     }
                     END {
                         print kept + 0 > cf
-                        if (stopped) printf "           framing lost at line %d; truncated there\n", stopped
+                        # MUST go to stderr: stdout is piped into gzip, and a
+                        # stray line here lands inside the FASTQ itself.
+                        if (stopped)
+                            printf("           framing lost at line %d; truncated there\n", stopped) > "/dev/stderr"
                     }
                 ' \
               | $ZIP > "$OUT/$f"
@@ -199,9 +202,11 @@ if [ "$RUN_PAIR" -eq 1 ]; then
     echo "        all $(echo $BAD | wc -w) samples OK"
     echo
 
-    # -- 2b. clear stale output from the killed run --------------------------
+    # -- 2b. clear stale output from the previous run ------------------------
+    # Remove the directory outright: seqkit warns on a non-empty outdir, and
+    # leftovers from an aborted run must not be mistaken for fresh output.
+    rm -rf "$OUT/paired"
     mkdir -p "$OUT/paired"
-    rm -f "$OUT/paired"/*.fastq.gz
 
     # -- 2c. pair ------------------------------------------------------------
     for s in $BAD; do
