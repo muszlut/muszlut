@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=12G
-#SBATCH --time=2-00:00:00
+#SBATCH --time=7-00:00:00
 #SBATCH --output=/scratch/ma95362/Bio_project_publication/Mbovis/logs/log.%j.out
 #SBATCH --error=/scratch/ma95362/Bio_project_publication/Mbovis/logs/log.%j.err
 #SBATCH --mail-type=END,FAIL
