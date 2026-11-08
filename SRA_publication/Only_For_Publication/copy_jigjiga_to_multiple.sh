@@ -17,27 +17,50 @@ set -euo pipefail
 SRC="/scratch/ma95362/Bio_project_publication"
 DEST="/scratch/ma95362/Bio_project_publication/Mtb_Multiple_BioProjects/results_singularity"
 
-# Create destination directory
+# Create destination
 mkdir -p "$DEST"
 
-echo "Copy started: $(date)"
+echo "=========================================="
+echo "Starting SRR and ERR directory transfer"
+echo "Date: $(date)"
+echo "=========================================="
 
-# Copy all SRR directories using rsync
-for DIR in "$SRC"/SRR*/; do
-    if [ -d "$DIR" ]; then
-        echo "Copying $(basename "$DIR") ..."
-        rsync -a "$DIR" "$DEST/"
+# Find SRR and ERR directories
+shopt -s nullglob
+DIRS=("$SRC"/SRR*/ "$SRC"/ERR*/)
 
-    fi
+echo "Total directories identified: ${#DIRS[@]}"
+
+# Copy each complete sample directory
+for DIR in "${DIRS[@]}"; do
+
+    SAMPLE=$(basename "$DIR")
+
+    echo "Copying sample: $SAMPLE"
+
+    # Remove trailing slash to preserve sample directory name
+    rsync -a --info=progress2 "${DIR%/}" "$DEST/"
+
 done
 
-echo "Copy completed: $(date)"
+echo "=========================================="
+echo "TRANSFER COMPLETED"
+echo "Date: $(date)"
+echo "=========================================="
 
-# Verify directory counts
-echo "Source SRR directories:"
-find "$SRC" -mindepth 1 -maxdepth 1 -type d -name "SRR*" | wc -l
+# Verification
+SOURCE_COUNT=${#DIRS[@]}
 
-echo "Destination SRR directories:"
-find "$DEST" -mindepth 1 -maxdepth 1 -type d -name "SRR*" | wc -l
+DEST_COUNT=$(find "$DEST" -mindepth 1 -maxdepth 1 \
+    -type d \( -name "SRR*" -o -name "ERR*" \) | wc -l)
 
-echo "Job finished."
+echo "Source sample directories: $SOURCE_COUNT"
+echo "Destination sample directories: $DEST_COUNT"
+
+if [ "$SOURCE_COUNT" -eq "$DEST_COUNT" ]; then
+    echo "SUCCESS: Directory counts match."
+else
+    echo "WARNING: Directory counts do not match."
+fi
+
+echo "Job completed: $(date)"
