@@ -89,8 +89,7 @@ tr$tip.label <- ifelse(is.na(sbv), orig, sprintf("%-9s %s", orig, sbv))
 for (dev in c("pdf", "png")) {
   f <- file.path(OUT, paste0("mbovis_tree_ape.", dev))
   if (dev == "pdf") pdf(f, width = 9, height = 11)
-  else              png(f, width = 9, height = 11, units = "in", res = 300)
-
+  else              png(f, width = 9, height = 11, units = "in", res = 300, type = "cairo")
   par(mar = c(5, 1, 3, 1), xpd = NA)
   plot.phylo(tr, cex = 0.72, font = 1, label.offset = 2,
              tip.color = tipcol, edge.width = 1.1)
