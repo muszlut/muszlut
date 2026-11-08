@@ -1,4 +1,3 @@
-```bash
 #!/bin/bash
 #SBATCH --job-name=copy_SRR_ERR
 #SBATCH --partition=batch
