@@ -27,7 +27,13 @@ GBK = sys.argv[1] if len(sys.argv) > 1 else (
 START = int(sys.argv[2]) if len(sys.argv) > 2 else 681580
 END = int(sys.argv[3]) if len(sys.argv) > 3 else 695673
 
-WANT = [f"BQ2027_MB{n:04d}" for n in range(599, 611)]   # MB0599 .. MB0610
+# MB0599 .. MB0610. Complement-strand genes carry a 'C' suffix in the 2017
+# re-annotation (BQ2027_MB0600C = Berg's Mb0600c), so both forms are tried.
+def resolve(n, genes):
+    for tag in (f"BQ2027_MB{n:04d}", f"BQ2027_MB{n:04d}C"):
+        if tag in genes:
+            return tag
+    return f"BQ2027_MB{n:04d}"
 
 # ---------------------------------------------------------------- parse GBK
 # Only CDS features are needed; a GenBank CDS block looks like
@@ -67,6 +73,8 @@ with open(GBK) as fh:
 if not genes:
     sys.exit(f"No features parsed from {GBK} -- check the path.")
 
+WANT = [resolve(n, genes) for n in range(599, 611)]
+
 # ---------------------------------------------------------------- report
 size = END - START + 1
 print(f"annotation : {GBK}")
@@ -99,8 +107,8 @@ for tag in WANT:
 
 # ---------------------------------------------------------------- verdict
 print("\n" + "=" * 80)
-exp_full = [f"BQ2027_MB{n:04d}" for n in range(600, 610)]   # MB0600c..MB0609
-exp_part = ["BQ2027_MB0599", "BQ2027_MB0610"]
+exp_full = [resolve(n, genes) for n in range(600, 610)]   # MB0600c..MB0609
+exp_part = [resolve(599, genes), resolve(610, genes)]
 
 checks = [
     ("deletion size is 14,094 bp", size == 14094),
