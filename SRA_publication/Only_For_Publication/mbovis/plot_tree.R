@@ -14,8 +14,8 @@ suppressPackageStartupMessages({
 })
 
 TREE  <- Sys.glob("/scratch/ma95362/Bio_project_publication/Mbovis/bactopia-runs/snippy-*/core-snp.treefile")[1]
-META  <- "/scratch/ma95362/master_sample_table.csv"
-OUT   <- "/scratch/ma95362/figures"
+META  <- "/scratch/ma95362/Bio_project_publication/Mbovis/all_merged_results/master_sample_table.csv"
+OUT   <- "/scratch/ma95362/Bio_project_publication/Mbovis/R_output/figures"
 dir.create(OUT, showWarnings = FALSE)
 
 stopifnot(file.exists(TREE), file.exists(META))
